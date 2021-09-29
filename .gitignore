@@ -8,6 +8,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+/[Ll]og/
 /[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
@@ -46,6 +47,12 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.log
+*.exe0.log
+*.exe1.log
+*.exe2.log
+*.exe3.log
+*.exe4.log
 
 # Unity3D generated meta files
 *.pidb.meta
