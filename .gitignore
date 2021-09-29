@@ -92,6 +92,8 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+*.log
+
 # Windows shortcuts
 *.lnk
 
@@ -100,6 +102,8 @@ $RECYCLE.BIN/
 Library/expandedItems
 Library/expandedItems
 Library/Bee
+Library/Artifact
+Library/ArtifactsDB
 Library/InspectorExpandedItems.asset
 Library/LastSceneManagerSetup.txt
 Library/shadercompiler-UnityShaderCompiler.exe0.log
