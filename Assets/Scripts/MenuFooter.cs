@@ -23,45 +23,48 @@ public class MenuFooter : MonoBehaviour
     [SerializeField] MenuTab SelectedTab;
     [SerializeField] List<Image> ButtonsList = new List<Image>();
 
-    Dictionary<MenuTab, Image> Tabs = new Dictionary<MenuTab, Image>();
+    Dictionary<MenuTab, FooterButtonSizeController> Tabs = new Dictionary<MenuTab, FooterButtonSizeController>();
 
-    private void Awake()
+    private void Start()
     {
-        Tabs.Add(MenuTab.Shop, ButtonsList[0]);
-        Tabs.Add(MenuTab.Achievements, ButtonsList[1]);
-        Tabs.Add(MenuTab.Home, ButtonsList[2]);
-        Tabs.Add(MenuTab.Skins, ButtonsList[3]);
-        Tabs.Add(MenuTab.Settings, ButtonsList[4]);
+        Tabs.Add(MenuTab.Shop, ButtonsList[0].GetComponent<FooterButtonSizeController>());
+        Tabs.Add(MenuTab.Achievements, ButtonsList[1].GetComponent<FooterButtonSizeController>());
+        Tabs.Add(MenuTab.Home, ButtonsList[2].GetComponent<FooterButtonSizeController>());
+        Tabs.Add(MenuTab.Skins, ButtonsList[3].GetComponent<FooterButtonSizeController>());
+        Tabs.Add(MenuTab.Settings, ButtonsList[4].GetComponent<FooterButtonSizeController>());
 
         DefaultSize = MainCanvas.GetComponent<RectTransform>().rect.width / (ButtonsList.Count + 1);
         SelectedSize = DefaultSize * 2;
 
-        foreach (Image img in ButtonsList)
+        foreach (KeyValuePair<MenuTab, FooterButtonSizeController> tab in Tabs)
         {
-            img.color = NormalColor;
+            tab.Value.SetDefault(DefaultSize, NormalColor);
         }
 
-        OpenTab(SelectedTab);
-    }
-
-    private void Update()
-    {
-        DefaultSize = MainCanvas.GetComponent<RectTransform>().rect.width / (ButtonsList.Count + 1);
-        SelectedSize = DefaultSize * 2;
-
-        OpenTab(SelectedTab);
+        ForceTab(SelectedTab);
     }
 
     public void OpenTab(MenuTab tab)
     {
-        Tabs[SelectedTab].rectTransform.sizeDelta = new Vector2(DefaultSize, DefaultSize);
-        Tabs[SelectedTab].color = NormalColor;
+        if (tab == SelectedTab)
+        {
+            return;
+        }
 
+        Tabs[SelectedTab].SetTargetSize(DefaultSize, NormalColor);
 
         SelectedTab = tab;
 
-        Tabs[SelectedTab].rectTransform.sizeDelta = new Vector2(SelectedSize, DefaultSize);
-        Tabs[SelectedTab].color = SelectColor;
+        Tabs[SelectedTab].SetTargetSize(SelectedSize, SelectColor);
+    }
+
+    public void ForceTab(MenuTab tab)
+    {
+        Tabs[SelectedTab].SetTargetSize(DefaultSize, NormalColor);
+
+        SelectedTab = tab;
+
+        Tabs[SelectedTab].ForceTarget(SelectedSize, SelectColor);
     }
 
     public void OpenTab(int tabID)
