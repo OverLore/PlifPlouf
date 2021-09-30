@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public float shotForce;
 
     float nextShot;
-    float delay;
+    [SerializeField] float delay;
 
     // Start is called before the first frame update
     void Start()
