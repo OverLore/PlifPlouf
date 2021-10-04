@@ -7,7 +7,7 @@ public class ScrollingSpeed : MonoBehaviour
     //depth layer will determine the scrolling speed in an idea of parallax implementation
     [SerializeField] int depthLayer;
     [SerializeField] float currentSpeed;
-    [SerializeField] float bonusSpeed;
+    public float bonusSpeed;
     bool CheckIsHigherThanBottom()
     {
         Vector3 pos = transform.position;

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8627427829027351545}
   - component: {fileID: 8627427829027351544}
   - component: {fileID: 5568017154711514347}
+  - component: {fileID: 97460047089194214}
   m_Layer: 0
   m_Name: BoosterTemplate
   m_TagString: Untagged
@@ -170,6 +171,21 @@ MonoBehaviour:
   booster: {fileID: 0}
   back: {fileID: 2651781295459353439}
   front: {fileID: 8627427829304384265}
+--- !u!114 &97460047089194214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764816106304444655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5da95c05b1143c448c95f94ba6fe69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  depthLayer: 1
+  currentSpeed: 0
+  bonusSpeed: 0
 --- !u!1 &8627427829304384263
 GameObject:
   m_ObjectHideFlags: 0

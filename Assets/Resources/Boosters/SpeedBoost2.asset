@@ -14,5 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chance: 0
   duration: 0
-  boosterName: 
-  sprite: {fileID: 0}
+  speed: 1
+  boosterName: Speed boost 2
+  sprite: {fileID: 21300000, guid: b09b3a8f95c3e644795c388a7e9ce0fc, type: 3}
+  frontColor: {r: 1, g: 1, b: 1, a: 1}
+  useRandomBackColor: 1
+  backColor: {r: 1, g: 1, b: 1, a: 1}
+  PickUpEvent:
+    m_PersistentCalls:
+      m_Calls: []

@@ -14,11 +14,6 @@ public class BoosterObject : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, -booster.speed);
-    }
-
     public void Setup(Booster b)
     {
         booster = BoosterManager.instance.GetBoosterByRef(b);
@@ -36,6 +31,8 @@ public class BoosterObject : MonoBehaviour
         {
             back.color = booster.backColor;
         }
+
+        GetComponent<ScrollingSpeed>().bonusSpeed = booster.speed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
