@@ -3,8 +3,12 @@ using UnityEngine;
 public class BoosterManager : MonoBehaviour
 {
     public Booster[] boostersDatabase;
+    public Sprite[] backDatabase;
+    public Color[] backColorsDatabase;
 
     public static BoosterManager instance;
+
+    public GameObject boosterObjectPrefab;
 
     private void Awake()
     {
@@ -14,6 +18,8 @@ public class BoosterManager : MonoBehaviour
         }
 
         boostersDatabase = Resources.LoadAll<Booster>("Boosters");
+
+        backDatabase = Resources.LoadAll<Sprite>("Sprites/Boosters/Fonds");
     }
 
     public Booster GetBoosterByName(string n)
@@ -37,5 +43,26 @@ public class BoosterManager : MonoBehaviour
     public Booster GetBoosterByRef(Booster b)
     {
         return Instantiate(b);
+    }
+
+    public Sprite GetRandomBack()
+    {
+        return backDatabase[Random.Range(0, backDatabase.Length)];
+    }
+
+    public Color GetRandomColor()
+    {
+        return backColorsDatabase[Random.Range(0, backColorsDatabase.Length)];
+    }
+
+    public void SpawnRandomBoosterObject(Vector3 position)
+    {
+        Booster booster = boostersDatabase[Random.Range(0, boostersDatabase.Length)];
+
+        GameObject go = Instantiate(boosterObjectPrefab);
+
+        go.transform.position = position;
+
+        go.GetComponent<BoosterObject>().Setup(booster);
     }
 }
