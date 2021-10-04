@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
 
     void DestroyBullet()
     {
-        Debug.Log("destroy");
         Destroy(gameObject);
     }
 

@@ -137,3 +137,4 @@ Logs/shadercompiler-UnityShaderCompiler.exe6.log
 Logs/shadercompiler-UnityShaderCompiler.exe7.log
 *.csproj
 Assembly-CSharp.csproj
+*.csproj

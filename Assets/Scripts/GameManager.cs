@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] float scrollingSpeed;
+    public float scrollingSpeed;
+    public int maxDepthLayer = 10;
 
     public static GameManager instance;
 
