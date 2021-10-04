@@ -44,18 +44,16 @@ public class BackgroundManager : MonoBehaviour
         {
             if (IsLowerThanTop(backgroundList[i]) && !backgroundList[i].hasCreatedNext)
             {
-                //AddBackgroundInList(new Vector3(0, 10, 0));
                 counter++;
+                backgroundList[i].hasCreatedNext = true;
+                backgroundList.Remove(backgroundList[i]);
+                i--;
             }
         }
 
         for (int i = 0; i < counter; i++)
         {
-            if (IsLowerThanTop(backgroundList[i]) && !backgroundList[i].hasCreatedNext)
-            {
-                AddBackgroundInList(new Vector3(0, 10, 0));
-                backgroundList[i].hasCreatedNext = true;
-            }
+            AddBackgroundInList(new Vector3(0, 10, 0));
         }
 
     }
