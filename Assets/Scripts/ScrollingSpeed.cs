@@ -13,7 +13,8 @@ public class ScrollingSpeed : MonoBehaviour
         Vector3 pos = transform.position;
         Vector3 size = transform.localScale;
         Vector3 bottomLeftPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        if (pos.y + size.y > bottomLeftPos.y)
+        float offset = 0.1f;
+        if (pos.y + size.y / 2.0f + offset > bottomLeftPos.y)
         {
             return true;
         }
