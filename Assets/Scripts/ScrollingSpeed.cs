@@ -7,6 +7,7 @@ public class ScrollingSpeed : MonoBehaviour
     //depth layer will determine the scrolling speed in an idea of parallax implementation
     [SerializeField] int depthLayer;
     [SerializeField] float currentSpeed;
+    public float bonusSpeed;
     bool CheckIsHigherThanBottom()
     {
         Vector3 pos = transform.position;
@@ -35,7 +36,7 @@ public class ScrollingSpeed : MonoBehaviour
         float result = 0;
         //ratio creating parallax (+ 1 to be able to be on depth max layer)
         float ratio = (GameManager.instance.maxDepthLayer - depthLayer + 1) / (float)GameManager.instance.maxDepthLayer;
-        result = GameManager.instance.scrollingSpeed * ratio;
+        result = GameManager.instance.scrollingSpeed * ratio + bonusSpeed;
         return result;
     }
 
