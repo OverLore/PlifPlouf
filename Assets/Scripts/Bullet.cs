@@ -9,9 +9,10 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ennemy")
         {
-            Destroy(collision.gameObject); 
+            //Destroy(collision.gameObject);
+            
+            collision.gameObject.GetComponent<Enemy>().takeDamage(1);
             Destroy(gameObject);
-            Debug.Log("AAAAAAAAAAAAAAA");
         }
     }
     bool CheckIsInScreen()

@@ -6,7 +6,7 @@ public class TESTEnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
 
-    public Transform pos;
+    //public Transform pos;
 
     float nextIn;
     int rest = 15;
@@ -30,7 +30,15 @@ public class TESTEnemySpawner : MonoBehaviour
 
             GameObject go = Instantiate(enemyPrefab);
 
-            go.transform.position = pos.transform.position;
+           // go.transform.position = pos.transform.position;
+        }
+        else if (nextIn <= 0 && rest <= 0)
+        {
+       
+            // pos.transform.position = pos.transform.position + new Vector3(transform.position.x - 50, transform.position.y , transform.position.z);
+            //gameObject.transform.position = gameObject.transform.position + new Vector3(gameObject.transform.position.x - 50, gameObject.transform.position.y, gameObject.transform.position.z);
+            rest = 15;
+            nextIn =3f;
         }
     }
 }
