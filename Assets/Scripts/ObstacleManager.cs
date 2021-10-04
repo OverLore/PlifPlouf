@@ -11,11 +11,22 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] int nbRandObstacles;
     [SerializeField] int nbObstaclesToSpawn;
 
+    private int baseNbObstaclesToSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = maxTimer;
+
+        //keep the values for the reload
+        baseNbObstaclesToSpawn = nbObstaclesToSpawn;
+        Debug.Log(baseNbObstaclesToSpawn);
+    }
+
+    //reload components for a new wave
+    void RestartComponents()
+    {
+        nbObstaclesToSpawn = baseNbObstaclesToSpawn;
     }
 
     int GetObstaclesNumberAtSpawn()
@@ -33,8 +44,10 @@ public class ObstacleManager : MonoBehaviour
             if (nbObstaclesToSpawn > 0)
             {
                 float randXPos = Random.Range(-1.8f, 1.8f);
+                float randYCoeff = Random.Range(3.0f, 5.0f);
+                float yPos = 8 + randYCoeff * i;
                 GameObject go = Instantiate(obstacle);
-                go.transform.position = new Vector3(randXPos, 8, 0);
+                go.transform.position = new Vector3(randXPos, yPos, 0);
                 nbObstaclesToSpawn -= 1;
             }
             else
@@ -53,6 +66,12 @@ public class ObstacleManager : MonoBehaviour
         {
             SpawnObstacles();
             timer = maxTimer;
+        }
+
+        if(Input.GetKey(KeyCode.Space))
+        {
+            RestartComponents();
+            Debug.Log("restart components");
         }
     }
 }
