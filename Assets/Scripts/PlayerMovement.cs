@@ -105,6 +105,9 @@ public class PlayerMovement : MonoBehaviour
         float xMin = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + transform.localScale.x / 2;
         float xMax = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - transform.localScale.x / 2;
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y, transform.position.z);
+        float yMin = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + transform.localScale.y / 2;
+        float yMax = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y - transform.localScale.y / 2;
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, xMin, xMax), Mathf.Clamp(transform.position.y, yMin, yMax), transform.position.z);
     }
 }
