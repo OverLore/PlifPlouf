@@ -21,8 +21,8 @@ public class Bullet : MonoBehaviour
         Vector3 size = transform.localScale;
         Vector3 bottomLeftPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         Vector3 topRightPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        if (pos.x + size.x < bottomLeftPos.x || pos.x - size.x > topRightPos.x ||
-           pos.y + size.y < bottomLeftPos.y || pos.y - size.y > topRightPos.y
+        if (pos.x + size.x / 2.0f < bottomLeftPos.x || pos.x - size.x / 2.0f > topRightPos.x ||
+           pos.y + size.y / 2.0f < bottomLeftPos.y || pos.y - size.y / 2.0f > topRightPos.y
            )
         {
             return false;

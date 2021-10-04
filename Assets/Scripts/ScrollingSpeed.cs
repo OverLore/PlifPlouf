@@ -8,6 +8,8 @@ public class ScrollingSpeed : MonoBehaviour
     [SerializeField] int depthLayer;
     [SerializeField] float currentSpeed;
     public float bonusSpeed;
+
+
     bool CheckIsHigherThanBottom()
     {
         Vector3 pos = transform.position;
@@ -23,6 +25,7 @@ public class ScrollingSpeed : MonoBehaviour
             return false;
         }
     }
+
 
     void DestroyIfOutOfScreen()
     {

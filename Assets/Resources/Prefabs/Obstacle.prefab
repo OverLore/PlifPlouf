@@ -98,3 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   depthLayer: 1
   currentSpeed: 0
+  bonusSpeed: 0
+  backgroundManager: {fileID: 7592518988900757730, guid: df6d5e8ccea7b7c438b26ff8ebaa4d0c, type: 3}

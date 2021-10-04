@@ -52,6 +52,8 @@ public class ObstacleManager : MonoBehaviour
             }
             else
             {
+                //for the moment it will loop
+                RestartComponents();
                 break;
             }
         }
@@ -66,12 +68,6 @@ public class ObstacleManager : MonoBehaviour
         {
             SpawnObstacles();
             timer = maxTimer;
-        }
-
-        if(Input.GetKey(KeyCode.Space))
-        {
-            RestartComponents();
-            Debug.Log("restart components");
         }
     }
 }
