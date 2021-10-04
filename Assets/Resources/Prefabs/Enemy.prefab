@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7392254316335273353}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 5128269864818186603}
   - component: {fileID: 6352713245989170868}
   - component: {fileID: 5220489231639838347}
+  - component: {fileID: 7068680760334136517}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +148,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9127c470b393e47a5f76239be4478a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player_Bullet: {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
+  collider_enemy: {fileID: 342044696842440011, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
+--- !u!58 &7068680760334136517
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6637753767120538233}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
