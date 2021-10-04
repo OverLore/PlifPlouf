@@ -7,6 +7,28 @@ public class ScrollingSpeed : MonoBehaviour
     //depth layer will determine the scrolling speed in an idea of parallax implementation
     [SerializeField] int depthLayer;
     [SerializeField] float currentSpeed;
+    bool CheckIsHigherThanBottom()
+    {
+        Vector3 pos = transform.position;
+        Vector3 size = transform.localScale;
+        Vector3 bottomLeftPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+        if (pos.y + size.y > bottomLeftPos.y)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    void DestroyIfOutOfScreen()
+    {
+        if (!CheckIsHigherThanBottom())
+        {
+            Destroy(gameObject);
+        }
+    }
 
     float DetermineScrollingSpeed()
     {
@@ -27,5 +49,7 @@ public class ScrollingSpeed : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y - currentSpeed * Time.deltaTime, transform.position.z);
+
+        DestroyIfOutOfScreen();
     }
 }

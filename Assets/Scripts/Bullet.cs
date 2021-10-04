@@ -6,10 +6,6 @@ public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    void DestroyBullet()
-    {
-        Destroy(gameObject);
-    }
 
     bool CheckIsInScreen()
     {
@@ -39,7 +35,7 @@ public class Bullet : MonoBehaviour
     {
         if (!CheckIsInScreen())
         {
-            DestroyBullet();
+            Destroy(gameObject);
         }
     }
 }
