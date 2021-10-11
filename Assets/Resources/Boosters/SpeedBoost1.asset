@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chance: 0
   duration: 0
-  speed: 0
+  speed: 4
   boosterName: Speed boost 1
   sprite: {fileID: 21300000, guid: 3a5a9c82c478adc47b7da0ae24f89d8f, type: 3}
   frontColor: {r: 1, g: 1, b: 1, a: 1}
@@ -22,16 +22,4 @@ MonoBehaviour:
   backColor: {r: 0.7264151, g: 0.2021627, b: 0.2021627, a: 1}
   PickUpEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 189275722447042793, guid: 312b48be294960346aa7f9bc648d1a2f, type: 3}
-        m_TargetAssemblyTypeName: TestBooster, Assembly-CSharp
-        m_MethodName: DebugBoosterName
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Booster1
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

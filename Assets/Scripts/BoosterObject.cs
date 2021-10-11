@@ -32,7 +32,7 @@ public class BoosterObject : MonoBehaviour
             back.color = booster.backColor;
         }
 
-        GetComponent<ScrollingSpeed>().bonusSpeed = booster.speed;
+        gameObject.GetComponent<ScrollingSpeed>().SetScrollingBonusSpeed(booster.speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

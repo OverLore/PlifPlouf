@@ -12,7 +12,7 @@ public class BackgroundManager : MonoBehaviour
         Vector3 pos = _go.transform.position;
         Vector3 size = _go.transform.localScale;
         Vector3 topRightPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        float offset = 0.1f;
+        float offset = -1.0f;
         if (pos.y + size.y / 2.0f + offset > topRightPos.y)
         {
             return false;

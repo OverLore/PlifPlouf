@@ -6,8 +6,9 @@ public class ScrollingSpeed : MonoBehaviour
 {
     //depth layer will determine the scrolling speed in an idea of parallax implementation
     [SerializeField] int depthLayer;
-    [SerializeField] float currentSpeed;
-    public float bonusSpeed;
+    public float baseSpeed;
+    public float currentSpeed;
+    [SerializeField] private float bonusSpeed = 0.0f;
 
 
     bool CheckIsHigherThanBottom()
@@ -35,24 +36,46 @@ public class ScrollingSpeed : MonoBehaviour
         }
     }
 
-    float DetermineScrollingSpeed()
+    void DetermineStartCurrentSpeed()
     {
-        float result = 0;
+        float curSpeed = 0;
         //ratio creating parallax (+ 1 to be able to be on depth max layer)
         float ratio = (GameManager.instance.maxDepthLayer - depthLayer + 1) / (float)GameManager.instance.maxDepthLayer;
-        result = GameManager.instance.scrollingSpeed * ratio + bonusSpeed;
-        return result;
+        curSpeed = GameManager.instance.scrollingSpeed * ratio;
+        SetBaseScrollingSpeed(curSpeed);
+    }
+
+    public void SetBaseScrollingSpeed(float _speed)
+    {
+        baseSpeed = _speed;
+        UpdateScrollingSpeed();
+    }
+
+    public void SetScrollingBonusSpeed(float _bonusSpeed)
+    {
+        bonusSpeed = _bonusSpeed;
+        UpdateScrollingSpeed();
+    }
+    
+    void UpdateScrollingSpeed()
+    {
+        currentSpeed = baseSpeed + bonusSpeed;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentSpeed = DetermineScrollingSpeed();
+       //if speed hasn't already been modified (ex: boosters..)
+       if(currentSpeed == 0)
+       {
+            DetermineStartCurrentSpeed();
+       }
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateScrollingSpeed();
         transform.position = new Vector3(transform.position.x, transform.position.y - currentSpeed * Time.deltaTime, transform.position.z);
 
         DestroyIfOutOfScreen();
