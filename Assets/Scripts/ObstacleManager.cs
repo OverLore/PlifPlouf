@@ -10,6 +10,7 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] int nbObstacles;
     [SerializeField] int nbRandObstacles;
     [SerializeField] int nbObstaclesToSpawn;
+    [SerializeField] int maxSpawnColumns = 5;
 
     private int baseNbObstaclesToSpawn;
 
@@ -20,7 +21,6 @@ public class ObstacleManager : MonoBehaviour
 
         //keep the values for the reload
         baseNbObstaclesToSpawn = nbObstaclesToSpawn;
-        Debug.Log(baseNbObstaclesToSpawn);
     }
 
     //reload components for a new wave
@@ -36,6 +36,7 @@ public class ObstacleManager : MonoBehaviour
         return result;
     }
 
+    //small implementation, will be held by Luc's wave editor
     void SpawnObstacles()
     {
         int randNbObstacles = GetObstaclesNumberAtSpawn();
@@ -43,7 +44,8 @@ public class ObstacleManager : MonoBehaviour
         {
             if (nbObstaclesToSpawn > 0)
             {
-                float randXPos = Random.Range(-1.8f, 1.8f);
+                float randColumn = Random.Range(0, maxSpawnColumns) + 1;
+                float randXPos = Random.Range(-3.6f, 3.6f);
                 float randYCoeff = Random.Range(3.0f, 5.0f);
                 float yPos = 8 + randYCoeff * i;
                 GameObject go = Instantiate(obstacle);

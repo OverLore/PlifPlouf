@@ -10,16 +10,16 @@ public class BackgroundManager : MonoBehaviour
     bool IsLowerThanTop(Background _go)
     {
         Vector3 pos = _go.transform.position;
-        Vector3 size = _go.transform.localScale;
+        float sizeY = _go.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
         Vector3 topRightPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         float offset = -1.0f;
-        if (pos.y + size.y / 2.0f + offset > topRightPos.y)
+        if (pos.y + sizeY / 2.0f + offset < topRightPos.y)
         {
-            return false;
+            return true;
         }
         else
         {
-            return true;
+            return false;
         }
     }
 
@@ -32,8 +32,8 @@ public class BackgroundManager : MonoBehaviour
         {
             backgroundList[lastIndex].hasCreatedNext = true;
             Vector3 lastPos = backgroundList[lastIndex].transform.position;
-            Vector3 lastSize = backgroundList[lastIndex].transform.localScale;
-            pos = new Vector3(lastPos.x, lastPos.y + lastSize.y, lastPos.z);
+            float sizeY = backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+            pos = new Vector3(lastPos.x, lastPos.y + sizeY, lastPos.z);
         }
         go.transform.position = pos;
         backgroundList.Add(go.GetComponent<Background>());
@@ -57,8 +57,6 @@ public class BackgroundManager : MonoBehaviour
                 break;
             }
         }
-
-        
         //int counter = 0;
         //for (int i = 0; i < backgroundList.Count; i++)
         //{
