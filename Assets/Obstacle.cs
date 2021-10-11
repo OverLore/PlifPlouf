@@ -5,6 +5,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour
 {
     [SerializeField] float randSpeed;
+    [SerializeField] float rotateSpeed = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +15,23 @@ public class Obstacle : MonoBehaviour
         gameObject.GetComponent<ScrollingSpeed>().SetScrollingBonusSpeed(bonusSpeed);
     }
 
+    void RotateObstacle()
+    {
+        gameObject.transform.Rotate(new Vector3(0, 0, rotateSpeed));
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        RotateObstacle();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //collision with player
+        if (collision.tag == "Player")
+        {
+            Debug.Log("Player hit by obstacle");
+        }
     }
 }

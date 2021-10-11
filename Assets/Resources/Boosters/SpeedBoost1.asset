@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chance: 0
   duration: 0
-  speed: 4
+  speed: 0
   boosterName: Speed boost 1
   sprite: {fileID: 21300000, guid: 3a5a9c82c478adc47b7da0ae24f89d8f, type: 3}
   frontColor: {r: 1, g: 1, b: 1, a: 1}

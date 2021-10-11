@@ -13,11 +13,21 @@ public class ScrollingSpeed : MonoBehaviour
 
     bool CheckIsHigherThanBottom()
     {
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        if(sr == null)
+        {
+            sr = gameObject.GetComponentInChildren<SpriteRenderer>();
+            if(sr == null)
+            {
+                Debug.Log("no sprite renderer found");
+                return false;
+            }
+        }
         Vector3 pos = transform.position;
-        Vector3 size = transform.localScale;
+        float sizeY = sr.sprite.bounds.size.y;
         Vector3 bottomLeftPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         float offset = 0.1f;
-        if (pos.y + size.y / 2.0f + offset > bottomLeftPos.y)
+        if (pos.y + sizeY / 2.0f + offset > bottomLeftPos.y)
         {
             return true;
         }
