@@ -13,7 +13,7 @@ public class BackgroundManager : MonoBehaviour
         Vector3 size = _go.transform.localScale;
         Vector3 topRightPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         float offset = 0.1f;
-        if (pos.y + size.y / 2.0f + offset < topRightPos.y)
+        if (pos.y + size.y / 2.0f + offset > topRightPos.y)
         {
             return false;
         }
@@ -23,38 +23,58 @@ public class BackgroundManager : MonoBehaviour
         }
     }
 
-    void AddBackgroundInList(Vector3 _pos)
+    void AddBackgroundInList(int _addedIndex)
     {
         GameObject go = Instantiate(background);
-        go.transform.position = _pos;
+        Vector3 pos = new Vector3(0, 0, 0);
+        int lastIndex = _addedIndex - 1;
+        if(_addedIndex != 0)
+        {
+            backgroundList[lastIndex].hasCreatedNext = true;
+            Vector3 lastPos = backgroundList[lastIndex].transform.position;
+            Vector3 lastSize = backgroundList[lastIndex].transform.localScale;
+            pos = new Vector3(lastPos.x, lastPos.y + lastSize.y, lastPos.z);
+        }
+        go.transform.position = pos;
         backgroundList.Add(go.GetComponent<Background>());
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        AddBackgroundInList(new Vector3 (0, 0, 0));
+        AddBackgroundInList(0);
+        AddBackgroundInList(1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        int counter = 0;
         for (int i = 0; i < backgroundList.Count; i++)
         {
-            if (IsLowerThanTop(backgroundList[i]) && !backgroundList[i].hasCreatedNext)
+            if(!backgroundList[i].hasCreatedNext && IsLowerThanTop(backgroundList[i]))
             {
-                counter++;
-                backgroundList[i].hasCreatedNext = true;
-                backgroundList.Remove(backgroundList[i]);
-                i--;
+                AddBackgroundInList(i + 1);
+                break;
             }
         }
 
-        for (int i = 0; i < counter; i++)
-        {
-            AddBackgroundInList(new Vector3(0, 10, 0));
-        }
-
+        
+        //int counter = 0;
+        //for (int i = 0; i < backgroundList.Count; i++)
+        //{
+        //    if (IsLowerThanTop(backgroundList[i]) && !backgroundList[i].hasCreatedNext)
+        //    {
+        //        counter++;
+        //        backgroundList[i].hasCreatedNext = true;
+        //        backgroundList.Remove(backgroundList[i]);
+        //        i--;
+        //    }
+        //}
+        //
+        //for (int i = 0; i < counter; i++)
+        //{
+        //    AddBackgroundInList(new Vector3(0, 10, 0));
+        //}
+        //
     }
 }

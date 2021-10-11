@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Background : MonoBehaviour
 {
-    public bool hasCreatedNext = false;
+    public bool hasCreatedNext;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        hasCreatedNext = false;
     }
 
     // Update is called once per frame
