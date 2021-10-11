@@ -6,6 +6,8 @@ public class Obstacle : MonoBehaviour
 {
     [SerializeField] float randSpeed;
     [SerializeField] float rotateSpeed = 1.0f;
+    [SerializeField] float obstacleDamage = 10.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class Obstacle : MonoBehaviour
         //collision with player
         if (collision.tag == "Player")
         {
-            Debug.Log("Player hit by obstacle");
+            collision.GetComponent<Player>().TakeDamage(obstacleDamage);
         }
     }
 }

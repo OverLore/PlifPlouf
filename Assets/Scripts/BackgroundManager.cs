@@ -36,6 +36,10 @@ public class BackgroundManager : MonoBehaviour
             pos = new Vector3(lastPos.x, lastPos.y + sizeY, lastPos.z);
         }
         go.transform.position = pos;
+
+        //change scale to fit every resolution of screens
+        Camera.main.GetComponent<CameraManager>().SetSpriteScaleToCameraSize(go);
+
         backgroundList.Add(go.GetComponent<Background>());
     }
 
