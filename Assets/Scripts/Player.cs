@@ -16,10 +16,16 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] List<GameObject> shotGameobject;
-    [SerializeField] float shotForce = 7.5f;
-    [SerializeField] float shotSpread = 10.0f;
+
+    [SerializeField] [Range(0.0f, 10.0f)]
+    float shotForce = 7.5f;
+
+    [SerializeField] [Range(0.0f, 10.0f)]
+    float shotSpread = 10.0f;
+
     float nextShot;
-    [SerializeField] float delay;
+    [SerializeField] [Range(0.0f, 1.0f)]
+    float delay;
     [SerializeField] ShotType shotType = ShotType.Default;
 
     private static Vector3 lastPos = new Vector3(0.0f, 0.0f);

@@ -12,7 +12,7 @@ public class DeathRay : MonoBehaviour
             //Destroy(collision.gameObject);
 
             collision.gameObject.GetComponent<Enemy>().takeDamage(1);
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 
