@@ -8,11 +8,17 @@ public class WaveEditor : EditorWindow
     Texture2D timeTexture;
     Texture2D nextTexture;
 
+    Texture banner;
+
     string waveName;
     string openPath;
 
     List<WaveSequence> sequence = new List<WaveSequence>();
     WaveSequence wavePref;
+
+    static WaveEditor window;
+
+    Vector2 scrollPosition;
 
     Rect timeRect;
     Rect nextRect;
@@ -20,13 +26,18 @@ public class WaveEditor : EditorWindow
     [MenuItem("Window/WaveEditor")]
     static void OpenWindow()
     {
-        WaveEditor window = GetWindow<WaveEditor>();
+        if (window == null)
+        {
+            window = GetWindow<WaveEditor>();
+        }
         window.minSize = new Vector2(600, 600);
         window.Show();
     }
 
     void InitTextures()
     {
+        banner = (Texture)AssetDatabase.LoadAssetAtPath("Assets/Resources/Editor/Wave/Wave.png", typeof(Texture));
+
         timeTexture = Resources.Load<Texture2D>("Editor/Wave/Icons/Time");
         timeRect.x = 0;
         timeRect.y = 0;
@@ -47,6 +58,18 @@ public class WaveEditor : EditorWindow
 
     private void OnGUI()
     {
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition);
+        Rect r = new Rect();
+
+        r.x = 0;
+        r.y = 0;
+        r.width = 600;
+        r.height = 300;
+
+        GUI.DrawTexture(r, banner, ScaleMode.ScaleToFit, true);
+
+        GUILayout.Space(r.height);
+
         waveName = EditorGUILayout.TextField("Name", waveName);
 
         if (GUILayout.Button("Add"))
@@ -104,11 +127,16 @@ public class WaveEditor : EditorWindow
         }
 
         GUI.enabled = true;
+
+        GUILayout.EndScrollView();
     }
 
     void DrawSequences()
     {
-        WaveEditor window = GetWindow<WaveEditor>();
+        if (window == null)
+        {
+            window = GetWindow<WaveEditor>();
+        }
 
         int i = 0;
         foreach (WaveSequence s in sequence)
