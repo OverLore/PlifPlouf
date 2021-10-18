@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: shotType
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: shotForce
@@ -489,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: shotSpread
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: tmp.Array.size
@@ -497,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: shotGameobject.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: shotGameobject.Array.data[0]
@@ -510,7 +510,15 @@ PrefabInstance:
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: shotGameobject.Array.data[2]
       value: 
-      objectReference: {fileID: 7817294388586073277, guid: a6f7ed83ff5193342946c0374b84283e, type: 3}
+      objectReference: {fileID: 311746757198926449, guid: a6f7ed83ff5193342946c0374b84283e, type: 3}
+    - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: shotGameobject.Array.data[3]
+      value: 
+      objectReference: {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
+    - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: shotGameobject.Array.data[4]
+      value: 
+      objectReference: {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
     - target: {fileID: 6931278337924349816, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: tmp.Array.data[0].m_PersistentCalls.m_Calls.Array.size
       value: 1
