@@ -11,9 +11,9 @@ public class CameraManager : MonoBehaviour
     //size of the whole game in pixels (2 whole screen wide, 1 screen height)
     private Vector2 refGameSizePixels = new Vector2(462 * 2, 1080);
     //current camera rect size in unity pixels
-    Vector2 cameraRectSizePixels;
+    public Vector2 cameraRectSizePixels;
     //current camera rect size in unity units
-    Vector2 cameraRectSizeUnits;
+    public Vector2 cameraRectSizeUnits;
     //ratio of the camera (current / ref) (in pixels) (multiply the size to this to go from ref camera size to current camera size)
     private Vector2 camerasAspectRatio;
 

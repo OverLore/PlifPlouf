@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //CameraMovement cameraMovement;
     Vector3 lastPos;
     Vector3 dP;
 
     bool start;
+
+    private void Start()
+    {
+        //cameraMovement = Camera.main.GetComponent<CameraMovement>();
+    }
 
     void Update()
     {
@@ -41,8 +47,10 @@ public class PlayerMovement : MonoBehaviour
                         start = false;
                     }
         
-                    transform.position += new Vector3(dP.x, dP.y, 0);
-        
+                    transform.position += new Vector3(dP.x, dP.y, 0); 
+                    //cameraMovement.targetPos += new Vector2(dP.x, dP.y);
+
+
                     ClampPlayer();
         
                     lastPos = point;
@@ -85,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 transform.position += new Vector3(dP.x, dP.y, 0);
+                //cameraMovement.targetPos += new Vector2(dP.x, dP.y);
 
                 ClampPlayer();
 

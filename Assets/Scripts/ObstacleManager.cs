@@ -17,7 +17,7 @@ public class ObstacleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = maxTimer;
+        timer = 0;
 
         //keep the values for the reload
         baseNbObstaclesToSpawn = nbObstaclesToSpawn;
