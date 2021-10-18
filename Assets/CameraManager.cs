@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
     //current camera rect size in unity units
     public Vector2 cameraRectSizeUnits;
     //ratio of the camera (current / ref) (in pixels) (multiply the size to this to go from ref camera size to current camera size)
-    private Vector2 camerasAspectRatio;
+    public Vector2 camerasAspectRatio;
 
     //use this function if you want to make your gameObject (containing a sprite) scaling to the camera size
     //ex : make a background sprite covering the whole camera vision (screen) whatever the resolution

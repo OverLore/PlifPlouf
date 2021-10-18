@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class BackgroundManager : MonoBehaviour
 {
     [SerializeField] GameObject background;
     public List<Background> backgroundList = new List<Background>();
+    private PolygonCollider2D gameBorders;
+    private CameraManager cameraManager;
+    [SerializeField] CinemachineConfiner cinemachineConfiner;
 
     bool IsLowerThanTop(Background _go)
     {
@@ -43,9 +47,26 @@ public class BackgroundManager : MonoBehaviour
         backgroundList.Add(go.GetComponent<Background>());
     }
 
+    void SetGameBordersSizeToCameraSize()
+    {
+        //cinemachineConfiner = Camera.main.GetComponent<CinemachineVirtualCamera>().GetComponent<CinemachineConfiner>();
+        gameBorders = gameObject.GetComponent<PolygonCollider2D>();
+        cameraManager = Camera.main.GetComponent<CameraManager>();
+        Vector2 ratio = cameraManager.camerasAspectRatio;
+        Vector2[] points = gameBorders.GetPath(0);
+        for (int i = 0; i < points.Length; i++)
+        {
+            points[i].Set(points[i].x * ratio.x, points[i].y * ratio.y);
+        }
+        gameBorders.SetPath(0, points);
+        cinemachineConfiner.m_BoundingShape2D = gameBorders;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        SetGameBordersSizeToCameraSize();
+
         AddBackgroundInList(0);
         AddBackgroundInList(1);
     }
