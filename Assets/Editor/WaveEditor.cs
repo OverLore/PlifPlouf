@@ -183,7 +183,7 @@ public class WaveEditor : EditorWindow
             EditorGUILayout.BeginVertical();
             for (int a = 0; a < s.Pattern.Count; a++)
             {
-                s.Pattern[a] = EditorGUILayout.ObjectField(s.Pattern[a], typeof(Animation), false) as Animation;
+                s.Pattern[a] = EditorGUILayout.TextField("", s.Pattern[a]);
             }
             EditorGUILayout.EndVertical();
 
@@ -221,7 +221,7 @@ public class WaveEditor : EditorWindow
                 System.IO.Directory.CreateDirectory(fi.DirectoryName);
             }
 
-            StreamWriter writer = new StreamWriter(path, true);
+            StreamWriter writer = new StreamWriter(path, false);
 
             writer.WriteLine(json);
 

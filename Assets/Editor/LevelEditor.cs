@@ -29,6 +29,11 @@ public class LevelEditor : EditorWindow
     private void OnEnable()
     {
         banner = (Texture)AssetDatabase.LoadAssetAtPath("Assets/Resources/Editor/Level/Level.png", typeof(Texture));
+    
+        if (sequence == null)
+        {
+            sequence = new Wave();
+        }
     }
 
     private void OnGUI()
@@ -151,7 +156,7 @@ public class LevelEditor : EditorWindow
             System.IO.Directory.CreateDirectory(fi.DirectoryName);
         }
 
-        StreamWriter writer = new StreamWriter(path, true);
+        StreamWriter writer = new StreamWriter(path, false);
 
         writer.WriteLine(json);
 

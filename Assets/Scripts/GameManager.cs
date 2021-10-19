@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public int maxDepthLayer = 10;
 
     public static GameManager instance;
+    public WaveSpawner waveSpawner;
 
-
+    public float levelProgress;
 
     void Awake()
     {
@@ -19,9 +20,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        StartLevel();
+    }
+
+    public void StartLevel()
+    {
+        levelProgress = 0f;
+
+        waveSpawner.LoadLevelWaves();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        levelProgress += Time.deltaTime;
     }
 }
