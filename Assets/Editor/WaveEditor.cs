@@ -146,16 +146,14 @@ public class WaveEditor : EditorWindow
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Add"))
             {
-                s.Fish.Add(null);
-                s.Pattern.Add(null);
+                s.Group.Add(null);
                 s.Offset.Add(Vector2.zero);
             }
             if (GUILayout.Button("Remove"))
             {
                 if (s.amount > 0)
                 {
-                    s.Fish.RemoveAt(s.Fish.Count - 1);
-                    s.Pattern.RemoveAt(s.Pattern.Count - 1);
+                    s.Group.RemoveAt(s.Group.Count - 1);
                     s.Offset.RemoveAt(s.Offset.Count - 1);
                 }
             }
@@ -164,26 +162,18 @@ public class WaveEditor : EditorWindow
             GUI.enabled = true;
             GUILayout.EndHorizontal();
 
-            s.amount = s.Fish.Count;
+            s.amount = s.Group.Count;
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Fishs");
-            GUILayout.Label("Patterns");
+            GUILayout.Label("Groups");
             GUILayout.Label("Offsets");
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
             EditorGUILayout.BeginVertical();
-            for (int a = 0; a < s.Fish.Count; a++)
+            for (int a = 0; a < s.Group.Count; a++)
             {
-                s.Fish[a] = EditorGUILayout.ObjectField(s.Fish[a], typeof(GameObject), false) as GameObject;
-            }
-            EditorGUILayout.EndVertical();
-
-            EditorGUILayout.BeginVertical();
-            for (int a = 0; a < s.Pattern.Count; a++)
-            {
-                s.Pattern[a] = EditorGUILayout.TextField("", s.Pattern[a]);
+                s.Group[a] = EditorGUILayout.ObjectField(s.Group[a], typeof(GameObject), false) as GameObject;
             }
             EditorGUILayout.EndVertical();
 
@@ -219,7 +209,7 @@ public class WaveEditor : EditorWindow
             if (!fi.Directory.Exists)
             {
                 System.IO.Directory.CreateDirectory(fi.DirectoryName);
-            }
+            } 
 
             StreamWriter writer = new StreamWriter(path, false);
 

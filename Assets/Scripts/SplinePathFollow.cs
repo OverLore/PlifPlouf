@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SplinePathFollow : MonoBehaviour
+{
+    public Transform[] paths;
+
+    int currentPath;
+
+    float tParam;
+    float speed;
+
+    Vector2 position;
+    Vector2 lastPos;
+
+    bool useCoroutine;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentPath = 0;
+        tParam = 0;
+        speed = .5f;
+        useCoroutine = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (useCoroutine)
+        {
+            StartCoroutine(GoByPath(currentPath));
+        }
+    }
+
+    IEnumerator GoByPath(int pathID)
+    {
+        useCoroutine = false;
+
+        Vector2 p0 = paths[pathID].GetChild(0).position;
+        Vector2 p1 = paths[pathID].GetChild(1).position;
+        Vector2 p2 = paths[pathID].GetChild(2).position;
+        Vector2 p3 = paths[pathID].GetChild(3).position;
+    
+        while (tParam < 1)
+        {
+            tParam += Time.deltaTime * speed;
+
+            position = Mathf.Pow(1 - tParam, 3) * p0 +
+                3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
+                3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
+                Mathf.Pow(tParam, 3) * p3;
+
+            Vector3 diff = position - lastPos;
+
+            float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90);
+
+            transform.position = position;
+
+            lastPos = position;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        tParam = 0;
+
+        currentPath += 1;
+
+        if (currentPath > paths.Length - 1)
+        {
+            currentPath = 0;
+        }
+
+        useCoroutine = true;
+    }
+}

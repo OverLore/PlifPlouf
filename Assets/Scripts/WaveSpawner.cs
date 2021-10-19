@@ -58,19 +58,10 @@ public class WaveSpawner : MonoBehaviour
         lastProgress = GameManager.instance.levelProgress;
     }
 
-    void CreateEnemy(string animation, Vector3 offset, GameObject fish)
+    void CreateEnemy(Vector3 offset, GameObject group)
     {
-        GameObject par = Instantiate(fishPrefab);
-        GameObject pattern = par.transform.GetChild(0).gameObject;
-
-        par.transform.position = transform.position + offset;
-
-        Animator patternAnimator = pattern.GetComponent<Animator>();
-        patternAnimator.SetTrigger(animation);
-
-        GameObject fishObj = Instantiate(fish);
-        fishObj.transform.parent = pattern.transform;
-        fishObj.transform.localPosition = Vector3.zero;
+        GameObject g = Instantiate(group);
+        g.transform.position = transform.position + offset;
     }
 
     void SpawnWave()
@@ -104,18 +95,18 @@ public class WaveSpawner : MonoBehaviour
             {
                 delay += sequence[i].time;
 
-                StartCoroutine(SpawnSeq(delay, sequence[i].Pattern, sequence[i].Offset, sequence[i].Fish));
+                StartCoroutine(SpawnSeq(delay, sequence[i].Offset, sequence[i].Group));
             }
         }
     }
 
-    IEnumerator SpawnSeq(float delay, List<string> animation, List<Vector2> offset, List<GameObject> fish)
+    IEnumerator SpawnSeq(float delay, List<Vector2> offset, List<GameObject> group)
     {
         yield return new WaitForSeconds(delay);
 
-        for (int i = 0; i < animation.Count; i++)
+        for (int i = 0; i < group.Count; i++)
         {
-            CreateEnemy(animation[i], offset[i], fish[i]);
+            CreateEnemy(offset[i], group[i]);
         }
     }
 }
