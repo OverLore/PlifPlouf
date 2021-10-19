@@ -6,6 +6,9 @@ public class SplinePath : MonoBehaviour
 {
     public Transform[] controlPoints;
 
+    public Color startColor = Color.red;
+    public Color endColor = Color.green;
+
     Vector2 guizmosPosition;
 
     private void OnDrawGizmos()
@@ -17,6 +20,8 @@ public class SplinePath : MonoBehaviour
                 3 * (1 - i) * Mathf.Pow(i, 2) * controlPoints[2].position +
                 Mathf.Pow(i, 3) * controlPoints[3].position;
 
+            Gizmos.color = Color.Lerp(startColor, endColor, i);
+
             Gizmos.DrawSphere(guizmosPosition, 0.25f);
 
             Gizmos.DrawLine(new Vector2(controlPoints[0].position.x, controlPoints[0].position.y),
@@ -25,5 +30,7 @@ public class SplinePath : MonoBehaviour
             Gizmos.DrawLine(new Vector2(controlPoints[2].position.x, controlPoints[2].position.y),
                 new Vector2(controlPoints[3].position.x, controlPoints[3].position.y));
         }
+
+        Gizmos.color = Color.white;
     }
 }
