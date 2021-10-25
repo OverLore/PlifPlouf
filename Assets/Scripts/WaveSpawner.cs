@@ -58,37 +58,32 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnWave()
     {
-        for (int seq = 0; seq < wave.sequences[passedWaves].Length; seq++)
+        List<WaveSequence> sequence = new List<WaveSequence>();
+
+        string path = $"Waves/{wave.sequences[passedWaves]}/";
+
+        TextAsset[] jsonTextFile = Resources.LoadAll<TextAsset>(path);
+
+        sequence.Clear();
+
+        foreach (TextAsset txt in jsonTextFile)
         {
-            List<WaveSequence> sequence = new List<WaveSequence>();
+            sequence.Add((WaveSequence)JsonUtility.FromJson(txt.text, typeof(WaveSequence)));
+        }
 
-            string path = $"Waves/{wave.sequences[passedWaves]}/";
+        float delay = 0;
 
-            TextAsset[] jsonTextFile = Resources.LoadAll<TextAsset>(path);
+        for (int i = 0; i < sequence.Count; i++)
+        {
+            delay += sequence[i].time;
 
-            sequence.Clear();
-
-            foreach (TextAsset txt in jsonTextFile)
-            {
-                sequence.Add((WaveSequence)JsonUtility.FromJson(txt.text, typeof(WaveSequence)));
-            }
-
-            float delay = 0;
-
-            for (int i = 0; i < sequence.Count; i++)
-            {
-                delay += sequence[i].time;
-
-                StartCoroutine(SpawnSeq(delay, sequence[i].Offset, sequence[i].path));
-            }
+            StartCoroutine(SpawnSeq(delay, sequence[i].Offset, sequence[i].path));
         }
     }
 
     IEnumerator SpawnSeq(float delay, List<Vector2> offset, List<string> paths)
     {
-        Debug.Log("Cor started");
         yield return new WaitForSeconds(delay);
-        Debug.Log("Cor waited");
 
         for (int i = 0; i < paths.Count; i++)
         {
@@ -96,6 +91,5 @@ public class WaveSpawner : MonoBehaviour
 
             CreateEnemy(offset[i], go);
         }
-        Debug.Log("Cor ended");
     }
 }

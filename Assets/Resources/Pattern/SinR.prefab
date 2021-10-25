@@ -440,6 +440,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5441506798925020219}
     m_Modifications:
     - target: {fileID: 942518492033631469, guid: c508c5e916d384f4d8726c61d6c4f2ba, type: 3}
+      propertyPath: score
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 942518492033631469, guid: c508c5e916d384f4d8726c61d6c4f2ba, type: 3}
       propertyPath: deathParticles
       value: 
       objectReference: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}

@@ -4,7 +4,14 @@ public class Enemy : MonoBehaviour
 {
     public int PV = 1;
 
+    public int score;
+
     [SerializeField] GameObject deathParticles;
+
+    private void OnEnable()
+    {
+        LevelManager.instance.maxObtainableScore += score;
+    }
 
     public void EndAnim()
     {
@@ -20,6 +27,8 @@ public class Enemy : MonoBehaviour
     {
         if (PV <= 0)
         {
+            LevelManager.instance.score += score;
+
             GameObject go = Instantiate(deathParticles);
             go.transform.position = transform.position;
 
