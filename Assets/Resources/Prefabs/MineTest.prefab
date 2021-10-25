@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8300414548112611427}
   - component: {fileID: 942518492033631469}
   - component: {fileID: -644952730388993367}
-  - component: {fileID: 2563717804767277554}
+  - component: {fileID: 3538394417070509989}
   m_Layer: 0
-  m_Name: RedTest
+  m_Name: MineTest
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ CircleCollider2D:
   m_Offset: {x: -0.00000009934107, y: -0.05171855}
   serializedVersion: 2
   m_Radius: 0.8448433
---- !u!114 &2563717804767277554
+--- !u!114 &3538394417070509989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c879e8ac94d0b540bedb9b33fde4fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyedAtEnd: 1
   paths:
   - {fileID: 0}
   - {fileID: 0}

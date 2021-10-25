@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SplinePathFollow : MonoBehaviour
 {
+    [SerializeField] bool isDestroyedAtEnd = true;
     public Transform[] paths;
 
     int currentPath;
@@ -68,9 +69,12 @@ public class SplinePathFollow : MonoBehaviour
 
         currentPath++;
 
-        if (currentPath > paths.Length - 1)
+        if (isDestroyedAtEnd)
         {
-            Destroy(transform.parent.parent.gameObject);
+            if (currentPath > paths.Length - 1)
+            {
+                Destroy(transform.parent.parent.gameObject);
+            }
         }
 
         useCoroutine = true;
