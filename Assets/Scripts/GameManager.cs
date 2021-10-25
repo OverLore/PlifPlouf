@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public int levelToLoad;
 
+    public int maxLevelReached;
+
     private void Awake()
     {
         if (instance == null)
@@ -22,7 +24,23 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
+        if (PlayerPrefs.HasKey("maxLevelReached"))
+        {
+            maxLevelReached = PlayerPrefs.GetInt("maxLevelReached");
+        }
+        else
+        {
+            maxLevelReached = 0;
+            PlayerPrefs.SetInt("maxLevelReached", 0);
+        }
+
         Application.targetFrameRate = 60;
+    }
+
+    public void ChangeMaxLevelReached(int max)
+    {
+        maxLevelReached = max;
+        PlayerPrefs.SetInt("maxLevelReached", maxLevelReached);
     }
 
     public void LoadLevel()
