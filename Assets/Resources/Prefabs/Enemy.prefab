@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: 2
+  deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
 --- !u!58 &7068680760334136517
 CircleCollider2D:
   m_ObjectHideFlags: 0

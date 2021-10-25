@@ -23,4 +23,9 @@ public class ScoringPanelController : MonoBehaviour
     {
         LevelManager.instance.gainScore.updating = true;
     }
+
+    public void UpdateStars()
+    {
+        LevelManager.instance.updateStarsBar = true;
+    }
 }

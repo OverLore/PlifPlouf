@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: d6dd91fd112da2b4da19a817d8630baa
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestObstacles.unity
     guid: 204ebe6f0ef875c418b04709507fd300
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestBackground Cinemachine.unity
     guid: 733f9ef08825b2b49b41026b749901ad
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Booster Zoo.unity
     guid: f67bbf21463afb24b8519b27bd38a102
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestNiveaux.unity
     guid: 2f09a8ab7b7a371479b88d720bbd010a
   m_configObjects: {}

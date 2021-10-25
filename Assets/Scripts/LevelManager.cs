@@ -49,6 +49,14 @@ public class LevelManager : MonoBehaviour
     public GameObject scoringCanvas;
     public Animator panelAnimator;
 
+    public ParticleSystem[] starsParticles;
+    public Image[] starsSprites;
+    public Image starBar;
+    float starsBarTemp = 0;
+    float starsBarAnim = 0;
+    int lastStarsBarAnim = -1;
+    public bool updateStarsBar;
+
     public static LevelManager instance;
     public int level;
 
@@ -56,9 +64,12 @@ public class LevelManager : MonoBehaviour
 
     public float levelProgress;
 
-    public float score;
+    public int maxObtainableScore = 0;
+
+    public int score;
     public int kills;
     public int coins;
+    public int stars;
 
     public AnimatedScore killsScore;
     public AnimatedScore scoreScore;
@@ -107,9 +118,43 @@ public class LevelManager : MonoBehaviour
         levelProgress += Time.deltaTime;
         debugText.text = levelProgress.ToString();
 
-        if (levelProgress >= 10)
+        if (levelProgress >= 15)
         {
             state = LevelState.BossEnd;
+        }
+    }
+
+    public void UpdateStarsBar()
+    {
+        if (updateStarsBar)
+        {
+            int i = 0;
+
+            starsBarTemp += Time.deltaTime;
+            starsBarTemp = Mathf.Clamp01(starsBarTemp);
+
+            starsBarAnim = Mathf.Lerp(0, score, starsBarTemp);
+
+            i = Mathf.FloorToInt(starsBarAnim / (maxObtainableScore * 1.4f) * 3f);
+            i = Mathf.Clamp(i, 0, 3);
+
+            if (maxObtainableScore == 0)
+            {
+                starBar.fillAmount = 0;
+            }
+            else
+            {
+                starBar.fillAmount = starsBarAnim / (maxObtainableScore * 1.4f);
+                starBar.fillAmount = Mathf.Clamp01(starBar.fillAmount);
+            }
+
+            if (lastStarsBarAnim != i && i != 0)
+            {
+                starsSprites[i - 1].color = new Color(1, 1, 1, 1);
+                starsParticles[i - 1].Play();
+            }
+
+            lastStarsBarAnim = i;
         }
     }
 
@@ -139,6 +184,7 @@ public class LevelManager : MonoBehaviour
         scoreScore.Update();
         coinsScore.Update();
         gainScore.Update();
+        UpdateStarsBar();
     }
 
     void Update()
@@ -163,10 +209,15 @@ public class LevelManager : MonoBehaviour
                 scoringCanvas.SetActive(true);
                 panelAnimator.SetTrigger("Pop");
 
+                stars = Mathf.FloorToInt(score / (maxObtainableScore * 1.4f) * 3f);
+                stars = Mathf.Clamp(stars, 0, 3);
+
                 killsScore.dest = kills;
                 scoreScore.dest = score;
                 coinsScore.dest = coins;
-                gainScore.dest = kills + (int)(score / 100) + coins;
+                gainScore.dest = kills + score / 100 + coins;
+
+                LevelDatas.SaveLevelDatas(level, stars, score, kills, coins);
 
                 if (level > GameManager.instance.maxLevelReached)
                 {
