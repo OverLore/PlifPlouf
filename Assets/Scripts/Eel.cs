@@ -12,7 +12,6 @@ public class Eel : MonoBehaviour
 
     //bool count = false;
     float countUp = 0;
-    int countKeyPast = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +32,7 @@ public class Eel : MonoBehaviour
     void EelMovement()
     {
         MarkerManager key1 = eelBody[0].GetComponent<MarkerManager>();
-        //eelBody[0].GetComponent<Rigidbody2D>().velocity = speed * Time.deltaTime * GetComponent<MarkerManager>().keyList[0].GetComponent<LineRenderer>().GetPosition(countKeyPast);
-       //if (countKeyPast < GetComponent<MarkerManager>().keyList[0].GetComponent<LineRenderer>().positionCount)
-       //{
-       //    countKeyPast++;
-       //    Debug.Log(countKeyPast);
-       //}
+
         eelBody[0].GetComponent<Rigidbody2D>().velocity = eelBody[0].transform.right * speed * Time.deltaTime;
         if (Input.GetAxis("Horizontal") != 0)
         {

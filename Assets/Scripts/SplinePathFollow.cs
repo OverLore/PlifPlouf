@@ -10,6 +10,7 @@ public class SplinePathFollow : MonoBehaviour
 
     float tParam;
     public float speed = .5f;
+    public float correction = 0;
 
     Vector2 position;
     Vector2 lastPos;
@@ -54,7 +55,7 @@ public class SplinePathFollow : MonoBehaviour
             Vector3 diff = position - lastPos;
 
             float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90);
+            transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90 + correction);
 
             transform.position = position;
 
