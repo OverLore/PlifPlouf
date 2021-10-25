@@ -24,6 +24,14 @@ public class MenuFooter : MonoBehaviour
     [SerializeField] List<Image> ButtonsList = new List<Image>();
 
     Dictionary<MenuTab, FooterButtonSizeController> Tabs = new Dictionary<MenuTab, FooterButtonSizeController>();
+    // Selectable Canvases
+
+    [SerializeField] Canvas ShopCanvas;
+    [SerializeField] Canvas achievementsCanvas;
+    [SerializeField] Canvas MapCanvas;
+    [SerializeField] Canvas UpgradeCanvas;
+    [SerializeField] Canvas OptionCanvas;
+
 
     private void Start()
     {
@@ -42,6 +50,7 @@ public class MenuFooter : MonoBehaviour
         }
 
         ForceTab(SelectedTab);
+        EnableMapCanvas();
     }
 
     public void OpenTab(MenuTab tab)
@@ -70,5 +79,39 @@ public class MenuFooter : MonoBehaviour
     public void OpenTab(int tabID)
     {
         OpenTab((MenuTab)tabID);
+    }
+
+    private void DisableAllCanvas()
+    {
+        ShopCanvas.gameObject.SetActive(false);
+        achievementsCanvas.gameObject.SetActive(false);
+        MapCanvas.gameObject.SetActive(false);
+        UpgradeCanvas.gameObject.SetActive(false);
+        OptionCanvas.gameObject.SetActive(false);
+    }
+    public void EnableShopCanvas()
+    {
+        DisableAllCanvas();
+        ShopCanvas.gameObject.SetActive(true);
+    }
+    public void EnableAchievementsCanvas()
+    {
+        DisableAllCanvas();
+        achievementsCanvas.gameObject.SetActive(true);
+    }
+    public void EnableMapCanvas()
+    {
+        DisableAllCanvas();
+        MapCanvas.gameObject.SetActive(true);
+    }
+    public void EnableUpgradesCanvas()
+    {
+        DisableAllCanvas();
+        UpgradeCanvas.gameObject.SetActive(true);
+    }
+    public void EnableSettingsCanvas()
+    {
+        DisableAllCanvas();
+        OptionCanvas.gameObject.SetActive(true);
     }
 }
