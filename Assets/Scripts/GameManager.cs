@@ -11,37 +11,29 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public WaveSpawner waveSpawner;
 
-    public Text text;
-
-    public float levelProgress;
+    public int levelToLoad;
 
     void Awake()
     {
         if(instance == null)
         {
             instance = this;
+
+            DontDestroyOnLoad(gameObject);
         }
     }
 
     private void Start()
     {
-        StartLevel();
+        LoadLevel();
 
         Application.targetFrameRate = 60;
     }
 
-    public void StartLevel()
+    public void LoadLevel()
     {
-        levelProgress = 0f;
+        LevelManager.instance.level = levelToLoad;
 
         waveSpawner.LoadLevelWaves();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        levelProgress += Time.deltaTime;
-
-        text.text = levelProgress.ToString();
     }
 }
