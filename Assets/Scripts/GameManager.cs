@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        LevelManager.instance.level = levelToLoad;
+        LevelManager.instance.StartLevel(levelToLoad);
 
         waveSpawner.LoadLevelWaves();
     }

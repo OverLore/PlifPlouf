@@ -9,7 +9,8 @@ enum LevelState
     BossStart,
     BossPlay,
     BossEnd,
-    Scoring
+    Scoring,
+    None
 }
 
 public class LevelManager : MonoBehaviour
@@ -17,9 +18,14 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public int level;
 
-    LevelState state;
+    LevelState state = LevelState.None;
 
     public float levelProgress;
+
+    public void StartLevel(int _level)
+    {
+        level = _level;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +35,11 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
+        if (state == LevelState.None)
+        {
+            GameManager.instance.LoadLevel();
+        }
+
         levelProgress += Time.deltaTime;
     }
 }
