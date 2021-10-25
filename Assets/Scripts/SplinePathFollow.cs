@@ -9,7 +9,7 @@ public class SplinePathFollow : MonoBehaviour
     int currentPath;
 
     float tParam;
-    float speed;
+    public float speed = .5f;
 
     Vector2 position;
     Vector2 lastPos;
@@ -21,14 +21,13 @@ public class SplinePathFollow : MonoBehaviour
     {
         currentPath = 0;
         tParam = 0;
-        speed = .5f;
         useCoroutine = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (useCoroutine)
+        if (useCoroutine && currentPath <= paths.Length - 1)
         {
             StartCoroutine(GoByPath(currentPath));
         }
@@ -66,11 +65,11 @@ public class SplinePathFollow : MonoBehaviour
 
         tParam = 0;
 
-        currentPath += 1;
+        currentPath++;
 
         if (currentPath > paths.Length - 1)
         {
-            currentPath = 0;
+            Destroy(transform.parent.parent.gameObject);
         }
 
         useCoroutine = true;

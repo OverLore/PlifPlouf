@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     public WaveSpawner waveSpawner;
+
+    public Text text;
 
     public float levelProgress;
 
@@ -23,6 +26,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartLevel();
+
+        Application.targetFrameRate = 60;
     }
 
     public void StartLevel()
@@ -36,5 +41,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         levelProgress += Time.deltaTime;
+
+        text.text = levelProgress.ToString();
     }
 }

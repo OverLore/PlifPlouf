@@ -147,6 +147,7 @@ public class WaveEditor : EditorWindow
             if (GUILayout.Button("Add"))
             {
                 s.Group.Add(null);
+                s.path.Add(null);
                 s.Offset.Add(Vector2.zero);
             }
             if (GUILayout.Button("Remove"))
@@ -154,6 +155,7 @@ public class WaveEditor : EditorWindow
                 if (s.amount > 0)
                 {
                     s.Group.RemoveAt(s.Group.Count - 1);
+                    s.path.RemoveAt(s.path.Count - 1);
                     s.Offset.RemoveAt(s.Offset.Count - 1);
                 }
             }
@@ -201,6 +203,15 @@ public class WaveEditor : EditorWindow
 
         foreach (WaveSequence s in sequence)
         {
+            for (int j = 0; j < s.Group.Count; j++)
+            {
+                string p = AssetDatabase.GetAssetPath(s.Group[j]);
+                p = p.Remove(0, "Assets/Resources/".Length);
+                p = p.Remove(p.Length - ".prefab".Length, ".prefab".Length);
+
+                s.path[j] = p;
+            }
+
             string json = JsonUtility.ToJson(s);
 
             string path = $"Assets/Resources/Waves/{waveName}/sequence{i}.json";
@@ -209,7 +220,7 @@ public class WaveEditor : EditorWindow
             if (!fi.Directory.Exists)
             {
                 System.IO.Directory.CreateDirectory(fi.DirectoryName);
-            } 
+            }
 
             StreamWriter writer = new StreamWriter(path, false);
 

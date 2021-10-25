@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     [Range(0.0f, 10.0f)]
     float shotSpread = 10.0f;
 
+    [SerializeField]
+    Transform shotOrigin;
+
     float nextShot;
     [SerializeField]
     [Range(0.0f, 1.0f)]
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
         // create projectile
         GameObject go = Instantiate(shotGameobject[(int)shotType]);
         // place projectile
-        go.transform.position = transform.position;
+        go.transform.position = shotOrigin.position;
         // add push with delta position
         Vector3 posDelta = GetDeltaMovement();
         posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
@@ -90,7 +93,7 @@ public class Player : MonoBehaviour
             // create projectile
             GameObject go = Instantiate(shotGameobject[(int)shotType]);
             // place projectile
-            go.transform.position = transform.position;
+            go.transform.position = shotOrigin.position;
             // add push with delta position
             Vector3 posDelta = GetDeltaMovement();
             posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
@@ -123,7 +126,7 @@ public class Player : MonoBehaviour
             // create projectile
             GameObject go = Instantiate(shotGameobject[(int)shotType]);
             // place projectile
-            go.transform.position = transform.position;
+            go.transform.position = shotOrigin.position;
             // add push with delta position
             Vector3 posDelta = GetDeltaMovement();
             posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
@@ -157,12 +160,12 @@ public class Player : MonoBehaviour
             // place projectile
             if (i == 0)
             {
-                go.transform.position = transform.position
+                go.transform.position = shotOrigin.position
                     + new Vector3(-halfSpace, 0, 0);
             }
             else
             {
-                go.transform.position = transform.position
+                go.transform.position = shotOrigin.position
                     + new Vector3(halfSpace, 0, 0);
             }
 

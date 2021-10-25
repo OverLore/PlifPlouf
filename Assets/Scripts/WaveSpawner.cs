@@ -21,17 +21,7 @@ public class WaveSpawner : MonoBehaviour
 
     public void LoadLevelWaves()
     {
-        string path = $"Assets/Resources/Levels/{levelToLoad}.json";
-
-        FileInfo fi = new FileInfo(path);
-        if (!fi.Directory.Exists)
-        {
-            Debug.LogError($"Niveau {levelToLoad} n'existe pas");
-
-            return;
-        }
-
-        path = $"Levels/{levelToLoad}";
+        string path = $"Levels/{levelToLoad}";
 
         TextAsset jsonTextFile = Resources.Load<TextAsset>(path);
 
@@ -60,8 +50,10 @@ public class WaveSpawner : MonoBehaviour
 
     void CreateEnemy(Vector3 offset, GameObject group)
     {
+        Debug.Log("Spawn enemy");
         GameObject g = Instantiate(group);
         g.transform.position = transform.position + offset;
+        Debug.Log("Spawned enemy");
     }
 
     void SpawnWave()
@@ -70,15 +62,7 @@ public class WaveSpawner : MonoBehaviour
         {
             List<WaveSequence> sequence = new List<WaveSequence>();
 
-            string path = $"Assets/Resources/Waves/{wave.sequences[passedWaves]}/";
-
-            FileInfo fi = new FileInfo(path);
-            if (!fi.Directory.Exists)
-            {
-                return;
-            }
-
-            path = $"Waves/{wave.sequences[passedWaves]}/";
+            string path = $"Waves/{wave.sequences[passedWaves]}/";
 
             TextAsset[] jsonTextFile = Resources.LoadAll<TextAsset>(path);
 
@@ -95,18 +79,23 @@ public class WaveSpawner : MonoBehaviour
             {
                 delay += sequence[i].time;
 
-                StartCoroutine(SpawnSeq(delay, sequence[i].Offset, sequence[i].Group));
+                StartCoroutine(SpawnSeq(delay, sequence[i].Offset, sequence[i].path));
             }
         }
     }
 
-    IEnumerator SpawnSeq(float delay, List<Vector2> offset, List<GameObject> group)
+    IEnumerator SpawnSeq(float delay, List<Vector2> offset, List<string> paths)
     {
+        Debug.Log("Cor started");
         yield return new WaitForSeconds(delay);
+        Debug.Log("Cor waited");
 
-        for (int i = 0; i < group.Count; i++)
+        for (int i = 0; i < paths.Count; i++)
         {
-            CreateEnemy(offset[i], group[i]);
+            GameObject go = Resources.Load<GameObject>(paths[i]);
+
+            CreateEnemy(offset[i], go);
         }
+        Debug.Log("Cor ended");
     }
 }
