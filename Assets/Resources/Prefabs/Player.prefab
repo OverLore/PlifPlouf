@@ -29,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931278337924349794}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.02, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
@@ -149,9 +149,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7387041b0df1564d99e225194df01c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
-  shotForce: 5
+  shotGameobject:
+  - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
+  - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
+  - {fileID: 311746757198926449, guid: a6f7ed83ff5193342946c0374b84283e, type: 3}
+  - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
+  - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
+  shotForce: 7.5
+  shotSpread: 5
+  shotOrigin: {fileID: 6931278337924349797}
   delay: 0.3
+  shotType: 4
 --- !u!114 &6931278337924349817
 MonoBehaviour:
   m_ObjectHideFlags: 0

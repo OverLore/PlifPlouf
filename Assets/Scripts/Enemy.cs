@@ -8,14 +8,15 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject deathParticles;
 
-    private void OnEnable()
+    private void Kill()
     {
-        LevelManager.instance.maxObtainableScore += score;
+        GameManager.instance.AddScore();
+        Destroy(gameObject);
     }
 
     public void EndAnim()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void takeDamage(int dmg)
@@ -34,7 +35,8 @@ public class Enemy : MonoBehaviour
 
             Destroy(go, 1f);
 
-            Destroy(transform.parent.parent.gameObject);
+            //Destroy(transform.parent.parent.gameObject);
+            Kill();
         }
     }
 }
