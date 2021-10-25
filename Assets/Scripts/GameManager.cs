@@ -13,19 +13,14 @@ public class GameManager : MonoBehaviour
 
     public int levelToLoad;
 
-    void Awake()
+    private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
 
             DontDestroyOnLoad(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        LoadLevel();
 
         Application.targetFrameRate = 60;
     }

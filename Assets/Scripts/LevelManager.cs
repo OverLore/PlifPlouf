@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 enum LevelState
 {
@@ -15,6 +16,8 @@ enum LevelState
 
 public class LevelManager : MonoBehaviour
 {
+    public Text debugText;
+
     public static LevelManager instance;
     public int level;
 
@@ -25,21 +28,73 @@ public class LevelManager : MonoBehaviour
     public void StartLevel(int _level)
     {
         level = _level;
+
+        state = LevelState.Starting;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void Init()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    void Awake()
+    {
+        Init();
+    }
+
+    void UpdateStarting()
+    {
+        debugText.text = "Press screen to start";
+
+        if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+        {
+            state = LevelState.Waves;
+        }
+    }
+
+    void UpdateWaves()
+    {
+        levelProgress += Time.deltaTime;
+        debugText.text = levelProgress.ToString();
+
+        if (levelProgress >= 100)
+        {
+            state = LevelState.BossStart;
+        }
+    }
+
+    void UpdateScoring()
     {
 
     }
 
     void Update()
     {
-        if (state == LevelState.None)
+        switch(state)
         {
-            GameManager.instance.LoadLevel();
-        }
+            case LevelState.None:
+                GameManager.instance.LoadLevel();
+                return;
+            case LevelState.Starting:
+                UpdateStarting();
 
-        levelProgress += Time.deltaTime;
+                break;
+            case LevelState.Waves:
+                UpdateWaves();
+
+                break;
+            case LevelState.BossEnd:
+                state = LevelState.Scoring;
+                Time.timeScale = 1;
+
+                break;
+            case LevelState.Scoring:
+                UpdateScoring();
+
+                break;
+        }
     }
 }
