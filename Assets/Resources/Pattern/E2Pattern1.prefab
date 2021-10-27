@@ -251,6 +251,10 @@ PrefabInstance:
       value: E2Test
       objectReference: {fileID: 0}
     - target: {fileID: 3484144950958813568, guid: e4b5c026afd1b15488337eba1cb9c4b3, type: 3}
+      propertyPath: isDestroyedAtEnd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484144950958813568, guid: e4b5c026afd1b15488337eba1cb9c4b3, type: 3}
       propertyPath: paths.Array.size
       value: 1
       objectReference: {fileID: 0}
