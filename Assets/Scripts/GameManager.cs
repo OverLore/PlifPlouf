@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI comboText = null;
     Animator comboAnimator;
 
-    public int maxLevelReached;
+    public int maxLevelReached = 0;
 
     private void GetTexts()
     {
@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
             instance = this;
 
             DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
 
         if (PlayerPrefs.HasKey("maxLevelReached"))
@@ -104,7 +108,9 @@ public class GameManager : MonoBehaviour
     {
         LevelManager.instance.StartLevel(levelToLoad);
 
-        waveSpawner.LoadLevelWaves();
+        waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
+
+        waveSpawner.LoadLevelWaves(levelToLoad.ToString());
     }
 
     #region SCORE
@@ -140,6 +146,11 @@ public class GameManager : MonoBehaviour
 
     private void UpdateCombo()
     {
+        if (comboText == null)
+        {
+            return;
+        }
+
         if (comboFactor > 1f)
         {
             comboTimer -= Time.deltaTime;

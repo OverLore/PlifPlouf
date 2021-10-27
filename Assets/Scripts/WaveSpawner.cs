@@ -19,8 +19,10 @@ public class WaveSpawner : MonoBehaviour
         fishPrefab = Resources.Load<GameObject>("Prefabs/Fish");
     }
 
-    public void LoadLevelWaves()
+    public void LoadLevelWaves(string level)
     {
+        levelToLoad = level;
+
         string path = $"Levels/{levelToLoad}";
 
         TextAsset jsonTextFile = Resources.Load<TextAsset>(path);
