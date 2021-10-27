@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public ulong Score { get => score; }
     [SerializeField] private uint scoreAdded = 10;
 
+    Player player;
+
     // combo
     [Header("Combo")]
     [SerializeField] private double comboFactor = 1.0;
@@ -107,6 +109,56 @@ public class GameManager : MonoBehaviour
         waveSpawner.LoadLevelWaves();
     }
 
+    bool HasPlayer()
+    {
+        if (player == null)
+        {
+            player = GameObject.Find("Player")?.GetComponent<Player>();
+        }
+
+        return player != null;
+    }
+
+    public void ActivateAttackSpeed()
+    {
+        if (instance.HasPlayer())
+        {
+            instance.player.ActivateAttackSpeed();
+        }
+    }
+
+    public void ActivateAttackDamage()
+    {
+        if (instance.HasPlayer())
+        {
+            instance.player.ActivateAttackDamage();
+        }
+    }
+
+    public void ActivateShiel()
+    {
+        if (instance.HasPlayer())
+        {
+            instance.player.ActivateShiel();
+        }
+    }
+
+    public void ActivateHorizontalShot()
+    {
+        if (instance.HasPlayer())
+        {
+            instance.player.ActivateHorizontalShot();
+        }
+    }
+
+    public void ActivateShotNumber()
+    {
+        if (instance.HasPlayer())
+        {
+            instance.player.ActivateShotNumber();
+        }
+    }
+
     #region SCORE
 
     public void AddScore()
@@ -140,6 +192,11 @@ public class GameManager : MonoBehaviour
 
     private void UpdateCombo()
     {
+        if (comboText == null)
+        {
+            return;
+        }
+
         if (comboFactor > 1f)
         {
             comboTimer -= Time.deltaTime;

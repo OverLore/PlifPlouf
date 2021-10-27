@@ -29,7 +29,7 @@ public class SplinePathFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (useCoroutine && currentPath <= paths.Length - 1)
+        if (paths[0] != null && useCoroutine && currentPath <= paths.Length - 1)
         {
             StartCoroutine(GoByPath(currentPath));
         }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float damage;
+
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -11,7 +13,7 @@ public class Bullet : MonoBehaviour
         {
             //Destroy(collision.gameObject);
             
-            collision.gameObject.GetComponent<Enemy>().takeDamage(1);
+            collision.gameObject.GetComponent<Enemy>().takeDamage(damage);
             Destroy(gameObject);
         }
     }

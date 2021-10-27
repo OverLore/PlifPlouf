@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         Double
     }
 
+    [SerializeField] GameObject Shield;
 
     [SerializeField] List<GameObject> shotGameobject;
 
@@ -31,6 +32,21 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     Transform shotOrigin;
+
+    [SerializeField] float AttackDamageLeft = 0;
+    [SerializeField] float AttackSpeedLeft = 0;
+    [SerializeField] float ShieldLeft = 0;
+    [SerializeField] float HorizontalShotLeft = 0;
+    [SerializeField] float NumberShotLeft = 0;
+
+    public bool HasAttackDamage { get { return AttackDamageLeft > 0; } }
+    public bool HasAttackSpeed { get { return AttackSpeedLeft > 0; } }
+    public bool HasShield { get { return ShieldLeft > 0; } }
+    public bool HasHorizontalShot { get { return HorizontalShotLeft > 0; } }
+    public bool HasNumberShot { get { return NumberShotLeft > 0; } }
+
+    [SerializeField]
+    float damage = 1;
 
     float nextShot;
     [SerializeField]
@@ -48,14 +64,106 @@ public class Player : MonoBehaviour
     #region Method
 
     #region Public
+
+    public void ActivateAttackSpeed()
+    {
+        AttackSpeedLeft = 20f;
+    }
+
+    public void ActivateAttackDamage()
+    {
+        AttackDamageLeft = 20f;
+    }
+
+    public void ActivateShiel()
+    {
+        ShieldLeft = 20f;
+    }
+
+    public void ActivateHorizontalShot()
+    {
+        HorizontalShotLeft = 20f;
+    }
+
+    public void ActivateShotNumber()
+    {
+        NumberShotLeft = 20f;
+    }
+
     public void TakeDamage(float _damage)
     {
+        if (HasShield)
+        {
+            ShieldLeft = 0;
+            Debug.Log($"Player deflected {_damage} damage");
+
+            Shield.SetActive(false);
+            return;
+        }
+
         Debug.Log($"Player take {_damage} damage");
     }
 
     #endregion
 
     #region Private
+
+    void UpdateAttackSpeedBoost()
+    {
+        if (AttackSpeedLeft <= 0)
+        {
+            return;
+        }
+
+        AttackSpeedLeft -= Time.deltaTime;
+    }
+
+    void UpdateAttackDamageBoost()
+    {
+        if (AttackDamageLeft <= 0)
+        {
+            return;
+        }
+
+        AttackDamageLeft -= Time.deltaTime;
+    }
+
+    void UpdateShieldBoost()
+    {
+        if (ShieldLeft <= 0)
+        {
+            return;
+        }
+
+        Shield.SetActive(true);
+
+        ShieldLeft -= Time.deltaTime;
+
+        if(ShieldLeft <= 0)
+        {
+            Shield.SetActive(false);
+        }
+    }
+
+    void UpdateHorizontalShotBoost()
+    {
+        if (HorizontalShotLeft <= 0)
+        {
+            return;
+        }
+
+        HorizontalShotLeft -= Time.deltaTime;
+    }
+
+    void UpdateShotNumberBoost()
+    {
+        if (NumberShotLeft <= 0)
+        {
+            return;
+        }
+
+        NumberShotLeft -= Time.deltaTime;
+    }
 
     private Vector3 GetDeltaMovement()
     {
@@ -70,6 +178,7 @@ public class Player : MonoBehaviour
     {
         // create projectile
         GameObject go = Instantiate(shotGameobject[(int)shotType]);
+        InitShotDamage(go);
         // place projectile
         go.transform.position = shotOrigin.position;
         // add push with delta position
@@ -92,6 +201,7 @@ public class Player : MonoBehaviour
         {
             // create projectile
             GameObject go = Instantiate(shotGameobject[(int)shotType]);
+            InitShotDamage(go);
             // place projectile
             go.transform.position = shotOrigin.position;
             // add push with delta position
@@ -114,6 +224,7 @@ public class Player : MonoBehaviour
         if (GetComponentInChildren<DeathRay>() == null)
         {
             GameObject go = Instantiate(shotGameobject[(int)shotType]);
+            InitShotDamage(go);
 
             go.transform.parent = this.transform;
         }
@@ -125,6 +236,7 @@ public class Player : MonoBehaviour
         {
             // create projectile
             GameObject go = Instantiate(shotGameobject[(int)shotType]);
+            InitShotDamage(go);
             // place projectile
             go.transform.position = shotOrigin.position;
             // add push with delta position
@@ -156,6 +268,7 @@ public class Player : MonoBehaviour
         {
             // create projectile
             GameObject go = Instantiate(shotGameobject[(int)shotType]);
+            InitShotDamage(go);
 
             // place projectile
             if (i == 0)
@@ -186,12 +299,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    void InitShotDamage(GameObject go)
+    {
+        if (HasAttackDamage)
+        {
+            go.GetComponent<Bullet>().damage = damage * 1.5f;
+        }
+        else
+        {
+            go.GetComponent<Bullet>().damage = damage;
+        }
+    }
+
     /// <summary>
     /// Handle shot timer and instantiate shots
     /// </summary>
     private void HandleShot()
     {
-        nextShot -= Time.deltaTime;
+        if (HasAttackSpeed)
+        {
+            nextShot -= Time.deltaTime * 2;
+        }
+        else
+        {
+            nextShot -= Time.deltaTime;
+        }
 
         if (nextShot < 0.0f || shotType == ShotType.DeathRay)
         {
@@ -217,12 +349,20 @@ public class Player : MonoBehaviour
     void Start()
     {
         nextShot = 0;
+
+        Shield.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleShot();
+
+        UpdateAttackDamageBoost();
+        UpdateAttackSpeedBoost();
+        UpdateShieldBoost();
+        UpdateHorizontalShotBoost();
+        UpdateShotNumberBoost();
 
         // get last position
         lastPos = this.gameObject.transform.position;

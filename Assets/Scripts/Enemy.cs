@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int PV = 1;
+    public float PV = 1;
 
     public int score;
 
@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
         //Destroy(gameObject);
     }
 
-    public void takeDamage(int dmg)
+    public void takeDamage(float dmg)
     {
         PV -= dmg;
     }
@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
             go.transform.position = transform.position;
 
             Destroy(go, 1f);
+
+            BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
 
             //Destroy(transform.parent.parent.gameObject);
             Kill();
