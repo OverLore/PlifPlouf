@@ -14,7 +14,7 @@ public class BackgroundManager : MonoBehaviour
     bool IsLowerThanTop(Background _go)
     {
         Vector3 pos = _go.transform.position;
-        float sizeY = _go.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+        float sizeY = _go.GetComponent<SpriteRenderer>().bounds.size.y;
         Vector3 topRightPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         float offset = -1.0f;
         if (pos.y + sizeY / 2.0f + offset < topRightPos.y)
@@ -32,25 +32,25 @@ public class BackgroundManager : MonoBehaviour
         GameObject go = Instantiate(background);
         float sizeDivide = 3.0f;
 
+        //background is 3 times bigger than "ref" resolution (so that every resolution of phone/tablet
+        //won't have to upscale the background) (why is it working for setSpriteScaleToCameraSize but not for this ??) (bounds keep etc..)
+        //go.transform.localScale = new Vector3(go.transform.localScale.x / sizeDivide, go.transform.localScale.y / sizeDivide, 0.0f);
+        //change scale to fit every resolution of screens
+        go.transform.localScale /= sizeDivide;
+        Camera.main.GetComponent<CameraManager>().SetSpriteScaleToCameraSize(go);
+
         Vector3 pos = new Vector3(0, 0, 0);
         int lastIndex = _addedIndex - 1;
         if (_addedIndex != 0)
         {
             backgroundList[lastIndex].hasCreatedNext = true;
             Vector3 lastPos = backgroundList[lastIndex].transform.position;
-            //backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.Set(backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.x / sizeDivide,
-            //     backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.y / sizeDivide, 0);
-            float sizeY = backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.y / sizeDivide;
+            float sizeY = backgroundList[lastIndex].GetComponent<SpriteRenderer>().bounds.size.y;
             pos = new Vector3(lastPos.x, lastPos.y + sizeY, lastPos.z);
         }
         go.transform.position = pos;
 
-        //background is 3 times bigger than "ref" resolution (so that every resolution of phone/tablet
-        //won't have to upscale the background) (why is it working for setSpriteScaleToCameraSize but not for this ??) (bounds keep etc..)
-        go.transform.localScale = new Vector3(go.transform.localScale.x / sizeDivide, go.transform.localScale.y / sizeDivide, 0.0f);
-        //change scale to fit every resolution of screens
-        Camera.main.GetComponent<CameraManager>().SetSpriteScaleToCameraSize(go);
-
+        
         backgroundList.Add(go.GetComponent<Background>());
     }
 
