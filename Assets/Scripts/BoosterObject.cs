@@ -5,7 +5,6 @@ using UnityEngine;
 public class BoosterObject : MonoBehaviour
 {
     public Booster booster;
-    public SpriteRenderer back;
     public SpriteRenderer front;
     Rigidbody2D rb;
 
@@ -21,17 +20,6 @@ public class BoosterObject : MonoBehaviour
         front.sprite = booster.sprite;
         front.color = booster.frontColor;
 
-        back.sprite = BoosterManager.instance.GetRandomBack();
-
-        if (booster.useRandomBackColor)
-        {
-            back.color = BoosterManager.instance.GetRandomColor();
-        }
-        else
-        {
-            back.color = booster.backColor;
-        }
-
         gameObject.GetComponent<ScrollingSpeed>().SetScrollingBonusSpeed(booster.speed);
     }
 
@@ -43,5 +31,7 @@ public class BoosterObject : MonoBehaviour
         }
 
         booster.PickUpEvent.Invoke();
+
+        Destroy(gameObject);
     }
 }

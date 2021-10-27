@@ -32,7 +32,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (passedWaves >= wave.percentages.Count)
+        if (wave == null || passedWaves >= wave.percentages.Count)
         {
             return;
         }

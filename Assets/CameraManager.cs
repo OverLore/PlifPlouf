@@ -5,11 +5,11 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     //size of white rect camera on the xiaomi redmi note 7 in pixels (useful for conversion)
-    private Vector2 refRectSizePixels = new Vector2(462, 1080); //unity units : 4.615385f, 10
+    private Vector2 refRectSizePixels = new Vector2(462, 1000); //unity units : 4.615385f, 10
     //multiply your size by this to go from units to pixels (only work with orthographic camera and camera size 5)
-    private Vector2 pixelsUnitsRatio = new Vector2(100.1f, 108);
+    private Vector2 pixelsUnitsRatio = new Vector2(100.1f, 100);
     //size of the whole game in pixels (2 whole screen wide, 1 screen height)
-    private Vector2 refGameSizePixels = new Vector2(462 * 2, 1080);
+    private Vector2 refGameSizePixels = new Vector2(462 * 2, 1000);
     //current camera rect size in unity pixels
     public Vector2 cameraRectSizePixels;
     //current camera rect size in unity units
