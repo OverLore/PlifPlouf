@@ -30,17 +30,24 @@ public class BackgroundManager : MonoBehaviour
     void AddBackgroundInList(int _addedIndex)
     {
         GameObject go = Instantiate(background);
+        float sizeDivide = 3.0f;
+
         Vector3 pos = new Vector3(0, 0, 0);
         int lastIndex = _addedIndex - 1;
-        if(_addedIndex != 0)
+        if (_addedIndex != 0)
         {
             backgroundList[lastIndex].hasCreatedNext = true;
             Vector3 lastPos = backgroundList[lastIndex].transform.position;
-            float sizeY = backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+            //backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.Set(backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.x / sizeDivide,
+            //     backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.y / sizeDivide, 0);
+            float sizeY = backgroundList[lastIndex].GetComponent<SpriteRenderer>().sprite.bounds.size.y / sizeDivide;
             pos = new Vector3(lastPos.x, lastPos.y + sizeY, lastPos.z);
         }
         go.transform.position = pos;
 
+        //background is 3 times bigger than "ref" resolution (so that every resolution of phone/tablet
+        //won't have to upscale the background) (why is it working for setSpriteScaleToCameraSize but not for this ??) (bounds keep etc..)
+        go.transform.localScale = new Vector3(go.transform.localScale.x / sizeDivide, go.transform.localScale.y / sizeDivide, 0.0f);
         //change scale to fit every resolution of screens
         Camera.main.GetComponent<CameraManager>().SetSpriteScaleToCameraSize(go);
 
