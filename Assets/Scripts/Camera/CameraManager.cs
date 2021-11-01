@@ -64,7 +64,6 @@ public class CameraManager : MonoBehaviour
             camerasAspectRatioUniform.x = camerasAspectRatio.y;
             camerasAspectRatioUniform.y = camerasAspectRatio.y;
         }
-        Debug.Log(camerasAspectRatioUniform);
     }
 
     // Update is called once per frame

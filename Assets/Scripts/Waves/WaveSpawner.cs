@@ -40,8 +40,6 @@ public class WaveSpawner : MonoBehaviour
         if (lastProgress <= wave.percentages[passedWaves] &&
             LevelManager.instance.levelProgress > wave.percentages[passedWaves])
         {
-            Debug.Log($"Spawn wave {wave.sequences[passedWaves]} at {LevelManager.instance.levelProgress}");
-
             SpawnWave();
 
             passedWaves++;

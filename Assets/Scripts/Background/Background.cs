@@ -15,8 +15,9 @@ public class Background : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Application.isEditor)
-            return;
+        //(Evan) le background se fait delete in game si on fait ça, bien que chez toi ça marche
+        //if (Application.isEditor)
+        //    return;
         
         //disable the children scripts for no reasons (same for parent = null)
         gameObject.transform.DetachChildren();

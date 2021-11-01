@@ -12,7 +12,10 @@ public class Enemy : MonoBehaviour
     {
         GameManager.instance.AddScore();
         LevelManager.instance.SpawnCoinAt(transform.position, score);
-        Destroy(gameObject);
+        BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+
+        Destroy(transform.parent.parent.gameObject);
+        //Destroy(gameObject);
     }
 
     private void Start()
@@ -41,9 +44,6 @@ public class Enemy : MonoBehaviour
 
             Destroy(go, 1f);
 
-            BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
-
-            //Destroy(transform.parent.parent.gameObject);
             Kill();
         }
     }

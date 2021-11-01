@@ -68,8 +68,6 @@ public class BackgroundManager : MonoBehaviour
         go.GetComponent<Background>().index = _addedIndex;
         
         backgroundList.Add(go.GetComponent<Background>());
-        //offset of one move that i need to compensate
-        Debug.Log(go.GetComponent<ScrollingSpeed>().currentSpeed);
     }
 
     void SetGameBordersSizeToCameraSize()

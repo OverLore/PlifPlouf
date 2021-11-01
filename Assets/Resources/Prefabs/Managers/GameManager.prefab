@@ -45,8 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollingSpeed: 4
   maxDepthLayer: 5
-  waveSpawner: {fileID: 0}
+  waveSpawner: {fileID: 7518191345878956138, guid: 30a93025e34561a45923595b03b6b623, type: 3}
   levelToLoad: 0
+  money: 2000
+  lives: 5
   score: 0
   scoreAdded: 10
   comboFactor: 1
@@ -54,6 +56,6 @@ MonoBehaviour:
   comboAngleShake: 7.5
   comboFactToMaxScale: 5
   comboTextMaxScale: 2
-  scoreText: {fileID: 0}
-  comboText: {fileID: 0}
+  scoreText: {fileID: 1538064996006817254, guid: a4e919f08b63cd443a669828d6363c5f, type: 3}
+  comboText: {fileID: 1170024260159058998, guid: 733681f9d32e1d848afe150dee11cef6, type: 3}
   maxLevelReached: -1
