@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7387041b0df1564d99e225194df01c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shield: {fileID: 0}
   shotGameobject:
   - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
   - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
@@ -177,6 +178,12 @@ MonoBehaviour:
   shotForce: 6
   shotSpread: 2
   shotOrigin: {fileID: 1593574955}
+  AttackDamageLeft: 0
+  AttackSpeedLeft: 0
+  ShieldLeft: 0
+  HorizontalShotLeft: 0
+  NumberShotLeft: 0
+  damage: 1
   delay: 0.4
   shotType: 0
 --- !u!114 &7081848
@@ -543,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 591831028}
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: levelToLoad
-      value: 1
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: waveSpawner
@@ -11308,7 +11315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5faf63b2bb671f43b668235f6c49e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: E6Level1
+  levelToLoad: E4Level1
 --- !u!4 &926212932
 Transform:
   m_ObjectHideFlags: 0
@@ -17735,6 +17742,7 @@ MonoBehaviour:
   cameraRectSizePixels: {x: 0, y: 0}
   cameraRectSizeUnits: {x: 0, y: 0}
   camerasAspectRatio: {x: 0, y: 0}
+  camerasAspectRatioUniform: {x: 0, y: 0}
 --- !u!114 &2092624177
 MonoBehaviour:
   m_ObjectHideFlags: 0

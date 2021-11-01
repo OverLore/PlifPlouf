@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     public int levelToLoad;
 
+    [Space(10), Header("Stats")]
+    public int money = 2000;
+    public int lives = 5;
+
     // score
     [field: SerializeField] private ulong score;
     public ulong Score { get => score; }
@@ -24,7 +28,7 @@ public class GameManager : MonoBehaviour
     Player player;
 
     // combo
-    [Header("Combo")]
+    [Space(10), Header("Combo")]
     [SerializeField] private double comboFactor = 1.0;
     private float comboTimer = 0.0f;
     [SerializeField]
@@ -45,6 +49,51 @@ public class GameManager : MonoBehaviour
     Animator comboAnimator;
 
     public int maxLevelReached = -1;
+
+    void LoadStats()
+    {
+        if (PlayerPrefs.HasKey("Money"))
+        {
+            money = PlayerPrefs.GetInt("Money");
+        }
+        else
+        {
+            money = 2000;
+            PlayerPrefs.SetInt("Money", money);
+        }
+
+        if (PlayerPrefs.HasKey("Lives"))
+        {
+            lives = PlayerPrefs.GetInt("Lives");
+        }
+        else
+        {
+            lives = 5;
+            PlayerPrefs.SetInt("Lives", lives);
+        }
+    }
+
+    void SaveStats()
+    {
+        PlayerPrefs.SetInt("Money", money);
+        PlayerPrefs.SetInt("Lives", lives);
+    }
+
+    public void ChangeMoney(int _modifier)
+    {
+        money += _modifier;
+        money = Mathf.Clamp(money, 0, 999999);
+
+        PlayerPrefs.SetInt("Money", money);
+    }
+
+    public void ChangeLives(int _modifier)
+    {
+        lives += _modifier;
+        lives = Mathf.Clamp(lives, 0, 5);
+
+        PlayerPrefs.SetInt("Lives", lives);
+    }
 
     private void GetTexts()
     {
@@ -93,6 +142,8 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
 
         GetTexts();
+
+        LoadStats();
     }
 
     private void Update()

@@ -466,6 +466,7 @@ MonoBehaviour:
   cameraRectSizePixels: {x: 0, y: 0}
   cameraRectSizeUnits: {x: 0, y: 0}
   camerasAspectRatio: {x: 0, y: 0}
+  camerasAspectRatioUniform: {x: 0, y: 0}
 --- !u!114 &1187459257
 MonoBehaviour:
   m_ObjectHideFlags: 0

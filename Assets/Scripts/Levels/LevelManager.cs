@@ -49,6 +49,8 @@ public class LevelManager : MonoBehaviour
     public GameObject scoringCanvas;
     public Animator panelAnimator;
 
+    public GameObject CoinPrefab;
+
     public ParticleSystem[] starsParticles;
     public Image[] starsSprites;
     public Image starBar;
@@ -101,6 +103,8 @@ public class LevelManager : MonoBehaviour
         gainScore.InitText();
 
         scoringCanvas.SetActive(false);
+
+        CoinPrefab = Resources.Load<GameObject>("Entities/Coin");
     }
 
     void UpdateStarting()
@@ -118,7 +122,7 @@ public class LevelManager : MonoBehaviour
         levelProgress += Time.deltaTime;
         debugText.text = levelProgress.ToString();
 
-        if (levelProgress >= 15)
+        if (levelProgress >= 90)
         {
             state = LevelState.BossEnd;
         }
@@ -156,6 +160,14 @@ public class LevelManager : MonoBehaviour
 
             lastStarsBarAnim = i;
         }
+    }
+
+    public void SpawnCoinAt(Vector3 _pos,  int _value)
+    {
+        GameObject go = Instantiate(CoinPrefab);
+        go.transform.position = _pos;
+
+        go.GetComponent<Coin>().Setup(_value);
     }
 
     public void UpdateKills()

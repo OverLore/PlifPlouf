@@ -5997,7 +5997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &721576262
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11725,7 +11725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000011921, y: -473}
+  m_AnchoredPosition: {x: 0, y: -2637}
   m_SizeDelta: {x: 1013.6755, y: 774.7761}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1174746711
@@ -11750,11 +11750,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 114
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 114
+    m_MaxSize: 56
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -11964,6 +11964,7 @@ MonoBehaviour:
   cameraRectSizePixels: {x: 0, y: 0}
   cameraRectSizeUnits: {x: 0, y: 0}
   camerasAspectRatio: {x: 0, y: 0}
+  camerasAspectRatioUniform: {x: 0, y: 0}
 --- !u!114 &1187459257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17235,6 +17236,7 @@ MonoBehaviour:
   debugText: {fileID: 1174746711}
   scoringCanvas: {fileID: 1030769858}
   panelAnimator: {fileID: 1927611605}
+  CoinPrefab: {fileID: 0}
   starsParticles:
   - {fileID: 1133429662}
   - {fileID: 639114635}
