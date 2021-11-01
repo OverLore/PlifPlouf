@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{ABF7FD29-FE42-E465-BB8A-6F2D69315E37}</ProjectGuid>
+    <ProjectGuid>{1C8FB3C6-6FA5-3D77-73DF-6221E4B79B82}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>UnityEditor.UI</AssemblyName>
@@ -53,43 +53,46 @@
     <UnityVersion>2021.1.19f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\DropdownOptionListDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\MenuOptions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\FontDataDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\Physics2DRaycasterEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\InputFieldEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\EventSystemEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\CanvasScalerEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PrefabLayoutRebuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SelectableEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ImageEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SliderEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\LayoutElementEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\DropdownEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ButtonEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\PhysicsRaycasterEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\TextEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\AnimationTriggersDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\EventTriggerEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\HorizontalOrVerticalLayoutGroupEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\RawImageEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\RectMask2DEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\InterceptedEventsPreview.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\AspectRatioFitterEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ScrollbarEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ToggleEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\SpriteStateDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\NavigationDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\DropdownOptionListDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\MenuOptions.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\FontDataDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\Physics2DRaycasterEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\EventSystem\EventSystemEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PrefabLayoutRebuilder.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SelectableEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SliderEditor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\AnimationTriggersDrawer.cs" />
-    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\HorizontalOrVerticalLayoutGroupEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ContentSizeFitterEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SelfControllerEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\MaskEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\ColorBlockDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\InterceptedEventsPreview.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\Properties\AssemblyInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\LayoutPropertiesPreview.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\SpriteDrawUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\GraphicEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\GridLayoutGroupEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\AspectRatioFitterEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ScrollbarEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ToggleEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\ScrollRectEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\SpriteStateDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UI\PropertyDrawers\NavigationDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\PackageCache\com.unity.ugui@1.0.0\Editor\UnityEditor.UI.asmdef" />
@@ -332,9 +335,6 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.19f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-    </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.9.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
@@ -346,12 +346,6 @@
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.9.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.9.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
@@ -707,17 +701,19 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.19f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{1DAFD730-1297-91A7-ACFA-61BFD0334915}</Project>
+      <Project>{72747A0E-3FE5-D24A-8F85-5DF56608C140}</Project>
       <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.TestRunner.csproj">
+      <Project>{470FAD6C-CC6B-266A-5A76-09C994970030}</Project>
+      <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{B0FE31FA-9B9D-3D3A-1045-769BFDB3FB92}</Project>
+      <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

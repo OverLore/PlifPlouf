@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{40117DE3-2F56-C49C-F621-90238952DA90}</ProjectGuid>
+    <ProjectGuid>{13AAA080-A3CC-8EBD-03F4-369221793AC4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.2D.Sprite.Editor</AssemblyName>
@@ -53,40 +53,43 @@
     <UnityVersion>2021.1.19f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpritePolygonModeModule.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IGUIUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteSecondaryTexturesModule.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\TextureImporterDataProvider.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModule.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorWindowSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorMenu.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteOutlineModule.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IAssetDatabase.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IGL.cs" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpritePolygonModeModuleView.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorHandles.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\TextureImporterDataProviderImplementation.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModuleView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpritePolygonModeModule.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\ITexture.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModuleBase.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ShapeEditor\ShapeEditor.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IGUIUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\ISpriteEditorDataProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModuleBaseView.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteUtilityWindow.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteSecondaryTexturesModule.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteEditorData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\TextureImporterDataProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IEvent.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\AssemblyInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IHandles.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ObjectMenuCreation\ItemCreationUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Obsolete\ObsoleteSupport.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ObjectMenuCreation\MenuItems.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteFrameModule\SpriteFrameModule.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\ShapeEditor\ShapeEditorRectSelection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorWindowSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorMenu.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\ISpriteEditorModule.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpriteOutlineModule.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteEditorWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IUndoSystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IAssetDatabase.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditorModule\SpritePhysicsShapeModule.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\SpriteEditor\SpriteRect.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\Interface\IGL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Editor\UI\SpriteEditor\SpriteFrameModuleInspector.uxml" />
@@ -332,9 +335,6 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.19f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
-    </Reference>
     <Reference Include="log4netPlastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.9.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
@@ -346,12 +346,6 @@
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.9.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.9.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
@@ -707,21 +701,23 @@
     <Reference Include="System.Xml.XPath.XDocument">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.1.19f1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{ABF7FD29-FE42-E465-BB8A-6F2D69315E37}</Project>
+      <Project>{1C8FB3C6-6FA5-3D77-73DF-6221E4B79B82}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{1DAFD730-1297-91A7-ACFA-61BFD0334915}</Project>
+      <Project>{72747A0E-3FE5-D24A-8F85-5DF56608C140}</Project>
       <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.TestRunner.csproj">
+      <Project>{470FAD6C-CC6B-266A-5A76-09C994970030}</Project>
+      <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{B0FE31FA-9B9D-3D3A-1045-769BFDB3FB92}</Project>
+      <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,6 +5,7 @@ using UnityEngine;
 public class InitiateMapSelec : MonoBehaviour
 {
     [SerializeField]  GameObject[] tabButtons;
+    [SerializeField] GameObject statpannel;
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +18,9 @@ public class InitiateMapSelec : MonoBehaviour
 
     public void ButtonLevelEffect(int targetLevel)
     {
-        //int target = 0;
-
         GameManager.instance.levelToLoad = targetLevel;
-       // gameObject.GetInstanceID
+        statpannel.gameObject.SetActive(true);
+
     }
     // Update is called once per frame
     void Update()
