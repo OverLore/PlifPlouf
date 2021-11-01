@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SplinePathFollow : MonoBehaviour
 {
-    [SerializeField] bool isDestroyedAtEnd = true;
+    public bool isDestroyedAtEnd = true;
     public Transform[] paths;
 
     int currentPath;

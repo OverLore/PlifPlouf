@@ -5,32 +5,39 @@ using UnityEngine.U2D.Animation;
 
 public class EelMove : MonoBehaviour
 {
-    [SerializeField] float speed;
-    Transform rootBone;
-    Transform[] boneTransforms;
-    int nbBone;
-       // Start is called before the first frame update
-       void Start()
+    [SerializeField] float timerMax;
+    [SerializeField] GameObject[] boneObject;
+    public Transform[] paths;
+    float timerSpawn = 0f;
+    int actualBone = 0;
+    // Start is called before the first frame update
+    void Start()
     {
-        rootBone = GetComponent<SpriteSkin>().rootBone;
-        boneTransforms = GetComponent<SpriteSkin>().boneTransforms;
-        nbBone = boneTransforms.Length;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(nbBone);
-        for (int i = nbBone-1; i > 0; i--)
+        if (actualBone < boneObject.Length)
         {
+            timerSpawn += Time.deltaTime;
+            if (timerSpawn >= timerMax)
+            {
+                boneObject[actualBone].AddComponent<SplinePathFollow>();
+                SplinePathFollow pathFollow = boneObject[actualBone].GetComponent<SplinePathFollow>();
+                pathFollow.speed = 0.5f;
+                pathFollow.paths = new Transform[paths.Length];
+                for (int i = 0; i < paths.Length; i++)
+                {
+                    pathFollow.paths.SetValue(paths[i], i);
+                }
+                pathFollow.correction = 90;
+                pathFollow.isDestroyedAtEnd = false;
 
-            Debug.Log(i);
-            Vector3 posA = boneTransforms[i].position;
-            Vector3 posB = boneTransforms[i-1].position;
-            Vector3 newPos = new Vector3(Mathf.Lerp(posA.x, posB.x, speed), Mathf.Lerp(posA.y, posB.y, speed), 0);
-            boneTransforms[i].LookAt(boneTransforms[i - 1]);
-            boneTransforms[i].localRotation = Quaternion.Euler(boneTransforms[i].rotation.x, 0, boneTransforms[i].rotation.y);
-            boneTransforms[i].position = newPos;
-        }
-}
+                actualBone++;
+                timerSpawn -= timerMax;
+            }
+        }      
+    }
 }
