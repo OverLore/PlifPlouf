@@ -9,7 +9,7 @@ public class InitiateMapSelec : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int x = 0; x <= GameManager.instance.maxLevelReached; x++)
+        for (int x = 0; x <= GameManager.instance.maxLevelReached + 1; x++)
         {
             tabButtons[x].SetActive(true);
         }

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI comboText = null;
     Animator comboAnimator;
 
-    public int maxLevelReached = 0;
+    public int maxLevelReached = -1;
 
     private void GetTexts()
     {
@@ -86,8 +86,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            maxLevelReached = 0;
-            PlayerPrefs.SetInt("maxLevelReached", 0);
+            maxLevelReached = -1;
+            PlayerPrefs.SetInt("maxLevelReached", -1);
         }
 
         Application.targetFrameRate = 60;

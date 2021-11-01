@@ -45,3 +45,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollingSpeed: 4
   maxDepthLayer: 5
+  waveSpawner: {fileID: 0}
+  levelToLoad: 0
+  score: 0
+  scoreAdded: 10
+  comboFactor: 1
+  comboTime: 2.5
+  comboAngleShake: 7.5
+  comboFactToMaxScale: 5
+  comboTextMaxScale: 2
+  scoreText: {fileID: 0}
+  comboText: {fileID: 0}
+  maxLevelReached: -1

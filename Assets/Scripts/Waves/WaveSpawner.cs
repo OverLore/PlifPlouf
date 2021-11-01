@@ -52,10 +52,8 @@ public class WaveSpawner : MonoBehaviour
 
     void CreateEnemy(Vector3 offset, GameObject group)
     {
-        Debug.Log("Spawn enemy");
         GameObject g = Instantiate(group);
         g.transform.position = transform.position + offset;
-        Debug.Log("Spawned enemy");
     }
 
     void SpawnWave()

@@ -14,6 +14,11 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        LevelManager.instance.maxObtainableScore += score;
+    }
+
     public void EndAnim()
     {
         //Destroy(gameObject);
