@@ -15,6 +15,9 @@ public class Background : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (Application.isEditor)
+            return;
+        
         //disable the children scripts for no reasons (same for parent = null)
         gameObject.transform.DetachChildren();
         //fix by hand (no other solution to enable the scripts)

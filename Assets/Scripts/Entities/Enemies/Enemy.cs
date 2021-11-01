@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private void Kill()
     {
         GameManager.instance.AddScore();
+        LevelManager.instance.SpawnCoinAt(transform.position, score);
         Destroy(gameObject);
     }
 

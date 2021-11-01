@@ -20,7 +20,8 @@ public class BackgroundManager : MonoBehaviour
         }
         else if(instance != this)
         {
-            Destroy(gameObject);
+            if (Application.isPlaying)
+                Destroy(gameObject);
         }
     }
 
