@@ -9,7 +9,7 @@ public class ScrollingSpeed : MonoBehaviour
     public float baseSpeed;
     public float currentSpeed;
     [SerializeField] private float bonusSpeed = 0.0f;
-
+    public bool isScrolling = true;
 
     bool CheckIsHigherThanBottom()
     {
@@ -24,7 +24,7 @@ public class ScrollingSpeed : MonoBehaviour
             }
         }
         Vector3 pos = transform.position;
-        float sizeY = sr.sprite.bounds.size.y;
+        float sizeY = sr.bounds.size.y;
         Vector3 bottomLeftPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         float offset = 0.1f;
         if (pos.y + sizeY / 2.0f + offset > bottomLeftPos.y)
@@ -82,11 +82,19 @@ public class ScrollingSpeed : MonoBehaviour
        }
     }
 
+    void UpdateScrolling()
+    {
+        if (isScrolling)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - currentSpeed * Time.deltaTime, transform.position.z);
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
         UpdateScrollingSpeed();
-        transform.position = new Vector3(transform.position.x, transform.position.y - currentSpeed * Time.deltaTime, transform.position.z);
+
+        UpdateScrolling();
 
         DestroyIfOutOfScreen();
     }

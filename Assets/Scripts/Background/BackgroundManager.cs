@@ -5,11 +5,24 @@ using Cinemachine;
 
 public class BackgroundManager : MonoBehaviour
 {
+    public static BackgroundManager instance = null;
     [SerializeField] GameObject background;
     public List<Background> backgroundList = new List<Background>();
     private PolygonCollider2D gameBorders;
     private CameraManager cameraManager;
     [SerializeField] CinemachineConfiner cinemachineConfiner;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if(instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     bool IsLowerThanTop(Background _go)
     {
@@ -47,9 +60,11 @@ public class BackgroundManager : MonoBehaviour
             Vector3 lastPos = backgroundList[lastIndex].transform.position;
             float sizeY = backgroundList[lastIndex].GetComponent<SpriteRenderer>().bounds.size.y;
             pos = new Vector3(lastPos.x, lastPos.y + sizeY, lastPos.z);
+            go.transform.transform.SetParent(backgroundList[lastIndex].transform);
+            go.GetComponent<ScrollingSpeed>().isScrolling = false;
         }
         go.transform.position = pos;
-
+        go.GetComponent<Background>().index = _addedIndex;
         
         backgroundList.Add(go.GetComponent<Background>());
         //offset of one move that i need to compensate
@@ -91,22 +106,5 @@ public class BackgroundManager : MonoBehaviour
                 break;
             }
         }
-        //int counter = 0;
-        //for (int i = 0; i < backgroundList.Count; i++)
-        //{
-        //    if (IsLowerThanTop(backgroundList[i]) && !backgroundList[i].hasCreatedNext)
-        //    {
-        //        counter++;
-        //        backgroundList[i].hasCreatedNext = true;
-        //        backgroundList.Remove(backgroundList[i]);
-        //        i--;
-        //    }
-        //}
-        //
-        //for (int i = 0; i < counter; i++)
-        //{
-        //    AddBackgroundInList(new Vector3(0, 10, 0));
-        //}
-        //
     }
 }

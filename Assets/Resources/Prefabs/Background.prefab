@@ -101,6 +101,7 @@ MonoBehaviour:
   baseSpeed: 0
   currentSpeed: 0
   bonusSpeed: 0
+  isScrolling: 1
 --- !u!114 &-7196155832874178143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasCreatedNext: 0
+  index: 0
+  scrollingComponent: {fileID: 0}
+  backgroundManager: {fileID: 7592518988900757730, guid: df6d5e8ccea7b7c438b26ff8ebaa4d0c, type: 3}

@@ -16,6 +16,8 @@ public class CameraManager : MonoBehaviour
     public Vector2 cameraRectSizeUnits;
     //ratio of the camera (current / ref) (in pixels) (multiply the size to this to go from ref camera size to current camera size)
     public Vector2 camerasAspectRatio;
+    //same size on x and y (for uniform scaling)
+    public Vector2 camerasAspectRatioUniform;
 
     //use this function if you want to make your gameObject (containing a sprite) scaling to the camera size
     //ex : make a background sprite covering the whole camera vision (screen) whatever the resolution
@@ -31,8 +33,11 @@ public class CameraManager : MonoBehaviour
                 return;
             }
         }
-        Vector3 size = sr.sprite.bounds.size;
-        Vector3 newSize = size * camerasAspectRatio;
+        Vector3 size = sr.bounds.size;
+        //deformation since not the same ratio on x and y of scaling
+        //Vector3 newSize = size * camerasAspectRatio;
+        //uniform scaling
+        Vector3 newSize = size * camerasAspectRatioUniform;
         Vector3 scaleRatio = new Vector3(newSize.x / size.x, newSize.y / size.y, 0);
         _go.transform.localScale = new Vector3(_go.transform.localScale.x * scaleRatio.x, _go.transform.localScale.y * scaleRatio.y, 0);
     }
@@ -48,6 +53,18 @@ public class CameraManager : MonoBehaviour
         cameraRectSizePixels.x = cameraRectSizeUnits.x * pixelsUnitsRatio.x;
         //get the camera scaling ratio
         camerasAspectRatio = cameraRectSizePixels / refRectSizePixels;
+        //get uniform ratio (larger of the two components)
+        if (camerasAspectRatio.x >= camerasAspectRatio.y)
+        {
+            camerasAspectRatioUniform.x = camerasAspectRatio.x;
+            camerasAspectRatioUniform.y = camerasAspectRatio.x;
+        }
+        else
+        {
+            camerasAspectRatioUniform.x = camerasAspectRatio.y;
+            camerasAspectRatioUniform.y = camerasAspectRatio.y;
+        }
+        Debug.Log(camerasAspectRatioUniform);
     }
 
     // Update is called once per frame
