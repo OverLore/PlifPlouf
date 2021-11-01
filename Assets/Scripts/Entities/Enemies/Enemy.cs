@@ -14,8 +14,14 @@ public class Enemy : MonoBehaviour
         LevelManager.instance.SpawnCoinAt(transform.position, score);
         BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
 
-        Destroy(transform.parent.parent.gameObject);
-        //Destroy(gameObject);
+        if(gameObject.GetComponent<SplinePathFollow>() != null)
+        {
+            Destroy(transform.parent.parent.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()

@@ -473,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 591831028}
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: levelToLoad
-      value: 120
+      value: 610
       objectReference: {fileID: 0}
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: waveSpawner
