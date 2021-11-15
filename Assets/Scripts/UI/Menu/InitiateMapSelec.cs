@@ -22,6 +22,12 @@ public class InitiateMapSelec : MonoBehaviour
         statpannel.gameObject.SetActive(true);
 
     }
+    public void ButtonOffStatEffect()
+    {
+        
+        statpannel.gameObject.SetActive(false);
+
+    }
     // Update is called once per frame
     void Update()
     {
