@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
         {
             if (updating)
             {
-                temp += Time.deltaTime;
+                temp += Time.deltaTime * GameManager.instance.timeScale;
 
                 temp = Mathf.Clamp01(temp);
 
@@ -119,10 +119,10 @@ public class LevelManager : MonoBehaviour
 
     void UpdateWaves()
     {
-        levelProgress += Time.deltaTime;
+        levelProgress += Time.deltaTime * GameManager.instance.timeScale;
         debugText.text = levelProgress.ToString();
 
-        if (levelProgress >= 90)
+        if (levelProgress >= 15)
         {
             state = LevelState.BossEnd;
         }

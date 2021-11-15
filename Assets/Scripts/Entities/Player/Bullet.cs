@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     public float damage;
 
+    Rigidbody2D rb;
+    Vector2 vel;
+
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -37,12 +40,16 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
 
+        vel = rb.velocity;
     }
 
     // Update is called once per frame
     void Update()
     {
+        rb.velocity = vel * GameManager.instance.timeScale;
+
         if (!CheckIsInScreen())
         {
             Destroy(gameObject);

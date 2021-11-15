@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 using System;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -45,8 +46,20 @@ public class Player : MonoBehaviour
     public bool HasHorizontalShot { get { return HorizontalShotLeft > 0; } }
     public bool HasNumberShot { get { return NumberShotLeft > 0; } }
 
+    public bool LifeIndicatorIsActive { get { return GameManager.instance.Paused; } }
+
     [SerializeField]
     float damage = 1;
+
+    [SerializeField] Canvas lifeCanvas;
+    [SerializeField] RectTransform lifeRect;
+    [SerializeField] Image[] lifeIndicatorImages;
+    [SerializeField] Text[] lifeIndicatorTexts;
+    float lifeIndicatorTime;
+
+    [SerializeField] Animator[] playerAnimators;
+
+    public int pv = 100;
 
     float nextShot;
     [SerializeField]
@@ -101,12 +114,31 @@ public class Player : MonoBehaviour
             return;
         }
 
+        lifeIndicatorTime = 1f;
+
         Debug.Log($"Player take {_damage} damage");
     }
 
     #endregion
 
     #region Private
+
+    private void UpdateLifePosition()
+    {
+        //first you need the RectTransform component of your canvas
+        RectTransform CanvasRect = lifeCanvas.GetComponent<RectTransform>();
+
+        //then you calculate the position of the UI element
+        //0,0 for the canvas is at the center of the screen, whereas WorldToViewPortPoint treats the lower left corner as 0,0. Because of this, you need to subtract the height / width of the canvas * 0.5 to get the correct position.
+
+        Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(transform.position);
+        Vector2 WorldObject_ScreenPosition = new Vector2(
+        ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
+        ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
+
+        //now you can set the position of the ui element
+        lifeRect.anchoredPosition = WorldObject_ScreenPosition;
+    }
 
     void UpdateAttackSpeedBoost()
     {
@@ -115,7 +147,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        AttackSpeedLeft -= Time.deltaTime;
+        AttackSpeedLeft -= Time.deltaTime * GameManager.instance.timeScale;
     }
 
     void UpdateAttackDamageBoost()
@@ -125,7 +157,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        AttackDamageLeft -= Time.deltaTime;
+        AttackDamageLeft -= Time.deltaTime * GameManager.instance.timeScale;
     }
 
     void UpdateShieldBoost()
@@ -137,9 +169,9 @@ public class Player : MonoBehaviour
 
         Shield.SetActive(true);
 
-        ShieldLeft -= Time.deltaTime;
+        ShieldLeft -= Time.deltaTime * GameManager.instance.timeScale;
 
-        if(ShieldLeft <= 0)
+        if (ShieldLeft <= 0)
         {
             Shield.SetActive(false);
         }
@@ -152,7 +184,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        HorizontalShotLeft -= Time.deltaTime;
+        HorizontalShotLeft -= Time.deltaTime * GameManager.instance.timeScale;
     }
 
     void UpdateShotNumberBoost()
@@ -162,7 +194,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        NumberShotLeft -= Time.deltaTime;
+        NumberShotLeft -= Time.deltaTime * GameManager.instance.timeScale;
     }
 
     private Vector3 GetDeltaMovement()
@@ -208,7 +240,7 @@ public class Player : MonoBehaviour
             Vector3 posDelta = GetDeltaMovement();
             posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
             // random angle base on the spread
-            float angleSpread = i * 45 + UnityEngine.Random.Range(-shotSpread/2f, shotSpread/2f);
+            float angleSpread = i * 45 + UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
             float velx = (posDelta.y * shotForce)
                 * Mathf.Cos((90.0f + angleSpread) * Mathf.Deg2Rad);
@@ -287,7 +319,7 @@ public class Player : MonoBehaviour
             posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
 
             // random angle base on the spread
-            float angleSpread = UnityEngine.Random.Range(-shotSpread/2f, shotSpread/2f);
+            float angleSpread = UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
             float velx = (posDelta.y * shotForce)
                 * Mathf.Cos((90.0f + angleSpread) * Mathf.Deg2Rad);
@@ -318,11 +350,11 @@ public class Player : MonoBehaviour
     {
         if (HasAttackSpeed)
         {
-            nextShot -= Time.deltaTime * 2;
+            nextShot -= Time.deltaTime * 2 * GameManager.instance.timeScale;
         }
         else
         {
-            nextShot -= Time.deltaTime;
+            nextShot -= Time.deltaTime * GameManager.instance.timeScale;
         }
 
         if (nextShot < 0.0f || shotType == ShotType.DeathRay)
@@ -345,6 +377,51 @@ public class Player : MonoBehaviour
         shotMethods[ShotType.Double] = doubleShot;
     }
 
+    void UpdateLifeOpacity(bool zero = false)
+    {
+        foreach (Image img in lifeIndicatorImages)
+        {
+            if (zero)
+            {
+                img.color = new Color(img.color.r, img.color.g, img.color.b, 0);
+            }
+
+            if (LifeIndicatorIsActive)
+            {
+                img.color = new Color(img.color.r, img.color.g, img.color.b, 1);
+            }
+            else
+            {
+                img.color = new Color(img.color.r, img.color.g, img.color.b, Mathf.Clamp01(lifeIndicatorTime));
+            }
+        }
+
+        foreach (Text txt in lifeIndicatorTexts)
+        {
+            if (zero)
+            {
+                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 0);
+            }
+
+            if (LifeIndicatorIsActive)
+            {
+                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 1);
+            }
+            else
+            {
+                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, Mathf.Clamp01(lifeIndicatorTime));
+            }
+        }
+    }
+
+    void UpdateAnimSpeed()
+    {
+        foreach (Animator a in playerAnimators)
+        {
+            a.speed = GameManager.instance.timeScale;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -363,6 +440,24 @@ public class Player : MonoBehaviour
         UpdateShieldBoost();
         UpdateHorizontalShotBoost();
         UpdateShotNumberBoost();
+        UpdateAnimSpeed();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            lifeIndicatorTime = 1f;
+        }
+
+        if (LifeIndicatorIsActive || lifeIndicatorTime > 0)
+        {
+            lifeIndicatorTime -= Time.deltaTime;
+
+            UpdateLifePosition();
+            UpdateLifeOpacity();
+        }
+        else
+        {
+            UpdateLifeOpacity(true);
+        }
 
         // get last position
         lastPos = this.gameObject.transform.position;

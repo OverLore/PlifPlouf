@@ -14,7 +14,13 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public WaveSpawner waveSpawner;
 
+    [SerializeField] Image pauseBack;
+
+    public bool Paused;
+
     public int levelToLoad;
+
+    public float timeScale = 1f;
 
     [Space(10), Header("Stats")]
     public int money = 2000;
@@ -149,6 +155,22 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         UpdateCombo();
+
+        if (Paused)
+        {
+            timeScale = Mathf.Lerp(timeScale, .05f, Time.deltaTime * 5f);
+            pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 185 / 255), Time.deltaTime * 5f);
+        }
+        else
+        {
+            timeScale = Mathf.Lerp(timeScale, 1f, Time.deltaTime * 5f);
+            pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 0), Time.deltaTime * 5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Paused = !Paused;
+        }
     }
 
     public void ChangeMaxLevelReached(int max)
@@ -256,7 +278,7 @@ public class GameManager : MonoBehaviour
 
         if (comboFactor > 1f)
         {
-            comboTimer -= Time.deltaTime;
+            comboTimer -= Time.deltaTime * instance.timeScale;
             if (comboTimer <= 0f)
             {
                 ResetCombo();

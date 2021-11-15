@@ -33,7 +33,7 @@ public class CameraMovement : MonoBehaviour
             Camera.main.transform.position = new Vector3(currentPos.x, currentPos.y, 0.0f);
             ClampCamera();
 
-            currentMoveTime += Time.deltaTime;
+            currentMoveTime += Time.deltaTime * GameManager.instance.timeScale;
             if(currentMoveTime > 1.0f)
             {
                 currentMoveTime = 1.0f;

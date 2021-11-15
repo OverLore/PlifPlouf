@@ -33,10 +33,10 @@ public class Eel : MonoBehaviour
     {
         MarkerManager key1 = eelBody[0].GetComponent<MarkerManager>();
 
-        eelBody[0].GetComponent<Rigidbody2D>().velocity = eelBody[0].transform.right * speed * Time.deltaTime;
+        eelBody[0].GetComponent<Rigidbody2D>().velocity = eelBody[0].transform.right * speed * Time.deltaTime * GameManager.instance.timeScale;
         if (Input.GetAxis("Horizontal") != 0)
         {
-            eelBody[0].transform.Rotate(new Vector3(0, 0, -rotationSpeed * Time.deltaTime * Input.GetAxis("Horizontal")));
+            eelBody[0].transform.Rotate(new Vector3(0, 0, -rotationSpeed * Time.deltaTime * GameManager.instance.timeScale * Input.GetAxis("Horizontal")));
         }
         if (eelBody.Count > 1)
         {
@@ -73,7 +73,7 @@ public class Eel : MonoBehaviour
         {
             key.clearMarkerList();
         }
-        countUp += Time.deltaTime;
+        countUp += Time.deltaTime * GameManager.instance.timeScale;
         if (countUp >= distanceBetween)
         {
             GameObject temp = Instantiate(bodyPart[0], key.markerList[0].pos, key.markerList[0].rot,transform);

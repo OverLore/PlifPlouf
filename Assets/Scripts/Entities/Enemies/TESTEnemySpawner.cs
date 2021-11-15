@@ -20,7 +20,7 @@ public class TESTEnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        nextIn -= Time.deltaTime;
+        nextIn -= Time.deltaTime * GameManager.instance.timeScale;
 
         if (nextIn <= 0 && rest >= 0)
         {

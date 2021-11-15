@@ -86,7 +86,7 @@ public class ScrollingSpeed : MonoBehaviour
     {
         if (isScrolling)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - currentSpeed * Time.deltaTime, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - currentSpeed * Time.deltaTime * GameManager.instance.timeScale, transform.position.z);
         }
     }
     // Update is called once per frame
