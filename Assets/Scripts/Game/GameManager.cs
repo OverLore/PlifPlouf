@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     public ulong Score { get => score; }
     [SerializeField] private uint scoreAdded = 10;
 
-    Player player;
+    public Player player;
 
     // combo
     [Space(10), Header("Combo")]
@@ -150,6 +150,9 @@ public class GameManager : MonoBehaviour
         GetTexts();
 
         LoadStats();
+
+        //use it like that only to initialize the player reference
+        HasPlayer();
     }
 
     private void Update()

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4875260753092104307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6315681725490691611}
+  m_Layer: 0
+  m_Name: shotOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6315681725490691611
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875260753092104307}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3885265804223480518}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8579279767108291569
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,7 +61,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
   m_LocalPosition: {x: 0.07, y: 3.66, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6315681725490691611}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -119,7 +150,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: 1
+  score: 0
   deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
+  shotOrigin: {fileID: 6315681725490691611}
+  enemyBulletPrefab: {fileID: 8990634599087928527, guid: d5f51e08ab61a8145b922809195d69a8, type: 3}
+  shotDamage: 10
+  shotSpeed: 10
 --- !u!58 &3443985168718981813
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -152,3 +188,4 @@ MonoBehaviour:
   paths:
   - {fileID: 0}
   speed: 0.2
+  correction: 0

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7812660843859246335}
   - component: {fileID: 2501667796874566376}
   - component: {fileID: 8246146631894099526}
-  - component: {fileID: 888530967278303944}
   - component: {fileID: 8524301781748323468}
   - component: {fileID: 3484144950958813568}
+  - component: {fileID: -4880107699961481763}
   m_Layer: 0
   m_Name: E2Test
   m_TagString: Ennemy
@@ -31,7 +31,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7619673830112584218}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -106,20 +107,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &888530967278303944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3353106339857200584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec9127c470b393e47a5f76239be4478a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PV: 1
-  deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
 --- !u!58 &8524301781748323468
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -148,8 +135,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c879e8ac94d0b540bedb9b33fde4fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDestroyedAtEnd: 0
+  isDestroyedAtEnd: 1
   paths:
   - {fileID: 0}
   - {fileID: 0}
   speed: 0.2
+  correction: 0
+--- !u!114 &-4880107699961481763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353106339857200584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec9127c470b393e47a5f76239be4478a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PV: 1
+  score: 0
+  deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
+  shotOrigin: {fileID: 7619673830112584218}
+  enemyBulletPrefab: {fileID: 8990634599087928527, guid: d5f51e08ab61a8145b922809195d69a8, type: 3}
+  shotDamage: 10
+  shotSpeed: 10
+  isShootingEnemy: 1
+--- !u!1 &6466644304857276039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7619673830112584218}
+  m_Layer: 0
+  m_Name: shotOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7619673830112584218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466644304857276039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7812660843859246335}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
