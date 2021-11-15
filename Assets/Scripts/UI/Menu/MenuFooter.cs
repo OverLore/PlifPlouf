@@ -96,7 +96,7 @@ public class MenuFooter : MonoBehaviour
         DisableAllCanvas();
         ShopCanvas.gameObject.SetActive(true);
     }
-    public void EnableAchievementsCanvas()
+    public void EnableAchievementsCanvas() 
     {
         DisableAllCanvas();
         achievementsCanvas.gameObject.SetActive(true);
