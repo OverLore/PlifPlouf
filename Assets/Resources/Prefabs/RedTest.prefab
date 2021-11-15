@@ -119,7 +119,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: 1
+  score: 5
   deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
+  shotOrigin: {fileID: 0}
+  enemyBulletPrefab: {fileID: 0}
+  shotDamage: 10
+  shotSpeed: 10
+  isShootingEnemy: 0
 --- !u!58 &-644952730388993367
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -148,7 +154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c879e8ac94d0b540bedb9b33fde4fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDestroyedAtEnd: 1
   paths:
   - {fileID: 0}
   - {fileID: 0}
   speed: 0.2
+  correction: 0

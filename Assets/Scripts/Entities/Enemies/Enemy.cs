@@ -20,8 +20,9 @@ public class Enemy : MonoBehaviour
 
     private void Kill()
     {
-        GameManager.instance.AddScore();
+        GameManager.instance.AddScore((uint)score);
         LevelManager.instance.SpawnCoinAt(transform.position, score);
+        LevelManager.instance.kills++;
         BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
 
         if(gameObject.GetComponent<SplinePathFollow>() != null)
@@ -95,7 +96,7 @@ public class Enemy : MonoBehaviour
     {
         if (PV <= 0)
         {
-            LevelManager.instance.score += score;
+            //LevelManager.instance.score += score;
 
             GameObject go = Instantiate(deathParticles);
             go.transform.position = transform.position;

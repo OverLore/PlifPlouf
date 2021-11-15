@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-enum LevelState
+public enum LevelState
 {
     Starting,
     Waves,
@@ -34,7 +34,7 @@ public class LevelManager : MonoBehaviour
         {
             if (updating)
             {
-                temp += Time.deltaTime * GameManager.instance.timeScale;
+                temp += Time.deltaTime;
 
                 temp = Mathf.Clamp01(temp);
 
@@ -62,16 +62,16 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public int level;
 
-    LevelState state = LevelState.None;
+    public LevelState state = LevelState.None;
 
     public float levelProgress;
 
     public int maxObtainableScore = 0;
 
-    public int score;
-    public int kills;
-    public int coins;
-    public int stars;
+    //public int score;
+    public int kills = 0;
+    public int coins = 0;
+    public int stars = 0;
 
     public AnimatedScore killsScore;
     public AnimatedScore scoreScore;
@@ -125,7 +125,7 @@ public class LevelManager : MonoBehaviour
         
         //if (levelProgress >= 15)
         //debug test level (level will be max 1 minute (even though we use percentage from 0 to 100))
-        if (levelProgress >= 60)
+        if (levelProgress >= 15)
         {
             state = LevelState.BossEnd;
         }
@@ -137,12 +137,15 @@ public class LevelManager : MonoBehaviour
         {
             int i = 0;
 
+            Debug.Log(GameManager.instance.Score);
+            Debug.Log(maxObtainableScore);
+
             starsBarTemp += Time.deltaTime;
             starsBarTemp = Mathf.Clamp01(starsBarTemp);
 
-            starsBarAnim = Mathf.Lerp(0, score, starsBarTemp);
+            starsBarAnim = Mathf.Lerp(0, GameManager.instance.Score, starsBarTemp);
 
-            i = Mathf.FloorToInt(starsBarAnim / (maxObtainableScore * 1.4f) * 3f);
+            i = Mathf.FloorToInt(starsBarAnim / (maxObtainableScore * 1.2f) * 3f);
             i = Mathf.Clamp(i, 0, 3);
 
             if (maxObtainableScore == 0)
@@ -151,7 +154,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                starBar.fillAmount = starsBarAnim / (maxObtainableScore * 1.4f);
+                starBar.fillAmount = starsBarAnim / (maxObtainableScore * 1.2f);
                 starBar.fillAmount = Mathf.Clamp01(starBar.fillAmount);
             }
 
@@ -219,20 +222,20 @@ public class LevelManager : MonoBehaviour
                 break;
             case LevelState.BossEnd:
                 state = LevelState.Scoring;
-                Time.timeScale = 1;
+                GameManager.instance.timeScale = 1;
 
                 scoringCanvas.SetActive(true);
                 panelAnimator.SetTrigger("Pop");
 
-                stars = Mathf.FloorToInt(score / (maxObtainableScore * 1.4f) * 3f);
+                stars = Mathf.FloorToInt(GameManager.instance.Score / (maxObtainableScore * 1.2f) * 3f);
                 stars = Mathf.Clamp(stars, 0, 3);
 
                 killsScore.dest = kills;
-                scoreScore.dest = score;
+                scoreScore.dest = GameManager.instance.Score;
                 coinsScore.dest = coins;
-                gainScore.dest = kills + score / 100 + coins;
+                gainScore.dest = (float)kills + GameManager.instance.Score / 100 + coins;
 
-                LevelDatas.SaveLevelDatas(level, stars, score, kills, coins);
+                LevelDatas.SaveLevelDatas(level, stars, (int)GameManager.instance.Score, kills, coins);
 
                 if (level > GameManager.instance.maxLevelReached)
                 {

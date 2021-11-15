@@ -20,4 +20,5 @@ public class Wave
 
     public List<string> sequences = new List<string>();
     public List<float> percentages = new List<float>();
+    public List<Vector2> offsets = new List<Vector2>();
 }
