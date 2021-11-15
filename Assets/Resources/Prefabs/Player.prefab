@@ -660,6 +660,7 @@ MonoBehaviour:
   shotForce: 6
   shotSpread: 2
   shotOrigin: {fileID: 2851013471097705347}
+  muzzle: {fileID: 2851013471097705347}
   AttackDamageLeft: 0
   AttackSpeedLeft: 0
   ShieldLeft: 0

@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     Transform shotOrigin;
+    public Transform muzzle;
 
     [SerializeField] float AttackDamageLeft = 0;
     [SerializeField] float AttackSpeedLeft = 0;
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
 
     delegate void ShotMethod();
     private Dictionary<ShotType, ShotMethod> shotMethods = new Dictionary<ShotType, ShotMethod>();
+
 
     #endregion
 

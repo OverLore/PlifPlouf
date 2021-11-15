@@ -122,7 +122,10 @@ public class LevelManager : MonoBehaviour
         levelProgress += Time.deltaTime * GameManager.instance.timeScale;
         debugText.text = levelProgress.ToString();
 
-        if (levelProgress >= 15)
+        
+        //if (levelProgress >= 15)
+        //debug test level (level will be max 1 minute (even though we use percentage from 0 to 100))
+        if (levelProgress >= 60)
         {
             state = LevelState.BossEnd;
         }

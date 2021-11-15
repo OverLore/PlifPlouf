@@ -155,7 +155,8 @@ MonoBehaviour:
   shotOrigin: {fileID: 6315681725490691611}
   enemyBulletPrefab: {fileID: 8990634599087928527, guid: d5f51e08ab61a8145b922809195d69a8, type: 3}
   shotDamage: 10
-  shotSpeed: 10
+  shotSpeed: 4
+  isShootingEnemy: 1
 --- !u!58 &3443985168718981813
 CircleCollider2D:
   m_ObjectHideFlags: 0
