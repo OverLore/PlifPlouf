@@ -25,7 +25,11 @@ public class Enemy : MonoBehaviour
         GameManager.instance.AddScore((uint)score);
         LevelManager.instance.SpawnCoinAt(transform.position, score);
         LevelManager.instance.kills++;
-        BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+
+        if (Random.Range(0, 100) < 10)
+        {
+            BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+        }
 
         if(gameObject.GetComponent<SplinePathFollow>() != null)
         {
