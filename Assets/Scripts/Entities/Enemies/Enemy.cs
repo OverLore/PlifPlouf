@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] Transform shotOrigin;
     [SerializeField] GameObject enemyBulletPrefab;
     [SerializeField] float shotDamage = 10.0f;
+    [SerializeField] float collisionDamage = 10.0f;
     [SerializeField] float shotSpeed = 4.0f;
     [SerializeField] bool isShootingEnemy = false;
     [SerializeField] bool isInvincible = false;
@@ -24,7 +25,11 @@ public class Enemy : MonoBehaviour
         GameManager.instance.AddScore((uint)score);
         LevelManager.instance.SpawnCoinAt(transform.position, score);
         LevelManager.instance.kills++;
-        BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+
+        if (Random.Range(0, 100) < 10)
+        {
+            BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+        }
 
         if(gameObject.GetComponent<SplinePathFollow>() != null)
         {
@@ -111,5 +116,13 @@ public class Enemy : MonoBehaviour
         }
 
         UpdateShot();
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Player>().TakeDamage(collisionDamage);
+        }
     }
 }
