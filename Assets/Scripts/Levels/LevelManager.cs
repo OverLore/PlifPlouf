@@ -125,7 +125,7 @@ public class LevelManager : MonoBehaviour
         
         //if (levelProgress >= 15)
         //debug test level (level will be max 1 minute (even though we use percentage from 0 to 100))
-        if (levelProgress >= 15)
+        if (levelProgress >= 60)
         {
             state = LevelState.BossEnd;
         }
