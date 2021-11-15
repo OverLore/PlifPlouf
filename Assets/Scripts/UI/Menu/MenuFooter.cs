@@ -110,6 +110,7 @@ public class MenuFooter : MonoBehaviour
     {
         DisableAllCanvas();
         UpgradeCanvas.gameObject.SetActive(true);
+        //UpgradeManager.Instance.UpdateUI();
     }
     public void EnableSettingsCanvas()
     {
