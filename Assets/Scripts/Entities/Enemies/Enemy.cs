@@ -43,7 +43,10 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        LevelManager.instance.maxObtainableScore += score;
+        if (!isInvincible)
+        {
+            LevelManager.instance.maxObtainableScore += score;
+        }
         //create an offset on each of them (so that enemies
         //won't shoot at the same time)
         shotTimer = Random.Range(0, maxShotTimer / 5.0f);
