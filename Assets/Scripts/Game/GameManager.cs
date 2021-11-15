@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         if (Paused)
         {
             timeScale = Mathf.Lerp(timeScale, .05f, Time.deltaTime * 5f);
-            pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 185 / 255), Time.deltaTime * 5f);
+            pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 185f / 255f), Time.deltaTime * 5f);
         }
         else
         {
