@@ -161,23 +161,26 @@ public class GameManager : MonoBehaviour
 
         if (pauseBack == null)
         {
-            return;
+            pauseBack = GameObject.Find("PauseBack")?.GetComponent<Image>();
         }
 
-        if (Paused)
+        if (pauseBack != null)
         {
-            timeScale = Mathf.Lerp(timeScale, .05f, Time.deltaTime * 5f);
-            pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 185f / 255f), Time.deltaTime * 5f);
-        }
-        else
-        {
-            timeScale = Mathf.Lerp(timeScale, 1f, Time.deltaTime * 5f);
-            pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 0), Time.deltaTime * 5f);
-        }
+            if (Paused)
+            {
+                timeScale = Mathf.Lerp(timeScale, .05f, Time.deltaTime * 5f);
+                pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 185f / 255f), Time.deltaTime * 5f);
+            }
+            else
+            {
+                timeScale = Mathf.Lerp(timeScale, 1f, Time.deltaTime * 5f);
+                pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 0), Time.deltaTime * 5f);
+            }
 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Paused = !Paused;
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Paused = !Paused;
+            }
         }
     }
 

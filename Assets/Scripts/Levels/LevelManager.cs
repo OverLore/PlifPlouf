@@ -137,9 +137,6 @@ public class LevelManager : MonoBehaviour
         {
             int i = 0;
 
-            Debug.Log(GameManager.instance.Score);
-            Debug.Log(maxObtainableScore);
-
             starsBarTemp += Time.deltaTime;
             starsBarTemp = Mathf.Clamp01(starsBarTemp);
 
