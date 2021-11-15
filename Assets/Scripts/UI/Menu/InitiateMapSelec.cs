@@ -18,8 +18,7 @@ public class InitiateMapSelec : MonoBehaviour
 
     public void ButtonLevelEffect(int targetLevel)
     {
-        //target level is 0 when the number on the map is 1
-        GameManager.instance.levelToLoad = targetLevel + 1;
+        GameManager.instance.levelToLoad = targetLevel;
         statpannel.gameObject.SetActive(true);
 
     }

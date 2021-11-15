@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotDamage = 10.0f;
     [SerializeField] float shotSpeed = 4.0f;
     [SerializeField] bool isShootingEnemy = false;
+    [SerializeField] bool isInvincible = false;
     //careful, in start we add a random offset on the shotTimer at start so that each enemy will shoot at a
     //different time but at the same frequency
     float shotTimer = 0.0f;
@@ -50,7 +51,10 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float dmg)
     {
-        PV -= dmg;
+        if (!isInvincible)
+        {
+            PV -= dmg;
+        }
     }
 
     void DoEnemyShot()

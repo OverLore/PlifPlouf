@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7068680760334136517}
   - component: {fileID: -3873350387194283569}
   m_Layer: 0
-  m_Name: EnemyFloor
+  m_Name: E6Test
   m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
