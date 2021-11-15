@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] Canvas lifeCanvas;
     [SerializeField] RectTransform lifeRect;
+    [SerializeField] Text lifeText;
+    [SerializeField] Image lifeFillImage;
     [SerializeField] Image[] lifeIndicatorImages;
     [SerializeField] Text[] lifeIndicatorTexts;
     float lifeIndicatorTime;
@@ -378,6 +380,16 @@ public class Player : MonoBehaviour
         shotMethods[ShotType.Double] = doubleShot;
     }
 
+    private void UpdateLifeText()
+    {
+        lifeText.text = $"{pv}%";
+    }
+
+    private void UpdateLifeFillImage()
+    {
+        lifeFillImage.fillAmount = pv / 100f;
+    }
+
     void UpdateLifeOpacity(bool zero = false)
     {
         foreach (Image img in lifeIndicatorImages)
@@ -445,7 +457,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            lifeIndicatorTime = 1f;
+            TakeDamage(5);
         }
 
         if (LifeIndicatorIsActive || lifeIndicatorTime > 0)
@@ -454,6 +466,9 @@ public class Player : MonoBehaviour
 
             UpdateLifePosition();
             UpdateLifeOpacity();
+
+            UpdateLifeText();
+            UpdateLifeFillImage();
         }
         else
         {
