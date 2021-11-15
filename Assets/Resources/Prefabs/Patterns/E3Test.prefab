@@ -106,6 +106,7 @@ MonoBehaviour:
   shotDamage: 10
   shotSpeed: 10
   isShootingEnemy: 0
+  isInvincible: 1
 --- !u!58 &2885476135971640145
 CircleCollider2D:
   m_ObjectHideFlags: 0
