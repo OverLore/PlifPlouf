@@ -15,109 +15,116 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Application.platform == RuntimePlatform.Android || (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && Input.touchCount != 0)
+        if (LevelManager.instance.state != LevelState.Scoring)
         {
-            if (Input.touchCount > 0)
+            if (Application.platform == RuntimePlatform.Android || (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor) && Input.touchCount != 0)
             {
-                GameManager.instance.Paused = false;
+                if (Input.touchCount > 0)
+                {
+                    GameManager.instance.Paused = false;
 
-                Touch touch = Input.GetTouch(0);
-        
-                if (touch.phase == TouchPhase.Began)
+                    Touch touch = Input.GetTouch(0);
+
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        start = true;
+
+                        dP = Vector2.zero;
+                        lastPos = Vector2.zero;
+
+                        if (Input.touchCount > 1)
+                        {
+                            return;
+                        }
+                    }
+
+                    //if (touch.phase == TouchPhase.Moved)
+                    {
+                        Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y));
+
+                        dP = point - lastPos;
+
+                        if (start)
+                        {
+                            dP = Vector2.zero;
+
+                            start = false;
+                        }
+
+                        transform.position += new Vector3(dP.x, dP.y, 0);
+                        //cameraMovement.targetPos += new Vector2(dP.x, dP.y);
+
+
+                        ClampPlayer();
+
+                        lastPos = point;
+                    }
+
+                    if (touch.phase == TouchPhase.Ended)
+                    {
+                        dP = Vector2.zero;
+
+                        start = true;
+                    }
+                }
+                else
+                {
+                    GameManager.instance.Paused = true;
+                }
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
                 {
                     start = true;
 
                     dP = Vector2.zero;
-                    lastPos = Vector2.zero; 
+                    lastPos = Vector2.zero;
 
                     if (Input.touchCount > 1)
                     {
                         return;
                     }
                 }
-        
-                //if (touch.phase == TouchPhase.Moved)
+
+                if (Input.GetMouseButton(0))
                 {
-                    Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y));
-        
+                    GameManager.instance.Paused = false;
+
+                    Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
+
                     dP = point - lastPos;
-        
+
                     if (start)
                     {
                         dP = Vector2.zero;
-        
+
                         start = false;
                     }
-        
-                    transform.position += new Vector3(dP.x, dP.y, 0); 
+
+                    transform.position += new Vector3(dP.x, dP.y, 0);
                     //cameraMovement.targetPos += new Vector2(dP.x, dP.y);
 
-
                     ClampPlayer();
-        
+
                     lastPos = point;
                 }
-        
-                if (touch.phase == TouchPhase.Ended)
+                else
+                {
+                    GameManager.instance.Paused = true;
+                }
+
+                if (Input.GetMouseButtonUp(0))
                 {
                     dP = Vector2.zero;
-        
+
                     start = true;
                 }
-            }
-            else
-            {
-                GameManager.instance.Paused = true;
             }
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                start = true;
-
-                dP = Vector2.zero;
-                lastPos = Vector2.zero;
-
-                if (Input.touchCount > 1)
-                {
-                    return;
-                }
-            }
-
-            if (Input.GetMouseButton(0))
-            {
-                GameManager.instance.Paused = false;
-
-                Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
-
-                dP = point - lastPos;
-
-                if (start)
-                {
-                    dP = Vector2.zero;
-
-                    start = false;
-                }
-
-                transform.position += new Vector3(dP.x, dP.y, 0);
-                //cameraMovement.targetPos += new Vector2(dP.x, dP.y);
-
-                ClampPlayer();
-
-                lastPos = point;
-            }
-            else
-            {
-                GameManager.instance.Paused = true;
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                dP = Vector2.zero;
-
-                start = true;
-            }
+            GameManager.instance.Paused = false;
         }
     }
 

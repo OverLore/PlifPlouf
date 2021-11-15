@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotDamage = 10.0f;
     [SerializeField] float shotSpeed = 4.0f;
     [SerializeField] bool isShootingEnemy = false;
+    [SerializeField] bool isInvincible = false;
     //careful, in start we add a random offset on the shotTimer at start so that each enemy will shoot at a
     //different time but at the same frequency
     float shotTimer = 0.0f;
@@ -20,8 +21,9 @@ public class Enemy : MonoBehaviour
 
     private void Kill()
     {
-        GameManager.instance.AddScore();
+        GameManager.instance.AddScore((uint)score);
         LevelManager.instance.SpawnCoinAt(transform.position, score);
+        LevelManager.instance.kills++;
         BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
 
         if(gameObject.GetComponent<SplinePathFollow>() != null)
@@ -49,7 +51,10 @@ public class Enemy : MonoBehaviour
 
     public void takeDamage(float dmg)
     {
-        PV -= dmg;
+        if (!isInvincible)
+        {
+            PV -= dmg;
+        }
     }
 
     void DoEnemyShot()
@@ -95,7 +100,7 @@ public class Enemy : MonoBehaviour
     {
         if (PV <= 0)
         {
-            LevelManager.instance.score += score;
+            //LevelManager.instance.score += score;
 
             GameObject go = Instantiate(deathParticles);
             go.transform.position = transform.position;

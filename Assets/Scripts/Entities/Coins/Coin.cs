@@ -36,6 +36,7 @@ public class Coin : MonoBehaviour
         }
 
         GameManager.instance.ChangeMoney(value);
+        LevelManager.instance.coins++;
 
         Destroy(gameObject);
     }

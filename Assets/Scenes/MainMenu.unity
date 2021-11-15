@@ -2487,6 +2487,7 @@ MonoBehaviour:
   MapCanvas: {fileID: 80891139}
   UpgradeCanvas: {fileID: 100530230}
   OptionCanvas: {fileID: 643941498}
+  statpannel: {fileID: 5168653183437225022, guid: 85e3d08318400b544ac7141d69ea8c2d, type: 3}
 --- !u!4 &818573966
 Transform:
   m_ObjectHideFlags: 0

@@ -22,6 +22,12 @@ public class Background : MonoBehaviour
         //disable the children scripts for no reasons (same for parent = null)
         gameObject.transform.DetachChildren();
         //fix by hand (no other solution to enable the scripts)
+
+        if (index + 1 < 0 || index + 1 >= BackgroundManager.instance.backgroundList.Count)
+        {
+            return;
+        }
+
         BackgroundManager.instance.backgroundList[index + 1].GetComponent<Background>().enabled = true;
         BackgroundManager.instance.backgroundList[index + 1].GetComponent<ScrollingSpeed>().enabled = true;
 

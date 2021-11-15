@@ -56,6 +56,7 @@ public class LevelEditor : EditorWindow
         {
             sequence.sequences.Add("");
             sequence.percentages.Add(0);
+            sequence.offsets.Add(Vector2.zero);
         }
         if (GUILayout.Button("Remove"))
         {
@@ -63,6 +64,7 @@ public class LevelEditor : EditorWindow
             {
                 sequence.sequences.RemoveAt(sequence.sequences.Count - 1);
                 sequence.percentages.RemoveAt(sequence.percentages.Count - 1);
+                sequence.offsets.RemoveAt(sequence.offsets.Count - 1);
             }
         }
         if (GUILayout.Button("Clear"))
@@ -71,6 +73,7 @@ public class LevelEditor : EditorWindow
             {
                 sequence.sequences.Clear();
                 sequence.percentages.Clear();
+                sequence.offsets.Clear();
             }
         }
 
@@ -132,6 +135,7 @@ public class LevelEditor : EditorWindow
         {
             sequence.sequences[i] = EditorGUILayout.TextField($"Wave {i}", sequence.sequences[i]);
             sequence.percentages[i] = EditorGUILayout.FloatField($"Invocate at (%)", sequence.percentages[i]);
+            sequence.offsets[i] = EditorGUILayout.Vector2Field($"Offset of (%)", sequence.offsets[i]);
 
             string path = $"Assets/Resources/Waves/{sequence.sequences[i]}";
             

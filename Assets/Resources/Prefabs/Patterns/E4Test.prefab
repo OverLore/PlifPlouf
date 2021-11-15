@@ -100,8 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: 1
-  score: 0
+  score: 30
   deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
+  shotOrigin: {fileID: 0}
+  enemyBulletPrefab: {fileID: 0}
+  shotDamage: 10
+  shotSpeed: 10
+  isShootingEnemy: 0
 --- !u!58 &2885476135971640145
 CircleCollider2D:
   m_ObjectHideFlags: 0

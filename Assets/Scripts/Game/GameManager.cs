@@ -159,6 +159,11 @@ public class GameManager : MonoBehaviour
     {
         UpdateCombo();
 
+        if (pauseBack == null)
+        {
+            return;
+        }
+
         if (Paused)
         {
             timeScale = Mathf.Lerp(timeScale, .05f, Time.deltaTime * 5f);
