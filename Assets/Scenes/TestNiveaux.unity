@@ -481,6 +481,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -507}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &348861878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+  m_PrefabInstance: {fileID: 2851013471993060426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7387041b0df1564d99e225194df01c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &371833803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16908,6 +16919,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 348861878}
+    - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: comboText
       value: 
       objectReference: {fileID: 965066162}
@@ -17627,9 +17642,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 292465483}
     - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: lifeText
+      value: 
+      objectReference: {fileID: 272650082}
+    - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: lifeCanvas
       value: 
       objectReference: {fileID: 1072695118}
+    - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: lifeFillImage
+      value: 
+      objectReference: {fileID: 1243078979}
     - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: playerAnimators.Array.size
       value: 7

@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        lifeIndicatorTime = 1f;
+        lifeIndicatorTime = 2f;
 
         Debug.Log($"Player take {_damage} damage");
         pv -= (int)_damage;
