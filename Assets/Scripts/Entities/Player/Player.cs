@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     float lifeIndicatorTime;
 
     [SerializeField] Animator[] playerAnimators;
+    [SerializeField] SpriteRenderer[] playerSpriteRenders;
 
     public int pv = 100;
 
@@ -74,6 +75,11 @@ public class Player : MonoBehaviour
 
     delegate void ShotMethod();
     private Dictionary<ShotType, ShotMethod> shotMethods = new Dictionary<ShotType, ShotMethod>();
+
+    float invincibilityTimer = 0.0f;
+    [SerializeField] float maxInvincibilityTimer = 1.0f;
+    bool isInvincibilityOn = false;
+    [SerializeField] int invincibilityBlinkNumber = 3;
 
 
     #endregion
@@ -109,19 +115,23 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        if (HasShield)
+        if (!isInvincibilityOn)
         {
-            ShieldLeft = 0;
-            Debug.Log($"Player deflected {_damage} damage");
+            if (HasShield)
+            {
+                ShieldLeft = 0;
+                Debug.Log($"Player deflected {_damage} damage");
 
-            Shield.SetActive(false);
-            return;
+                Shield.SetActive(false);
+                return;
+            }
+
+            lifeIndicatorTime = 2f;
+
+            Debug.Log($"Player take {_damage} damage");
+            pv -= (int)_damage;
+            SetInvincibilityOn();
         }
-
-        lifeIndicatorTime = 2f;
-
-        Debug.Log($"Player take {_damage} damage");
-        pv -= (int)_damage;
     }
 
     #endregion
@@ -437,6 +447,39 @@ public class Player : MonoBehaviour
         }
     }
 
+    void SetInvincibilityOn()
+    {
+        isInvincibilityOn = true;
+        invincibilityTimer = 0.0f;
+    }
+
+    void SetInvincibilityOff()
+    {
+        isInvincibilityOn = false;
+    }
+
+    void UpdateInvincibilityTimer()
+    {
+        if (isInvincibilityOn)
+        {
+            invincibilityTimer += Time.deltaTime * GameManager.instance.timeScale;
+            Debug.Log(invincibilityTimer);
+            //return a value from 0 to 1 (thus there is 2 blink during the whole invincibility,
+            //thus we multiply by invincibilityBlinkNumber / 2.0f so that we get invincibilityBlinkNumber number of blink)
+            float alphaValue = Mathf.Abs(Mathf.Cos((invincibilityBlinkNumber / 2.0f) * 2 * Mathf.PI * invincibilityTimer / maxInvincibilityTimer ));
+            foreach (SpriteRenderer sr in playerSpriteRenders)
+            {
+                Color currentColor = sr.color;
+                currentColor.a = alphaValue;
+                sr.color = currentColor;
+            }
+            if (invincibilityTimer >= maxInvincibilityTimer)
+            {
+                SetInvincibilityOff();
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -476,6 +519,8 @@ public class Player : MonoBehaviour
         {
             UpdateLifeOpacity(true);
         }
+
+        UpdateInvincibilityTimer();
 
         // get last position
         lastPos = this.gameObject.transform.position;

@@ -684,9 +684,19 @@ MonoBehaviour:
   - {fileID: 2851013472903413621}
   - {fileID: 2851013471054693398}
   - {fileID: 2851013471697887694}
+  playerSpriteRenders:
+  - {fileID: 2851013471524853498}
+  - {fileID: 2851013472222685617}
+  - {fileID: 2851013471856563355}
+  - {fileID: 2851013471987661227}
+  - {fileID: 2851013472903413514}
+  - {fileID: 2851013471054693399}
+  - {fileID: 2851013471697887695}
   pv: 100
   delay: 0.4
   shotType: 0
+  maxInvincibilityTimer: 1
+  invincibilityBlinkNumber: 3
 --- !u!114 &2851013472188256902
 MonoBehaviour:
   m_ObjectHideFlags: 0
