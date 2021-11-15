@@ -32,7 +32,7 @@ public class MenuFooter : MonoBehaviour
     [SerializeField] Canvas UpgradeCanvas;
     [SerializeField] Canvas OptionCanvas;
 
-
+    [SerializeField] GameObject statpannel;
     private void Start()
     {
         Tabs.Add(MenuTab.Shop, ButtonsList[0].GetComponent<FooterButtonSizeController>());
@@ -83,6 +83,8 @@ public class MenuFooter : MonoBehaviour
 
     private void DisableAllCanvas()
     {
+
+        statpannel.gameObject.SetActive(false);
         ShopCanvas.gameObject.SetActive(false);
         achievementsCanvas.gameObject.SetActive(false);
         MapCanvas.gameObject.SetActive(false);
