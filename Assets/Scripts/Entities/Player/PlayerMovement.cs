@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.touchCount > 0)
             {
+                GameManager.instance.Paused = false;
+
                 Touch touch = Input.GetTouch(0);
         
                 if (touch.phase == TouchPhase.Began)
@@ -63,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
                     start = true;
                 }
             }
+            else
+            {
+                GameManager.instance.Paused = true;
+            }
         }
         else
         {
@@ -81,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
+                GameManager.instance.Paused = false;
+
                 Vector3 point = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y));
 
                 dP = point - lastPos;
@@ -98,6 +106,10 @@ public class PlayerMovement : MonoBehaviour
                 ClampPlayer();
 
                 lastPos = point;
+            }
+            else
+            {
+                GameManager.instance.Paused = true;
             }
 
             if (Input.GetMouseButtonUp(0))

@@ -46,7 +46,7 @@ public class SplinePathFollow : MonoBehaviour
     
         while (tParam < 1)
         {
-            tParam += Time.deltaTime * speed;
+            tParam += Time.deltaTime * GameManager.instance.timeScale * speed;
 
             position = Mathf.Pow(1 - tParam, 3) * p0 +
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +

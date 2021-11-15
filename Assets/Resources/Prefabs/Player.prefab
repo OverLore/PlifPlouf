@@ -660,12 +660,31 @@ MonoBehaviour:
   shotForce: 6
   shotSpread: 2
   shotOrigin: {fileID: 2851013471097705347}
+  muzzle: {fileID: 2851013471097705347}
   AttackDamageLeft: 0
   AttackSpeedLeft: 0
   ShieldLeft: 0
   HorizontalShotLeft: 0
   NumberShotLeft: 0
   damage: 1
+  lifeCanvas: {fileID: 0}
+  lifeRect: {fileID: 0}
+  lifeText: {fileID: 0}
+  lifeFillImage: {fileID: 0}
+  lifeIndicatorImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  lifeIndicatorTexts:
+  - {fileID: 0}
+  playerAnimators:
+  - {fileID: 2851013471524853477}
+  - {fileID: 2851013472222685616}
+  - {fileID: 2851013471856563354}
+  - {fileID: 2851013471987661226}
+  - {fileID: 2851013472903413621}
+  - {fileID: 2851013471054693398}
+  - {fileID: 2851013471697887694}
+  pv: 100
   delay: 0.4
   shotType: 0
 --- !u!114 &2851013472188256902

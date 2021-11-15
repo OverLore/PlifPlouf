@@ -21,7 +21,7 @@ public class EelMove : MonoBehaviour
     {
         if (actualBone < boneObject.Length)
         {
-            timerSpawn += Time.deltaTime;
+            timerSpawn += Time.deltaTime * GameManager.instance.timeScale;
             if (timerSpawn >= timerMax)
             {
                 boneObject[actualBone].AddComponent<SplinePathFollow>();

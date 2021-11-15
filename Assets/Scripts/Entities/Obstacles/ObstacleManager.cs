@@ -65,7 +65,7 @@ public class ObstacleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        timer -= Time.deltaTime * GameManager.instance.timeScale;
         if(timer <= 0)
         {
             SpawnObstacles();

@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     public float damage;
 
     Rigidbody2D rb;
     Vector2 vel;
 
-    // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ennemy")
+        if (collision.gameObject.tag == "Player")
         {
-            //Destroy(collision.gameObject);
-            
-            collision.gameObject.GetComponent<Enemy>().takeDamage(damage);
+            collision.gameObject.GetComponent<Player>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }

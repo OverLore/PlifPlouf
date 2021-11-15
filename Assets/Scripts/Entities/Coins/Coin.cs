@@ -25,7 +25,7 @@ public class Coin : MonoBehaviour
     private void Update()
     {
         glowRenderer.color = new Color(1, 1, 1, .3f + Mathf.Abs(Mathf.Sin(Time.time + rnd)));
-        glowRenderer.transform.Rotate(new Vector3(0, 0, rnd * 20 * Time.deltaTime));
+        glowRenderer.transform.Rotate(new Vector3(0, 0, rnd * 20 * Time.deltaTime * GameManager.instance.timeScale));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
