@@ -135,12 +135,3 @@ MonoBehaviour:
     canMultiplePlay: 1
     source: {fileID: 0}
     playInScene: 0
-  - name: UIButtonPreMenu
-    clip: {fileID: 8300000, guid: 9b4f25b1e62810c46a9ea5eab688f7a3, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    playAtBeginning: 0
-    canMultiplePlay: 0
-    source: {fileID: 0}
-    playInScene: 0
