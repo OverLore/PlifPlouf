@@ -64,4 +64,15 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   comboText: {fileID: 0}
   maxLevelReached: -1
-  colorByLayers: []
+  colorByLayers:
+  - {r: 0.21226418, g: 0.30245864, b: 1, a: 1}
+  - {r: 0.33490568, g: 0.41101113, b: 1, a: 1}
+  - {r: 0.6745283, g: 0.71102977, b: 1, a: 1}
+  colorFadeByLayersFrom:
+  - {r: 0.2117647, g: 0.25701633, b: 1, a: 1}
+  - {r: 0.33333337, g: 0.37150052, b: 1, a: 1}
+  - {r: 0.6745098, g: 0.68116254, b: 1, a: 1}
+  colorFadeByLayersTo:
+  - {r: 0.2117647, g: 0.4114647, b: 1, a: 1}
+  - {r: 0.33333337, g: 0.5332427, b: 1, a: 1}
+  - {r: 0.6745098, g: 0.754784, b: 1, a: 1}
