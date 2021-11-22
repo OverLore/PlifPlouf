@@ -7,7 +7,7 @@ public class SplinePathFollow : MonoBehaviour
     public bool isDestroyedAtEnd = true;
     public Transform[] paths;
 
-    int currentPath;
+    public int currentPath;
 
     float tParam;
     public float speed = .5f;
