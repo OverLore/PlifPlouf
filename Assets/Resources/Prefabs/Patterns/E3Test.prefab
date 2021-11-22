@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 5914229316390812949}
   - component: {fileID: 2885476135971640145}
   - component: {fileID: 7934508361808918109}
+  - component: {fileID: 6054793785813219737}
   m_Layer: 0
   m_Name: E3Test
   m_TagString: Ennemy
@@ -207,6 +208,9 @@ MonoBehaviour:
   shotSpeed: 10
   isShootingEnemy: 0
   isInvincible: 1
+  hasLifebar: 0
+  lifebarPrefab: {fileID: 0}
+  lifebarOffset: {x: 0, y: 0}
 --- !u!58 &2885476135971640145
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -241,3 +245,17 @@ MonoBehaviour:
   - {fileID: 0}
   speed: 0.2
   correction: 0
+--- !u!114 &6054793785813219737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8128859322293563925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dec75abcc11adb438b7b5e03a72c9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer: 2
+  spr: {fileID: 9002862317789797685}

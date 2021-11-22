@@ -54,7 +54,8 @@ MonoBehaviour:
   lives: 5
   score: 0
   scoreAdded: 10
-  player: {fileID: 0}
+  mplayer: {fileID: 0}
+  mlifebarCanvas: {fileID: 0}
   comboFactor: 1
   comboTime: 2.5
   comboAngleShake: 7.5
@@ -63,3 +64,4 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   comboText: {fileID: 0}
   maxLevelReached: -1
+  colorByLayers: []

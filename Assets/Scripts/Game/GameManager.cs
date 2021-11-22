@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour
 
     public int maxLevelReached = -1;
 
+    [Space(10), Header("Colors")]
+    public Color[] colorByLayers;
+    public Color[] colorFadeByLayersFrom;
+    public Color[] colorFadeByLayersTo;
+
     void LoadStats()
     {
         if (PlayerPrefs.HasKey("Money"))
@@ -182,6 +187,11 @@ public class GameManager : MonoBehaviour
             {
                 Paused = !Paused;
             }
+        }
+
+        for (int i = 0; i < colorByLayers.Length; i++)
+        {
+            colorByLayers[i] = Color.Lerp(colorFadeByLayersFrom[i], colorFadeByLayersTo[i], Mathf.PerlinNoise(Time.time, 0));
         }
     }
 

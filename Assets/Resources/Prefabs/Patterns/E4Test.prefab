@@ -131,7 +131,8 @@ GameObject:
   - component: {fileID: 5914229316390812949}
   - component: {fileID: 7934508361808918109}
   - component: {fileID: 519034010283476912}
-  - component: {fileID: -8918452661619912773}
+  - component: {fileID: 3174215234273877202}
+  - component: {fileID: 1939114021423507740}
   m_Layer: 0
   m_Name: E4Test
   m_TagString: Ennemy
@@ -268,8 +269,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &-8918452661619912773
-BoxCollider2D:
+--- !u!60 &3174215234273877202
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -278,10 +279,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.18253589, y: -0.10647929}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -291,6 +292,25 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 13.527176, y: 2.535761}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.3480825, y: 1.0714716}
+      - {x: -6.5459065, y: -0.041058064}
+      - {x: -1.0273762, y: -1.2541466}
+      - {x: 5.1116815, y: -1.3421314}
+      - {x: 7.013807, y: 0.008260117}
+      - {x: 4.968112, y: 1.3048681}
+--- !u!114 &1939114021423507740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8128859322293563925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dec75abcc11adb438b7b5e03a72c9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer: 2
+  spr: {fileID: 9002862317789797685}

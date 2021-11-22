@@ -7,10 +7,16 @@ public class Background : MonoBehaviour
     public bool hasCreatedNext = false;
     public int index;
     public ScrollingSpeed scrollingComponent;
+    public ColorByDepth cbd;
 
     void Start()
     {
         scrollingComponent = gameObject.GetComponent<ScrollingSpeed>();
+    }
+
+    private void Update()
+    {
+        cbd.enabled = true;
     }
 
     private void OnDestroy()

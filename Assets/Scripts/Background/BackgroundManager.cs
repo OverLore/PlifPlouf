@@ -12,6 +12,12 @@ public class BackgroundManager : MonoBehaviour
     private CameraManager cameraManager;
     [SerializeField] CinemachineConfiner cinemachineConfiner;
 
+    [Space(10), Header("Decors")]
+    [SerializeField] float minXOffset;
+    [SerializeField] float maxXOffset;
+    GameObject[] decors;
+    float nextDecorIn = 0f;
+
     private void Awake()
     {
         if(instance == null)
@@ -23,6 +29,8 @@ public class BackgroundManager : MonoBehaviour
             if (Application.isPlaying)
                 Destroy(gameObject);
         }
+
+        decors = Resources.LoadAll<GameObject>("Prefabs/Decor");
     }
 
     bool IsLowerThanTop(Background _go)
@@ -104,6 +112,21 @@ public class BackgroundManager : MonoBehaviour
                 AddBackgroundInList(i + 1);
                 break;
             }
+        }
+
+        nextDecorIn -= Time.deltaTime * GameManager.instance.timeScale;
+
+        if (nextDecorIn < 0)
+        {
+            int nbToSpawn = Random.Range(1, 2);
+
+            for (int i = 0; i < nbToSpawn; i++)
+            {
+                GameObject go = Instantiate(decors[Random.Range(0, decors.Length)]);
+                go.transform.position = new Vector3(Random.Range(minXOffset, maxXOffset), 6, 0);
+            }
+
+            nextDecorIn = Random.Range(.4f, .8f);
         }
     }
 }

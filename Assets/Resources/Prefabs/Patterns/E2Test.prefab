@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 8524301781748323468}
   - component: {fileID: 3484144950958813568}
   - component: {fileID: -4880107699961481763}
+  - component: {fileID: 3101821039126169110}
   m_Layer: 0
   m_Name: E2Test
   m_TagString: Ennemy
@@ -387,6 +388,23 @@ MonoBehaviour:
   shotSpeed: 4
   isShootingEnemy: 1
   isInvincible: 0
+  hasLifebar: 0
+  lifebarPrefab: {fileID: 0}
+  lifebarOffset: {x: 0, y: 0}
+--- !u!114 &3101821039126169110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353106339857200584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dec75abcc11adb438b7b5e03a72c9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer: 2
+  spr: {fileID: 2501667796874566376}
 --- !u!1 &3482849654102721622
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,6 +416,7 @@ GameObject:
   - component: {fileID: 739199879805038725}
   - component: {fileID: 5875323481845639616}
   - component: {fileID: 3088699393687405421}
+  - component: {fileID: 26416460740385575}
   m_Layer: 0
   m_Name: ColorSecond
   m_TagString: Untagged
@@ -490,6 +509,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &26416460740385575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482849654102721622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dec75abcc11adb438b7b5e03a72c9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer: 2
+  spr: {fileID: 5875323481845639616}
 --- !u!1 &6466644304857276039
 GameObject:
   m_ObjectHideFlags: 0

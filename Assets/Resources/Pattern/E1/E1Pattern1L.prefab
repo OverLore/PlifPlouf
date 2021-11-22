@@ -431,6 +431,18 @@ PrefabInstance:
       propertyPath: paths.Array.data[1]
       value: 
       objectReference: {fileID: 7857704766145631802}
+    - target: {fileID: 2591672316007441613, guid: c508c5e916d384f4d8726c61d6c4f2ba, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591672316007441613, guid: c508c5e916d384f4d8726c61d6c4f2ba, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591672316007441613, guid: c508c5e916d384f4d8726c61d6c4f2ba, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3443122678769388525, guid: c508c5e916d384f4d8726c61d6c4f2ba, type: 3}
       propertyPath: m_Name
       value: RedTest
