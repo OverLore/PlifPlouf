@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2883328230293310198}
   - component: {fileID: 8122768133378791145}
   - component: {fileID: 833471493985511771}
+  - component: {fileID: 6027867849435900973}
   m_Layer: 0
   m_Name: E4Test
   m_TagString: Ennemy
@@ -103,6 +104,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6027867849435900973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556711891199031036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579829ad385e2f74e977afe52994f9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -0.65, y: -0.55, z: 0}
+  parent: {fileID: 8128859322293563925}
 --- !u!1 &8128859322293563925
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +228,9 @@ MonoBehaviour:
   shotSpeed: 10
   isShootingEnemy: 0
   isInvincible: 1
+  hasLifebar: 0
+  lifebarPrefab: {fileID: 0}
+  lifebarOffset: {x: 0, y: 0}
 --- !u!114 &7934508361808918109
 MonoBehaviour:
   m_ObjectHideFlags: 0

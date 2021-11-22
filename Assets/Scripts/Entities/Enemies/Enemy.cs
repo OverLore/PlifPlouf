@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public float PV = 1;
+    float maxPV;
 
     public int score;
 
@@ -15,6 +17,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotSpeed = 4.0f;
     [SerializeField] bool isShootingEnemy = false;
     [SerializeField] bool isInvincible = false;
+    [SerializeField] bool hasLifebar = false;
+    [SerializeField] GameObject lifebarPrefab;
+    [SerializeField] Vector2 lifebarOffset;
+    GameObject lifebar;
+    Image lifebarImg;
     //careful, in start we add a random offset on the shotTimer at start so that each enemy will shoot at a
     //different time but at the same frequency
     float shotTimer = 0.0f;
@@ -22,6 +29,13 @@ public class Enemy : MonoBehaviour
 
     private void Kill()
     {
+        if (isInvincible)
+        {
+            return;
+        }
+
+        DestroyLifebar();
+
         GameManager.instance.AddScore((uint)score);
         LevelManager.instance.SpawnCoinAt(transform.position, score);
         LevelManager.instance.kills++;
@@ -41,6 +55,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void SpawnLifebar()
+    {
+        lifebar = Instantiate(lifebarPrefab, GameManager.instance.lifebarCanvas.transform);
+        lifebarImg = lifebar.transform.Find("Bar").GetComponent<Image>();
+    }
+
+    void UpdateLifebar()
+    {
+        RectTransform CanvasRect = GameManager.instance.lifebarCanvas.GetComponent<RectTransform>();
+
+        Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(transform.position);
+        Vector2 WorldObject_ScreenPosition = new Vector2(
+        ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
+        ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
+
+        lifebar.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition + lifebarOffset;
+
+        lifebarImg.fillAmount = PV / maxPV;
+    }
+
+    void DestroyLifebar()
+    {
+        Destroy(lifebar);
+    }
+
     private void Start()
     {
         LevelManager.instance.maxObtainableScore += score;
@@ -48,6 +87,13 @@ public class Enemy : MonoBehaviour
         //create an offset on each of them (so that enemies
         //won't shoot at the same time)
         shotTimer = Random.Range(0, maxShotTimer / 5.0f);
+
+        maxPV = PV;
+
+        if (hasLifebar)
+        {
+            SpawnLifebar();
+        }
     }
 
     public void EndAnim()
@@ -105,7 +151,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (PV <= 0)
+        if (PV <= 0 && !isInvincible)
         {
             //LevelManager.instance.score += score;
 
@@ -115,6 +161,11 @@ public class Enemy : MonoBehaviour
             Destroy(go, 1f);
 
             Kill();
+        }
+
+        if (hasLifebar)
+        {
+            UpdateLifebar();
         }
 
         UpdateShot();

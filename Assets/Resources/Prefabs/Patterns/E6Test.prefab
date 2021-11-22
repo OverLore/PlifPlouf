@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9127c470b393e47a5f76239be4478a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: 2
+  PV: 15
   score: 10
   deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
   shotOrigin: {fileID: 1055393398564842644}
@@ -413,6 +413,9 @@ MonoBehaviour:
   shotSpeed: 4
   isShootingEnemy: 1
   isInvincible: 0
+  hasLifebar: 1
+  lifebarPrefab: {fileID: 5676310634606938104, guid: cdb3c464d827a224b8da7b2a8858b107, type: 3}
+  lifebarOffset: {x: 0, y: 80}
 --- !u!58 &7068680760334136517
 CircleCollider2D:
   m_ObjectHideFlags: 0
