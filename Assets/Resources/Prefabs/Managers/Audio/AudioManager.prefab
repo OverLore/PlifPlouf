@@ -51,8 +51,7 @@ MonoBehaviour:
     loop: 1
     playAtBeginning: 1
     source: {fileID: 0}
-    playInMenu: 1
-    playInGame: 0
+    playInScene: 0
   - name: MusicGame
     clip: {fileID: 8300000, guid: 7a013a71cdc796d4685059bfca673ddd, type: 3}
     volume: 1
@@ -60,8 +59,7 @@ MonoBehaviour:
     loop: 1
     playAtBeginning: 1
     source: {fileID: 0}
-    playInMenu: 0
-    playInGame: 1
+    playInScene: 1
   - name: MeduseTir
     clip: {fileID: 8300000, guid: 581aad3247e8b9f468586da15758c329, type: 3}
     volume: 1
@@ -69,6 +67,5 @@ MonoBehaviour:
     loop: 0
     playAtBeginning: 0
     source: {fileID: 0}
-    playInMenu: 0
-    playInGame: 1
+    playInScene: 1
   sceneType: 0

@@ -22,7 +22,6 @@ public class Sound
     public AudioSource source;
 
     //non sound.source variables
-    public bool playInMenu = false;
-    public bool playInGame = false;
+    public AudioManagerSceneType playInScene;
 
 }

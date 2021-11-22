@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public enum AudioManagerSceneType
 {
     Menu,
@@ -18,6 +19,9 @@ public class AudioManager : MonoBehaviour
     public AudioManagerSceneType sceneType = AudioManagerSceneType.Menu;
 
     #region public
+    //add additional scenes here if we have a real scene transition in game
+    //(if you just want sounds to play in your new scene, simply add the audioManager
+    //and set the sceneType parameter to the corresponding type of your scene)
     //should only be played in sceneLoader.LoadScene
     public void LoadSoundsFromSceneName(string sceneString)
     {
@@ -130,7 +134,7 @@ public class AudioManager : MonoBehaviour
         {
             if (_sound.playAtBeginning && !_sound.source.isPlaying)
             {
-                Debug.Log("play sound : " + _sound.name);
+                //Debug.Log("play sound : " + _sound.name);
                 _sound.source.Play();
             }
         }
@@ -138,7 +142,7 @@ public class AudioManager : MonoBehaviour
         {
             if (_sound.source.isPlaying)
             {
-                Debug.Log("stop sound : " + _sound.name);
+                //Debug.Log("stop sound : " + _sound.name);
                 _sound.source.Stop();
             }
         }
@@ -149,7 +153,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            SwitchSound(sound, sound.playInMenu);
+            SwitchSound(sound, sound.playInScene == AudioManagerSceneType.Menu);
         }
     }
 
@@ -158,7 +162,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound sound in sounds)
         {
-            SwitchSound(sound, sound.playInGame);
+            SwitchSound(sound, sound.playInScene == AudioManagerSceneType.Game);
         }
     }
 
