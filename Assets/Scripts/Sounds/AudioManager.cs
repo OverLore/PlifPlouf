@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
         Sound currentSound = GetSoundByName(_name);
         if (currentSound == null)
         {
-            Debug.LogWarning("sound : " + _name + "couldn't be found");
+            Debug.LogError("sound : " + _name + " couldn't be found");
             return;
         }
 
