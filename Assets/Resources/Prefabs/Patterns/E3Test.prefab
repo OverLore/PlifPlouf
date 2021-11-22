@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5ed510d3f87dc7d4096979f50e398384, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c985b787eeb420d43b268dacc48886b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,11 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: 1
-  score: 10
+  score: 0
   deathParticles: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
   shotOrigin: {fileID: 0}
   enemyBulletPrefab: {fileID: 0}
   shotDamage: 10
+  collisionDamage: 10
   shotSpeed: 10
   isShootingEnemy: 0
   isInvincible: 1

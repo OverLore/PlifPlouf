@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 495d14140c332ed4a98db7b8b9e886b1, type: 2}
+  - {fileID: 2100000, guid: 3068522bc45030842afbad7c49724738, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6576950343355249700, guid: 59e97525541fd5a49a07611b79f2d675, type: 3}
+  m_Sprite: {fileID: -4441954925777089144, guid: 4773d1aac800fb74bbb17873d77b2ac7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   shotOrigin: {fileID: 0}
   enemyBulletPrefab: {fileID: 0}
   shotDamage: 10
+  collisionDamage: 10
   shotSpeed: 10
   isShootingEnemy: 0
   isInvincible: 1
@@ -136,7 +137,7 @@ Animator:
   m_GameObject: {fileID: 8128859322293563925}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 72cf32180a819e94da037d7429d96860, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2e54dd755444f824cbf684c265a66c8f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -162,7 +163,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.17, y: 5}
+    oldSize: {x: 15.003663, y: 5}
     newSize: {x: 3.75, y: 3.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

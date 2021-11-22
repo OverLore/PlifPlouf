@@ -57,7 +57,8 @@ Material:
     - Threshold: 0.2
     - _EnableExternalAlpha: 0
     m_Colors:
-    - KeyColor: {r: 0.08627451, g: 0.8588236, b: 0.050980397, a: 0}
+    - Backcolor: {r: 1, g: 1, b: 1, a: 1}
+    - KeyColor: {r: 0.08235294, g: 0.8588236, b: 0.050980397, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
