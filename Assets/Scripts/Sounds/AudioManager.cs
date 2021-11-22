@@ -49,7 +49,16 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("sound : " + _name + "couldn't be found");
             return;
         }
-        currentSound.source.Play();
+
+        if (currentSound.canMultiplePlay)
+        {
+            //Debug.Log("play multiple");
+            currentSound.source.PlayOneShot(currentSound.source.clip);
+        }
+        else
+        {
+            currentSound.source.Play();
+        }
     }
 
     public void PauseSound(string _name)
@@ -135,7 +144,15 @@ public class AudioManager : MonoBehaviour
             if (_sound.playAtBeginning && !_sound.source.isPlaying)
             {
                 //Debug.Log("play sound : " + _sound.name);
-                _sound.source.Play();
+                if (_sound.canMultiplePlay)
+                {
+                    //Debug.Log("play multiple at start");
+                    _sound.source.PlayOneShot(_sound.source.clip);
+                }
+                else
+                {
+                    _sound.source.Play();
+                }
             }
         }
         else

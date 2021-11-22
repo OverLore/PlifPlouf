@@ -17,6 +17,7 @@ public class Sound
 
     public bool loop = false;
     public bool playAtBeginning = false;
+    public bool canMultiplePlay = false;
 
     [HideInInspector]
     public AudioSource source;

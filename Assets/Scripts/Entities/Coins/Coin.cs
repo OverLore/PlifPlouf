@@ -37,6 +37,7 @@ public class Coin : MonoBehaviour
 
         GameManager.instance.ChangeMoney(value);
         LevelManager.instance.coins++;
+        AudioManager.Instance.PlaySound("PickUpCoin");
 
         Destroy(gameObject);
     }

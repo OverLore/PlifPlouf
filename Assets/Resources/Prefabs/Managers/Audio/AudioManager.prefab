@@ -51,6 +51,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     playAtBeginning: 1
+    canMultiplePlay: 0
     source: {fileID: 0}
     playInScene: 0
   - name: MusicGame
@@ -59,6 +60,7 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     playAtBeginning: 1
+    canMultiplePlay: 0
     source: {fileID: 0}
     playInScene: 1
   - name: MeduseTir
@@ -67,6 +69,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playAtBeginning: 0
+    canMultiplePlay: 1
     source: {fileID: 0}
     playInScene: 1
   - name: TirEnnemi
@@ -75,5 +78,42 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     playAtBeginning: 0
+    canMultiplePlay: 1
+    source: {fileID: 0}
+    playInScene: 1
+  - name: MeduseBubblePop
+    clip: {fileID: 8300000, guid: a9a99472d1152a6478428b0e599417b5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    source: {fileID: 0}
+    playInScene: 1
+  - name: MeduseGetHit
+    clip: {fileID: 8300000, guid: 07233dfe97fb5d146a366cf3e3a11137, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 0
+    source: {fileID: 0}
+    playInScene: 1
+  - name: MeduseGetHitShield
+    clip: {fileID: 8300000, guid: c25a7a832cc469a4c87368f2de58e378, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 0
+    source: {fileID: 0}
+    playInScene: 1
+  - name: PickUpCoin
+    clip: {fileID: 8300000, guid: 8f56f93ff22f6654192f12c10b56cdde, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
     source: {fileID: 0}
     playInScene: 1

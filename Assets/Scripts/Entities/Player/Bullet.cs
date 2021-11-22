@@ -9,6 +9,15 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
     Vector2 vel;
 
+    void DestroyBullet(bool _playDestroySound)
+    {
+        if (_playDestroySound)
+        {
+            AudioManager.Instance.PlaySound("MeduseBubblePop");
+        }
+        Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -17,7 +26,7 @@ public class Bullet : MonoBehaviour
             //Destroy(collision.gameObject);
             
             collision.gameObject.GetComponent<Enemy>().takeDamage(damage);
-            Destroy(gameObject);
+            DestroyBullet(true);
         }
     }
     bool CheckIsInScreen()
@@ -52,7 +61,7 @@ public class Bullet : MonoBehaviour
 
         if (!CheckIsInScreen())
         {
-            Destroy(gameObject);
+            DestroyBullet(false);
         }
     }
 }
