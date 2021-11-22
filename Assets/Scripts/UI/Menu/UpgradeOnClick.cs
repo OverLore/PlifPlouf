@@ -25,6 +25,12 @@ public class UpgradeOnClick : MonoBehaviour
         
     }
 
+    public void DisableIsShown()
+    {
+        transform.SetAsLastSibling();
+        GetComponent<Animator>().SetBool("IsShown", false);
+    }
+
     public void OnClickEvent()
     {
         UpgradeManager.Instance.OnClick(this.transform.parent.gameObject, ID);
