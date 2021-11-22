@@ -13,10 +13,10 @@ public enum AudioManagerSceneType
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioManagerSceneType sceneType = AudioManagerSceneType.Menu;
     public Sound[] sounds;
     private static AudioManager instance;
     public static AudioManager Instance { get { return instance; } }
-    public AudioManagerSceneType sceneType = AudioManagerSceneType.Menu;
 
     #region public
     //add additional scenes here if we have a real scene transition in game
