@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1598190744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631995175999535298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579829ad385e2f74e977afe52994f9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -0.65, y: -0.55, z: 0}
+  parent: {fileID: 2851013472188256896}
 --- !u!1 &2851013471054693392
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +943,7 @@ GameObject:
   - component: {fileID: 6173260281381078402}
   - component: {fileID: 1108672235389515185}
   - component: {fileID: 2379647253081941606}
+  - component: {fileID: 2006937584}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -1021,6 +1036,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2006937584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593167727067990553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579829ad385e2f74e977afe52994f9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -0.65, y: -0.55, z: 0}
+  parent: {fileID: 2851013472188256896}
 --- !u!1001 &6008066271283313702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1181,3 +1210,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c1e5a2dfecd4b8449cbd425180cb294, type: 3}
+--- !u!1 &631995175999535298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8426276497859625257, guid: 3c1e5a2dfecd4b8449cbd425180cb294, type: 3}
+  m_PrefabInstance: {fileID: 8950175931848407531}
+  m_PrefabAsset: {fileID: 0}
