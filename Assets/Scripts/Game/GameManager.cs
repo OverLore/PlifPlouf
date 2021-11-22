@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player mplayer;
     public Player player { set { mplayer = value; } get { return GetPlayer(); } }
 
+    [SerializeField] Canvas mlifebarCanvas;
+    public Canvas lifebarCanvas { get { return GetLifebarCanvas(); } }
+
     // combo
     [Space(10), Header("Combo")]
     [SerializeField] private double comboFactor = 1.0;
@@ -193,6 +196,16 @@ public class GameManager : MonoBehaviour
         }
 
         return mplayer;
+    }
+
+    public Canvas GetLifebarCanvas()
+    {
+        if (mlifebarCanvas == null)
+        {
+            mlifebarCanvas = GameObject.Find("LifebarCanvas")?.GetComponent<Canvas>();
+        }
+
+        return mlifebarCanvas;
     }
 
     public void ChangeMaxLevelReached(int max)

@@ -123,8 +123,13 @@ public class Player : MonoBehaviour
                 Debug.Log($"Player deflected {_damage} damage");
 
                 Shield.SetActive(false);
+                AudioManager.Instance.PlaySound("MeduseGetHitShield");
                 return;
             }
+            else
+            {
+                AudioManager.Instance.PlaySound("MeduseGetHit");
+            }    
 
             lifeIndicatorTime = 2f;
 
@@ -378,6 +383,7 @@ public class Player : MonoBehaviour
 
             // call the current shot
             shotMethods[shotType]();
+            AudioManager.Instance.PlaySound("MeduseTir");
         }
     }
 
@@ -463,7 +469,7 @@ public class Player : MonoBehaviour
         if (isInvincibilityOn)
         {
             invincibilityTimer += Time.deltaTime * GameManager.instance.timeScale;
-            Debug.Log(invincibilityTimer);
+            //Debug.Log(invincibilityTimer);
             //return a value from 0 to 1 (thus there is 2 blink during the whole invincibility,
             //thus we multiply by invincibilityBlinkNumber / 2.0f so that we get invincibilityBlinkNumber number of blink)
             float alphaValue = Mathf.Abs(Mathf.Cos((invincibilityBlinkNumber / 2.0f) * 2 * Mathf.PI * invincibilityTimer / maxInvincibilityTimer ));
