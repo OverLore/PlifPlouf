@@ -31,6 +31,7 @@ public class BoosterObject : MonoBehaviour
         }
 
         booster.PickUpEvent.Invoke();
+        AudioManager.Instance.PlaySound("PickUpBonus");
 
         Destroy(gameObject);
     }

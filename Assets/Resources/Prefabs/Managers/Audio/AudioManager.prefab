@@ -73,7 +73,7 @@ MonoBehaviour:
     source: {fileID: 0}
     playInScene: 1
   - name: TirEnnemi
-    clip: {fileID: 8300000, guid: 0a8e025e5b4a18f4196e67108225ce97, type: 3}
+    clip: {fileID: 8300000, guid: 82783b42d732a8d45851a6c615fb11f1, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -117,3 +117,21 @@ MonoBehaviour:
     canMultiplePlay: 1
     source: {fileID: 0}
     playInScene: 1
+  - name: PickUpBonus
+    clip: {fileID: 8300000, guid: c852e23f48e501941af6e2a6bf042d73, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    source: {fileID: 0}
+    playInScene: 1
+  - name: UIButton
+    clip: {fileID: 8300000, guid: 9dd68c9db134ddd4592a6d8d969389e3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    source: {fileID: 0}
+    playInScene: 0
