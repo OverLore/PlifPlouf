@@ -40,12 +40,28 @@ public class UpgradeManager : MonoBehaviour
 
     }
 
+    bool BuyUpgrade(int _ID)
+    {
+        var upgrade = UpgradesList[_ID];
+
+        if( GameManager.instance.money - upgrade.TierList[upgrade.CurrentTier+1].price >= 0)
+        {
+            GameManager.instance.ChangeMoney(-upgrade.TierList[upgrade.CurrentTier+1].price);
+            upgrade.CurrentTier++;
+            UpgradesList[_ID] = upgrade;
+            return true;
+        }
+        return false;
+    }
+
     #region UI
     [Header("UI Elements")]
     [SerializeField] private GameObject UpgradesPrefab;
     [SerializeField] private GameObject UpgradesCanvas;
     [SerializeField] private GameObject RootPrefab;
     private GameObject UpgradeRoot;
+
+    [SerializeField] private GameObject NotEnoughtMoneyMessage;
 
     private UnityEvent onClickEvt = new UnityEvent();
 
@@ -105,7 +121,7 @@ public class UpgradeManager : MonoBehaviour
             icon.sprite = upgradeInfo.icon;
             name.text = upgradeInfo.name;
             GameObject button = upgradeGO.transform.Find("Button").gameObject;
-            button.GetComponent<UpgradeOnClick>().ID = i;
+            button.GetComponent<UpgradeDummyScript>().ID = i;
 
             UpdateUpgradeTextsAndButton(upgradeGO, i);
         }
@@ -204,11 +220,15 @@ public void UpdateUpgradeTextsAndButton(GameObject _upgradeGO, int _ID)
 
     public void OnClick(GameObject _upgradeGO, int _ID)
     {
-        var upgrade = UpgradesList[_ID];
-        upgrade.CurrentTier++;
-        UpgradesList[_ID] = upgrade;
-        UpgradeManager.instance.UpdateUpgradeTextsAndButton(_upgradeGO, _ID);
-
+        if (!BuyUpgrade(_ID))
+        {
+            NotEnoughtMoneyMessage.GetComponent<Animator>().SetBool("IsShown", true);
+        }
+        else
+        {
+            GameObject.FindObjectOfType<MenuFooter>().UpdateMoneyUI();
+            UpgradeManager.instance.UpdateUpgradeTextsAndButton(_upgradeGO, _ID);
+        }
     }
 
     #endregion

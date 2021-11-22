@@ -33,6 +33,9 @@ public class MenuFooter : MonoBehaviour
     [SerializeField] Canvas OptionCanvas;
 
     [SerializeField] GameObject statpannel;
+
+    [SerializeField] GameObject MoneyUI;
+
     private void Start()
     {
         Tabs.Add(MenuTab.Shop, ButtonsList[0].GetComponent<FooterButtonSizeController>());
@@ -51,6 +54,8 @@ public class MenuFooter : MonoBehaviour
 
         ForceTab(SelectedTab);
         EnableMapCanvas();
+
+        UpdateMoneyUI();
     }
 
     public void OpenTab(MenuTab tab)
@@ -116,5 +121,10 @@ public class MenuFooter : MonoBehaviour
     {
         DisableAllCanvas();
         OptionCanvas.gameObject.SetActive(true);
+    }
+
+    public void UpdateMoneyUI()
+    {
+        MoneyUI.GetComponent<TMPro.TextMeshProUGUI>().text = GameManager.instance.money.ToString();
     }
 }

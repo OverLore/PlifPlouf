@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1689562045538841242}
   - component: {fileID: 1689562045538841243}
   - component: {fileID: 1689562045538841236}
-  - component: {fileID: 7992992641642385719}
+  - component: {fileID: 2841118685622574548}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -331,8 +331,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7992992641642385719}
-        m_TargetAssemblyTypeName: UpgradeOnClick, Assembly-CSharp
+      - m_Target: {fileID: 2841118685622574548}
+        m_TargetAssemblyTypeName: UpgradeDummyScript, Assembly-CSharp
         m_MethodName: OnClickEvent
         m_Mode: 1
         m_Arguments:
@@ -343,7 +343,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7992992641642385719
+--- !u!114 &2841118685622574548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
