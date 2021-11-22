@@ -378,6 +378,7 @@ public class Player : MonoBehaviour
 
             // call the current shot
             shotMethods[shotType]();
+            AudioManager.Instance.PlaySound("MeduseTir");
         }
     }
 

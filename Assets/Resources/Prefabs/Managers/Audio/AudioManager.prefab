@@ -62,3 +62,13 @@ MonoBehaviour:
     source: {fileID: 0}
     playInMenu: 0
     playInGame: 1
+  - name: MeduseTir
+    clip: {fileID: 8300000, guid: 581aad3247e8b9f468586da15758c329, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playAtBeginning: 0
+    source: {fileID: 0}
+    playInMenu: 0
+    playInGame: 1
+  sceneType: 0
