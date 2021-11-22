@@ -87,6 +87,7 @@ public class Enemy : MonoBehaviour
         Vector2 vecEPFinal = vecEPNormalized * shotSpeed;
 
         enemyBullet.GetComponent<Rigidbody2D>().velocity = vecEPFinal;
+        AudioManager.Instance.PlaySound("TirEnnemi");
     }
 
     void UpdateShot()
