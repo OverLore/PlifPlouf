@@ -54,7 +54,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] Canvas lifeCanvas;
     [SerializeField] RectTransform lifeRect;
+    [SerializeField] RectTransform lifeComponents;
     [SerializeField] Text lifeText;
+    [SerializeField] RectTransform lifeTextEnd;
     [SerializeField] Image lifeFillImage;
     [SerializeField] Image[] lifeIndicatorImages;
     [SerializeField] Text[] lifeIndicatorTexts;
@@ -143,21 +145,60 @@ public class Player : MonoBehaviour
 
     #region Private
 
+    private void SetAnchoredPosX(float _value)
+    {
+        Vector3 tempPos = Vector3.zero;
+        tempPos = lifeComponents.anchoredPosition;
+        tempPos.x = _value;
+        lifeComponents.anchoredPosition = tempPos;
+    }
+
+    private void SetAnchoredPosY(float _value)
+    {
+        Vector3 tempPos = Vector3.zero;
+        tempPos = lifeComponents.anchoredPosition;
+        tempPos.y = _value;
+        lifeComponents.anchoredPosition = tempPos;
+    }
+
     private void UpdateLifePosition()
     {
         //first you need the RectTransform component of your canvas
         RectTransform CanvasRect = lifeCanvas.GetComponent<RectTransform>();
-
+        Vector2 lifeTextScreenPos = new Vector2(lifeTextEnd.transform.position.x, lifeTextEnd.transform.position.y);
+        Vector3 lifeTextViewportPos = Camera.main.ScreenToViewportPoint(lifeTextScreenPos);
+        Debug.Log(lifeTextViewportPos.y);
         //then you calculate the position of the UI element
         //0,0 for the canvas is at the center of the screen, whereas WorldToViewPortPoint treats the lower left corner as 0,0. Because of this, you need to subtract the height / width of the canvas * 0.5 to get the correct position.
 
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(transform.position);
-        Vector2 WorldObject_ScreenPosition = new Vector2(
-        ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
-        ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
+        Vector2 WorldObject_ScreenPosition =  WorldObject_ScreenPosition = new Vector2(
+            ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
+            ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
 
         //now you can set the position of the ui element
         lifeRect.anchoredPosition = WorldObject_ScreenPosition;
+
+        if (lifeTextViewportPos.x < 1.0f)
+        {
+            SetAnchoredPosX(0.0f);
+        }
+        else
+        {
+            SetAnchoredPosX(-500.0f);
+        }
+
+        //stop before score and combo ui
+        if (lifeTextViewportPos.y < 0.86f)
+        {
+            SetAnchoredPosY(0.0f);
+        }
+        else
+        {
+            SetAnchoredPosY(-300.0f);
+        }
+
+
     }
 
     void UpdateAttackSpeedBoost()
@@ -511,13 +552,13 @@ public class Player : MonoBehaviour
             TakeDamage(5);
         }
 
+
+        UpdateLifePosition();
         if (LifeIndicatorIsActive || lifeIndicatorTime > 0)
         {
             lifeIndicatorTime -= Time.deltaTime;
 
-            UpdateLifePosition();
             UpdateLifeOpacity();
-
             UpdateLifeText();
             UpdateLifeFillImage();
         }

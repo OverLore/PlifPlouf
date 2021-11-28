@@ -7442,6 +7442,11 @@ RectTransform:
   m_AnchoredPosition: {x: 187.6, y: -341}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &1055211885 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8698879915374270136, guid: 3f7966b99857e5045b2ab0d039b9a4dd, type: 3}
+  m_PrefabInstance: {fileID: 8783167803478487949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &1072695118 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 8783167804519724227, guid: 3f7966b99857e5045b2ab0d039b9a4dd, type: 3}
@@ -20407,6 +20412,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069935833}
   m_CullTransparentMesh: 1
+--- !u!224 &2071202900 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5067563721045569193, guid: 3f7966b99857e5045b2ab0d039b9a4dd, type: 3}
+  m_PrefabInstance: {fileID: 8783167803478487949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2101314675
 GameObject:
   m_ObjectHideFlags: 0
@@ -20910,9 +20920,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1072695118}
     - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: lifeTextEnd
+      value: 
+      objectReference: {fileID: 1055211885}
+    - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: lifeFillImage
       value: 
       objectReference: {fileID: 1243078979}
+    - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: lifeComponents
+      value: 
+      objectReference: {fileID: 2071202900}
     - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: lifeIndicatorTexts.Array.data[0]
       value: 
