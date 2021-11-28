@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6491683305078797309}
-  - component: {fileID: 6491683305078797308}
+  - component: {fileID: 4103231276807315117}
   m_Layer: 0
-  m_Name: CanvasScreenScaling
+  m_Name: CanvasScreenScaler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6491683305078797308
+--- !u!114 &4103231276807315117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6491683305078797311}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 772f3d14535beb0458b3d0bc88beaf46, type: 3}
+  m_Script: {fileID: 11500000, guid: 666cff1e9f3e2c640acb6dbaf1633a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preMenuCanvas: {fileID: 0}
+  canvasArray: []
