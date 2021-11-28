@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class CameraManager : MonoBehaviour
     public Vector2 camerasAspectRatio;
     //same size on x and y (for uniform scaling)
     public Vector2 camerasAspectRatioUniform;
+    public Vector2 refScreenSize = new Vector2(1080.0f, 2340.0f);
 
     //use this function if you want to make your gameObject (containing a sprite) scaling to the camera size
     //ex : make a background sprite covering the whole camera vision (screen) whatever the resolution
@@ -41,6 +43,59 @@ public class CameraManager : MonoBehaviour
         Vector3 scaleRatio = new Vector3(newSize.x / size.x, newSize.y / size.y, 0);
         _go.transform.localScale = new Vector3(_go.transform.localScale.x * scaleRatio.x, _go.transform.localScale.y * scaleRatio.y, 0);
     }
+
+    //public void SetImageScaleToCameraSize(GameObject _go)
+    //{
+    //    Image image = _go.GetComponent<Image>();
+    //    if (image == null)
+    //    {
+    //        if (image == null)
+    //        {
+    //            Debug.Log("no sprite renderer found");
+    //            return;
+    //        }
+    //    }
+    //    Vector3 currentSize = image.rectTransform.localScale;
+    //    //deformation since not the same ratio on x and y of scaling
+    //    //Vector3 newSize = size * camerasAspectRatio;
+    //    //uniform scaling
+    //    Vector3 newSize = currentSize * camerasAspectRatio;
+    //    Vector3 scaleRatio = new Vector3(newSize.x / currentSize.x, newSize.y / currentSize.y, 0);
+    //    image.rectTransform.localScale = new Vector3(_go.transform.localScale.x * scaleRatio.x, _go.transform.localScale.y * scaleRatio.y, 0);
+    //}
+
+    public void SetCanvasScaleToCameraSize(GameObject _go)
+    {
+        CanvasScaler cs = _go.GetComponent<CanvasScaler>();
+        if (cs == null)
+        {
+            Debug.Log("no sprite renderer found");
+            return;
+        }
+        float currentScale = cs.scaleFactor;
+        //deformation since not the same ratio on x and y of scaling
+        //Vector3 newSize = size * camerasAspectRatio;
+        //uniform scaling
+        Vector2 resRatio =new Vector2(Screen.width, Screen.height) / refScreenSize;
+        float uniformScale = resRatio.x > resRatio.y ? resRatio.x : resRatio.y;
+        cs.scaleFactor = uniformScale;
+    }
+
+    //public void SetCanvasScaleToCameraSize(GameObject _go)
+    //{
+    //    CanvasScaler cs = _go.GetComponent<CanvasScaler>();
+    //    if (cs == null)
+    //    {
+    //        Debug.Log("no sprite renderer found");
+    //        return;
+    //    }
+    //    Vector2 currentRes = cs.referenceResolution;
+    //    //deformation since not the same ratio on x and y of scaling
+    //    //Vector3 newSize = size * camerasAspectRatio;
+    //    //uniform scaling
+    //    Vector2 newRes = currentRes / camerasAspectRatioUniform;
+    //    cs.referenceResolution = newRes;
+    //}
 
     // Start is called before the first frame update
     void Awake()
