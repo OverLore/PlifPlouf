@@ -167,7 +167,6 @@ public class Player : MonoBehaviour
         RectTransform CanvasRect = lifeCanvas.GetComponent<RectTransform>();
         Vector2 lifeTextScreenPos = new Vector2(lifeTextEnd.transform.position.x, lifeTextEnd.transform.position.y);
         Vector3 lifeTextViewportPos = Camera.main.ScreenToViewportPoint(lifeTextScreenPos);
-        Debug.Log(lifeTextViewportPos.y);
         //then you calculate the position of the UI element
         //0,0 for the canvas is at the center of the screen, whereas WorldToViewPortPoint treats the lower left corner as 0,0. Because of this, you need to subtract the height / width of the canvas * 0.5 to get the correct position.
 
