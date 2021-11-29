@@ -657,10 +657,6 @@ public class Player : MonoBehaviour
 
         int _sideShot = (int)UpgradeManager.Instance.GetCurrentUpgradeByName("Side Shot");
         hasSideShot = _sideShot != 0 ? true : false;
-
-        ActivateHorizontalShot();
-
-        ActivateShotNumber();
     }
 
     // Start is called before the first frame update

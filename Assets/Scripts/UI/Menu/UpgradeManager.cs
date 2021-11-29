@@ -251,7 +251,6 @@ public void UpdateUpgradeTextsAndButton(GameObject _upgradeGO, int _ID)
             UpgradeManager.instance.UpdateUpgradeTextsAndButton(_upgradeGO, _ID);
         }
 
-        //List<int> lst = new List<int>(new int[]{ 0, 1, 2, 3, 4, 5 });
         string saveJson = JsonHelper.ToJson(UpgradesList.ToArray());
         PlayerPrefs.SetString("Upgrades", saveJson);
         PlayerPrefs.Save();
