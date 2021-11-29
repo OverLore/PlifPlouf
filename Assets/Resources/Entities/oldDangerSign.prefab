@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2285258438315834249}
   - component: {fileID: 8733722813379572571}
   m_Layer: 5
-  m_Name: dangerSign
+  m_Name: oldDangerSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

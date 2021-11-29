@@ -48,8 +48,54 @@ public class DangerSignManager : MonoBehaviour
         }
     }
 
+    //canvas version
     //give the enemyPos to calculate the dangerSign pos based on it
     //public void SpawnDangerSign(Vector3 _enemyPos, List<Vector2> _splinePointsPos)
+    //public void SpawnDangerSign(Vector3 _enemyPos)
+    //{
+    //    Debug.Log("SpawnDangerSign");
+    //    DangerSign currentSign = Instantiate(dangerSign).GetComponent<DangerSign>();
+    //    RectTransform currentSignRect = currentSign.GetComponent<RectTransform>();
+    //    Vector3 dangerSignPos = currentSignRect.position;
+    //    currentSign.transform.SetParent(dangerSignCanvas.transform);
+    //
+    //    
+    //    //which side the enemy is coming from
+    //    if (_enemyPos.x < 0.0f)
+    //    {
+    //        dangerSignPos.x = currentSignRect.rect.width;
+    //    }
+    //    else
+    //    {
+    //        dangerSignPos.x = canvasSize.x - currentSignRect.rect.width;
+    //    }
+    //
+    //    //get pos on canvas from enemy pos in world
+    //    //dangerSignPos.y = canvasSize.y / 2 - Camera.main.WorldToScreenPoint(_enemyPos).y;
+    //    dangerSignPos.y = canvasSize.y / 2;
+    //
+    //
+    //    //for (int i = 0; i < _splinePointsPos.Count; i++)
+    //    //{
+    //    //    if (CheckIsInScreen(_splinePointsPos[i]))
+    //    //    {
+    //    //        Debug.Log("point = " + i);
+    //    //        dangerSignPos = _splinePointsPos[i];
+    //    //        break;
+    //    //    }
+    //    //}
+    //
+    //    //currentSignRect.position = Camera.main.WorldToScreenPoint(dangerSignPos);
+    //    //Debug.Log(dangerSignPos);
+    //    //Debug.Log(currentSignRect.position);
+    //
+    //
+    //    //dangerSignPos.y = Camera.main.WorldToScreenPoint(dangerSignPos).y;
+    //    currentSignRect.position = dangerSignPos;
+    //    currentSign.SetTimer(maxTimer);
+    //    
+    //}
+
     public void SpawnDangerSign(Vector3 _enemyPos)
     {
         Debug.Log("SpawnDangerSign");
@@ -58,7 +104,7 @@ public class DangerSignManager : MonoBehaviour
         Vector3 dangerSignPos = currentSignRect.position;
         currentSign.transform.SetParent(dangerSignCanvas.transform);
 
-        
+
         //which side the enemy is coming from
         if (_enemyPos.x < 0.0f)
         {
@@ -70,29 +116,9 @@ public class DangerSignManager : MonoBehaviour
         }
 
         //get pos on canvas from enemy pos in world
-        //dangerSignPos.y = canvasSize.y / 2 - Camera.main.WorldToScreenPoint(_enemyPos).y;
         dangerSignPos.y = canvasSize.y / 2;
 
+        currentSign.canvasPos = dangerSignPos;
 
-        //for (int i = 0; i < _splinePointsPos.Count; i++)
-        //{
-        //    if (CheckIsInScreen(_splinePointsPos[i]))
-        //    {
-        //        Debug.Log("point = " + i);
-        //        dangerSignPos = _splinePointsPos[i];
-        //        break;
-        //    }
-        //}
-
-        //currentSignRect.position = Camera.main.WorldToScreenPoint(dangerSignPos);
-        //Debug.Log(dangerSignPos);
-        //Debug.Log(currentSignRect.position);
-
-
-        //dangerSignPos.y = Camera.main.WorldToScreenPoint(dangerSignPos).y;
-        currentSignRect.position = dangerSignPos;
-
-        currentSign.SetTimer(maxTimer);
-        
     }
 }

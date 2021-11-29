@@ -144,5 +144,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dangerSignCanvas: {fileID: 3980295175847762838}
-  dangerSign: {fileID: 2285258438315834251, guid: a536b8a746be22743b2389a2dc1c3b92, type: 3}
+  dangerSign: {fileID: 8032687283284379827, guid: b7325c9aeb4fef8408e57b971b96659f, type: 3}
   maxTimer: 3
