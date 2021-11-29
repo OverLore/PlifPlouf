@@ -268,7 +268,9 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < colorByLayers.Length; i++)
         {
-            colorByLayers[i] = Color.Lerp(colorFadeByLayersFrom[i], colorFadeByLayersTo[i], Mathf.PerlinNoise(Time.time, 0));
+            colorByLayers[i].r = Mathf.Lerp(colorFadeByLayersFrom[i].r, colorFadeByLayersTo[i].r, Mathf.PerlinNoise(Time.time, 0));
+            colorByLayers[i].g = Mathf.Lerp(colorFadeByLayersFrom[i].g, colorFadeByLayersTo[i].g, Mathf.PerlinNoise(Time.time, 0));
+            colorByLayers[i].b = Mathf.Lerp(colorFadeByLayersFrom[i].b, colorFadeByLayersTo[i].b, Mathf.PerlinNoise(Time.time, 0));
         }
     }
 

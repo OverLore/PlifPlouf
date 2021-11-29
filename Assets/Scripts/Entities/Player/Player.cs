@@ -579,6 +579,7 @@ public class Player : MonoBehaviour
     {
         isInvincibilityOn = true;
         invincibilityTimer = 0.0f;
+        Debug.Log("set invincibility");
     }
 
     void SetInvincibilityOff()
@@ -605,6 +606,7 @@ public class Player : MonoBehaviour
             {
                 SetInvincibilityOff();
             }
+            
         }
     }
 
