@@ -684,7 +684,9 @@ MonoBehaviour:
   damage: 1
   lifeCanvas: {fileID: 0}
   lifeRect: {fileID: 0}
+  lifeComponents: {fileID: 0}
   lifeText: {fileID: 0}
+  lifeTextEnd: {fileID: 0}
   lifeFillImage: {fileID: 0}
   lifeIndicatorImages:
   - {fileID: 0}
@@ -692,6 +694,7 @@ MonoBehaviour:
   - {fileID: 0}
   lifeIndicatorTexts:
   - {fileID: 0}
+  deathParticles: {fileID: 0}
   playerAnimators:
   - {fileID: 2851013471524853477}
   - {fileID: 2851013472222685616}

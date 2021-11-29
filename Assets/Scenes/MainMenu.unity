@@ -733,7 +733,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &100530227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1333,9 +1333,9 @@ RectTransform:
   m_Father: {fileID: 45842434}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 550, y: -1125}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &179567451
@@ -2276,9 +2276,9 @@ RectTransform:
   m_Father: {fileID: 45842434}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 550, y: -1575}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &363754580
@@ -2344,33 +2344,51 @@ MonoBehaviour:
     currentTier: 0
     TierList:
     - price: 0
-      value: 10
+      value: 25
+    - price: 250
+      value: 30
+    - price: 500
+      value: 35
+    - price: 750
+      value: 40
     - price: 1000
+      value: 45
+    - price: 1250
       value: 50
   - name: Side          Shot
     icon: {fileID: 21300000, guid: 0fe273c346268dc469fce1853c7273ba, type: 3}
     currentTier: 0
     TierList:
     - price: 0
-      value: 1
-    - price: 50
+      value: 0
+    - price: 1000
       value: 2
   - name: Shoot Number
     icon: {fileID: 21300000, guid: 939a8ea11ba6ca24091c4d51976f1bda, type: 3}
     currentTier: 0
     TierList:
     - price: 0
+      value: 1
+    - price: 1000
+      value: 2
+    - price: 21000
+      value: 3
+    - price: 3000
+      value: 5
+    - price: 5000
       value: 10
-    - price: 100
-      value: 50
   - name: Shield
     icon: {fileID: 21300000, guid: 7f7531c86df2c9c41966b66213d7f48d, type: 3}
     currentTier: 0
     TierList:
     - price: 0
       value: 10
-    - price: 100
-      value: 50
+    - price: 500
+      value: 15
+    - price: 1000
+      value: 20
+    - price: 2000
+      value: 30
 --- !u!1 &372526119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2725,9 +2743,9 @@ RectTransform:
   m_Father: {fileID: 45842434}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 550, y: -675}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &460029180
@@ -3563,7 +3581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &592013846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9451,9 +9469,9 @@ RectTransform:
   m_Father: {fileID: 45842434}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 550, y: -225}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1414974967 stripped
@@ -11033,9 +11051,9 @@ RectTransform:
   m_Father: {fileID: 45842434}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 550, y: -2025}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1766926312

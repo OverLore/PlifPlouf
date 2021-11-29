@@ -333,11 +333,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ActivateShiel()
+    public void ActivateShield()
     {
         if (instance.HasPlayer())
         {
-            instance.player.ActivateShiel();
+            instance.player.ActivateShield();
         }
     }
 

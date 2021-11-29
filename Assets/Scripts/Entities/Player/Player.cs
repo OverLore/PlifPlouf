@@ -13,10 +13,11 @@ public class Player : MonoBehaviour
     enum ShotType
     {
         Default,
+        Double,
         Triple,
-        DeathRay,
+        MultiShot,
         ShotAround,
-        Double
+        DeathRay,
     }
 
     [SerializeField] GameObject Shield;
@@ -34,6 +35,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     Transform shotOrigin;
     public Transform muzzle;
+
+    private float shieldDuration;
+    private ShotType upgradeShotType;
+    private bool hasSideShot;
 
     [SerializeField] float AttackDamageLeft = 0;
     [SerializeField] float AttackSpeedLeft = 0;
@@ -73,7 +78,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     [Range(0.0f, 1.0f)]
     float delay;
-    [SerializeField] ShotType shotType = ShotType.Default;
+    [SerializeField] ShotType shotType;
 
     private static Vector3 lastPos = new Vector3(0.0f, 0.0f);
 
@@ -102,9 +107,9 @@ public class Player : MonoBehaviour
         AttackDamageLeft = 20f;
     }
 
-    public void ActivateShiel()
+    public void ActivateShield()
     {
-        ShieldLeft = 20f;
+        ShieldLeft = shieldDuration;
     }
 
     public void ActivateHorizontalShot()
@@ -115,6 +120,7 @@ public class Player : MonoBehaviour
     public void ActivateShotNumber()
     {
         NumberShotLeft = 20f;
+        shotType = upgradeShotType;
     }
 
     public void Die()
@@ -124,7 +130,7 @@ public class Player : MonoBehaviour
 
         Destroy(go, 1f);
 
-        foreach(Animator anim in playerAnimators)
+        foreach (Animator anim in playerAnimators)
         {
             anim.GetComponent<SpriteRenderer>().enabled = false;
         }
@@ -148,7 +154,7 @@ public class Player : MonoBehaviour
             else
             {
                 AudioManager.Instance.PlaySound("MeduseGetHit");
-            }    
+            }
 
             lifeIndicatorTime = 2f;
 
@@ -195,7 +201,7 @@ public class Player : MonoBehaviour
         //0,0 for the canvas is at the center of the screen, whereas WorldToViewPortPoint treats the lower left corner as 0,0. Because of this, you need to subtract the height / width of the canvas * 0.5 to get the correct position.
 
         Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(transform.position);
-        Vector2 WorldObject_ScreenPosition =  WorldObject_ScreenPosition = new Vector2(
+        Vector2 WorldObject_ScreenPosition = WorldObject_ScreenPosition = new Vector2(
             ((ViewportPosition.x * CanvasRect.sizeDelta.x) - (CanvasRect.sizeDelta.x * 0.5f)),
             ((ViewportPosition.y * CanvasRect.sizeDelta.y) - (CanvasRect.sizeDelta.y * 0.5f)));
 
@@ -275,6 +281,7 @@ public class Player : MonoBehaviour
     {
         if (NumberShotLeft <= 0)
         {
+            shotType = ShotType.Default;
             return;
         }
 
@@ -324,7 +331,7 @@ public class Player : MonoBehaviour
             Vector3 posDelta = GetDeltaMovement();
             posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
             // random angle base on the spread
-            float angleSpread = i * 45 + UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
+            float angleSpread = i * 35 + UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
             float velx = (posDelta.y * shotForce)
                 * Mathf.Cos((90.0f + angleSpread) * Mathf.Deg2Rad);
@@ -378,7 +385,7 @@ public class Player : MonoBehaviour
     private void doubleShot()
     {
 
-        float halfSpace = 0.25f;
+        float halfSpace = 0.20f;
 
         for (int i = 0; i < 2; i++)
         {
@@ -409,6 +416,47 @@ public class Player : MonoBehaviour
                 * Mathf.Cos((90.0f + angleSpread) * Mathf.Deg2Rad);
             float vely = (posDelta.y * shotForce)
                 * Mathf.Sin((90.0f + angleSpread) * Mathf.Deg2Rad);
+
+            // set velocity
+            go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
+        }
+    }
+
+
+    private void SideShot()
+    {
+
+        //float halfSpace = 0.20f;
+
+        for (int i = 0; i < 2; i++)
+        {
+            // create projectile
+            GameObject go = Instantiate(shotGameobject[(int)shotType]);
+            InitShotDamage(go);
+
+            // place projectile
+            if (i == 0)
+            {
+                go.transform.position = shotOrigin.position;
+                    //+ new Vector3(-halfSpace, 0, 0);
+            }
+            else
+            {
+                go.transform.position = shotOrigin.position;
+                    //+ new Vector3(halfSpace, 0, 0);
+            }
+
+            // add push with delta position
+            Vector3 posDelta = GetDeltaMovement();
+            posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
+
+            // random angle base on the spread
+            float angleSpread = UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
+            // calculate velocity with angle
+            float velx = (posDelta.y * shotForce)
+                * Mathf.Cos((i*180.0f + angleSpread) * Mathf.Deg2Rad);
+            float vely = (posDelta.y * shotForce)
+                * Mathf.Sin((i*180.0f + angleSpread) * Mathf.Deg2Rad);
 
             // set velocity
             go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
@@ -451,6 +499,10 @@ public class Player : MonoBehaviour
             nextShot = delay;
 
             // call the current shot
+            if (hasSideShot && HasHorizontalShot)
+            {
+                SideShot();
+            }
             shotMethods[shotType]();
             AudioManager.Instance.PlaySound("MeduseTir");
         }
@@ -461,10 +513,11 @@ public class Player : MonoBehaviour
         lastPos = this.gameObject.transform.position;
 
         shotMethods[ShotType.Default] = defaultShot;
-        shotMethods[ShotType.Triple] = tripleShot;
-        shotMethods[ShotType.DeathRay] = deathRay;
-        shotMethods[ShotType.ShotAround] = shotAround;
         shotMethods[ShotType.Double] = doubleShot;
+        shotMethods[ShotType.Triple] = tripleShot;
+        shotMethods[ShotType.MultiShot] = () => { doubleShot(); tripleShot(); };
+        shotMethods[ShotType.ShotAround] = shotAround;
+        shotMethods[ShotType.DeathRay] = deathRay;
     }
 
     private void UpdateLifeText()
@@ -541,7 +594,7 @@ public class Player : MonoBehaviour
             //Debug.Log(invincibilityTimer);
             //return a value from 0 to 1 (thus there is 2 blink during the whole invincibility,
             //thus we multiply by invincibilityBlinkNumber / 2.0f so that we get invincibilityBlinkNumber number of blink)
-            float alphaValue = Mathf.Abs(Mathf.Cos((invincibilityBlinkNumber / 2.0f) * 2 * Mathf.PI * invincibilityTimer / maxInvincibilityTimer ));
+            float alphaValue = Mathf.Abs(Mathf.Cos((invincibilityBlinkNumber / 2.0f) * 2 * Mathf.PI * invincibilityTimer / maxInvincibilityTimer));
             foreach (SpriteRenderer sr in playerSpriteRenders)
             {
                 Color currentColor = sr.color;
@@ -555,12 +608,69 @@ public class Player : MonoBehaviour
         }
     }
 
+    void UpdateUpgrades()
+    {
+        float attackSpeed = UpgradeManager.Instance.GetCurrentUpgradeByName("Attack Speed");
+        delay = (1 / attackSpeed) * 10;
+
+        float upgradeDamage = UpgradeManager.Instance.GetCurrentUpgradeByName("Attack Damage");
+        damage = upgradeDamage / 10;
+
+        float shield = UpgradeManager.Instance.GetCurrentUpgradeByName("Attack Speed");
+        shieldDuration = shield;
+
+        int type = (int)UpgradeManager.Instance.GetCurrentUpgradeByName("Shoot Number");
+
+        switch (type)
+        {
+            case 1:
+            {
+                upgradeShotType = ShotType.Default;
+                break;
+            }
+            case 2:
+            {
+                upgradeShotType = ShotType.Double;
+                break;
+            }
+            case 3:
+            {
+                upgradeShotType = ShotType.Triple;
+                break;
+            }
+            case 5:
+            {
+                upgradeShotType = ShotType.MultiShot;
+                break;
+            }
+            case 10:
+            {
+                upgradeShotType = ShotType.ShotAround;
+                break;
+            }
+            default:
+            {
+                upgradeShotType = ShotType.Default;
+                break;
+            }
+        }
+
+        int _sideShot = (int)UpgradeManager.Instance.GetCurrentUpgradeByName("Side Shot");
+        hasSideShot = _sideShot != 0 ? true : false;
+
+        ActivateHorizontalShot();
+
+        ActivateShotNumber();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         nextShot = 0;
 
         Shield.SetActive(false);
+
+        UpdateUpgrades();
     }
 
     // Update is called once per frame

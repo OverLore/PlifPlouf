@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -52,6 +53,18 @@ public class UpgradeManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public float GetCurrentUpgradeByName(string name)
+    {
+        foreach(var upgrade in UpgradesList)
+        {
+            if (Regex.Replace(name, @"\s", "") == Regex.Replace(upgrade.name, @"\s", ""))
+            {
+                return upgrade.TierList[upgrade.CurrentTier].value;
+            }
+        }
+        return 0;
     }
 
     #region UI
@@ -121,7 +134,7 @@ public class UpgradeManager : MonoBehaviour
             icon.sprite = upgradeInfo.icon;
             name.text = upgradeInfo.name;
             GameObject button = upgradeGO.transform.Find("Button").gameObject;
-            button.GetComponent<UpgradeDummyScript>().ID = i;
+            button.GetComponent<UpgradeOnClick>().ID = i;
 
             UpdateUpgradeTextsAndButton(upgradeGO, i);
         }
