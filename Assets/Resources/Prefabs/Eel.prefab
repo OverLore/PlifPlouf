@@ -3459,6 +3459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathChoose: -1
   delayMax: 1
+  EelSpeed: 0.5
+  EelPhase: 0
   delayRandMax: 0.75
   boneObject:
   - {fileID: 6820954421034612679}
@@ -3482,7 +3484,6 @@ MonoBehaviour:
   - {fileID: 6820954420945680321}
   - {fileID: 6820954421756719401}
   pathsObject: {fileID: 6820954420968803125}
-  collisionDamage: 10
 --- !u!114 &6820954422268968026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3503,7 +3504,7 @@ MonoBehaviour:
   shotDamage: 0
   collisionDamage: 10
   shotSpeed: 4
-  isShootingEnemy: 1
+  isShootingEnemy: 0
   isInvincible: 0
   hasLifebar: 1
   lifebarPrefab: {fileID: 5676310634606938104, guid: cdb3c464d827a224b8da7b2a8858b107, type: 3}

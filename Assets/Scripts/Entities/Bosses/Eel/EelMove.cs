@@ -7,11 +7,12 @@ public class EelMove : MonoBehaviour
 {
     [SerializeField] int pathChoose;
     [SerializeField] float delayMax;
+    public float EelSpeed;
+    public float EelPhase;
     [Range(0f, 1f), SerializeField] float delayRandMax;
     [SerializeField] GameObject[] boneObject;
     public GameObject pathsObject;
     List<List<Transform>> pathsf;
-    [SerializeField] float collisionDamage = 10.0f;
 
     float delayNextPath = 0f;
     float delayMaxUse;
@@ -22,7 +23,6 @@ public class EelMove : MonoBehaviour
     int nbPaths;
     int[] nbChildPath;
     bool IsMoving = false;
-    bool boneMax = false;
     Transform[] actualPath;
     Vector2[] colliderPoints;
 
@@ -31,7 +31,26 @@ public class EelMove : MonoBehaviour
     {
         if (pathChoose == -1)
         {
-            randomPath = Random.Range(0, nbPaths);
+            switch (EelPhase)
+            {
+                case 0:
+                    randomPath = Random.Range(0, 2);
+                    break;
+                case 1:
+                    randomPath = Random.Range(2, 4);
+                    break;
+                case 2:
+                    randomPath = Random.Range(4, 6);
+                    break;
+                case 3:
+                    randomPath = Random.Range(6, 9);
+                    break;
+                case 4:
+                    randomPath = Random.Range(0, nbPaths);
+                    break;
+                default:
+                    break;
+            }
         }
         else
         {
@@ -89,14 +108,14 @@ public class EelMove : MonoBehaviour
         if (actualBone < boneObject.Length)
         {
             timerSpawn += Time.deltaTime * GameManager.instance.timeScale;
-            if (timerSpawn >= timerMax)
+            if (timerSpawn >= ( timerMax / EelSpeed + timerMax) * timerMax + timerMax)
             {
                 SplinePathFollow pathFollow;
                 if (boneObject[actualBone].GetComponent<SplinePathFollow>() == null)
                 {
                     boneObject[actualBone].AddComponent<SplinePathFollow>();
                     pathFollow = boneObject[actualBone].GetComponent<SplinePathFollow>();
-                    pathFollow.speed = 0.5f;
+                    pathFollow.speed = EelSpeed;
                    
                     pathFollow.correction = 90;
                     pathFollow.isDestroyedAtEnd = false;
@@ -105,6 +124,7 @@ public class EelMove : MonoBehaviour
                 {
                     pathFollow = boneObject[actualBone].GetComponent<SplinePathFollow>();
                     pathFollow.currentPath = 0;
+                    pathFollow.speed = EelSpeed;
                 }
                 pathFollow.paths = new Transform[actualPath.Length];
                 for (int i = 0; i < actualPath.Length; i++)
@@ -173,6 +193,11 @@ public class EelMove : MonoBehaviour
             UpdateBodyPart();
         }
         UpdateCollision();
+        if (GetComponent<Enemy>().PV <= 0)
+        {
+            LevelManager.instance.state = LevelState.BossEnd;
+            EelPhase = (EelPhase + 1) % 5;
+        }
     }
 
      private void OnTriggerEnter2D(Collider2D collision)

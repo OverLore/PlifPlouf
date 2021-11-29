@@ -51,6 +51,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject CoinPrefab;
 
+    public GameObject BossEel;
+
     public ParticleSystem[] starsParticles;
     public Image[] starsSprites;
     public Image starBar;
@@ -105,6 +107,7 @@ public class LevelManager : MonoBehaviour
         scoringCanvas.SetActive(false);
 
         CoinPrefab = Resources.Load<GameObject>("Entities/Coin");
+        BossEel = Resources.Load<GameObject>("Prefabs/Eel");
     }
 
     void UpdateStarting()
@@ -125,9 +128,9 @@ public class LevelManager : MonoBehaviour
         
         //if (levelProgress >= 15)
         //debug test level (level will be max 1 minute (even though we use percentage from 0 to 100))
-        if (levelProgress >= 60)
+        if (levelProgress >= 61)
         {
-            state = LevelState.BossEnd;
+            state = LevelState.BossStart;
         }
     }
 
@@ -257,6 +260,23 @@ public class LevelManager : MonoBehaviour
                 }
 
                 UpdateWaves();
+
+                break;
+            case LevelState.BossStart:
+                if (GameManager.instance.GetPlayer().pv <= 0)
+                {
+                    return;
+                }
+                if (level % 10 <= 5)
+                {
+                    GameObject go = Instantiate(BossEel);
+                }
+                else
+                {
+                    //todo second boss          
+                }
+
+                state = LevelState.BossPlay;
 
                 break;
             case LevelState.BossEnd:
