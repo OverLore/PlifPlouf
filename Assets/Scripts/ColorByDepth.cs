@@ -17,6 +17,9 @@ public class ColorByDepth : MonoBehaviour
 
     private void Update()
     {
-        spr.color = GameManager.instance.colorByLayers[layer];
+        Color tempColor = spr.color;
+        tempColor = GameManager.instance.colorByLayers[layer];
+        tempColor.a = spr.color.a;
+        spr.color = tempColor;
     }
 }
