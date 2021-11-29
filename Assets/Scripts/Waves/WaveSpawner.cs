@@ -87,6 +87,16 @@ public class WaveSpawner : MonoBehaviour
         {
             GameObject go = Resources.Load<GameObject>(paths[i]);
 
+            //make cleaner method
+            if (go.name == "E4Pattern1L" ||
+                go.name == "E4Pattern1R")
+            {
+                Vector3 enemyPos = go.transform.GetChild(0).GetChild(0).Find("E4Test").position;
+                //Vector3 routePos = go.transform.position -  go.transform.GetChild(0).GetChild(0).position;
+                //DangerSignManager.instance.SpawnDangerSign(new Vector2(enemyPos.x, routePos.y));
+                DangerSignManager.instance.SpawnDangerSign(enemyPos);
+            }
+
             CreateEnemy(offset[i], go);
         }
     }
