@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
     [SerializeField] Text[] lifeIndicatorTexts;
     float lifeIndicatorTime;
 
+    [SerializeField] GameObject deathParticles;
+
     [SerializeField] Animator[] playerAnimators;
     [SerializeField] SpriteRenderer[] playerSpriteRenders;
 
@@ -115,9 +117,24 @@ public class Player : MonoBehaviour
         NumberShotLeft = 20f;
     }
 
+    public void Die()
+    {
+        GameObject go = Instantiate(deathParticles);
+        go.transform.position = transform.position;
+
+        Destroy(go, 1f);
+
+        foreach(Animator anim in playerAnimators)
+        {
+            anim.GetComponent<SpriteRenderer>().enabled = false;
+        }
+
+        LevelManager.instance.StartScoring(false);
+    }
+
     public void TakeDamage(float _damage)
     {
-        if (!isInvincibilityOn)
+        if (!isInvincibilityOn && pv > 0)
         {
             if (HasShield)
             {
@@ -137,6 +154,13 @@ public class Player : MonoBehaviour
 
             Debug.Log($"Player take {_damage} damage");
             pv -= (int)_damage;
+
+            if (pv <= 0)
+            {
+                Die();
+                return;
+            }
+
             SetInvincibilityOn();
         }
     }
@@ -408,6 +432,11 @@ public class Player : MonoBehaviour
     /// </summary>
     private void HandleShot()
     {
+        if (pv <= 0)
+        {
+            return;
+        }
+
         if (HasAttackSpeed)
         {
             nextShot -= Time.deltaTime * 2 * GameManager.instance.timeScale;

@@ -24,7 +24,12 @@ public class GameManager : MonoBehaviour
 
     [Space(10), Header("Stats")]
     public int money = 2000;
+    public int maxLives = 5;
     public int lives = 5;
+    public System.DateTime nextLifeAt;
+    [SerializeField] TextMeshProUGUI livesText;
+    [SerializeField] TextMeshProUGUI kakiText;
+
 
     // score
     [field: SerializeField] private ulong score;
@@ -110,6 +115,34 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Lives", lives);
     }
 
+    private void UpdateLivesUI()
+    {
+        if (lives < maxLives)
+        {
+            System.DateTime now = System.DateTime.Now;
+
+            System.TimeSpan diff = nextLifeAt.Subtract(now);
+
+            while (diff.TotalSeconds < 0 && lives < maxLives)
+            {
+                lives++;
+
+                diff = nextLifeAt.Subtract(now);
+            }
+
+            if (lives < maxLives && livesText != null)
+            {
+                instance.livesText.text = $"{lives} ({diff.ToString("mm':'ss")})";
+            }
+        }
+        else
+        {
+            instance.livesText.text = $"{lives}";
+
+            PlayerPrefs.DeleteKey("nextLifeAt");
+        }
+    }
+
     private void GetTexts()
     {
         var textObjects = FindObjectsOfType<TextMeshProUGUI>();
@@ -154,6 +187,12 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("maxLevelReached", -1);
         }
 
+        if (PlayerPrefs.HasKey("nextLifeAt"))
+        {
+            long temp = System.Convert.ToInt64(PlayerPrefs.GetString("maxLevelReached"));
+            nextLifeAt = System.DateTime.FromBinary(temp);
+        }
+
         Application.targetFrameRate = 60;
 
         GetTexts();
@@ -161,9 +200,24 @@ public class GameManager : MonoBehaviour
         LoadStats();
     }
 
+    public void LoseLife()
+    {
+        instance.lives--;
+        instance.nextLifeAt = System.DateTime.Now.AddMinutes(20);
+
+        PlayerPrefs.SetString("nextLifeAt", instance.nextLifeAt.ToBinary().ToString());
+    }
+
     private void Update()
     {
         UpdateCombo();
+
+        UpdateLivesUI();
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoseLife();
+        }
 
         if (pauseBack == null)
         {

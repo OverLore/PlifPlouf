@@ -202,6 +202,38 @@ public class LevelManager : MonoBehaviour
         UpdateStarsBar();
     }
 
+    public void StartScoring(bool won)
+    {
+        state = LevelState.Scoring;
+        GameManager.instance.timeScale = 1;
+
+        scoringCanvas.SetActive(true);
+        panelAnimator.SetTrigger("Pop");
+
+        stars = Mathf.FloorToInt(GameManager.instance.Score / (maxObtainableScore * 1.2f) * 3f);
+        stars = Mathf.Clamp(stars, 0, 3);
+
+        if (!won)
+        {
+            stars = 0;
+        }
+
+        killsScore.dest = kills;
+        scoreScore.dest = GameManager.instance.Score;
+        coinsScore.dest = coins;
+        gainScore.dest = (float)kills + GameManager.instance.Score / 100 + coins;
+
+        if (won)
+        {
+            LevelDatas.SaveLevelDatas(level, stars, (int)GameManager.instance.Score, kills, coins);
+        }
+
+        if (level > GameManager.instance.maxLevelReached && won)
+        {
+            GameManager.instance.ChangeMaxLevelReached(level);
+        }
+    }
+
     void Update()
     {
         switch(state)
@@ -210,34 +242,30 @@ public class LevelManager : MonoBehaviour
                 GameManager.instance.LoadLevel();
                 return;
             case LevelState.Starting:
+                if (GameManager.instance.GetPlayer().pv <= 0)
+                {
+                    return;
+                }
+
                 UpdateStarting();
 
                 break;
             case LevelState.Waves:
+                if (GameManager.instance.GetPlayer().pv <= 0)
+                {
+                    return;
+                }
+
                 UpdateWaves();
 
                 break;
             case LevelState.BossEnd:
-                state = LevelState.Scoring;
-                GameManager.instance.timeScale = 1;
-
-                scoringCanvas.SetActive(true);
-                panelAnimator.SetTrigger("Pop");
-
-                stars = Mathf.FloorToInt(GameManager.instance.Score / (maxObtainableScore * 1.2f) * 3f);
-                stars = Mathf.Clamp(stars, 0, 3);
-
-                killsScore.dest = kills;
-                scoreScore.dest = GameManager.instance.Score;
-                coinsScore.dest = coins;
-                gainScore.dest = (float)kills + GameManager.instance.Score / 100 + coins;
-
-                LevelDatas.SaveLevelDatas(level, stars, (int)GameManager.instance.Score, kills, coins);
-
-                if (level > GameManager.instance.maxLevelReached)
+                if (GameManager.instance.GetPlayer().pv <= 0)
                 {
-                    GameManager.instance.ChangeMaxLevelReached(level);
+                    return;
                 }
+
+                StartScoring(true);
 
                 break;
             case LevelState.Scoring:

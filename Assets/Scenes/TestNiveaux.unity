@@ -12904,6 +12904,7 @@ MonoBehaviour:
   cameraRectSizeUnits: {x: 0, y: 0}
   camerasAspectRatio: {x: 0, y: 0}
   camerasAspectRatioUniform: {x: 0, y: 0}
+  refScreenSize: {x: 1080, y: 2340}
 --- !u!114 &1187459257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20927,6 +20928,10 @@ PrefabInstance:
       propertyPath: lifeFillImage
       value: 
       objectReference: {fileID: 1243078979}
+    - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 5105511382192260959, guid: 666dd9949ff03ca49967fd31d71d7524, type: 3}
     - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: lifeComponents
       value: 
