@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI livesText;
     [SerializeField] TextMeshProUGUI kakiText;
 
+    public bool AdsInitialized = false;
+
 
     // score
     [field: SerializeField] private ulong score;
@@ -112,6 +114,11 @@ public class GameManager : MonoBehaviour
     {
         instance.lives += _modifier;
         instance.lives = Mathf.Clamp(instance.lives, 0, 5);
+
+        if (instance.lives == 5)
+        {
+            nextLifeAt = System.DateTime.Now;
+        }
 
         PlayerPrefs.SetInt("Lives", instance.lives);
     }
