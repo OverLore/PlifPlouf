@@ -8,7 +8,7 @@ public class EelMove : MonoBehaviour
     [SerializeField] int pathChoose;
     [SerializeField] float delayMax;
     public float EelSpeed;
-    public float EelPhase;
+    public int EelPhase;
     [Range(0f, 1f), SerializeField] float delayRandMax;
     [SerializeField] GameObject[] boneObject;
     public GameObject pathsObject;
@@ -34,13 +34,14 @@ public class EelMove : MonoBehaviour
             switch (EelPhase)
             {
                 case 0:
-                    randomPath = Random.Range(0, 2);
+                    randomPath = Random.Range(0, 3);
+                    Debug.Log(randomPath);
                     break;
                 case 1:
-                    randomPath = Random.Range(2, 4);
+                    randomPath = Random.Range(2, 5);
                     break;
                 case 2:
-                    randomPath = Random.Range(4, 6);
+                    randomPath = Random.Range(4, 7);
                     break;
                 case 3:
                     randomPath = Random.Range(6, 9);
@@ -196,7 +197,6 @@ public class EelMove : MonoBehaviour
         if (GetComponent<Enemy>().PV <= 0)
         {
             LevelManager.instance.state = LevelState.BossEnd;
-            EelPhase = (EelPhase + 1) % 5;
         }
     }
 

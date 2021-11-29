@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: d6dd91fd112da2b4da19a817d8630baa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Booster Zoo.unity
     guid: f67bbf21463afb24b8519b27bd38a102
   - enabled: 1

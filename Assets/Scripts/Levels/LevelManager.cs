@@ -269,6 +269,7 @@ public class LevelManager : MonoBehaviour
                 }
                 if (level % 10 <= 5)
                 {
+                    BossEel.GetComponent<EelMove>().EelPhase = level%5;
                     GameObject go = Instantiate(BossEel);
                 }
                 else

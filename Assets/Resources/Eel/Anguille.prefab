@@ -521,6 +521,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathChoose: -1
   delayMax: 1
+  EelSpeed: 0
+  EelPhase: 0
   delayRandMax: 0.75
   boneObject:
   - {fileID: 8740888575409458209}
@@ -544,7 +546,6 @@ MonoBehaviour:
   - {fileID: 8740888575332060199}
   - {fileID: 8740888576668502735}
   pathsObject: {fileID: 0}
-  collisionDamage: 10
 --- !u!114 &8740888576105924540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9127c470b393e47a5f76239be4478a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: 100
+  PV: 500
   score: 0
   deathParticles: {fileID: 0}
   shotOrigin: {fileID: 0}
