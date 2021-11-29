@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Unity.Collections;
 using UnityEditor;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -74,70 +75,84 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("Money"))
         {
-            money = PlayerPrefs.GetInt("Money");
+            instance.money = PlayerPrefs.GetInt("Money");
         }
         else
         {
-            money = 2000;
-            PlayerPrefs.SetInt("Money", money);
+            instance.money = 2000;
+            PlayerPrefs.SetInt("Money", instance.money);
         }
 
         if (PlayerPrefs.HasKey("Lives"))
         {
-            lives = PlayerPrefs.GetInt("Lives");
+            instance.lives = PlayerPrefs.GetInt("Lives");
         }
         else
         {
-            lives = 5;
-            PlayerPrefs.SetInt("Lives", lives);
+            instance.lives = 5;
+            PlayerPrefs.SetInt("Lives", instance.lives);
         }
     }
 
     void SaveStats()
     {
-        PlayerPrefs.SetInt("Money", money);
-        PlayerPrefs.SetInt("Lives", lives);
+        PlayerPrefs.SetInt("Money", instance.money);
+        PlayerPrefs.SetInt("Lives", instance.lives);
     }
 
     public void ChangeMoney(int _modifier)
     {
-        money += _modifier;
-        money = Mathf.Clamp(money, 0, 999999);
+        instance.money += _modifier;
+        instance.money = Mathf.Clamp(instance.money, 0, 999999);
 
-        PlayerPrefs.SetInt("Money", money);
+        PlayerPrefs.SetInt("Money", instance.money);
     }
 
     public void ChangeLives(int _modifier)
     {
-        lives += _modifier;
-        lives = Mathf.Clamp(lives, 0, 5);
+        instance.lives += _modifier;
+        instance.lives = Mathf.Clamp(instance.lives, 0, 5);
 
-        PlayerPrefs.SetInt("Lives", lives);
+        PlayerPrefs.SetInt("Lives", instance.lives);
     }
 
     private void UpdateLivesUI()
     {
-        if (lives < maxLives)
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
-            System.DateTime now = System.DateTime.Now;
+            return;
+        }
 
-            System.TimeSpan diff = nextLifeAt.Subtract(now);
+        if (instance.livesText == null)
+        {
+            instance.livesText = GameObject.Find("LifesText").GetComponent<TextMeshProUGUI>();
+        }
 
-            while (diff.TotalSeconds < 0 && lives < maxLives)
+        if (instance.lives < instance.maxLives)
+        {
+            System.TimeSpan diff = instance.nextLifeAt.Subtract(System.DateTime.Now);
+
+            while (diff.TotalSeconds < 0 && instance.lives < instance.maxLives)
             {
-                lives++;
+                instance.lives++;
 
-                diff = nextLifeAt.Subtract(now);
+                if (instance.lives < instance.maxLives)
+                {
+                    instance.nextLifeAt = instance.nextLifeAt.AddMinutes(20);
+                    diff = instance.nextLifeAt.Subtract(System.DateTime.Now);
+                }
+
+                SaveStats();
             }
 
-            if (lives < maxLives && livesText != null)
+            if (instance.lives < instance.maxLives && instance.livesText != null)
             {
-                instance.livesText.text = $"{lives} ({diff.ToString("mm':'ss")})";
+                instance.livesText.text = $"{instance.lives} ({diff.ToString("mm':'ss")})";
             }
         }
         else
         {
-            instance.livesText.text = $"{lives}";
+            instance.livesText.text = $"{instance.lives}";
 
             PlayerPrefs.DeleteKey("nextLifeAt");
         }
@@ -179,17 +194,17 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("maxLevelReached"))
         {
-            maxLevelReached = PlayerPrefs.GetInt("maxLevelReached");
+            instance.maxLevelReached = PlayerPrefs.GetInt("maxLevelReached");
         }
         else
         {
-            maxLevelReached = -1;
+            instance.maxLevelReached = -1;
             PlayerPrefs.SetInt("maxLevelReached", -1);
         }
 
         if (PlayerPrefs.HasKey("nextLifeAt"))
         {
-            long temp = System.Convert.ToInt64(PlayerPrefs.GetString("maxLevelReached"));
+            long temp = System.Convert.ToInt64(PlayerPrefs.GetString("nextLifeAt"));
             nextLifeAt = System.DateTime.FromBinary(temp);
         }
 
@@ -202,10 +217,18 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
+        System.TimeSpan diff = instance.nextLifeAt.Subtract(System.DateTime.Now);
+
+        if (instance.nextLifeAt == null || diff.TotalSeconds < 0)
+        {
+            instance.nextLifeAt = System.DateTime.Now.AddMinutes(20);
+        }
+
         instance.lives--;
-        instance.nextLifeAt = System.DateTime.Now.AddMinutes(20);
 
         PlayerPrefs.SetString("nextLifeAt", instance.nextLifeAt.ToBinary().ToString());
+
+        SaveStats();
     }
 
     private void Update()
