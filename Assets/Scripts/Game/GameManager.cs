@@ -6,6 +6,7 @@ using Unity.Collections;
 using UnityEditor;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -72,6 +73,9 @@ public class GameManager : MonoBehaviour
     public Color[] colorByLayers;
     public Color[] colorFadeByLayersFrom;
     public Color[] colorFadeByLayersTo;
+
+    private float startVolume = 0.5f;
+    private float endVolume = 1.0f;
 
     void LoadStats()
     {
@@ -260,11 +264,13 @@ public class GameManager : MonoBehaviour
             {
                 timeScale = Mathf.Lerp(timeScale, .05f, Time.deltaTime * 5f);
                 pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 185f / 255f), Time.deltaTime * 5f);
+                AudioListener.volume = Mathf.Lerp(startVolume, endVolume, Time.deltaTime * 2.0f);
             }
             else
             {
                 timeScale = Mathf.Lerp(timeScale, 1f, Time.deltaTime * 5f);
                 pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 0), Time.deltaTime * 5f);
+                AudioListener.volume = Mathf.Lerp(endVolume, startVolume, Time.deltaTime * 2.0f);
             }
 
             if (Input.GetKeyDown(KeyCode.P))
@@ -309,11 +315,15 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel()
     {
+        //set pause volume at start
+        AudioListener.volume = startVolume;
+
         LevelManager.instance.StartLevel(levelToLoad);
 
         waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
 
         waveSpawner.LoadLevelWaves(levelToLoad.ToString());
+
     }
 
     bool HasPlayer()
