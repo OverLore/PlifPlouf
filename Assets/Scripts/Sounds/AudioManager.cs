@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using UnityEngine.Audio;
 
 public enum AudioManagerSceneType
 {
@@ -10,10 +10,22 @@ public enum AudioManagerSceneType
     Game
 }
 
+public enum AudioManagerGroupType
+{
+    SFXNormal,
+    SFXUnderwater,
+    Music
+}
 
 public class AudioManager : MonoBehaviour
 {
     public AudioManagerSceneType sceneType = AudioManagerSceneType.Menu;
+    [SerializeField] AudioMixerGroup gameMixerGroup;
+    [SerializeField] AudioMixerGroup menuMixerGroup;
+    [SerializeField] AudioMixerGroup musicMixerGroup;
+    [SerializeField] AudioMixerGroup sfxMixerGroup;
+    [SerializeField] AudioMixerGroup sfxNormalMixerGroup;
+    [SerializeField] AudioMixerGroup sfxUnderwaterMixerGroup;
     public Sound[] sounds;
     private static AudioManager instance;
     public static AudioManager Instance { get { return instance; } }
@@ -86,6 +98,7 @@ public class AudioManager : MonoBehaviour
 
 
     #region private
+
     private void Awake()
     {
         if (instance == null)
@@ -99,6 +112,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        //sounds
         foreach (Sound sound in sounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
@@ -107,6 +121,38 @@ public class AudioManager : MonoBehaviour
             sound.source.volume = sound.volume;
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
+
+            switch (sound.playInScene)
+            {
+                case AudioManagerSceneType.Menu:
+                    sound.source.outputAudioMixerGroup = menuMixerGroup;
+                    break;
+
+                case AudioManagerSceneType.Game:
+                    switch (sound.mixerGroup)
+                    {
+                        case AudioManagerGroupType.Music:
+                            sound.source.outputAudioMixerGroup = musicMixerGroup;
+                            break;
+                        case AudioManagerGroupType.SFXNormal:
+                            sound.source.outputAudioMixerGroup = sfxNormalMixerGroup;
+                            break;
+
+                        case AudioManagerGroupType.SFXUnderwater:
+                            sound.source.outputAudioMixerGroup = sfxUnderwaterMixerGroup;
+                            break;
+                        default:
+                            Debug.LogError("audioMixer of sound " + sound + "is invalid");
+                            sound.source.outputAudioMixerGroup = null;
+                            break;
+                    }
+
+
+                    break;
+
+                default:
+                    break;
+            }
         }
 
     }

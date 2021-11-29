@@ -19,10 +19,16 @@ public class Sound
     public bool playAtBeginning = false;
     public bool canMultiplePlay = false;
 
+    //mixerGroup won't do anything if playInScene != Game
+    public AudioManagerSceneType playInScene;
+
+    public AudioManagerGroupType mixerGroup;
+
+    //hide in inspector
     [HideInInspector]
     public AudioSource source;
+    [HideInInspector]
+    public AudioMixer audioMixer;
 
-    //non sound.source variables
-    public AudioManagerSceneType playInScene;
 
 }
