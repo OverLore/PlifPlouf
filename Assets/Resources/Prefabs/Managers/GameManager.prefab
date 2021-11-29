@@ -1,5 +1,113 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5703132064053790039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4955085056386147964}
+  - component: {fileID: 7690865712945556003}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4955085056386147964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703132064053790039}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 694.5897, y: 1292.3602, z: -2758.5317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7048506322179383833}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7690865712945556003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5703132064053790039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3ba890089d2d54baf362f89801ba09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradesPrefab: {fileID: 1689562046462145687, guid: 813054bef75f74b45a9b1f9c41a0a82b, type: 3}
+  UpgradesCanvas: {fileID: 0}
+  RootPrefab: {fileID: 5139559255457480897, guid: 8299c62dbc188ae4d80469768253c0a9, type: 3}
+  NotEnoughtMoneyMessage: {fileID: 0}
+  UpgradesList:
+  - name: Attack Damage
+    icon: {fileID: 21300000, guid: a8793299cf5754e47ba8bdac0ce56f9c, type: 3}
+    currentTier: 0
+    TierList:
+    - price: 0
+      value: 10
+    - price: 500
+      value: 20
+    - price: 1000
+      value: 30
+  - name: Attack Speed
+    icon: {fileID: 21300000, guid: 57ed95632c95cfb4f9c42d8a289f6f47, type: 3}
+    currentTier: 0
+    TierList:
+    - price: 0
+      value: 25
+    - price: 250
+      value: 30
+    - price: 500
+      value: 35
+    - price: 750
+      value: 40
+    - price: 1000
+      value: 45
+    - price: 1250
+      value: 50
+  - name: Side          Shot
+    icon: {fileID: 21300000, guid: 0fe273c346268dc469fce1853c7273ba, type: 3}
+    currentTier: 0
+    TierList:
+    - price: 0
+      value: 0
+    - price: 1000
+      value: 2
+  - name: Shoot Number
+    icon: {fileID: 21300000, guid: 939a8ea11ba6ca24091c4d51976f1bda, type: 3}
+    currentTier: 0
+    TierList:
+    - price: 0
+      value: 1
+    - price: 1000
+      value: 2
+    - price: 21000
+      value: 3
+    - price: 3000
+      value: 5
+    - price: 5000
+      value: 10
+  - name: Shield
+    icon: {fileID: 21300000, guid: 7f7531c86df2c9c41966b66213d7f48d, type: 3}
+    currentTier: 0
+    TierList:
+    - price: 0
+      value: 10
+    - price: 500
+      value: 15
+    - price: 1000
+      value: 20
+    - price: 2000
+      value: 30
 --- !u!1 &7048506322179383835
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +135,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4955085056386147964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,7 +160,10 @@ MonoBehaviour:
   levelToLoad: 0
   timeScale: 1
   money: 2000
+  maxLives: 5
   lives: 5
+  livesText: {fileID: 0}
+  kakiText: {fileID: 0}
   score: 0
   scoreAdded: 10
   mplayer: {fileID: 0}

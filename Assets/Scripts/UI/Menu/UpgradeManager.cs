@@ -114,6 +114,9 @@ public class UpgradeManager : MonoBehaviour
 
     public void CreateUI()
     {
+        if (UpgradesCanvas == null)
+            return;
+
         GameObject tmp = UpgradesCanvas.transform.Find("Root")?.gameObject;
         if (UpgradeRoot != null || tmp != null)
         {
