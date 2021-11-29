@@ -30,7 +30,7 @@ public class UpgradeManager : MonoBehaviour
         if(PlayerPrefs.HasKey("Upgrades"))
         {
             string savejson = PlayerPrefs.GetString("Upgrades");
-            UpgradesList = GameManager.JsonHelper.FromJson<Upgrade>(savejson).ToList();
+            UpgradesList = JsonHelper.FromJson<Upgrade>(savejson).ToList();
             CreateUI();
         }
     }
@@ -252,7 +252,7 @@ public void UpdateUpgradeTextsAndButton(GameObject _upgradeGO, int _ID)
         }
 
         //List<int> lst = new List<int>(new int[]{ 0, 1, 2, 3, 4, 5 });
-        string saveJson = GameManager.JsonHelper.ToJson(UpgradesList.ToArray());
+        string saveJson = JsonHelper.ToJson(UpgradesList.ToArray());
         PlayerPrefs.SetString("Upgrades", saveJson);
         PlayerPrefs.Save();
 
