@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -24,6 +25,13 @@ public class UpgradeManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+
+        if(PlayerPrefs.HasKey("Upgrades"))
+        {
+            string savejson = PlayerPrefs.GetString("Upgrades");
+            UpgradesList = GameManager.JsonHelper.FromJson<Upgrade>(savejson).ToList();
+            CreateUI();
         }
     }
 
@@ -242,6 +250,12 @@ public void UpdateUpgradeTextsAndButton(GameObject _upgradeGO, int _ID)
             GameObject.FindObjectOfType<MenuFooter>().UpdateMoneyUI();
             UpgradeManager.instance.UpdateUpgradeTextsAndButton(_upgradeGO, _ID);
         }
+
+        //List<int> lst = new List<int>(new int[]{ 0, 1, 2, 3, 4, 5 });
+        string saveJson = GameManager.JsonHelper.ToJson(UpgradesList.ToArray());
+        PlayerPrefs.SetString("Upgrades", saveJson);
+        PlayerPrefs.Save();
+
     }
 
     #endregion
