@@ -87,13 +87,27 @@ public class WaveSpawner : MonoBehaviour
         {
             GameObject go = Resources.Load<GameObject>(paths[i]);
 
-            //make cleaner method
+            //sorry for the code
             if (go.name == "E4Pattern1L" ||
                 go.name == "E4Pattern1R")
             {
                 Vector3 enemyPos = go.transform.GetChild(0).GetChild(0).Find("E4Test").position;
+                //List<Vector2> splinePoints = new List<Vector2>();
+                //
+                //for (int j = 0; j < go.transform.GetChild(0).childCount; j++)
+                //{
+                //    SplinePath route = go.transform.GetChild(0).GetChild(j).GetComponent<SplinePath>();
+                //    for (float k = 0; k <= 1; k += 0.05f)
+                //    {
+                //        splinePoints.Add(route.GetSplinePoint(k));
+                //    }
+                //}
+
+
+                //go.transform.GetChild(0).GetChild
                 //Vector3 routePos = go.transform.position -  go.transform.GetChild(0).GetChild(0).position;
                 //DangerSignManager.instance.SpawnDangerSign(new Vector2(enemyPos.x, routePos.y));
+                //DangerSignManager.instance.SpawnDangerSign(enemyPos, splinePoints);
                 DangerSignManager.instance.SpawnDangerSign(enemyPos);
             }
 

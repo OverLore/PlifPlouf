@@ -15,6 +15,14 @@ public class SplinePath : MonoBehaviour
 
     Vector2 guizmosPosition;
 
+    public Vector2 GetSplinePoint(float i)
+    {
+       return Mathf.Pow(1 - i, 3) * controlPoints[0].position +
+                strength * Mathf.Pow(1 - i, 2) * i * controlPoints[1].position +
+                strength * (1 - i) * Mathf.Pow(i, 2) * controlPoints[2].position +
+                Mathf.Pow(i, 3) * controlPoints[3].position;
+    }
+
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)
@@ -24,10 +32,7 @@ public class SplinePath : MonoBehaviour
 
         for (float i = 0; i <= 1; i += 0.05f)
         {
-            guizmosPosition = Mathf.Pow(1 - i, 3) * controlPoints[0].position +
-                strength * Mathf.Pow(1 - i, 2) * i * controlPoints[1].position +
-                strength * (1 - i) * Mathf.Pow(i, 2) * controlPoints[2].position +
-                Mathf.Pow(i, 3) * controlPoints[3].position;
+            guizmosPosition = GetSplinePoint(i);
 
             Gizmos.color = Color.Lerp(startColor, endColor, i);
 

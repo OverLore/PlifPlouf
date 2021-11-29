@@ -18740,6 +18740,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 965066162}
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 965066162}
+    - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: pauseBack
       value: 
       objectReference: {fileID: 973707848}
