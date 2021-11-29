@@ -11,6 +11,7 @@ public class EelMove : MonoBehaviour
     [SerializeField] GameObject[] boneObject;
     public GameObject pathsObject;
     List<List<Transform>> pathsf;
+    [SerializeField] float collisionDamage = 10.0f;
 
     float delayNextPath = 0f;
     float delayMaxUse;
@@ -147,7 +148,7 @@ public class EelMove : MonoBehaviour
             GetComponent<EdgeCollider2D>().points = colliderPoints;
         }
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -174,9 +175,9 @@ public class EelMove : MonoBehaviour
         UpdateCollision();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("oui oui baguette : " + collision);
+     private void OnTriggerEnter2D(Collider2D collision)
+     {
 
-    }
+     }
+
 }

@@ -21,7 +21,6 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision);
         if (collision.gameObject.tag == "Ennemy")
         {
             //Destroy(collision.gameObject);

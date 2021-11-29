@@ -373,7 +373,6 @@ GameObject:
   - component: {fileID: 8740888576105924543}
   - component: {fileID: 8740888576105924531}
   - component: {fileID: 8740888576105924540}
-  - component: {fileID: 8740888576105924529}
   - component: {fileID: 8740888576105924530}
   m_Layer: 0
   m_Name: Anguille
@@ -545,6 +544,7 @@ MonoBehaviour:
   - {fileID: 8740888575332060199}
   - {fileID: 8740888576668502735}
   pathsObject: {fileID: 0}
+  collisionDamage: 10
 --- !u!114 &8740888576105924540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,27 +567,9 @@ MonoBehaviour:
   shotSpeed: 4
   isShootingEnemy: 0
   isInvincible: 0
---- !u!50 &8740888576105924529
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8740888576105924536}
-  m_BodyType: 1
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 0
+  hasLifebar: 0
+  lifebarPrefab: {fileID: 0}
+  lifebarOffset: {x: 0, y: 0}
 --- !u!68 &8740888576105924530
 EdgeCollider2D:
   m_ObjectHideFlags: 0
