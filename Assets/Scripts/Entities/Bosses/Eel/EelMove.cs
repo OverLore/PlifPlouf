@@ -11,6 +11,7 @@ public class EelMove : MonoBehaviour
     public int EelPhase;
     [Range(0f, 1f), SerializeField] float delayRandMax;
     [SerializeField] GameObject[] boneObject;
+    [SerializeField] GameObject warningSign;
     public GameObject pathsObject;
     List<List<Transform>> pathsf;
 
@@ -35,19 +36,23 @@ public class EelMove : MonoBehaviour
             {
                 case 0:
                     randomPath = Random.Range(0, 3);
-                    Debug.Log(randomPath);
+                    EelSpeed = 0.3f;
                     break;
                 case 1:
                     randomPath = Random.Range(2, 5);
+                    EelSpeed = 0.35f;
                     break;
                 case 2:
                     randomPath = Random.Range(4, 7);
+                    EelSpeed = 0.4f;
                     break;
                 case 3:
                     randomPath = Random.Range(6, 9);
+                    EelSpeed = 0.45f;
                     break;
                 case 4:
                     randomPath = Random.Range(0, nbPaths);
+                    EelSpeed = 0.5f;
                     break;
                 default:
                     break;
@@ -170,6 +175,70 @@ public class EelMove : MonoBehaviour
         }
     }
 
+    bool BonneIsOnScreen()
+    {
+        for (int i = 0; i < boneObject.Length-5; i++)
+        {
+            Vector3 bonne = boneObject[i].transform.position;
+            if ((bonne.x >= -ScreenSize.GetScreenToWorldWidth / 2 && bonne.x <= ScreenSize.GetScreenToWorldWidth / 2 &&
+                 bonne.y >= -ScreenSize.GetScreenToWorldHeight / 2 && bonne.y <= ScreenSize.GetScreenToWorldHeight / 2))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void UpdateSign()
+    {
+        Transform head = boneObject[0].transform;
+        warningSign.transform.rotation = head.rotation;
+        Vector3 tranformSign = head.position;
+        tranformSign -= warningSign.transform.right * 2;
+        warningSign.transform.position = tranformSign;
+
+        if (BonneIsOnScreen())
+        {
+            warningSign.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else
+        {
+            Vector3 pos;
+            if (head.position.x >= -ScreenSize.GetScreenToWorldWidth / 2)
+            {
+                if (head.position.y <= -ScreenSize.GetScreenToWorldHeight / 2)
+                {
+                    pos = new Vector3(ScreenSize.GetScreenToWorldWidth / 2, -ScreenSize.GetScreenToWorldHeight / 2);
+                }
+                else if (head.position.y >= ScreenSize.GetScreenToWorldHeight / 2)
+                {
+                    pos = new Vector3(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+                }
+                else
+                {
+                    pos = new Vector3(ScreenSize.GetScreenToWorldWidth / 2, head.position.y);
+                }
+            }
+            else
+            {
+                if (head.position.y <= -ScreenSize.GetScreenToWorldHeight / 2)
+                {
+                    pos = new Vector3(-ScreenSize.GetScreenToWorldWidth / 2, -ScreenSize.GetScreenToWorldHeight / 2);
+                }
+                else if (head.position.y >= ScreenSize.GetScreenToWorldHeight / 2)
+                {
+                    pos = new Vector3(-ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+                }
+                else
+                {
+                    pos = new Vector3(-ScreenSize.GetScreenToWorldWidth / 2, head.position.y);
+                }
+            }
+            warningSign.transform.position = pos;
+            warningSign.GetComponent<SpriteRenderer>().enabled = true;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -194,6 +263,7 @@ public class EelMove : MonoBehaviour
             UpdateBodyPart();
         }
         UpdateCollision();
+        UpdateSign();
         if (GetComponent<Enemy>().PV <= 0)
         {
             LevelManager.instance.state = LevelState.BossEnd;
