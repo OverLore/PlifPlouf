@@ -15,6 +15,8 @@ public class Sound
     [Range(0.1f, 3.0f)]
     public float pitch = 1.0f;
 
+    //won't do anything if not played through "PlaySound" (so don't affect musics, play at beginning..)
+    public bool hasPitchVariance = true;
     public bool loop = false;
     public bool playAtBeginning = false;
     public bool canMultiplePlay = false;

@@ -62,6 +62,12 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        //change pitch
+        if (currentSound.hasPitchVariance)
+        {
+            currentSound.source.pitch = currentSound.pitch + UnityEngine.Random.Range(-0.1f, 0.1f);
+        }
+
         if (currentSound.canMultiplePlay)
         {
             //Debug.Log("play multiple");

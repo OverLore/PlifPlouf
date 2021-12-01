@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
 
         DestroyLifebar();
 
+        AudioManager.Instance.PlaySound("DeathMob");
         GameManager.instance.AddScore((uint)score);
         LevelManager.instance.SpawnCoinAt(transform.position, score);
         LevelManager.instance.kills++;

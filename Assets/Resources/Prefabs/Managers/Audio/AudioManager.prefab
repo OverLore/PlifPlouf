@@ -55,6 +55,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4aec0f4ec96fee84caf8e7517039e5b6, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 0
     loop: 1
     playAtBeginning: 1
     canMultiplePlay: 0
@@ -66,6 +67,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7a013a71cdc796d4685059bfca673ddd, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 0
     loop: 1
     playAtBeginning: 1
     canMultiplePlay: 0
@@ -77,6 +79,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 388c4df3e66e8864c8b2943d2d421638, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 1
@@ -88,6 +91,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 82783b42d732a8d45851a6c615fb11f1, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 1
@@ -99,6 +103,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a9a99472d1152a6478428b0e599417b5, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 1
@@ -110,6 +115,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 07233dfe97fb5d146a366cf3e3a11137, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 0
@@ -121,6 +127,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c25a7a832cc469a4c87368f2de58e378, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 0
@@ -130,8 +137,9 @@ MonoBehaviour:
     audioMixer: {fileID: 0}
   - name: PickUpCoin
     clip: {fileID: 8300000, guid: 8f56f93ff22f6654192f12c10b56cdde, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 1
@@ -143,6 +151,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c852e23f48e501941af6e2a6bf042d73, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 1
@@ -154,6 +163,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9dd68c9db134ddd4592a6d8d969389e3, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 1
@@ -165,10 +175,23 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 9b4f25b1e62810c46a9ea5eab688f7a3, type: 3}
     volume: 1
     pitch: 1
+    pitchVariance: 1
     loop: 0
     playAtBeginning: 0
     canMultiplePlay: 0
     playInScene: 0
     mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
+  - name: DeathMob
+    clip: {fileID: 8300000, guid: b3002d8a523f78247a2e97614062ca9b, type: 3}
+    volume: 1
+    pitch: 1
+    pitchVariance: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    playInScene: 1
+    mixerGroup: 1
     source: {fileID: 0}
     audioMixer: {fileID: 0}

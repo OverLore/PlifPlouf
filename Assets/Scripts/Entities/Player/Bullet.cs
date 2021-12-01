@@ -9,11 +9,12 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb;
     Vector2 vel;
 
-    void DestroyBullet(bool _playDestroySound)
+    void DestroyBullet(bool _hasHitSomething)
     {
-        if (_playDestroySound)
+        if (_hasHitSomething)
         {
             AudioManager.Instance.PlaySound("MeduseBubblePop");
+            BulletManager.instance.InstantiatePlayerBulletPopVFX(gameObject.transform.position);
         }
         Destroy(gameObject);
     }
