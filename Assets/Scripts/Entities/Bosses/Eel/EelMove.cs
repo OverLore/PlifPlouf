@@ -13,6 +13,7 @@ public class EelMove : MonoBehaviour
     [SerializeField] GameObject[] boneObject;
     DangerSign warningSign;
     bool isWarningFirstTime;
+    Vector2 warningSignSize;
     ParticleSystem warningSignParticleSystem;
 
     public GameObject pathsObject;
@@ -213,7 +214,7 @@ public class EelMove : MonoBehaviour
         }
         else
         {
-            Vector3 pos;
+            Vector3 pos = Vector3.zero;
 
             if (isWarningFirstTime)
             {
@@ -221,37 +222,49 @@ public class EelMove : MonoBehaviour
                 warningSign.gameObject.SetActive(true);
                 warningSignParticleSystem.Play();
                 isWarningFirstTime = false;
+                Debug.Log(warningSignParticleSystem.time);
             }
-
+            //the head is :
             //over right of the screen
             if (head.position.x >= -ScreenSize.GetScreenToWorldWidth / 2)
             {
+                pos.x = ScreenSize.GetScreenToWorldWidth / 2 - warningSignSize.x / 2;
+
+                //under the screen
                 if (head.position.y <= -ScreenSize.GetScreenToWorldHeight / 2)
                 {
-                    pos = new Vector3(ScreenSize.GetScreenToWorldWidth / 2, -ScreenSize.GetScreenToWorldHeight / 2);
+                    pos.y = -ScreenSize.GetScreenToWorldHeight / 2 + warningSignSize.y;
                 }
+                //over the screen
                 else if (head.position.y >= ScreenSize.GetScreenToWorldHeight / 2)
                 {
-                    pos = new Vector3(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+                    pos.y = ScreenSize.GetScreenToWorldHeight / 2 - warningSignSize.y;
                 }
+                //in between
                 else
                 {
-                    pos = new Vector3(ScreenSize.GetScreenToWorldWidth / 2, head.position.y);
+                    pos.y = head.position.y;
                 }
             }
+            //over the left of the screen
             else
             {
+                pos.x = -ScreenSize.GetScreenToWorldWidth / 2 + warningSignSize.x / 2;
+
+                //under the screen
                 if (head.position.y <= -ScreenSize.GetScreenToWorldHeight / 2)
                 {
-                    pos = new Vector3(-ScreenSize.GetScreenToWorldWidth / 2, -ScreenSize.GetScreenToWorldHeight / 2);
+                    pos.y = -ScreenSize.GetScreenToWorldHeight / 2 + warningSignSize.y;
                 }
+                //over the screen
                 else if (head.position.y >= ScreenSize.GetScreenToWorldHeight / 2)
                 {
-                    pos = new Vector3(-ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+                    pos.y = ScreenSize.GetScreenToWorldHeight / 2 - warningSignSize.y;
                 }
+                //in between
                 else
                 {
-                    pos = new Vector3(-ScreenSize.GetScreenToWorldWidth / 2, head.position.y);
+                    pos.y = head.position.y;
                 }
             }
             warningSign.transform.position = pos;
@@ -270,7 +283,9 @@ public class EelMove : MonoBehaviour
         ChoosePath();
         warningSign = DangerSignManager.instance.GetEelDangerSign(gameObject.transform.position);
         warningSignParticleSystem = DangerSignManager.instance.GetEelDangerSignParticleSystem(warningSign);
+        warningSignSize = DangerSignManager.instance.GetEelDangerSignSize(warningSign);
         isWarningFirstTime = true;
+        Debug.Log(warningSignSize);
     }
 
     // Update is called once per frame

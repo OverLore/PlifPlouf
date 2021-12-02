@@ -142,4 +142,14 @@ public class DangerSignManager : MonoBehaviour
 
         return ps;
     }
+
+    public Vector2 GetEelDangerSignSize(DangerSign _eelDangerSign)
+    {
+        RectTransform rt = _eelDangerSign.GetComponent<RectTransform>();
+        Vector2 size = Vector2.zero;
+
+        //world size
+        size = rt.lossyScale;
+        return size;
+    }
 }
