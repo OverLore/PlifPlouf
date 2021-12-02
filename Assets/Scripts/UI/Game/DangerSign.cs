@@ -8,6 +8,7 @@ public class DangerSign : MonoBehaviour
     [SerializeField] RectTransform rt;
     [SerializeField] ParticleSystem ps;
     private ParticleSystem psChild;
+    public bool isEelDangerSign;
 
 
     private void Start()
@@ -19,9 +20,12 @@ public class DangerSign : MonoBehaviour
     //(to keep it on left or right when we move out of the screen)
     private void UpdatePos()
     {
-        Vector3 tempPos = Camera.main.ScreenToWorldPoint(canvasPos);
-        tempPos.z = 0;
-        rt.position = tempPos;
+        if (!isEelDangerSign)
+        {
+            Vector3 tempPos = Camera.main.ScreenToWorldPoint(canvasPos);
+            tempPos.z = 0;
+            rt.position = tempPos;
+        }
     }
 
     void UpdateSimSpeed()
@@ -34,7 +38,7 @@ public class DangerSign : MonoBehaviour
 
     void UpdateDeath()
     {
-        if (!ps.IsAlive() && !psChild.IsAlive())
+        if (!isEelDangerSign && !ps.IsAlive() && !psChild.IsAlive())
         {
             Destroy(gameObject);
         }

@@ -11,7 +11,10 @@ public class EelMove : MonoBehaviour
     public int EelPhase;
     [Range(0f, 1f), SerializeField] float delayRandMax;
     [SerializeField] GameObject[] boneObject;
-    [SerializeField] GameObject warningSign;
+    DangerSign warningSign;
+    bool isWarningFirstTime;
+    ParticleSystem warningSignParticleSystem;
+
     public GameObject pathsObject;
     List<List<Transform>> pathsf;
 
@@ -199,11 +202,28 @@ public class EelMove : MonoBehaviour
 
         if (BonneIsOnScreen())
         {
-            warningSign.GetComponent<SpriteRenderer>().enabled = false;
+            //warningSign.GetComponent<SpriteRenderer>().enabled = false;
+            if (!isWarningFirstTime)
+            {
+                Debug.Log("stop danger sign");
+                warningSign.gameObject.SetActive(false);
+                warningSignParticleSystem.Stop();
+                isWarningFirstTime = true;
+            }
         }
         else
         {
             Vector3 pos;
+
+            if (isWarningFirstTime)
+            {
+                Debug.Log("Play danger sign");
+                warningSign.gameObject.SetActive(true);
+                warningSignParticleSystem.Play();
+                isWarningFirstTime = false;
+            }
+
+            //over right of the screen
             if (head.position.x >= -ScreenSize.GetScreenToWorldWidth / 2)
             {
                 if (head.position.y <= -ScreenSize.GetScreenToWorldHeight / 2)
@@ -235,7 +255,7 @@ public class EelMove : MonoBehaviour
                 }
             }
             warningSign.transform.position = pos;
-            warningSign.GetComponent<SpriteRenderer>().enabled = true;
+            //warningSign.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
@@ -248,6 +268,9 @@ public class EelMove : MonoBehaviour
         delayMaxUse = delayMax + Random.Range(-delayRandMax, delayRandMax);
         InitAllPath();
         ChoosePath();
+        warningSign = DangerSignManager.instance.GetEelDangerSign(gameObject.transform.position);
+        warningSignParticleSystem = DangerSignManager.instance.GetEelDangerSignParticleSystem(warningSign);
+        isWarningFirstTime = true;
     }
 
     // Update is called once per frame

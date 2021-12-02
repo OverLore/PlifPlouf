@@ -119,6 +119,27 @@ public class DangerSignManager : MonoBehaviour
         dangerSignPos.y = canvasSize.y / 2;
 
         currentSign.canvasPos = dangerSignPos;
+        currentSign.isEelDangerSign = false;
+    }
 
+    public DangerSign GetEelDangerSign(Vector3 _startPos)
+    {
+        DangerSign currentSign = Instantiate(dangerSign).GetComponent<DangerSign>();
+        currentSign.gameObject.SetActive(false);
+        currentSign.isEelDangerSign = true;
+
+        return currentSign;
+    }
+
+    public ParticleSystem GetEelDangerSignParticleSystem(DangerSign _eelDangerSign)
+    {
+        ParticleSystem ps = _eelDangerSign.GetComponent<ParticleSystem>();
+        //var main = ps.main;
+        //main.loop = true;
+
+        //disable for start
+        ps.Stop();
+
+        return ps;
     }
 }
