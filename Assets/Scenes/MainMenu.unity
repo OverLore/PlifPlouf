@@ -8175,7 +8175,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7f7531c86df2c9c41966b66213d7f48d, type: 3}
     - target: {fileID: 7690865712945556003, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: UpgradesList.Array.data[1].isBonus
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7690865712945556003, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: UpgradesList.Array.data[2].isBonus
