@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     private float shieldDuration;
     private ShotType upgradeShotType;
-    private bool hasSideShot;
+    private float shotSideAngle;
 
     [SerializeField] float AttackDamageLeft = 0;
     [SerializeField] float AttackSpeedLeft = 0;
@@ -438,12 +438,12 @@ public class Player : MonoBehaviour
             if (i == 0)
             {
                 go.transform.position = shotOrigin.position;
-                    //+ new Vector3(-halfSpace, 0, 0);
+                //+ new Vector3(-halfSpace, 0, 0);
             }
             else
             {
                 go.transform.position = shotOrigin.position;
-                    //+ new Vector3(halfSpace, 0, 0);
+                //+ new Vector3(halfSpace, 0, 0);
             }
 
             // add push with delta position
@@ -454,9 +454,9 @@ public class Player : MonoBehaviour
             float angleSpread = UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
             float velx = (posDelta.y * shotForce)
-                * Mathf.Cos((i*180.0f + angleSpread) * Mathf.Deg2Rad);
+                * Mathf.Cos(((i * 180.0f) + ((1 - i * 2) * (90 - shotSideAngle)) + angleSpread) * Mathf.Deg2Rad);
             float vely = (posDelta.y * shotForce)
-                * Mathf.Sin((i*180.0f + angleSpread) * Mathf.Deg2Rad);
+                * Mathf.Sin(((i * 180.0f) + ((1 - i * 2) * (90 - shotSideAngle)) + angleSpread) * Mathf.Deg2Rad);
 
             // set velocity
             go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
@@ -499,7 +499,7 @@ public class Player : MonoBehaviour
             nextShot = delay;
 
             // call the current shot
-            if (hasSideShot && HasHorizontalShot)
+            if (HasHorizontalShot)
             {
                 SideShot();
             }
@@ -606,7 +606,7 @@ public class Player : MonoBehaviour
             {
                 SetInvincibilityOff();
             }
-            
+
         }
     }
 
@@ -657,8 +657,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        int _sideShot = (int)UpgradeManager.Instance.GetCurrentUpgradeByName("Side Shot");
-        hasSideShot = _sideShot != 0 ? true : false;
+        shotSideAngle = UpgradeManager.Instance.GetCurrentUpgradeByName("Side Shot");
+
     }
 
     // Start is called before the first frame update
