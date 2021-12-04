@@ -26,6 +26,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioMixerGroup sfxMixerGroup;
     [SerializeField] AudioMixerGroup sfxNormalMixerGroup;
     [SerializeField] AudioMixerGroup sfxUnderwaterMixerGroup;
+    [SerializeField] AudioMixerGroup menuMusicMixerGroup;
+    [SerializeField] AudioMixerGroup menuSFXMixerGroup;
     public Sound[] sounds;
     private static AudioManager instance;
     public static AudioManager Instance { get { return instance; } }
@@ -131,7 +133,25 @@ public class AudioManager : MonoBehaviour
             switch (sound.playInScene)
             {
                 case AudioManagerSceneType.Menu:
-                    sound.source.outputAudioMixerGroup = menuMixerGroup;
+                    //sound.source.outputAudioMixerGroup = menuMixerGroup;
+                    switch (sound.mixerGroup)
+                    {
+                        case AudioManagerGroupType.Music:
+                            sound.source.outputAudioMixerGroup = menuMusicMixerGroup;
+                            break;
+                        case AudioManagerGroupType.SFXNormal:
+                            sound.source.outputAudioMixerGroup = menuSFXMixerGroup;
+                            break;
+
+                        case AudioManagerGroupType.SFXUnderwater:
+                            //redirect on menuSFX anyway
+                            sound.source.outputAudioMixerGroup = menuSFXMixerGroup;
+                            break;
+                        default:
+                            Debug.LogError("audioMixer of sound " + sound + "is invalid");
+                            sound.source.outputAudioMixerGroup = null;
+                            break;
+                    }
                     break;
 
                 case AudioManagerSceneType.Game:

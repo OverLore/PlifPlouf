@@ -50,6 +50,8 @@ MonoBehaviour:
   sfxMixerGroup: {fileID: -8074248015979927317, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}
   sfxNormalMixerGroup: {fileID: 1624436634446745006, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}
   sfxUnderwaterMixerGroup: {fileID: 8867466185676395221, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}
+  menuMusicMixerGroup: {fileID: -982634326634155191, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}
+  menuSFXMixerGroup: {fileID: 7577647380539777104, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}
   sounds:
   - name: MusicMenu
     clip: {fileID: 8300000, guid: 4aec0f4ec96fee84caf8e7517039e5b6, type: 3}
