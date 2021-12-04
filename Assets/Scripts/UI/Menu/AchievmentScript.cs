@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class AchievmentScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Achievment[] tabAchievment = new Achievment[7];
+
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+}
+
+[System.Serializable]
+public class Achievment
+{
+    public string name;
+    [SerializeField] GameObject AchievmentPannel;
+    public int ReachedRank;
+
+
+
 }
