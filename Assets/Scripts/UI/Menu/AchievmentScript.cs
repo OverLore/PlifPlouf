@@ -91,6 +91,21 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Completed!";
         }
     }
+    void CousteauSetDesc(int _reachedRank, int _i)
+    {
+        if (_reachedRank > 0)
+        {
+            tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 10";
+        }
+        if (_reachedRank > 1)
+        {
+            tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 15";
+        }
+        if (_reachedRank > 2)
+        {
+            tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Completed!";
+        }
+    }
     public void LoadAchievments()
     {
         for (int i = 0; i < tabAchievment.Length; i++)

@@ -10157,9 +10157,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1249191345854491460, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+      propertyPath: m_Text
+      value: Reach level 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
       propertyPath: m_Name
       value: Achievement (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767812180573279389, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+      propertyPath: m_Text
+      value: Captain Cousteau
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
@@ -11686,6 +11694,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734217876}
   m_CullTransparentMesh: 1
+--- !u!1 &1736665073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+  m_PrefabInstance: {fileID: 1421612656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1737015501
 GameObject:
   m_ObjectHideFlags: 0
@@ -13691,8 +13704,8 @@ MonoBehaviour:
   - name: Darwinism
     AchievmentPannel: {fileID: 1813889545}
     ReachedRank: 0
-  - name: 
-    AchievmentPannel: {fileID: 0}
+  - name: Captain Cousteau
+    AchievmentPannel: {fileID: 1736665073}
     ReachedRank: 0
   - name: 
     AchievmentPannel: {fileID: 0}
