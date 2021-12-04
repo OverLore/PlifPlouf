@@ -214,7 +214,21 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 5746dda622b8ac1478c485c992526af1
+    name: GameVolume
+  - guid: 8ba2362e0868ca14595bba75dde3cc02
+    name: MenuMusicVolume
+  - guid: eeba225ab82db4c48b6950990066aeb6
+    name: MenuSFXVolume
+  - guid: f7993070853726149a16ee7064657dcf
+    name: MusicVolume
+  - guid: 3d1dd23a1c9bab948b2abefbcfc7edfc
+    name: SFXVolume
+  - guid: 7ae36dfc7f8075b4fa615aa353bc68ff
+    name: SFXNormalVolume
+  - guid: 1487f380ce115bf408d0fc6bbea4ed27
+    name: SFXUnderwaterVolume
   m_AudioMixerGroupViews:
   - guids:
     - 1284737b4faa26e4488c691d8f5b99f3

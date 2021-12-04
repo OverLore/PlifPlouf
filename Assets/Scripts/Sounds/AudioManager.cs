@@ -28,9 +28,15 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioMixerGroup sfxUnderwaterMixerGroup;
     [SerializeField] AudioMixerGroup menuMusicMixerGroup;
     [SerializeField] AudioMixerGroup menuSFXMixerGroup;
+
+    [SerializeField] AudioMixer mixer;
+
     public Sound[] sounds;
     private static AudioManager instance;
     public static AudioManager Instance { get { return instance; } }
+
+    public bool canHearMusic = true;
+    public bool canHearSound = true;
 
     #region public
     //add additional scenes here if we have a real scene transition in game
@@ -101,6 +107,29 @@ public class AudioManager : MonoBehaviour
             return;
         }
         currentSound.source.Stop();
+    }
+
+    public void SwitchMusicVolumeState()
+    {
+        canHearMusic = !canHearMusic;
+
+        PlayerPrefs.SetString("canHearMusic", canHearMusic.ToString());
+
+        mixer.SetFloat("MusicVolume", canHearMusic ? -12 : -80);
+        mixer.SetFloat("MenuMusicVolume", canHearMusic ? -12 : -80);
+    }
+
+    public void SwitchSoundVolumeState()
+    {
+        canHearSound = !canHearSound;
+
+        PlayerPrefs.SetString("canHearSound", canHearSound.ToString());
+
+        mixer.SetFloat("GameVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("SFXVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("SFXNormalVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("SFXUnderwaterVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("MenuSFXVolume", canHearSound ? 0 : -80);
     }
     #endregion
 
@@ -181,11 +210,47 @@ public class AudioManager : MonoBehaviour
             }
         }
 
+        LoadSavedStates();
+    }
+
+    void LoadSavedStates()
+    {
+        if (PlayerPrefs.HasKey("canHearMusic"))
+        {
+            canHearMusic = bool.Parse(PlayerPrefs.GetString("canHearMusic"));
+        }
+        else
+        {
+            canHearMusic = true;
+            PlayerPrefs.SetString("canHearMusic", true.ToString());
+        }
+
+        if (PlayerPrefs.HasKey("canHearSound"))
+        {
+            canHearSound = bool.Parse(PlayerPrefs.GetString("canHearSound"));
+        }
+        else
+        {
+            canHearSound = true;
+            PlayerPrefs.SetString("canHearSound", true.ToString());
+        }
     }
 
     private void Start()
     {
         LoadSoundsAtStart();
+        StartSoundVolumes();
+    }
+
+    void StartSoundVolumes()
+    {
+        mixer.SetFloat("MusicVolume", canHearMusic ? -12 : -80);
+
+        mixer.SetFloat("GameVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("SFXVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("SFXNormalVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("SFXUnderwaterVolume", canHearSound ? 0 : -80);
+        mixer.SetFloat("MenuVolume", canHearSound ? 0 : -80);
     }
 
     private void LoadSoundsAtStart()
