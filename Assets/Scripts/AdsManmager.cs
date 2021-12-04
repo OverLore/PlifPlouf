@@ -10,6 +10,7 @@ public class AdsManmager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     [SerializeField] Button _showAdButton;
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] string _iOsAdUnitId = "Rewarded_iOS";
+    [SerializeField] string VotreIdAndroid = "4478882";
 
     [SerializeField] UnityEvent rewardEvent;
 
@@ -29,7 +30,7 @@ public class AdsManmager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
         if (!Advertisement.isInitialized)
         {
-            Advertisement.Initialize("4478882", true, true);
+            Advertisement.Initialize(VotreIdAndroid, true, true);
             LoadAd();
         }
     }
