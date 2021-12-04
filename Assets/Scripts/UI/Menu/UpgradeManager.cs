@@ -91,6 +91,7 @@ public class UpgradeManager : MonoBehaviour
     {
         public string name;                            // Inspector Element Name
         public Sprite icon;
+        public bool isBonus;
         [SerializeField] private int currentTier;
         public int CurrentTier
         {
@@ -147,6 +148,11 @@ public class UpgradeManager : MonoBehaviour
             // get elements 
             GameObject background = upgradeGO.transform.Find("Background").gameObject;
             Image icon = background.transform.Find("Icon").GetComponent<Image>();
+            if (UpgradesList[i].isBonus)
+                background.transform.Find("Bonus").gameObject.SetActive(true);
+            else
+                background.transform.Find("Stats").gameObject.SetActive(true);
+
             TextMeshProUGUI name = background.transform.Find("Name").GetComponent<TextMeshProUGUI>();
             icon.sprite = upgradeInfo.icon;
             name.text = upgradeInfo.name;
