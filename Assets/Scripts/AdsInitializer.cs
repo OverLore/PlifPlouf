@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
-using UnityEditor.Advertisements;
-using UnityEngine.Purchasing;
 
 public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
 {
