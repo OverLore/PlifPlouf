@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
     private float startVolume = 0.5f;
     private float endVolume = 1.0f;
 
+    public string profileName = "";
+
     void LoadStats()
     {
         if (PlayerPrefs.HasKey("Money"))
@@ -454,19 +456,19 @@ public class GameManager : MonoBehaviour
         //for(int i = 0; i < comboFactor - 2;i++) {str += "!";}
         comboText.text = str;
 
-        comboAnimator.Play("Combo",-1,0);
+        comboAnimator.Play("Combo", -1, 0);
 
 
-        comboText.transform.rotation = 
+        comboText.transform.rotation =
             Quaternion.Euler(
                 new Vector3(0, 0,
                 Random.Range(-comboAngleShake, comboAngleShake)));
 
-        float scale = Mathf.Lerp(50, 60, 
+        float scale = Mathf.Lerp(50, 60,
             Mathf.Clamp((float)comboFactor, 1, comboFactToMaxScale) / comboFactToMaxScale);
         comboText.fontSize = (int)scale;
         //comboText.transform.localScale = new Vector3(scale, scale, 1);
-        comboText.transform.localPosition = new Vector3(0f,-120f -10f * 
+        comboText.transform.localPosition = new Vector3(0f, -120f - 10f *
             Mathf.Clamp((float)comboFactor, 1, comboFactToMaxScale)
             , 0f);
 
@@ -484,7 +486,7 @@ public class GameManager : MonoBehaviour
     private void OnLevelWasLoaded(int level)
     {
         GetTexts();
-    }    
+    }
 }
 public static class JsonHelper
 {

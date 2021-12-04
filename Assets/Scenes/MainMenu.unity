@@ -378,9 +378,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1249191345854491460, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+      propertyPath: m_Text
+      value: beat 25 ennemies
+      objectReference: {fileID: 0}
     - target: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
       propertyPath: m_Name
       value: Achievement (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767812180573279389, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+      propertyPath: m_Text
+      value: Fisherman
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
@@ -3794,7 +3802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1249191345854491460, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
       propertyPath: m_Text
-      value: Have more than 1000 kakillages
+      value: Collect 100 kakillages
       objectReference: {fileID: 0}
     - target: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
       propertyPath: m_Name
@@ -3992,7 +4000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &592013846
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4101,7 +4109,7 @@ PrefabInstance:
     - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: canvasArray.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1310264258}
     - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: canvasArray.Array.data[4]
       value: 
@@ -9119,6 +9127,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303345547}
   m_CullTransparentMesh: 1
+--- !u!1 &1310264258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6718053240193258804, guid: ca6d375b9f8bc664397dc126cc6ee4ee, type: 3}
+  m_PrefabInstance: {fileID: 2033910343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1311027489
 GameObject:
   m_ObjectHideFlags: 0
@@ -9927,6 +9940,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393674268}
   m_CullTransparentMesh: 1
+--- !u!1 &1400743924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+  m_PrefabInstance: {fileID: 50343201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1405232367
 GameObject:
   m_ObjectHideFlags: 0
@@ -12284,6 +12302,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807315793}
   m_CullTransparentMesh: 1
+--- !u!1 &1813889545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+  m_PrefabInstance: {fileID: 1964184870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1822418599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13662,11 +13685,11 @@ MonoBehaviour:
   - name: Collector
     AchievmentPannel: {fileID: 377687575}
     ReachedRank: 0
-  - name: 
-    AchievmentPannel: {fileID: 0}
+  - name: Fisherman
+    AchievmentPannel: {fileID: 1400743924}
     ReachedRank: 0
-  - name: 
-    AchievmentPannel: {fileID: 0}
+  - name: Darwinism
+    AchievmentPannel: {fileID: 1813889545}
     ReachedRank: 0
   - name: 
     AchievmentPannel: {fileID: 0}
@@ -13771,9 +13794,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1249191345854491460, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+      propertyPath: m_Text
+      value: Upgrade yourself 5 times
+      objectReference: {fileID: 0}
     - target: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
       propertyPath: m_Name
       value: Achievement (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767812180573279389, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+      propertyPath: m_Text
+      value: Darwinism
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
