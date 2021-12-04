@@ -38,6 +38,10 @@ public class AudioManager : MonoBehaviour
     public bool canHearMusic = true;
     public bool canHearSound = true;
 
+    int gameMusicVolume = -12;
+    int otherVolume = 0;
+    int muteVolume = -80;
+
     #region public
     //add additional scenes here if we have a real scene transition in game
     //(if you just want sounds to play in your new scene, simply add the audioManager
@@ -115,8 +119,7 @@ public class AudioManager : MonoBehaviour
 
         PlayerPrefs.SetString("canHearMusic", canHearMusic.ToString());
 
-        mixer.SetFloat("MusicVolume", canHearMusic ? -12 : -80);
-        mixer.SetFloat("MenuMusicVolume", canHearMusic ? -12 : -80);
+        SetMusicVolume();
     }
 
     public void SwitchSoundVolumeState()
@@ -125,11 +128,7 @@ public class AudioManager : MonoBehaviour
 
         PlayerPrefs.SetString("canHearSound", canHearSound.ToString());
 
-        mixer.SetFloat("GameVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("SFXVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("SFXNormalVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("SFXUnderwaterVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("MenuSFXVolume", canHearSound ? 0 : -80);
+        SetSoundVolume();
     }
     #endregion
 
@@ -213,6 +212,28 @@ public class AudioManager : MonoBehaviour
         LoadSavedStates();
     }
 
+    void SetOtherVolumes()
+    {
+        mixer.SetFloat("MasterVolume", 0.0f);
+        mixer.SetFloat("MenuVolume", 0.0f);
+    }
+
+    void SetMusicVolume()
+    {
+        mixer.SetFloat("MusicVolume", canHearMusic ? gameMusicVolume : muteVolume);
+        mixer.SetFloat("MenuMusicVolume", canHearMusic ? otherVolume : muteVolume);
+    }
+
+    void SetSoundVolume()
+    {
+        mixer.SetFloat("GameVolume", canHearSound ? otherVolume : muteVolume);
+        mixer.SetFloat("SFXVolume", canHearSound ? otherVolume : muteVolume);
+        mixer.SetFloat("SFXNormalVolume", canHearSound ? otherVolume : muteVolume);
+        mixer.SetFloat("SFXUnderwaterVolume", canHearSound ? otherVolume : muteVolume);
+        mixer.SetFloat("MenuSFXVolume", canHearSound ? otherVolume : muteVolume);
+    }
+
+
     void LoadSavedStates()
     {
         if (PlayerPrefs.HasKey("canHearMusic"))
@@ -239,18 +260,14 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         LoadSoundsAtStart();
-        StartSoundVolumes();
+        StartSetVolumes();
     }
 
-    void StartSoundVolumes()
+    void StartSetVolumes()
     {
-        mixer.SetFloat("MusicVolume", canHearMusic ? -12 : -80);
-
-        mixer.SetFloat("GameVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("SFXVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("SFXNormalVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("SFXUnderwaterVolume", canHearSound ? 0 : -80);
-        mixer.SetFloat("MenuVolume", canHearSound ? 0 : -80);
+        SetOtherVolumes();
+        SetMusicVolume();
+        SetSoundVolume();
     }
 
     private void LoadSoundsAtStart()

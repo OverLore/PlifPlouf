@@ -217,6 +217,10 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 5746dda622b8ac1478c485c992526af1
     name: GameVolume
+  - guid: 84003482fab13c04fa48b1f19552118c
+    name: MasterVolume
+  - guid: 8d9e7151f2d96754fb267029194d2b90
+    name: MenuVolume
   - guid: 8ba2362e0868ca14595bba75dde3cc02
     name: MenuMusicVolume
   - guid: eeba225ab82db4c48b6950990066aeb6
@@ -288,10 +292,18 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 7b1d5e39ab5c58f498ab3467f7ef347b
   m_FloatValues:
-    f7993070853726149a16ee7064657dcf: -12
+    f7993070853726149a16ee7064657dcf: 0
+    1487f380ce115bf408d0fc6bbea4ed27: 0
+    8d9e7151f2d96754fb267029194d2b90: 0
+    84003482fab13c04fa48b1f19552118c: 0
     4ebfa3f32a159c448a0559a282aebc9f: 344
     16e30d04ceab0eb4a9d43cd3b66c5c59: 700
+    5746dda622b8ac1478c485c992526af1: 0
+    3d1dd23a1c9bab948b2abefbcfc7edfc: 0
+    eeba225ab82db4c48b6950990066aeb6: 0
+    7ae36dfc7f8075b4fa615aa353bc68ff: 0
     099462fd52b818b40921e042ee1f74cd: 1
+    8ba2362e0868ca14595bba75dde3cc02: 0
     0a4bfcdf7467b0649bcb911ff6f803d4: 792
   m_TransitionOverrides: {}
 --- !u!243 &1624436634446745006
