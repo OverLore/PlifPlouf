@@ -7,6 +7,7 @@ using UnityEditor;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -78,6 +79,39 @@ public class GameManager : MonoBehaviour
     private float endVolume = 1.0f;
 
     public string profileName = "";
+    public List<string> profileNames = new List<string>();
+
+    public void LoadProfiles()
+    {
+        if (PlayerPrefs.HasKey("Profiles"))
+        {
+            profileNames = PlayerPrefs.GetString("Profiles").Split(',').ToList();
+        }
+        else
+        {
+            PlayerPrefs.SetString("Profiles", "");
+        }
+    }
+
+    public void SaveProfiles()
+    {
+        string str = "";
+
+        foreach (string pn in profileNames)
+        {
+            str += pn;
+            str += ',';
+        }
+
+        str = str.Substring(0, str.Length - 1);
+
+        PlayerPrefs.SetString("Profiles", str);
+    }
+
+    public List<string> GetProfiles()
+    {
+        return profileNames;
+    }
 
     void LoadStats()
     {
