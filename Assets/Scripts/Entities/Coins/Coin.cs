@@ -39,6 +39,8 @@ public class Coin : MonoBehaviour
         LevelManager.instance.coins++;
         AudioManager.Instance.PlaySound("PickUpCoin");
 
+        PlayerPrefs.SetInt(GameManager.instance.profileName + "CoinPicked", PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") + 1);
+
         Destroy(gameObject);
     }
 }

@@ -221,6 +221,11 @@ public class GameManager : MonoBehaviour
             nextLifeAt = System.DateTime.FromBinary(temp);
         }
 
+        if (!PlayerPrefs.HasKey("CoinPicked"))
+        {
+            PlayerPrefs.SetInt("CoinPicked", 0);
+        }
+
         Application.targetFrameRate = 60;
 
         GetTexts();
