@@ -40,8 +40,8 @@ public class CameraManager : MonoBehaviour
         //Vector3 newSize = size * camerasAspectRatio;
         //uniform scaling
         Vector3 newSize = size * camerasAspectRatioUniform;
-        Vector3 scaleRatio = new Vector3(newSize.x / size.x, newSize.y / size.y, 0);
-        _go.transform.localScale = new Vector3(_go.transform.localScale.x * scaleRatio.x, _go.transform.localScale.y * scaleRatio.y, 0);
+        Vector3 scaleRatio = new Vector3(newSize.x / size.x, newSize.y / size.y, 1);
+        _go.transform.localScale = new Vector3(_go.transform.localScale.x * scaleRatio.x, _go.transform.localScale.y * scaleRatio.y, 1);
     }
 
     //public void SetImageScaleToCameraSize(GameObject _go)

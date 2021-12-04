@@ -18782,6 +18782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: -0.55, z: 0}
   parent: {fileID: 2036861312}
+  isYInverted: 1
 --- !u!1001 &1609342667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18803,7 +18804,7 @@ PrefabInstance:
       objectReference: {fileID: 965066163}
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: levelToLoad
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7048506322179383832, guid: 2a0721930da205a49817de6370fc23c7, type: 3}
       propertyPath: waveSpawner
@@ -20310,6 +20311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: -0.55, z: 0}
   parent: {fileID: 2036861312}
+  isYInverted: 1
 --- !u!1 &2022193730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2851013472903413623, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
