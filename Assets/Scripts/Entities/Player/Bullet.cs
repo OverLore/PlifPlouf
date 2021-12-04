@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 
     Rigidbody2D rb;
     Vector2 vel;
+    bool hasHit = false;
 
     void DestroyBullet(bool _hasHitSomething)
     {
@@ -22,10 +23,11 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Ennemy")
+        if (collision.gameObject.tag == "Ennemy" && !hasHit)
         {
             //Destroy(collision.gameObject);
-            
+
+            hasHit = true;
             collision.gameObject.GetComponent<Enemy>().takeDamage(damage);
             DestroyBullet(true);
         }
