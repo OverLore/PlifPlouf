@@ -110,6 +110,12 @@ public class UpgradeManager : MonoBehaviour
         public List<Tier> TierList;
     }
 
+    public void GetUI()
+    {
+        UpgradesCanvas = GameObject.Find("CanvasZoo").transform.Find("Upgrades").gameObject;
+        NotEnoughtMoneyMessage = UpgradesCanvas.transform.Find("NotEnoughtMoneyMessage").gameObject;
+    }
+
     [SerializeField] public List<Upgrade> UpgradesList;
 
     public void CreateUI()

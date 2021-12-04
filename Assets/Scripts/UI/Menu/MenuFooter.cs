@@ -56,6 +56,7 @@ public class MenuFooter : MonoBehaviour
         EnableMapCanvas();
 
         UpdateMoneyUI();
+        UpgradeManager.Instance.GetUI();
     }
 
     public void OpenTab(MenuTab tab)
