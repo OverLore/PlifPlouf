@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
 
             lifeIndicatorTime = 2f;
 
-            Debug.Log($"Player take {_damage} damage");
+            //Debug.Log($"Player take {_damage} damage");
             pv -= (int)_damage;
 
             if (pv <= 0)
@@ -579,7 +579,7 @@ public class Player : MonoBehaviour
     {
         isInvincibilityOn = true;
         invincibilityTimer = 0.0f;
-        Debug.Log("set invincibility");
+        //Debug.Log("set invincibility");
     }
 
     void SetInvincibilityOff()

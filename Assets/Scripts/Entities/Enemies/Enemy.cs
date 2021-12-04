@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         LevelManager.instance.maxObtainableScore += score;
-        Debug.Log(gameObject + " " + LevelManager.instance.maxObtainableScore);
+        //Debug.Log(gameObject + " " + LevelManager.instance.maxObtainableScore);
         //create an offset on each of them (so that enemies
         //won't shoot at the same time)
         shotTimer = Random.Range(0, maxShotTimer / 5.0f);
