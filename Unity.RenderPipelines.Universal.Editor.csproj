@@ -170,8 +170,8 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\Overrides\TonemappingEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\ShaderGUI\Shaders\LitShader.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\ShaderGraph\UniversalFields.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\Overrides\LiftGammaGainEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\ShaderGraph\Targets\UniversalTarget.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\Overrides\LiftGammaGainEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\AssetPostProcessors\ThreeDSMaterialDescriptionPostprocessor.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\2D\ShapeEditor\Selection\PointRectSelector.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.universal@11.0.0\Editor\ShaderGraph\Targets\UniversalSpriteLitSubTarget.cs" />
