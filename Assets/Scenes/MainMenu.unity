@@ -2660,6 +2660,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373007289}
   m_CullTransparentMesh: 1
+--- !u!1 &377687575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3973944506237124916, guid: a8473d32163f2a1409bbb7f1673db645, type: 3}
+  m_PrefabInstance: {fileID: 540214969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &385952792
 GameObject:
   m_ObjectHideFlags: 0
@@ -13802,6 +13807,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e76d9a77818f074d9b4a18e772dd15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabAchievment:
+  - name: Collector
+    AchievmentPannel: {fileID: 377687575}
+    ReachedRank: 0
+  - name: 
+    AchievmentPannel: {fileID: 0}
+    ReachedRank: 0
+  - name: 
+    AchievmentPannel: {fileID: 0}
+    ReachedRank: 0
+  - name: 
+    AchievmentPannel: {fileID: 0}
+    ReachedRank: 0
+  - name: 
+    AchievmentPannel: {fileID: 0}
+    ReachedRank: 0
+  - name: 
+    AchievmentPannel: {fileID: 0}
+    ReachedRank: 0
+  - name: 
+    AchievmentPannel: {fileID: 0}
+    ReachedRank: 0
 --- !u!1001 &1964184870
 PrefabInstance:
   m_ObjectHideFlags: 0
