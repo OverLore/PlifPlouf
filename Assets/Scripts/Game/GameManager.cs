@@ -239,14 +239,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (PlayerPrefs.HasKey("maxLevelReached"))
+        if (PlayerPrefs.HasKey(GameManager.instance.profileName + "maxLevelReached"))
         {
-            instance.maxLevelReached = PlayerPrefs.GetInt("maxLevelReached");
+            instance.maxLevelReached = PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached");
         }
         else
         {
             instance.maxLevelReached = -1;
-            PlayerPrefs.SetInt("maxLevelReached", -1);
+            PlayerPrefs.SetInt(GameManager.instance.profileName + "maxLevelReached", -1);
         }
 
         if (PlayerPrefs.HasKey("nextLifeAt"))
@@ -254,12 +254,14 @@ public class GameManager : MonoBehaviour
             long temp = System.Convert.ToInt64(PlayerPrefs.GetString("nextLifeAt"));
             nextLifeAt = System.DateTime.FromBinary(temp);
         }
-
-        if (!PlayerPrefs.HasKey("CoinPicked"))
+        //ACHIEVMENT STUFF
+        if (!PlayerPrefs.HasKey(GameManager.instance.profileName + "CoinPicked"))
         {
-            PlayerPrefs.SetInt("CoinPicked", 0);
+            PlayerPrefs.SetInt(GameManager.instance.profileName + "CoinPicked", 0);
         }
+       
 
+        ///
         Application.targetFrameRate = 60;
 
         GetTexts();
@@ -351,7 +353,7 @@ public class GameManager : MonoBehaviour
     public void ChangeMaxLevelReached(int max)
     {
         maxLevelReached = max;
-        PlayerPrefs.SetInt("maxLevelReached", maxLevelReached);
+        PlayerPrefs.SetInt(GameManager.instance.profileName + "maxLevelReached", maxLevelReached);
     }
 
     public void LoadLevel()

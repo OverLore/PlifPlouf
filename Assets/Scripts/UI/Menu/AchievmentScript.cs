@@ -61,7 +61,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "collect 100 kakillages";
             if(PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") >= 100 && PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") < 250)
             {
-                //PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 1);
+                
                 tabAchievment[_i].ReachedRank = 1;
             }
         }
@@ -70,7 +70,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "collect 250 kakillages";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") >= 250 && PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") < 500)
             {
-                //PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 2);
+                
                 tabAchievment[_i].ReachedRank = 2;
             }
         }
@@ -79,7 +79,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "collect 500 kakillages";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") >= 500)
             {
-               // PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 3);
+              
                 tabAchievment[_i].ReachedRank = 3;
             }
         }
@@ -112,6 +112,7 @@ public class AchievmentScript : MonoBehaviour
         if (_reachedRank == 0)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Upgrade yourself 5 times";
+           
         }
         if (_reachedRank > 0)
         {
@@ -131,16 +132,31 @@ public class AchievmentScript : MonoBehaviour
         if (_reachedRank == 0)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 5";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") >= 4 && PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") < 9)
+            {
+
+                tabAchievment[_i].ReachedRank = 1;
+            }
         }
-        if (_reachedRank > 0)
+        if (_reachedRank == 1)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 10";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") >= 9 && PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") < 14)
+            {
+
+                tabAchievment[_i].ReachedRank = 2;
+            }
         }
-        if (_reachedRank > 1)
+        if (_reachedRank == 2)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 15";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") >= 14)
+            {
+
+                tabAchievment[_i].ReachedRank = 3;
+            }
         }
-        if (_reachedRank > 2)
+        if (_reachedRank == 3)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Completed!";
         }
