@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -665,13 +666,33 @@ public class Player : MonoBehaviour
         UpdateShotNumberBoost();
         UpdateAnimSpeed();
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    TakeDamage(5);
-        //}
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugAddLife")
+            && SceneManager.GetActiveScene().name == "TestNiveaux")
+        {
+            if (pv > 0 && pv < 100)
+            {
+                lifeIndicatorTime = 2f;
+
+                pv += 10;
+
+                if (pv > 100)
+                {
+                    pv = 100;
+                }
+            }
+        }
 
 
-        UpdateLifePosition();
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugRemoveLife")
+            && SceneManager.GetActiveScene().name == "TestNiveaux")
+        {
+            isInvincibilityOn = false;
+            invincibilityTimer = 2.0f;
+            TakeDamage(10);
+        }
+
+
+            UpdateLifePosition();
         if (LifeIndicatorIsActive || lifeIndicatorTime > 0)
         {
             lifeIndicatorTime -= Time.deltaTime;
