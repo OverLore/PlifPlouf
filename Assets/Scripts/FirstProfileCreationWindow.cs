@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ProfileCreationWindow : MonoBehaviour
+public class FirstProfileCreationWindow : MonoBehaviour
 {
+    [SerializeField] GameObject canvas;
     [SerializeField] Image errorWindow;
     [SerializeField] Image creationSuccessWindow;
     [SerializeField] Image creationFailedWindow;
     [SerializeField] TMP_InputField inputField;
-    [SerializeField] TMP_Dropdown dropdown;
 
     Coroutine errorWindowShowCoroutine = null;
     Coroutine creationSuccessWindowShowCoroutine = null;
@@ -18,12 +18,7 @@ public class ProfileCreationWindow : MonoBehaviour
 
     private void Start()
     {
-        UpdateDropdown();
-    }
-
-    private void OnEnable()
-    {
-        UpdateDropdown();
+        canvas.SetActive(GameManager.instance.profileName == "");
     }
 
     public void CreateUser()
@@ -51,16 +46,9 @@ public class ProfileCreationWindow : MonoBehaviour
 
         if (GameManager.instance.IsExistingUser(username))
         {
-            if (creationSuccessWindowShowCoroutine != null)
-            {
-                StopCoroutine(creationSuccessWindowShowCoroutine);
-            }
-
-            creationSuccessWindowShowCoroutine = StartCoroutine(ShowCreationSuccessWindow());
-
             GameManager.instance.ChangeUser(username);
 
-            UpdateDropdown();
+            canvas.SetActive(false);
 
             return;
         }
@@ -77,24 +65,6 @@ public class ProfileCreationWindow : MonoBehaviour
         }
     }
 
-    public void OnDropdownValueChanged(int value)
-    {
-        GameManager.instance.ChangeUser(dropdown.options[value].text);
-    }
-
-    void UpdateDropdown()
-    {
-        if (dropdown == null || !dropdown.isActiveAndEnabled)
-        {
-            return;
-        }
-
-        dropdown.ClearOptions();
-        dropdown.AddOptions(GameManager.instance.profileNames);
-
-        dropdown.value = GameManager.instance.profileNames.IndexOf(GameManager.instance.profileName);
-    }
-
     IEnumerator ShowErrorWindow()
     {
         float elapsedTime = 0f;
@@ -102,7 +72,7 @@ public class ProfileCreationWindow : MonoBehaviour
         while (elapsedTime < 3f)
         {
             elapsedTime += Time.deltaTime;
-            Color currentColor = Color.Lerp(Color.white, new Color(1,1,1,0), elapsedTime / 3f);
+            Color currentColor = Color.Lerp(Color.white, new Color(1, 1, 1, 0), elapsedTime / 3f);
             errorWindow.color = currentColor;
             yield return null;
         }
@@ -115,7 +85,7 @@ public class ProfileCreationWindow : MonoBehaviour
         while (elapsedTime < 3f)
         {
             elapsedTime += Time.deltaTime;
-            Color currentColor = Color.Lerp(Color.white, new Color(1,1,1,0), elapsedTime / 3f);
+            Color currentColor = Color.Lerp(Color.white, new Color(1, 1, 1, 0), elapsedTime / 3f);
             creationSuccessWindow.color = currentColor;
             yield return null;
         }
@@ -128,7 +98,7 @@ public class ProfileCreationWindow : MonoBehaviour
         while (elapsedTime < 3f)
         {
             elapsedTime += Time.deltaTime;
-            Color currentColor = Color.Lerp(Color.white, new Color(1,1,1,0), elapsedTime / 3f);
+            Color currentColor = Color.Lerp(Color.white, new Color(1, 1, 1, 0), elapsedTime / 3f);
             creationFailedWindow.color = currentColor;
             yield return null;
         }

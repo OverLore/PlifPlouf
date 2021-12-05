@@ -10,6 +10,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] Image NoMusic;
     [SerializeField] Image NoSound;
     [SerializeField] TMP_InputField newUserField;
+    [SerializeField] TMP_Text currentUserText;
     [SerializeField] GameObject profileEditionWindow;
 
     private void Start()
@@ -18,6 +19,11 @@ public class SettingsMenu : MonoBehaviour
         UpdateSoundOffState();
 
         profileEditionWindow.SetActive(false);
+    }
+
+    private void Update()
+    {
+        currentUserText.text = GameManager.instance.profileName;
     }
 
     public void SwitchMusic()

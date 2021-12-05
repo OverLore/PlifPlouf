@@ -90,9 +90,9 @@ public class GameManager : MonoBehaviour
 
         if (profileNames.Count == 0)
         {
-            profileNames.Add("user1");
+            profileNames.Add("");
 
-            profileName = "user1";
+            profileName = "";
 
             SaveCurrentUser();
             SaveProfiles();
@@ -102,6 +102,8 @@ public class GameManager : MonoBehaviour
     public void SaveProfiles()
     {
         string str = "";
+
+        profileNames.Remove("");
 
         foreach (string pn in profileNames)
         {
