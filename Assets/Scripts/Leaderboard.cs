@@ -12,9 +12,13 @@ public class Leaderboard : MonoBehaviour
         public int medals;
         public int score;
         public int stars;
+        public int kills;
     }
 
     [SerializeField] GameObject linePrefab;
+    [SerializeField] bool isLocal;
+
+    public int _level = 0;
 
     List<Line> lines = new List<Line>();
 
@@ -27,53 +31,81 @@ public class Leaderboard : MonoBehaviour
 
         lines.Clear();
 
-        foreach (string player in GameManager.instance.profileNames)
+        if (isLocal)
         {
-            Line newLine = new Line();
-
-            int medals = 0;
-            int score = 0;
-            int stars = 0;
-            int kaki = 0;
-
-            int level = 0;
-            LevelDatasStruct dat = new LevelDatasStruct();
-            while (LevelDatas.LoadLevelDatas(level, out dat, player))
+            foreach (string player in GameManager.instance.profileNames)
             {
-                score += dat.score;
-                stars += dat.stars;
+                Line newLine = new Line();
 
-                level++;
-            }
+                LevelDatasStruct dat = new LevelDatasStruct();
+                LevelDatas.LoadLevelDatas(_level, out dat, player);
 
-            if (PlayerPrefs.HasKey(player + "Collector"))
-            {
-                medals += PlayerPrefs.GetInt(player + "Collector");
-            }
-            if (PlayerPrefs.HasKey(player + "Fisherman"))
-            {
-                medals += PlayerPrefs.GetInt(player + "Fisherman");
-            }
-            if (PlayerPrefs.HasKey(player + "Darwinism"))
-            {
-                medals += PlayerPrefs.GetInt(player + "Darwinism");
-            }
-            if (PlayerPrefs.HasKey(player + "Captain Cousteau"))
-            {
-                medals += PlayerPrefs.GetInt(player + "Captain Cousteau");
-            }
-            if (PlayerPrefs.HasKey(player + "CoinPicked"))
-            {
-                kaki = PlayerPrefs.GetInt(player + "CoinPicked");
-            }
+                newLine.playerName = player;
+                newLine.kaki = dat.coins;
+                newLine.score = dat.score;
+                newLine.stars = dat.stars;
+                newLine.kills = dat.kills;
+                newLine.medals = 0;
 
-            newLine.playerName = player;
-            newLine.kaki = kaki;
-            newLine.medals = medals;
-            newLine.score = score;
-            newLine.stars = stars;
+                lines.Add(newLine);
+            }
+        }
+        else
+        {
+            foreach (string player in GameManager.instance.profileNames)
+            {
+                Line newLine = new Line();
 
-            lines.Add(newLine);
+                int medals = 0;
+                int score = 0;
+                int stars = 0;
+                int kills = 0;
+                int kaki = 0;
+
+                int level = 0;
+                LevelDatasStruct dat = new LevelDatasStruct();
+                while (LevelDatas.LoadLevelDatas(level, out dat, player))
+                {
+                    score += dat.score;
+                    stars += dat.stars;
+
+                    level++;
+                }
+
+                if (PlayerPrefs.HasKey(player + "Collector"))
+                {
+                    medals += PlayerPrefs.GetInt(player + "Collector");
+                }
+                if (PlayerPrefs.HasKey(player + "Fisherman"))
+                {
+                    medals += PlayerPrefs.GetInt(player + "Fisherman");
+                }
+                if (PlayerPrefs.HasKey(player + "Darwinism"))
+                {
+                    medals += PlayerPrefs.GetInt(player + "Darwinism");
+                }
+                if (PlayerPrefs.HasKey(player + "Captain Cousteau"))
+                {
+                    medals += PlayerPrefs.GetInt(player + "Captain Cousteau");
+                }
+                if (PlayerPrefs.HasKey(player + "CoinPicked"))
+                {
+                    kaki = PlayerPrefs.GetInt(player + "CoinPicked");
+                }
+                if (PlayerPrefs.HasKey(player + "KillCount"))
+                {
+                    kills = PlayerPrefs.GetInt(player + "KillCount");
+                }
+
+                newLine.playerName = player;
+                newLine.kaki = kaki;
+                newLine.medals = medals;
+                newLine.score = score;
+                newLine.stars = stars;
+                newLine.kills = kills;
+
+                lines.Add(newLine);
+            }
         }
     }
 
@@ -151,6 +183,21 @@ public class Leaderboard : MonoBehaviour
                     go.GetComponent<LeaderboardLine>().Setup(idddd, line.playerName, line.stars);
 
                     idddd++;
+                }
+
+                break;
+            case 4:
+                lines.Sort((x, x2) => x.kills.CompareTo(x2.kills));
+                lines.Reverse();
+
+                int iddddd = 1;
+                foreach (Line line in lines)
+                {
+                    GameObject go = Instantiate(linePrefab, transform);
+
+                    go.GetComponent<LeaderboardLine>().Setup(iddddd, line.playerName, line.kills);
+
+                    iddddd++;
                 }
 
                 break;
