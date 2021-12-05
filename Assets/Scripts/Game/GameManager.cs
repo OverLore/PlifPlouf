@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public bool AdsInitialized = false;
 
+    public System.Action<int> OnAccountChange;
 
     // score
     [field: SerializeField] private ulong score;
@@ -141,6 +142,10 @@ public class GameManager : MonoBehaviour
         profileNames.Add(username);
 
         SaveProfiles();
+
+        PlayerPrefs.SetInt(username + "CoinPicked", 0);
+        PlayerPrefs.SetInt(username + "KillCount", 0);
+        PlayerPrefs.SetInt(username + "UpgradeCount", 0);
     }
 
     public void ChangeUser(string username)
@@ -295,18 +300,7 @@ public class GameManager : MonoBehaviour
             nextLifeAt = System.DateTime.FromBinary(temp);
         }
         //ACHIEVMENT STUFF
-        if (!PlayerPrefs.HasKey(GameManager.instance.profileName + "CoinPicked"))
-        {
-            PlayerPrefs.SetInt(GameManager.instance.profileName + "CoinPicked", 0);
-        }
-        if (!PlayerPrefs.HasKey(GameManager.instance.profileName + "KillCount"))
-        {
-            PlayerPrefs.SetInt(GameManager.instance.profileName + "KillCount", 0);
-        }
-        if (!PlayerPrefs.HasKey(GameManager.instance.profileName + "UpgradeCount"))
-        {
-            PlayerPrefs.SetInt(GameManager.instance.profileName + "UpgradeCount", 0);
-        }
+        
 
         ///
         Application.targetFrameRate = 60;

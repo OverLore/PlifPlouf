@@ -21,38 +21,30 @@ public class AchievmentScript : MonoBehaviour
 
         for (int i = 0; i < tabAchievment.Length; i++)
         {
-            if (tabAchievment[i].ReachedRank > 0)
-            {
-                tabAchievment[i].AchievmentPannel.gameObject.transform.Find("RankOneOn").gameObject.SetActive(true);
-            }
-            if (tabAchievment[i].ReachedRank > 1)
-            {
-                tabAchievment[i].AchievmentPannel.gameObject.transform.Find("RankTwoOn").gameObject.SetActive(true);
-            }
-            if (tabAchievment[i].ReachedRank > 2)
-            {
-                tabAchievment[i].AchievmentPannel.gameObject.transform.Find("RankThreeOn").gameObject.SetActive(true);
-            }
+            tabAchievment[i]?.AchievmentPannel?.gameObject.transform.Find("RankOneOn")?.gameObject.SetActive(PlayerPrefs.GetInt(GameManager.instance.profileName + tabAchievment[i].name) > 0);
+            tabAchievment[i]?.AchievmentPannel?.gameObject.transform.Find("RankTwoOn")?.gameObject.SetActive(PlayerPrefs.GetInt(GameManager.instance.profileName + tabAchievment[i].name) > 1);
+            tabAchievment[i]?.AchievmentPannel?.gameObject.transform.Find("RankThreeOn")?.gameObject.SetActive(PlayerPrefs.GetInt(GameManager.instance.profileName + tabAchievment[i].name) > 2);
+            
 
             switch (tabAchievment[i].name)
             {
                 case "Collector":
-                    collectorSetStat(tabAchievment[i].ReachedRank, i);
+                    collectorSetStat(PlayerPrefs.GetInt(GameManager.instance.profileName + tabAchievment[i].name), i);
                     break;
                 case "Fisherman":
-                    FishermanSetStat(tabAchievment[i].ReachedRank, i);
+                    FishermanSetStat(PlayerPrefs.GetInt(GameManager.instance.profileName + tabAchievment[i].name), i);
                     break;
                 case "Darwinism":
-                    DarwinismSetStat(tabAchievment[i].ReachedRank, i);
+                    DarwinismSetStat(PlayerPrefs.GetInt(GameManager.instance.profileName + tabAchievment[i].name), i);
                     break;
                 case "Captain Cousteau":
-                    CousteauSetStat(tabAchievment[i].ReachedRank, i);
+                    CousteauSetStat(PlayerPrefs.GetInt(GameManager.instance.profileName + tabAchievment[i].name), i);
                     break;
             }
 
 
         }
-        SaveAchievments();
+        //SaveAchievments();
     }
     void collectorSetStat(int _reachedRank, int _i)
     {
@@ -61,8 +53,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "collect 100 kakillages";
             if(PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") >= 100 && PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") < 250)
             {
-                
-                tabAchievment[_i].ReachedRank = 1;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 1);
             }
         }
         if (_reachedRank == 1)
@@ -70,8 +61,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "collect 250 kakillages";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") >= 250 && PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") < 500)
             {
-                
-                tabAchievment[_i].ReachedRank = 2;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 2);
             }
         }
         if (_reachedRank == 2)
@@ -79,8 +69,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "collect 500 kakillages";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "CoinPicked") >= 500)
             {
-              
-                tabAchievment[_i].ReachedRank = 3;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 3);
             }
         }
         if (_reachedRank == 3)
@@ -95,29 +84,26 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Beat 25 ennemies";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") >= 25 && PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") < 50)
             {
-
-                tabAchievment[_i].ReachedRank = 1;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 1);
             }
         }
-        if (_reachedRank > 0)
+        if (_reachedRank == 1)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Beat 50 ennemies";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") >= 50 && PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") < 100)
             {
-
-                tabAchievment[_i].ReachedRank = 2;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 2);
             }
         }
-        if (_reachedRank > 1)
+        if (_reachedRank == 2)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Beat 100 ennemies";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") >= 100)
             {
-
-                tabAchievment[_i].ReachedRank = 3;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 3);
             }
         }
-        if (_reachedRank > 2)
+        if (_reachedRank == 3)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Completed!";
         }
@@ -129,8 +115,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Upgrade yourself 5 times";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") >= 5 && PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") < 10)
             {
-
-                tabAchievment[_i].ReachedRank = 1;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 1);
             }
         }
         if (_reachedRank > 0)
@@ -138,8 +123,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Upgrade yourself 10 times";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") >= 10 && PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") < 20)
             {
-
-                tabAchievment[_i].ReachedRank = 2;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 2);
             }
         }
         if (_reachedRank > 1)
@@ -147,8 +131,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Upgrade yourself 20 times";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") >= 20)
             {
-
-                tabAchievment[_i].ReachedRank = 3;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 3);
             }
         }
         if (_reachedRank > 2)
@@ -163,8 +146,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 5";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") >= 4 && PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") < 9)
             {
-
-                tabAchievment[_i].ReachedRank = 1;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 1);
             }
         }
         if (_reachedRank == 1)
@@ -172,8 +154,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 10";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") >= 9 && PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") < 14)
             {
-
-                tabAchievment[_i].ReachedRank = 2;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 2);
             }
         }
         if (_reachedRank == 2)
@@ -181,8 +162,7 @@ public class AchievmentScript : MonoBehaviour
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Reach level 15";
             if (PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") >= 14)
             {
-
-                tabAchievment[_i].ReachedRank = 3;
+                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[_i].name, 3);
             }
         }
         if (_reachedRank == 3)
@@ -205,15 +185,6 @@ public class AchievmentScript : MonoBehaviour
             }
         }
     }
-    public void SaveAchievments()
-    {
-        for (int i = 0; i < tabAchievment.Length; i++)
-        {
-            
-                PlayerPrefs.SetInt(GameManager.instance.profileName + tabAchievment[i].name, tabAchievment[i].ReachedRank);
-            
-        }
-    }
 }
 
 
@@ -224,7 +195,4 @@ public class Achievment
     public string name;
     [SerializeField] public GameObject AchievmentPannel;
     public int ReachedRank;
-
-
-
 }

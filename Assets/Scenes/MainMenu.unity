@@ -15527,15 +15527,6 @@ MonoBehaviour:
   - name: Captain Cousteau
     AchievmentPannel: {fileID: 1736665073}
     ReachedRank: 0
-  - name: 
-    AchievmentPannel: {fileID: 0}
-    ReachedRank: 0
-  - name: 
-    AchievmentPannel: {fileID: 0}
-    ReachedRank: 0
-  - name: 
-    AchievmentPannel: {fileID: 0}
-    ReachedRank: 0
 --- !u!1001 &1964184870
 PrefabInstance:
   m_ObjectHideFlags: 0
