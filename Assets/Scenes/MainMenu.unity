@@ -4284,7 +4284,7 @@ PrefabInstance:
     - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: canvasArray.Array.data[5]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 19355946}
     - target: {fileID: 6491683305078797309, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: m_RootOrder
       value: 10
