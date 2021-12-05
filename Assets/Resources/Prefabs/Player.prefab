@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: -0.55, z: 0}
   parent: {fileID: 2851013472188256896}
+  isYInverted: 1
 --- !u!1 &2851013471054693392
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +670,7 @@ MonoBehaviour:
   shotGameobject:
   - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
   - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
-  - {fileID: 311746757198926449, guid: a6f7ed83ff5193342946c0374b84283e, type: 3}
+  - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
   - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
   - {fileID: 8990634599087928527, guid: ad796f949809c044d95da9a5673bcbe1, type: 3}
   shotForce: 6
@@ -1053,6 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: -0.55, z: 0}
   parent: {fileID: 2851013472188256896}
+  isYInverted: 1
 --- !u!1001 &6008066271283313702
 PrefabInstance:
   m_ObjectHideFlags: 0

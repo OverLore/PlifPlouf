@@ -16,8 +16,7 @@ public class Player : MonoBehaviour
         Double,
         Triple,
         MultiShot,
-        ShotAround,
-        DeathRay,
+        ShotAround
     }
 
     [SerializeField] GameObject Shield;
@@ -342,17 +341,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void deathRay()
-    {
-        if (GetComponentInChildren<DeathRay>() == null)
-        {
-            GameObject go = Instantiate(shotGameobject[(int)shotType]);
-            InitShotDamage(go);
-
-            go.transform.parent = this.transform;
-        }
-    }
-
     private void shotAround()
     {
         for (int i = 0; i < 10; i++)
@@ -425,25 +413,20 @@ public class Player : MonoBehaviour
 
     private void SideShot()
     {
-
-        //float halfSpace = 0.20f;
-
         for (int i = 0; i < 2; i++)
         {
             // create projectile
-            GameObject go = Instantiate(shotGameobject[(int)shotType]);
+            GameObject go = Instantiate(shotGameobject[0]);
             InitShotDamage(go);
 
             // place projectile
             if (i == 0)
             {
                 go.transform.position = shotOrigin.position;
-                //+ new Vector3(-halfSpace, 0, 0);
             }
             else
             {
                 go.transform.position = shotOrigin.position;
-                //+ new Vector3(halfSpace, 0, 0);
             }
 
             // add push with delta position
@@ -494,7 +477,7 @@ public class Player : MonoBehaviour
             nextShot -= Time.deltaTime * GameManager.instance.timeScale;
         }
 
-        if (nextShot < 0.0f || shotType == ShotType.DeathRay)
+        if (nextShot < 0.0f)
         {
             nextShot = delay;
 
@@ -517,7 +500,6 @@ public class Player : MonoBehaviour
         shotMethods[ShotType.Triple] = tripleShot;
         shotMethods[ShotType.MultiShot] = () => { doubleShot(); tripleShot(); };
         shotMethods[ShotType.ShotAround] = shotAround;
-        shotMethods[ShotType.DeathRay] = deathRay;
     }
 
     private void UpdateLifeText()
