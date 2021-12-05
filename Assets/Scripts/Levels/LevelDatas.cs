@@ -60,4 +60,22 @@ public class LevelDatas : MonoBehaviour
         dats.coins = 0;
         return false;
     }
+
+    public static bool LoadLevelDatas(int level, out LevelDatasStruct dats, string playerName)
+    {
+        if (PlayerPrefs.HasKey($"{GameManager.instance.profileName}{level}_stars"))
+        {
+            dats.stars = PlayerPrefs.GetInt($"{playerName}{level}_stars");
+            dats.score = PlayerPrefs.GetInt($"{playerName}{level}_score");
+            dats.kills = PlayerPrefs.GetInt($"{playerName}{level}_kills");
+            dats.coins = PlayerPrefs.GetInt($"{playerName}{level}_coins");
+            return true;
+        }
+
+        dats.stars = 0;
+        dats.score = 0;
+        dats.kills = 0;
+        dats.coins = 0;
+        return false;
+    }
 }

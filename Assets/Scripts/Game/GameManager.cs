@@ -112,7 +112,10 @@ public class GameManager : MonoBehaviour
             str += ',';
         }
 
-        str = str.Substring(0, str.Length - 1);
+        if (profileNames.Count > 0 && str.Length > 0)
+        {
+            str = str.Substring(0, str.Length - 1);
+        }
 
         PlayerPrefs.SetString("Profiles", str);
     }
