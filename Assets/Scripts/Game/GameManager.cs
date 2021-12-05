@@ -87,9 +87,15 @@ public class GameManager : MonoBehaviour
         {
             profileNames = PlayerPrefs.GetString("Profiles").Split(',').ToList();
         }
-        else
+
+        if (profileNames.Count == 0)
         {
-            PlayerPrefs.SetString("Profiles", "");
+            profileNames.Add("user1");
+
+            profileName = "user1";
+
+            SaveCurrentUser();
+            SaveProfiles();
         }
     }
 
@@ -108,9 +114,38 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("Profiles", str);
     }
 
+    public void SaveCurrentUser()
+    {
+        PlayerPrefs.SetString("CurrentUser", profileName);
+    }
+
+    public void LoadCurrentUser()
+    {
+        profileName = PlayerPrefs.GetString("CurrentUser");
+    }
+
     public List<string> GetProfiles()
     {
         return profileNames;
+    }
+
+    public bool IsExistingUser(string username)
+    {
+        return profileNames.Contains(username);
+    }
+
+    public void CreateUser(string username)
+    {
+        profileNames.Add(username);
+
+        SaveProfiles();
+    }
+
+    public void ChangeUser(string username)
+    {
+        profileName = username;
+
+        SaveCurrentUser();
     }
 
     void LoadStats()
@@ -238,6 +273,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        LoadProfiles();
+        LoadCurrentUser();
 
         if (PlayerPrefs.HasKey(GameManager.instance.profileName + "maxLevelReached"))
         {
