@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InitiateMapSelec : MonoBehaviour
 {
@@ -16,10 +17,7 @@ public class InitiateMapSelec : MonoBehaviour
         //     tabButtons[x].SetActive(true);
         // }
 
-        for (int x = 0; x <= PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") + 1; x++)
-        {
-            tabButtons[x].SetActive(true);
-        }
+        UpdateTabButtons();
 
     }
 
@@ -34,14 +32,29 @@ public class InitiateMapSelec : MonoBehaviour
     }
     public void ButtonOffStatEffect()
     {
-        
         statpannel.gameObject.SetActive(false);
-
     }
+
+    void UpdateTabButtons()
+    {
+        for (int x = 0; x <= PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") + 1; x++)
+        {
+            tabButtons[x].SetActive(true);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugUnlockNextLevel")
+            && SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            if (GameManager.instance.maxLevelReached + 1 < 10)
+            {
+                GameManager.instance.ChangeMaxLevelReached(GameManager.instance.maxLevelReached + 1);
+            }
+            UpdateTabButtons();
+        }
     }
 
 }

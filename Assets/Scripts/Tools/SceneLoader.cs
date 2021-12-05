@@ -15,15 +15,15 @@ public class SceneLoader : MonoBehaviour
     }
 
     //DEBUG PURPOSE ONLY
-    private void Update()
-    {
-        if (Input.GetKeyDown("escape"))
-        {
-            if (SceneManager.GetActiveScene().name == "TestNiveaux")
-            {
-                Debug.Log("leave level with debug key");
-                LoadScene("MainMenu");
-            }
-        }
-    }
+    //private void Update()
+    //{
+    //    //if (Input.GetKeyDown("escape"))
+    //    //{
+    //    //    if (SceneManager.GetActiveScene().name == "TestNiveaux")
+    //    //    {
+    //    //        Debug.Log("leave level with debug key");
+    //    //        LoadScene("MainMenu");
+    //    //    }
+    //    //}
+    //}
 }

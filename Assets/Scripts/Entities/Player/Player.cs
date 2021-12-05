@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
             if (HasShield)
             {
                 ShieldLeft = 0;
-                Debug.Log($"Player deflected {_damage} damage");
+                //Debug.Log($"Player deflected {_damage} damage");
 
                 Shield.SetActive(false);
                 AudioManager.Instance.PlaySound("MeduseGetHitShield");
@@ -665,10 +665,10 @@ public class Player : MonoBehaviour
         UpdateShotNumberBoost();
         UpdateAnimSpeed();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    TakeDamage(5);
+        //}
 
 
         UpdateLifePosition();

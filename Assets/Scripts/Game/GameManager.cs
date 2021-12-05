@@ -340,10 +340,10 @@ public class GameManager : MonoBehaviour
 
         UpdateLivesUI();
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoseLife();
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    LoseLife();
+        //}
 
         if (pauseBack == null)
         {
@@ -365,10 +365,10 @@ public class GameManager : MonoBehaviour
                 AudioListener.volume = Mathf.Lerp(endVolume, startVolume, Time.deltaTime * 2.0f);
             }
 
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-                Paused = !Paused;
-            }
+            //if (Input.GetKeyDown(KeyCode.P))
+            //{
+            //    Paused = !Paused;
+            //}
         }
 
         for (int i = 0; i < colorByLayers.Length; i++)
