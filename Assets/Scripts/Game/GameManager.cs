@@ -216,6 +216,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(instance.profileName + "Lives", instance.lives);
     }
 
+
     private void UpdateLivesUI()
     {
         if (SceneManager.GetActiveScene().buildIndex != 1)
@@ -323,18 +324,22 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
-        System.TimeSpan diff = instance.nextLifeAt.Subtract(System.DateTime.Now);
-
-        if (instance.nextLifeAt == null || diff.TotalSeconds < 0)
+        if (instance.lives > 0)
         {
-            instance.nextLifeAt = System.DateTime.Now.AddMinutes(20);
+            System.TimeSpan diff = instance.nextLifeAt.Subtract(System.DateTime.Now);
+
+            if (instance.nextLifeAt == null || diff.TotalSeconds < 0)
+            {
+                instance.nextLifeAt = System.DateTime.Now.AddMinutes(20);
+            }
+
+       
+            instance.lives--;
+
+            PlayerPrefs.SetString(instance.profileName + "nextLifeAt", instance.nextLifeAt.ToBinary().ToString());
+
+            SaveStats();
         }
-
-        instance.lives--;
-
-        PlayerPrefs.SetString(instance.profileName + "nextLifeAt", instance.nextLifeAt.ToBinary().ToString());
-
-        SaveStats();
     }
 
     private void Update()

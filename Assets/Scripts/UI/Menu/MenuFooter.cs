@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuFooter : MonoBehaviour
 {
@@ -62,6 +63,18 @@ public class MenuFooter : MonoBehaviour
     private void Update()
     {
         UpdateMoneyUI();
+
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugAddLife")
+            && SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            GameManager.instance.ChangeLives(1);
+        }
+
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugRemoveLife")
+            && SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            GameManager.instance.LoseLife();
+        }
     }
 
     public void OpenTab(MenuTab tab)
