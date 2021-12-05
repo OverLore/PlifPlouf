@@ -271,6 +271,9 @@ public void UpdateUpgradeTextsAndButton(GameObject _upgradeGO, int _ID)
             UpgradeManager.instance.UpdateUpgradeTextsAndButton(_upgradeGO, _ID);
         }
 
+        //audio
+        AudioManager.Instance.PlaySound("UIButton");
+
         string saveJson = JsonHelper.ToJson(UpgradesList.ToArray());
         PlayerPrefs.SetString("Upgrades", saveJson);
         PlayerPrefs.Save();
