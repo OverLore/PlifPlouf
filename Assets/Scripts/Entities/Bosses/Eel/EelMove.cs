@@ -14,6 +14,7 @@ public class EelMove : MonoBehaviour
     DangerSign warningSign;
     bool isWarningFirstTime;
     Vector2 warningSignSize;
+    Vector2 screenSize;
     ParticleSystem warningSignParticleSystem;
 
     public GameObject pathsObject;
@@ -181,12 +182,14 @@ public class EelMove : MonoBehaviour
 
     bool BonneIsOnScreen()
     {
-        for (int i = 0; i < boneObject.Length-5; i++)
+        for (int i = 0; i < boneObject.Length / boneObject.Length; i++)
         {
             Vector3 bonne = boneObject[i].transform.position;
-            if ((bonne.x >= -ScreenSize.GetScreenToWorldWidth / 2 && bonne.x <= ScreenSize.GetScreenToWorldWidth / 2 &&
-                 bonne.y >= -ScreenSize.GetScreenToWorldHeight / 2 && bonne.y <= ScreenSize.GetScreenToWorldHeight / 2))
+
+            if ((bonne.x > -screenSize.x + Camera.main.transform.position.x && bonne.x < screenSize.x + Camera.main.transform.position.x &&
+                 bonne.y > -screenSize.y + Camera.main.transform.position.y && bonne.y < screenSize.y + Camera.main.transform.position.y))
             {
+                Debug.Log("Ta mere la pute fonctione gros chien");
                 return true;
             }
         }
@@ -226,19 +229,19 @@ public class EelMove : MonoBehaviour
             }
             //the head is :
             //over right of the screen
-            if (head.position.x >= -ScreenSize.GetScreenToWorldWidth / 2)
+            if (head.position.x >= -screenSize.x + Camera.main.transform.position.x)
             {
-                pos.x = ScreenSize.GetScreenToWorldWidth / 2 - warningSignSize.x / 2;
+                pos.x = screenSize.x + Camera.main.transform.position.x - warningSignSize.x / 2;
 
                 //under the screen
-                if (head.position.y <= -ScreenSize.GetScreenToWorldHeight / 2)
+                if (head.position.y <= -screenSize.y + Camera.main.transform.position.y)
                 {
-                    pos.y = -ScreenSize.GetScreenToWorldHeight / 2 + warningSignSize.y;
+                    pos.y = -screenSize.y + Camera.main.transform.position.y + warningSignSize.y;
                 }
                 //over the screen
-                else if (head.position.y >= ScreenSize.GetScreenToWorldHeight / 2)
+                else if (head.position.y >= screenSize.y + Camera.main.transform.position.y)
                 {
-                    pos.y = ScreenSize.GetScreenToWorldHeight / 2 - warningSignSize.y;
+                    pos.y = screenSize.y + Camera.main.transform.position.y - warningSignSize.y;
                 }
                 //in between
                 else
@@ -249,17 +252,17 @@ public class EelMove : MonoBehaviour
             //over the left of the screen
             else
             {
-                pos.x = -ScreenSize.GetScreenToWorldWidth / 2 + warningSignSize.x / 2;
+                pos.x = -screenSize.x + Camera.main.transform.position.x + warningSignSize.x / 2;
 
                 //under the screen
-                if (head.position.y <= -ScreenSize.GetScreenToWorldHeight / 2)
+                if (head.position.y <= -screenSize.y + Camera.main.transform.position.y)
                 {
-                    pos.y = -ScreenSize.GetScreenToWorldHeight / 2 + warningSignSize.y;
+                    pos.y = -screenSize.y + Camera.main.transform.position.y + warningSignSize.y;
                 }
                 //over the screen
-                else if (head.position.y >= ScreenSize.GetScreenToWorldHeight / 2)
+                else if (head.position.y >= screenSize.y + Camera.main.transform.position.y)
                 {
-                    pos.y = ScreenSize.GetScreenToWorldHeight / 2 - warningSignSize.y;
+                    pos.y = screenSize.y + Camera.main.transform.position.y - warningSignSize.y;
                 }
                 //in between
                 else
@@ -285,6 +288,7 @@ public class EelMove : MonoBehaviour
         warningSignParticleSystem = DangerSignManager.instance.GetEelDangerSignParticleSystem(warningSign);
         warningSignSize = DangerSignManager.instance.GetEelDangerSignSize(warningSign);
         isWarningFirstTime = true;
+        screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
         Debug.Log(warningSignSize);
     }
 

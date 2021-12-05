@@ -267,15 +267,9 @@ public class LevelManager : MonoBehaviour
                 {
                     return;
                 }
-                if (level % 10 <= 5)
-                {
-                    BossEel.GetComponent<EelMove>().EelPhase = level%5;
-                    GameObject go = Instantiate(BossEel);
-                }
-                else
-                {
-                    //todo second boss          
-                }
+                BossEel.GetComponent<EelMove>().EelPhase = level%5;
+                BossEel.GetComponent<Enemy>().PV = 100 + level%5;
+                GameObject go = Instantiate(BossEel);
 
                 state = LevelState.BossPlay;
 
