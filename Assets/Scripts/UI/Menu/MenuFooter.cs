@@ -59,6 +59,11 @@ public class MenuFooter : MonoBehaviour
         UpgradeManager.Instance.GetUI();
     }
 
+    private void Update()
+    {
+        UpdateMoneyUI();
+    }
+
     public void OpenTab(MenuTab tab)
     {
         if (tab == SelectedTab)

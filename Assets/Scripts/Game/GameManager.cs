@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public float timeScale = 1f;
 
     [Space(10), Header("Stats")]
-    public int money = 2000;
+    public int money = 0;
     public int maxLives = 5;
     public int lives = 5;
     public System.DateTime nextLifeAt;
@@ -145,6 +145,8 @@ public class GameManager : MonoBehaviour
         LoadStats();
         SaveStats();
 
+        UpgradeManager.Instance.LoadUpgrades();
+
         PlayerPrefs.SetInt(username + "CoinPicked", 0);
         PlayerPrefs.SetInt(username + "KillCount", 0);
         PlayerPrefs.SetInt(username + "UpgradeCount", 0);
@@ -157,6 +159,8 @@ public class GameManager : MonoBehaviour
         SaveCurrentUser();
         LoadStats();
         SaveStats();
+
+        UpgradeManager.Instance.LoadUpgrades();
     }
 
     void LoadStats()
@@ -167,7 +171,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            instance.money = 2000;
+            instance.money = 0;
             PlayerPrefs.SetInt(instance.profileName + "Money", instance.money);
         }
 

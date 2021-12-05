@@ -27,11 +27,9 @@ public class UpgradeManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if(PlayerPrefs.HasKey("Upgrades"))
+        if (instance.BaseUpgradesList == null || instance.BaseUpgradesList.Count == 0)
         {
-            string savejson = PlayerPrefs.GetString("Upgrades");
-            UpgradesList = JsonHelper.FromJson<Upgrade>(savejson).ToList();
-            CreateUI();
+            instance.BaseUpgradesList = new List<Upgrade>(instance.UpgradesList);
         }
     }
 
@@ -41,12 +39,23 @@ public class UpgradeManager : MonoBehaviour
     {
         //CreateUI();
         //onClickEvt.AddListener()
+
+        LoadUpgrades();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadUpgrades()
     {
-
+        if (PlayerPrefs.HasKey(GameManager.instance.profileName + "Upgrades"))
+        {
+            string savejson = PlayerPrefs.GetString(GameManager.instance.profileName + "Upgrades");
+            instance.UpgradesList = JsonHelper.FromJson<Upgrade>(savejson).ToList();
+            CreateUI();
+        }
+        else
+        {
+            instance.UpgradesList = instance.BaseUpgradesList;
+            CreateUI();
+        }
     }
 
     bool BuyUpgrade(int _ID)
@@ -123,6 +132,7 @@ public class UpgradeManager : MonoBehaviour
     }
 
     [SerializeField] public List<Upgrade> UpgradesList;
+    List<Upgrade> BaseUpgradesList;
 
     public void CreateUI()
     {
@@ -275,7 +285,7 @@ public void UpdateUpgradeTextsAndButton(GameObject _upgradeGO, int _ID)
         AudioManager.Instance.PlaySound("UIButton");
 
         string saveJson = JsonHelper.ToJson(UpgradesList.ToArray());
-        PlayerPrefs.SetString("Upgrades", saveJson);
+        PlayerPrefs.SetString(GameManager.instance.profileName + "Upgrades", saveJson);
         PlayerPrefs.Save();
 
     }
