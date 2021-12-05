@@ -58,6 +58,11 @@ public class UpgradeManager : MonoBehaviour
             GameManager.instance.ChangeMoney(-upgrade.TierList[upgrade.CurrentTier+1].price);
             upgrade.CurrentTier++;
             UpgradesList[_ID] = upgrade;
+
+            //Achivment stuff:
+            PlayerPrefs.SetInt(GameManager.instance.profileName + "UpgradeCount", PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") + 1);
+            //
+
             return true;
         }
         return false;

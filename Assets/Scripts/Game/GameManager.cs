@@ -301,6 +301,10 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(GameManager.instance.profileName + "KillCount", 0);
         }
+        if (!PlayerPrefs.HasKey(GameManager.instance.profileName + "UpgradeCount"))
+        {
+            PlayerPrefs.SetInt(GameManager.instance.profileName + "UpgradeCount", 0);
+        }
 
         ///
         Application.targetFrameRate = 60;

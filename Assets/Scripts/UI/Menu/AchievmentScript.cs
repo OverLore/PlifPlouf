@@ -127,15 +127,29 @@ public class AchievmentScript : MonoBehaviour
         if (_reachedRank == 0)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Upgrade yourself 5 times";
-           
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") >= 5 && PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") < 10)
+            {
+
+                tabAchievment[_i].ReachedRank = 1;
+            }
         }
         if (_reachedRank > 0)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Upgrade yourself 10 times";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") >= 10 && PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") < 20)
+            {
+
+                tabAchievment[_i].ReachedRank = 2;
+            }
         }
         if (_reachedRank > 1)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Upgrade yourself 20 times";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "UpgradeCount") >= 20)
+            {
+
+                tabAchievment[_i].ReachedRank = 3;
+            }
         }
         if (_reachedRank > 2)
         {
