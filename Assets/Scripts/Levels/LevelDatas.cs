@@ -28,29 +28,29 @@ public class LevelDatas : MonoBehaviour
         {
             if (dats.score < score)
             {
-                PlayerPrefs.SetInt($"{level}_stars", stars);
-                PlayerPrefs.SetInt($"{level}_score", score);
-                PlayerPrefs.SetInt($"{level}_kills", kills);
-                PlayerPrefs.SetInt($"{level}_coins", coins);
+                PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_stars", stars);
+                PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_score", score);
+                PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_kills", kills);
+                PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_coins", coins);
             }
         }
         else
         {
-            PlayerPrefs.SetInt($"{level}_stars", stars);
-            PlayerPrefs.SetInt($"{level}_score", score);
-            PlayerPrefs.SetInt($"{level}_kills", kills);
-            PlayerPrefs.SetInt($"{level}_coins", coins);
+            PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_stars", stars);
+            PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_score", score);
+            PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_kills", kills);
+            PlayerPrefs.SetInt($"{GameManager.instance.profileName}{level}_coins", coins);
         }
     }
 
     public static bool LoadLevelDatas(int level, out LevelDatasStruct dats)
     {
-        if (PlayerPrefs.HasKey($"{level}_stars"))
+        if (PlayerPrefs.HasKey($"{GameManager.instance.profileName}{level}_stars"))
         {
-            dats.stars = PlayerPrefs.GetInt($"{level}_stars");
-            dats.score = PlayerPrefs.GetInt($"{level}_score");
-            dats.kills = PlayerPrefs.GetInt($"{level}_kills");
-            dats.coins = PlayerPrefs.GetInt($"{level}_coins");
+            dats.stars = PlayerPrefs.GetInt($"{GameManager.instance.profileName}{level}_stars");
+            dats.score = PlayerPrefs.GetInt($"{GameManager.instance.profileName}{level}_score");
+            dats.kills = PlayerPrefs.GetInt($"{GameManager.instance.profileName}{level}_kills");
+            dats.coins = PlayerPrefs.GetInt($"{GameManager.instance.profileName}{level}_coins");
             return true;
         }
 

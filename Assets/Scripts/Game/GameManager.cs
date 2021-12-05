@@ -142,6 +142,8 @@ public class GameManager : MonoBehaviour
         profileNames.Add(username);
 
         SaveProfiles();
+        LoadStats();
+        SaveStats();
 
         PlayerPrefs.SetInt(username + "CoinPicked", 0);
         PlayerPrefs.SetInt(username + "KillCount", 0);
@@ -153,35 +155,37 @@ public class GameManager : MonoBehaviour
         profileName = username;
 
         SaveCurrentUser();
+        LoadStats();
+        SaveStats();
     }
 
     void LoadStats()
     {
-        if (PlayerPrefs.HasKey("Money"))
+        if (PlayerPrefs.HasKey(instance.profileName + "Money"))
         {
-            instance.money = PlayerPrefs.GetInt("Money");
+            instance.money = PlayerPrefs.GetInt(instance.profileName + "Money");
         }
         else
         {
             instance.money = 2000;
-            PlayerPrefs.SetInt("Money", instance.money);
+            PlayerPrefs.SetInt(instance.profileName + "Money", instance.money);
         }
 
-        if (PlayerPrefs.HasKey("Lives"))
+        if (PlayerPrefs.HasKey(instance.profileName + "Lives"))
         {
-            instance.lives = PlayerPrefs.GetInt("Lives");
+            instance.lives = PlayerPrefs.GetInt(instance.profileName + "Lives");
         }
         else
         {
             instance.lives = 5;
-            PlayerPrefs.SetInt("Lives", instance.lives);
+            PlayerPrefs.SetInt(instance.profileName + "Lives", instance.lives);
         }
     }
 
     void SaveStats()
     {
-        PlayerPrefs.SetInt("Money", instance.money);
-        PlayerPrefs.SetInt("Lives", instance.lives);
+        PlayerPrefs.SetInt(instance.profileName + "Money", instance.money);
+        PlayerPrefs.SetInt(instance.profileName + "Lives", instance.lives);
     }
 
     public void ChangeMoney(int _modifier)
@@ -189,7 +193,7 @@ public class GameManager : MonoBehaviour
         instance.money += _modifier;
         instance.money = Mathf.Clamp(instance.money, 0, 999999);
 
-        PlayerPrefs.SetInt("Money", instance.money);
+        PlayerPrefs.SetInt(instance.profileName + "Money", instance.money);
     }
 
     public void ChangeLives(int _modifier)
@@ -202,7 +206,7 @@ public class GameManager : MonoBehaviour
             nextLifeAt = System.DateTime.Now;
         }
 
-        PlayerPrefs.SetInt("Lives", instance.lives);
+        PlayerPrefs.SetInt(instance.profileName + "Lives", instance.lives);
     }
 
     private void UpdateLivesUI()
@@ -243,7 +247,7 @@ public class GameManager : MonoBehaviour
         {
             instance.livesText.text = $"{instance.lives}";
 
-            PlayerPrefs.DeleteKey("nextLifeAt");
+            PlayerPrefs.DeleteKey(instance.profileName + "nextLifeAt");
         }
     }
 
@@ -294,9 +298,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt(GameManager.instance.profileName + "maxLevelReached", -1);
         }
 
-        if (PlayerPrefs.HasKey("nextLifeAt"))
+        if (PlayerPrefs.HasKey(instance.profileName + "nextLifeAt"))
         {
-            long temp = System.Convert.ToInt64(PlayerPrefs.GetString("nextLifeAt"));
+            long temp = System.Convert.ToInt64(PlayerPrefs.GetString(instance.profileName + "nextLifeAt"));
             nextLifeAt = System.DateTime.FromBinary(temp);
         }
         //ACHIEVMENT STUFF
@@ -321,7 +325,7 @@ public class GameManager : MonoBehaviour
 
         instance.lives--;
 
-        PlayerPrefs.SetString("nextLifeAt", instance.nextLifeAt.ToBinary().ToString());
+        PlayerPrefs.SetString(instance.profileName + "nextLifeAt", instance.nextLifeAt.ToBinary().ToString());
 
         SaveStats();
     }
