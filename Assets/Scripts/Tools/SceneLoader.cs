@@ -9,6 +9,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneString);
     }
 
+    public void PlayButtonEffect(string sceneString)
+    {
+        LoadScene(sceneString);
+    }
+
     //DEBUG PURPOSE ONLY
     private void Update()
     {

@@ -25,6 +25,9 @@ public class InitiateMapSelec : MonoBehaviour
 
     public void ButtonLevelEffect(int targetLevel)
     {
+        //audio
+        AudioManager.Instance.PlaySound("UIButton");
+
         GameManager.instance.levelToLoad = targetLevel;
         statpannel.gameObject.SetActive(true);
 
