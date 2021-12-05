@@ -360,6 +360,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatPannel
       objectReference: {fileID: 0}
+    - target: {fileID: 7266018962068254898, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 40659252}
+    - target: {fileID: 7266018962068254898, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadScene
+      objectReference: {fileID: 0}
     - target: {fileID: 8819733478149353107, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -463,6 +471,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4458355209672498756, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
   m_PrefabInstance: {fileID: 19355945}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &40659252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7580008524143050561, guid: fd88a5f9532e1be45a1ae003fb0a3286, type: 3}
+  m_PrefabInstance: {fileID: 7580008525164239679}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c15f97e3ba77f488b5dbe4fd2c8f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &50343201
 PrefabInstance:
   m_ObjectHideFlags: 0
