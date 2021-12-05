@@ -16,6 +16,8 @@ public class Window : MonoBehaviour
             return;
         }
 
+        AudioManager.Instance.PlaySound("UIButton");
+
         animator.SetTrigger("Open");
 
         isOpen = true;
@@ -27,6 +29,8 @@ public class Window : MonoBehaviour
         {
             return;
         }
+
+        AudioManager.Instance.PlaySound("UIButton");
 
         animator.SetTrigger("Close");
 
