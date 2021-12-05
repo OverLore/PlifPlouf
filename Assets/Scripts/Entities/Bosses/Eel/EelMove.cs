@@ -182,14 +182,13 @@ public class EelMove : MonoBehaviour
 
     bool BonneIsOnScreen()
     {
-        for (int i = 0; i < boneObject.Length / boneObject.Length; i++)
+        for (int i = 0; i < boneObject.Length /2; i++)
         {
             Vector3 bonne = boneObject[i].transform.position;
 
             if ((bonne.x > -screenSize.x + Camera.main.transform.position.x && bonne.x < screenSize.x + Camera.main.transform.position.x &&
                  bonne.y > -screenSize.y + Camera.main.transform.position.y && bonne.y < screenSize.y + Camera.main.transform.position.y))
             {
-                Debug.Log("Ta mere la pute fonctione gros chien");
                 return true;
             }
         }
