@@ -130,7 +130,7 @@ public class LevelManager : MonoBehaviour
         levelProgress += Time.deltaTime * GameManager.instance.timeScale;
         debugText.text = levelProgress.ToString();
 
-        
+
         //if (levelProgress >= 15)
         //debug test level (level will be max 1 minute (even though we use percentage from 0 to 100))
         if (levelProgress >= 61)
@@ -274,11 +274,18 @@ public class LevelManager : MonoBehaviour
                 {
                     return;
                 }
-                BossEel.GetComponent<EelMove>().EelPhase = level%5;
-                BossEel.GetComponent<Enemy>().PV = 100 + level%5;
-                GameObject go = Instantiate(BossEel);
+                if (level%2 == 1)
+                {
+                    BossEel.GetComponent<EelMove>().EelPhase = (level/2) % 5;
+                    BossEel.GetComponent<Enemy>().PV = 100 + level % 5;
+                    GameObject go = Instantiate(BossEel);
 
-                state = LevelState.BossPlay;
+                    state = LevelState.BossPlay;
+                }
+                else
+                {
+                    state = LevelState.BossEnd;
+                }
 
                 break;
             case LevelState.BossEnd:
