@@ -35,20 +35,6 @@ public class AdsManmager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         }
     }
 
-    private void Update()
-    {
-        if (!Advertisement.IsReady())
-        {
-            LoadAd();
-
-            _showAdButton.interactable = false;
-        }
-        else
-        {
-            _showAdButton.interactable = true;
-        }
-    }
-
     // Load content to the Ad Unit:
     public void LoadAd()
     {

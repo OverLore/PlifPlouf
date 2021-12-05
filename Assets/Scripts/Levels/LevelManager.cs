@@ -46,6 +46,8 @@ public class LevelManager : MonoBehaviour
 
     public Text debugText;
 
+    bool won;
+
     public GameObject scoringCanvas;
     public Animator panelAnimator;
 
@@ -85,6 +87,9 @@ public class LevelManager : MonoBehaviour
         level = _level;
 
         state = LevelState.Starting;
+
+        GameManager.instance.LoseLife();
+        won = false;
     }
 
     public void Init()
@@ -136,7 +141,7 @@ public class LevelManager : MonoBehaviour
 
     public void UpdateStarsBar()
     {
-        if (updateStarsBar)
+        if (updateStarsBar && won)
         {
             int i = 0;
 
@@ -205,7 +210,7 @@ public class LevelManager : MonoBehaviour
         UpdateStarsBar();
     }
 
-    public void StartScoring(bool won)
+    public void StartScoring()
     {
         state = LevelState.Scoring;
         GameManager.instance.timeScale = 1;
@@ -229,6 +234,8 @@ public class LevelManager : MonoBehaviour
         if (won)
         {
             LevelDatas.SaveLevelDatas(level, stars, (int)GameManager.instance.Score, kills, coins);
+
+            GameManager.instance.lives++;
         }
 
         if (level > GameManager.instance.maxLevelReached && won)
@@ -280,7 +287,9 @@ public class LevelManager : MonoBehaviour
                     return;
                 }
 
-                StartScoring(true);
+                won = true;
+
+                StartScoring();
 
                 break;
             case LevelState.Scoring:

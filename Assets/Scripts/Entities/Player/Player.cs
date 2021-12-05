@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
             anim.GetComponent<SpriteRenderer>().enabled = false;
         }
 
-        LevelManager.instance.StartScoring(false);
+        LevelManager.instance.StartScoring();
     }
 
     public void TakeDamage(float _damage)
