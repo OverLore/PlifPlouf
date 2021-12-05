@@ -297,7 +297,10 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt(GameManager.instance.profileName + "CoinPicked", 0);
         }
-       
+        if (!PlayerPrefs.HasKey(GameManager.instance.profileName + "KillCount"))
+        {
+            PlayerPrefs.SetInt(GameManager.instance.profileName + "KillCount", 0);
+        }
 
         ///
         Application.targetFrameRate = 60;

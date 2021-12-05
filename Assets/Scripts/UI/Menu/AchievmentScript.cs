@@ -93,14 +93,29 @@ public class AchievmentScript : MonoBehaviour
         if (_reachedRank == 0)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Beat 25 ennemies";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") >= 25 && PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") < 50)
+            {
+
+                tabAchievment[_i].ReachedRank = 1;
+            }
         }
         if (_reachedRank > 0)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Beat 50 ennemies";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") >= 50 && PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") < 100)
+            {
+
+                tabAchievment[_i].ReachedRank = 2;
+            }
         }
         if (_reachedRank > 1)
         {
             tabAchievment[_i].AchievmentPannel.gameObject.transform.Find("Desc").gameObject.GetComponent<Text>().text = "Beat 100 ennemies";
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") >= 100)
+            {
+
+                tabAchievment[_i].ReachedRank = 3;
+            }
         }
         if (_reachedRank > 2)
         {

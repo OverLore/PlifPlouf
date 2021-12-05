@@ -40,6 +40,9 @@ public class Enemy : MonoBehaviour
         GameManager.instance.AddScore((uint)score);
         LevelManager.instance.SpawnCoinAt(transform.position, score);
         LevelManager.instance.kills++;
+        //Achivment stuff:
+        PlayerPrefs.SetInt(GameManager.instance.profileName + "KillCount", PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") + 1);
+        //
 
         if (Random.Range(0, 100) < 10)
         {
