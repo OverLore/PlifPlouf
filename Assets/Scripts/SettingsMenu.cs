@@ -45,11 +45,15 @@ public class SettingsMenu : MonoBehaviour
     public void TermsButtonEffect()
     {
         AudioManager.Instance.PlaySound("UIButton");
+
+        Application.OpenURL("https://lucarnould08.wixsite.com/overlore-studios/terms");
     }
 
     public void PrivacyButtonEffect()
     {
         AudioManager.Instance.PlaySound("UIButton");
+
+        Application.OpenURL("https://lucarnould08.wixsite.com/overlore-studios/privacy");
     }
 
     public void ContactButtonEffect()
@@ -88,11 +92,15 @@ public class SettingsMenu : MonoBehaviour
 
     public void OpenCreditsScreen()
     {
+        AudioManager.Instance.PlaySound("UIButton");
+
         credits.SetActive(true);
     }
 
     public void CloseCreditsScreen()
     {
+        AudioManager.Instance.PlaySound("UIButton");
+
         credits.SetActive(false);
     }
 }
