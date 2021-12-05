@@ -12,6 +12,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] TMP_InputField newUserField;
     [SerializeField] TMP_Text currentUserText;
     [SerializeField] GameObject profileEditionWindow;
+    [SerializeField] GameObject credits;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class SettingsMenu : MonoBehaviour
         UpdateSoundOffState();
 
         profileEditionWindow.SetActive(false);
+        credits.SetActive(false);
     }
 
     private void Update()
@@ -82,5 +84,15 @@ public class SettingsMenu : MonoBehaviour
         AudioManager.Instance.PlaySound("UIButton");
         newUserField.text = val.ToLower();
         newUserField.text = Regex.Replace(newUserField.text, @"[^a-z0-9 ]", "");
+    }
+
+    public void OpenCreditsScreen()
+    {
+        credits.SetActive(true);
+    }
+
+    public void CloseCreditsScreen()
+    {
+        credits.SetActive(false);
     }
 }
