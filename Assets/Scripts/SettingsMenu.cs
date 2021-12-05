@@ -28,14 +28,31 @@ public class SettingsMenu : MonoBehaviour
 
     public void SwitchMusic()
     {
+        AudioManager.Instance.PlaySound("UIButton");
         AudioManager.Instance.SwitchMusicVolumeState();
         UpdateMusicOffState();
     }
 
     public void SwitchSound()
     {
+        AudioManager.Instance.PlaySound("UIButton");
         AudioManager.Instance.SwitchSoundVolumeState();
         UpdateSoundOffState();
+    }
+
+    public void TermsButtonEffect()
+    {
+        AudioManager.Instance.PlaySound("UIButton");
+    }
+
+    public void PrivacyButtonEffect()
+    {
+        AudioManager.Instance.PlaySound("UIButton");
+    }
+
+    public void ContactButtonEffect()
+    {
+        AudioManager.Instance.PlaySound("UIButton");
     }
 
     void UpdateMusicOffState()
@@ -50,16 +67,19 @@ public class SettingsMenu : MonoBehaviour
 
     public void OpenProfileEditionWindow()
     {
+        AudioManager.Instance.PlaySound("UIButton");
         profileEditionWindow.SetActive(true);
     }
 
     public void CloseProfileEditionWindow()
     {
+        AudioManager.Instance.PlaySound("UIButton");
         profileEditionWindow.SetActive(false);
     }
 
     public void OnNewUserFieldValueChanged(string val)
     {
+        AudioManager.Instance.PlaySound("UIButton");
         newUserField.text = val.ToLower();
         newUserField.text = Regex.Replace(newUserField.text, @"[^a-z0-9 ]", "");
     }

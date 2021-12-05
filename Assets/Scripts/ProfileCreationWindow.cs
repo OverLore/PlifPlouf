@@ -30,6 +30,7 @@ public class ProfileCreationWindow : MonoBehaviour
     public void CreateUser()
     {
         string username = inputField.text;
+        AudioManager.Instance.PlaySound("UIButton");
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username))
         {
@@ -80,6 +81,7 @@ public class ProfileCreationWindow : MonoBehaviour
 
     public void OnDropdownValueChanged(int value)
     {
+        AudioManager.Instance.PlaySound("UIButton");
         GameManager.instance.ChangeUser(dropdown.options[value].text);
     }
 
