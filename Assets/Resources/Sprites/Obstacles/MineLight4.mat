@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MineMat
+  m_Name: MineLight4
   m_Shader: {fileID: -6465566751694194690, guid: 31f00747fa9de2a428351e77d80d3021, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Background:
-        m_Texture: {fileID: 2800000, guid: 6825d13261bdfe446bc44affe125db6e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 97285621b3494134c956e8e829567a6a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
@@ -28,11 +28,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 11e2de229a4008c42ac727cdce6b3700, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
-        m_Texture: {fileID: 2800000, guid: 0103becd98cb2734bbeb8a7b23dfb9bc, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -54,11 +54,11 @@ Material:
     m_Ints: []
     m_Floats:
     - Smoothness: 0.5
-    - Threshold: 0.2
+    - Threshold: 0.1
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Backcolor: {r: 1, g: 1, b: 1, a: 1}
-    - KeyColor: {r: 0.08235294, g: 0.8588236, b: 0.050980397, a: 1}
+    - Backcolor: {r: 0.089711644, g: 0.9056604, b: 0.102063596, a: 1}
+    - KeyColor: {r: 1, g: 0, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

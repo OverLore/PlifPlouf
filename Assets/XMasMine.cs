@@ -4,17 +4,53 @@ using UnityEngine;
 
 public class XMasMine : MonoBehaviour
 {
-    [SerializeField] List<Sprite> backs;
+    [SerializeField] List<GameObject> backObjs;
+    [SerializeField] List<Color> backColors;
 
-    // Start is called before the first frame update
-    void Start()
+    float nextIn = 1f;
+    bool isActive = false;
+
+    private void Start()
     {
-        
+        isActive = Database.SeasonSkin.is_activated;
+
+        if (!isActive)
+        {
+            foreach (GameObject go in backObjs)
+            {
+                go.GetComponent<SpriteRenderer>().enabled = false;
+            }
+
+            return;
+        }
+
+        foreach (GameObject go in backObjs)
+        {
+            go.GetComponent<SpriteRenderer>().enabled = true;
+
+            go.GetComponent<SpriteRenderer>().sharedMaterial.SetColor("Backcolor", backColors[Random.Range(0, backColors.Count)]);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (!isActive)
+        {
+            this.enabled = false;
+
+            return;
+        }
+
+        nextIn -= Time.deltaTime * GameManager.instance.timeScale;
+
+        if (nextIn < 0)
+        {
+            nextIn = 1f;
+
+            foreach (GameObject go in backObjs)
+            {
+                go.GetComponent<Renderer>().sharedMaterial.SetColor("Backcolor", backColors[Random.Range(0, backColors.Count)]);
+            }
+        }
     }
 }
