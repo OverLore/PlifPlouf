@@ -492,7 +492,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2968685789990452448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 6
-  m_RegexValue: '[a-z0-9]'
+  m_RegexValue: '[a-zA-Z0-9]'
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
   m_OnEndEdit:
