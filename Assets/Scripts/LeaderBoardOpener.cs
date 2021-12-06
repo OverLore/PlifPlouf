@@ -7,6 +7,8 @@ public class LeaderBoardOpener : MonoBehaviour
     [SerializeField] GameObject leaderboard;
     bool open = false;
 
+    public bool isOpen { get => open; }
+
     private void Start()
     {
         leaderboard.SetActive(false);

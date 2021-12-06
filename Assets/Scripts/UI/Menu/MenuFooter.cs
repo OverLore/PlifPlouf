@@ -102,6 +102,11 @@ public class MenuFooter : MonoBehaviour
 
     public void OpenTab(int tabID)
     {
+        var lbo = GameObject.FindObjectOfType<LeaderBoardOpener>().GetComponent<LeaderBoardOpener>();
+        if (lbo != null && lbo.isOpen)
+        {
+            lbo.Close();
+        }
         OpenTab((MenuTab)tabID);
     }
 
