@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae4d92d62cbecc45bcaf2cbfa4d3a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneType: 1
+  sceneType: 0
   gameMixerGroup: {fileID: -5687109667071823200, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}
   menuMixerGroup: {fileID: -315028436394890641, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}
   musicMixerGroup: {fileID: -6624294222607270325, guid: 891eaed8b1511c846a4109e8234fea27, type: 2}

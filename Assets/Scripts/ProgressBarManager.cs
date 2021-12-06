@@ -50,7 +50,6 @@ public class ProgressBarManager : MonoBehaviour
 
         //alphaTimer incremented in GameManager
         alphaTimer = Mathf.Clamp01(alphaTimer);
-        Debug.Log("alpha Timer : " + alphaTimer);
         canvasGroup.alpha = Mathf.Lerp(0.0f, 1.0f, alphaTimer);
 
         dotRT.position = pos;

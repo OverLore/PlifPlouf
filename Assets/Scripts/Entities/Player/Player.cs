@@ -455,7 +455,7 @@ public class Player : MonoBehaviour
             tempDamage *= 2.0f;
         }
 
-        Debug.Log(tempDamage);
+        //Debug.Log(tempDamage);
         go.GetComponent<Bullet>().damage = tempDamage;
     }
 

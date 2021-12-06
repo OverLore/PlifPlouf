@@ -6,11 +6,10 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] UnityEvent OnNotEnoughtLife;
 
-    public void LoadScene(string sceneString)
+    void LoadScene(string sceneString)
     {
             AudioManager.Instance.LoadSoundsFromSceneName(sceneString);
             SceneManager.LoadScene(sceneString);
-            GameManager.instance.ResetScore();
     }
 
     public void PlayButtonEffect(string sceneString)
@@ -25,6 +24,11 @@ public class SceneLoader : MonoBehaviour
         {
             OnNotEnoughtLife?.Invoke();
         }
+    }
+
+    public void PlayButtonEffectPreMenu(string sceneString)
+    {
+        LoadScene(sceneString);
     }
 
     //DEBUG PURPOSE ONLY
