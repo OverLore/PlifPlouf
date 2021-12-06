@@ -17,11 +17,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotSpeed = 4.0f;
     [SerializeField] bool isShootingEnemy = false;
     [SerializeField] bool isInvincible = false;
-    [SerializeField] bool hasLifebar = false;
+    [SerializeField] bool hasLifebar = true;
     [SerializeField] GameObject lifebarPrefab;
     [SerializeField] Vector2 lifebarOffset;
     GameObject lifebar;
-    Image lifebarImg;
+    public Image lifebarImgBack;
+    public Image lifebarImg;
+    float lifebarVisibility = 0f;
     //careful, in start we add a random offset on the shotTimer at start so that each enemy will shoot at a
     //different time but at the same frequency
     float shotTimer = 0.0f;
@@ -63,6 +65,10 @@ public class Enemy : MonoBehaviour
     {
         lifebar = Instantiate(lifebarPrefab, GameManager.instance.lifebarCanvas.transform);
         lifebarImg = lifebar.transform.Find("Bar").GetComponent<Image>();
+        lifebarImgBack = lifebar.GetComponent<Image>();
+
+        lifebarImg.color = new Color(lifebarImg.color.r, lifebarImg.color.g, lifebarImg.color.b, lifebarVisibility);
+        lifebarImgBack.color = new Color(lifebarImg.color.r, lifebarImg.color.g, lifebarImg.color.b, lifebarVisibility);
     }
 
     void UpdateLifebar()
@@ -77,6 +83,13 @@ public class Enemy : MonoBehaviour
         lifebar.GetComponent<RectTransform>().anchoredPosition = WorldObject_ScreenPosition + lifebarOffset;
 
         lifebarImg.fillAmount = PV / maxPV;
+
+        lifebarVisibility -= Time.deltaTime * GameManager.instance.timeScale;
+
+        lifebarVisibility = Mathf.Clamp(lifebarVisibility, 0f, 100f);
+
+        lifebarImg.color = new Color(lifebarImg.color.r, lifebarImg.color.g, lifebarImg.color.b, lifebarVisibility);
+        lifebarImgBack.color = new Color(lifebarImgBack.color.r, lifebarImgBack.color.g, lifebarImgBack.color.b, lifebarVisibility);
     }
 
     void DestroyLifebar()
@@ -94,6 +107,8 @@ public class Enemy : MonoBehaviour
 
         maxPV = PV;
 
+        lifebarPrefab = Resources.Load<GameObject>("Prefabs/lifeBar");
+
         if (hasLifebar)
         {
             SpawnLifebar();
@@ -110,6 +125,8 @@ public class Enemy : MonoBehaviour
         if (!isInvincible)
         {
             PV -= dmg;
+
+            lifebarVisibility = 1f;
         }
     }
 
