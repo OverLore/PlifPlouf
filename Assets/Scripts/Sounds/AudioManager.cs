@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
     public bool canHearMusic = true;
     public bool canHearSound = true;
 
-    int gameMusicVolume = -6;
+    int gameMusicVolume = 0;
     int otherVolume = 0;
     int muteVolume = -80;
 
