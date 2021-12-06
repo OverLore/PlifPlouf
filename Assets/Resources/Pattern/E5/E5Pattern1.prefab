@@ -294,10 +294,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: E5Test
       objectReference: {fileID: 0}
-    - target: {fileID: 8886714124587037166, guid: c8ec58912b084a9468ab1369dd17da02, type: 3}
-      propertyPath: paths.Array.data[0]
-      value: 
-      objectReference: {fileID: 3538394417669205664}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8ec58912b084a9468ab1369dd17da02, type: 3}
 --- !u!4 &6644514772618326828 stripped

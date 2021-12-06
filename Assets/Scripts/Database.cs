@@ -17,6 +17,9 @@ public class Database : MonoBehaviour
     private static SeasonSkinClass seasonSkin;
     public static SeasonSkinClass SeasonSkin { get => seasonSkin; }
 
+    bool isChristmas = false;
+    public bool IsChristmas { get => isChristmas; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +41,13 @@ public class Database : MonoBehaviour
     {
         // get authorization header
         string authorization = authenticate("kurage", "8VQ&MXehu!4&S3B4Ts$k");
+
+#if UNITY_EDITOR
+        string url = "http://alanparadis.fr/games/kurage/querrySeasonalSkin.php";
+#else
         // url to the querry php file
         string url = "https://alanparadis.fr/games/kurage/querrySeasonalSkin.php";
+#endif
         // try connect
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
@@ -84,6 +92,8 @@ public class Database : MonoBehaviour
                     seasonSkin = JsonUtility.FromJson<SeasonSkinClass>(webRequest.downloadHandler.text);
                     // get current datetime
                     seasonSkin.time = DateTime.Now.ToBinary();
+                    // stor if its Xmas or not
+                    isChristmas = seasonSkin.is_activated;
                     // parse to json
                     string json = JsonUtility.ToJson(seasonSkin);
                     // save
