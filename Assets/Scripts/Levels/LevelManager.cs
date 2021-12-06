@@ -49,6 +49,11 @@ public class LevelManager : MonoBehaviour
     bool won;
 
     public GameObject scoringCanvas;
+    public Image scoringCanvasImg;
+
+    public Sprite winSpr;
+    public Sprite defSpr;
+
     public Animator panelAnimator;
 
     public GameObject CoinPrefab;
@@ -214,6 +219,15 @@ public class LevelManager : MonoBehaviour
     {
         state = LevelState.Scoring;
         GameManager.instance.timeScale = 1;
+
+        if (won)
+        {
+            scoringCanvasImg.sprite = winSpr;
+        }
+        else
+        {
+            scoringCanvasImg.sprite = defSpr;
+        }
 
         scoringCanvas.SetActive(true);
         panelAnimator.SetTrigger("Pop");

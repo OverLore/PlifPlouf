@@ -11774,22 +11774,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 372526120}
     m_Modifications:
-    - target: {fileID: 2968685789464396909, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685789826860219, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685789873112951, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685789968080324, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2968685789990452448, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11879,32 +11863,8 @@ PrefabInstance:
       value: NewUser
       objectReference: {fileID: 0}
     - target: {fileID: 2968685789990452479, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685789990452479, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685790233287553, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 372526122}
-    - target: {fileID: 2968685790233287583, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685790451532081, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685790700420864, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968685790879671350, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
