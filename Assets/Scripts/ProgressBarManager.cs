@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProgressBarManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ProgressBarManager : MonoBehaviour
     [SerializeField] RectTransform progressMinRT;
     [SerializeField] RectTransform progressMaxRT;
     RectTransform dotRT;
+    Image barFullImage;
 
     void Awake()
     {
@@ -29,13 +31,17 @@ public class ProgressBarManager : MonoBehaviour
     void Start()
     {
         dotRT = progressBarDot.GetComponent<RectTransform>();
+        barFullImage = progressBarFull.GetComponent<Image>();
     }
 
     void Update()
     {
+        float fillAmount = LevelManager.instance.levelProgress / LevelManager.instance.maxLevelProgress;
         Vector3 pos = dotRT.position;
-        pos.y = Mathf.Lerp(progressMinRT.position.y, progressMaxRT.position.y, LevelManager.instance.levelProgress / LevelManager.instance.maxLevelProgress);
-        Debug.Log(LevelManager.instance.levelProgress / LevelManager.instance.maxLevelProgress);
+        pos.y = Mathf.Lerp(progressMinRT.position.y, progressMaxRT.position.y, fillAmount);
+        barFullImage.fillAmount = fillAmount;
+        Debug.Log(fillAmount);
+
 
         dotRT.position = pos;
     }
