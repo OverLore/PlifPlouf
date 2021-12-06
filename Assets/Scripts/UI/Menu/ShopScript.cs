@@ -31,4 +31,19 @@ public class ShopScript : MonoBehaviour
         GameManager.instance.ChangeLives(5);
 
     }
+    public void addMoneyOne00()
+    {
+        GameManager.instance.ChangeMoney(100);
+
+    }
+    public void addMoneyTwo00()
+    {
+        GameManager.instance.ChangeMoney(200);
+
+    }
+    public void addMoneyFour00()
+    {
+        GameManager.instance.ChangeMoney(400);
+
+    }
 }
