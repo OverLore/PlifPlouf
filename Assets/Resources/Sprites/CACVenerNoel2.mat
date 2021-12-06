@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Background:
-        m_Texture: {fileID: 2800000, guid: 88877337c62c42f499e0fc643c19c376, type: 3}
+        m_Texture: {fileID: 2800000, guid: eb8f9fb929fac3f42af484cb7710b4ef, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AlphaTex:
@@ -57,7 +57,7 @@ Material:
     - Threshold: 0.1
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Backcolor: {r: 1, g: 1, b: 1, a: 1}
+    - Backcolor: {r: 0.4619082, g: 0.48180145, b: 0.5660378, a: 1}
     - KeyColor: {r: 0.34509805, g: 1, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

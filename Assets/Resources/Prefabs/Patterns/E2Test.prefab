@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 3484144950958813568}
   - component: {fileID: -4880107699961481763}
   - component: {fileID: 3101821039126169110}
+  - component: {fileID: 130140502998071773}
   m_Layer: 0
   m_Name: E2Test
   m_TagString: Ennemy
@@ -282,7 +283,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f68bda61d7f39684284f4542e0791225, type: 2}
+  - {fileID: 2100000, guid: 17050e2b88ee9274da3d99e7b151bb0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -391,8 +392,11 @@ MonoBehaviour:
   isShootingEnemy: 1
   isInvincible: 0
   hasLifebar: 0
+  isBoss: 0
   lifebarPrefab: {fileID: 0}
   lifebarOffset: {x: 0, y: 0}
+  lifebarImgBack: {fileID: 0}
+  lifebarImg: {fileID: 0}
 --- !u!114 &3101821039126169110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +411,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer: 2
   spr: {fileID: 2501667796874566376}
+--- !u!114 &130140502998071773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353106339857200584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae43a19f3a0009541aa551a08f024078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal:
+    renderers:
+    - {fileID: 2501667796874566376}
+    - {fileID: 5875323481845639616}
+    - {fileID: 8732962864844557158}
+    - {fileID: 7766868217291061110}
+    animators:
+    - {fileID: 8246146631894099526}
+    - {fileID: 3088699393687405421}
+    - {fileID: 3382845404702941235}
+    - {fileID: 2857265501171679305}
+    animatorString:
+    - Normal
+    - Normal
+    - Normal
+    - Normal
+    materials:
+    - {fileID: 2100000, guid: 17050e2b88ee9274da3d99e7b151bb0e, type: 2}
+    - {fileID: 2100000, guid: b0e88be26e3415e418051c6b59279a88, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  christmas:
+    renderers:
+    - {fileID: 2501667796874566376}
+    - {fileID: 5875323481845639616}
+    - {fileID: 8732962864844557158}
+    - {fileID: 7766868217291061110}
+    animators:
+    - {fileID: 8246146631894099526}
+    - {fileID: 3088699393687405421}
+    - {fileID: 3382845404702941235}
+    - {fileID: 2857265501171679305}
+    animatorString:
+    - Noel
+    - Noel
+    - Noel
+    - Noel
+    materials:
+    - {fileID: 2100000, guid: 524e2e6426706404b84a402ac0191930, type: 2}
+    - {fileID: 2100000, guid: 09a668f353a0ff547a5fc9c50aed800b, type: 2}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &3482849654102721622
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +518,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19d36aa5b3f6dcf46b3a980ce6768db2, type: 2}
+  - {fileID: 2100000, guid: b0e88be26e3415e418051c6b59279a88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
