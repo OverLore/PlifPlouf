@@ -12,6 +12,18 @@ public class XMasMine : MonoBehaviour
 
     private void Start()
     {
+        if (Database.SeasonSkin == null)
+        {
+            isActive = false;
+
+            foreach (GameObject go in backObjs)
+            {
+                go.GetComponent<SpriteRenderer>().enabled = false;
+            }
+
+            return;
+        }
+
         isActive = Database.SeasonSkin.is_activated;
 
         if (!isActive)
