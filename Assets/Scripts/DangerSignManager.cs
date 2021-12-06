@@ -48,77 +48,18 @@ public class DangerSignManager : MonoBehaviour
         }
     }
 
-    //canvas version
-    //give the enemyPos to calculate the dangerSign pos based on it
-    //public void SpawnDangerSign(Vector3 _enemyPos, List<Vector2> _splinePointsPos)
-    //public void SpawnDangerSign(Vector3 _enemyPos)
-    //{
-    //    Debug.Log("SpawnDangerSign");
-    //    DangerSign currentSign = Instantiate(dangerSign).GetComponent<DangerSign>();
-    //    RectTransform currentSignRect = currentSign.GetComponent<RectTransform>();
-    //    Vector3 dangerSignPos = currentSignRect.position;
-    //    currentSign.transform.SetParent(dangerSignCanvas.transform);
-    //
-    //    
-    //    //which side the enemy is coming from
-    //    if (_enemyPos.x < 0.0f)
-    //    {
-    //        dangerSignPos.x = currentSignRect.rect.width;
-    //    }
-    //    else
-    //    {
-    //        dangerSignPos.x = canvasSize.x - currentSignRect.rect.width;
-    //    }
-    //
-    //    //get pos on canvas from enemy pos in world
-    //    //dangerSignPos.y = canvasSize.y / 2 - Camera.main.WorldToScreenPoint(_enemyPos).y;
-    //    dangerSignPos.y = canvasSize.y / 2;
-    //
-    //
-    //    //for (int i = 0; i < _splinePointsPos.Count; i++)
-    //    //{
-    //    //    if (CheckIsInScreen(_splinePointsPos[i]))
-    //    //    {
-    //    //        Debug.Log("point = " + i);
-    //    //        dangerSignPos = _splinePointsPos[i];
-    //    //        break;
-    //    //    }
-    //    //}
-    //
-    //    //currentSignRect.position = Camera.main.WorldToScreenPoint(dangerSignPos);
-    //    //Debug.Log(dangerSignPos);
-    //    //Debug.Log(currentSignRect.position);
-    //
-    //
-    //    //dangerSignPos.y = Camera.main.WorldToScreenPoint(dangerSignPos).y;
-    //    currentSignRect.position = dangerSignPos;
-    //    currentSign.SetTimer(maxTimer);
-    //    
-    //}
 
-    public void SpawnDangerSign(Vector3 _enemyPos)
+    //do not use for eel danger signs
+    public void SpawnDangerSign(Transform _enemyTransform)
     {
-        Debug.Log("SpawnDangerSign");
         DangerSign currentSign = Instantiate(dangerSign).GetComponent<DangerSign>();
         RectTransform currentSignRect = currentSign.GetComponent<RectTransform>();
         Vector3 dangerSignPos = currentSignRect.position;
         currentSign.transform.SetParent(dangerSignCanvas.transform);
+        Vector2 warningSignSize = GetEelDangerSignSize(currentSign);
 
+        currentSign.transform.position = GetDangerSignPosByHeadPos(_enemyTransform, warningSignSize);
 
-        //which side the enemy is coming from
-        if (_enemyPos.x < 0.0f)
-        {
-            dangerSignPos.x = currentSignRect.rect.width;
-        }
-        else
-        {
-            dangerSignPos.x = canvasSize.x - currentSignRect.rect.width;
-        }
-
-        //get pos on canvas from enemy pos in world
-        dangerSignPos.y = canvasSize.y / 2;
-
-        currentSign.canvasPos = dangerSignPos;
         currentSign.isEelDangerSign = false;
     }
 
@@ -151,5 +92,56 @@ public class DangerSignManager : MonoBehaviour
         //world size
         size = rt.lossyScale;
         return size;
+    }
+
+    //duplicata of method in EelMove.cs to reuse it in murene.cs (without destroying game by misinterpreting the code)
+    public Vector2 GetDangerSignPosByHeadPos(Transform head, Vector2 warningSignSize)
+    {
+        Vector3 pos = Vector3.zero;
+        Vector2 screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+        //the head is :
+        //over right of the screen
+        if (head.position.x >= -screenSize.x + Camera.main.transform.position.x)
+        {
+            pos.x = screenSize.x + Camera.main.transform.position.x - warningSignSize.x / 2;
+            //under the screen
+            if (head.position.y <= -screenSize.y + Camera.main.transform.position.y)
+            {
+                pos.y = -screenSize.y + Camera.main.transform.position.y + warningSignSize.y;
+            }
+            //over the screen
+            else if (head.position.y >= screenSize.y + Camera.main.transform.position.y)
+            {
+                pos.y = screenSize.y + Camera.main.transform.position.y - warningSignSize.y;
+            }
+            //in between
+            else
+            {
+                pos.y = head.position.y;
+            }
+        }
+        //over the left of the screen
+        else
+        {
+            pos.x = -screenSize.x + Camera.main.transform.position.x + warningSignSize.x / 2;
+
+            //under the screen
+            if (head.position.y <= -screenSize.y + Camera.main.transform.position.y)
+            {
+                pos.y = -screenSize.y + Camera.main.transform.position.y + warningSignSize.y;
+            }
+            //over the screen
+            else if (head.position.y >= screenSize.y + Camera.main.transform.position.y)
+            {
+                pos.y = screenSize.y + Camera.main.transform.position.y - warningSignSize.y;
+            }
+            //in between
+            else
+            {
+                pos.y = head.position.y;
+            }
+        }
+
+        return pos;
     }
 }

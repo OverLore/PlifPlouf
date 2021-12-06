@@ -52,6 +52,14 @@ public class WaveSpawner : MonoBehaviour
     {
         GameObject g = Instantiate(group);
         g.transform.position = transform.position + offset;
+
+        //sorry for the code
+        if (group.name == "E4Pattern1L" ||
+            group.name == "E4Pattern1R")
+        {
+            Transform enemyPos = g.transform.GetChild(0).GetChild(0).Find("E4Test");
+            DangerSignManager.instance.SpawnDangerSign(enemyPos);
+        }
     }
 
     void SpawnWave()
@@ -86,30 +94,6 @@ public class WaveSpawner : MonoBehaviour
         for (int i = 0; i < paths.Count; i++)
         {
             GameObject go = Resources.Load<GameObject>(paths[i]);
-
-            //sorry for the code
-            if (go.name == "E4Pattern1L" ||
-                go.name == "E4Pattern1R")
-            {
-                Vector3 enemyPos = go.transform.GetChild(0).GetChild(0).Find("E4Test").position;
-                //List<Vector2> splinePoints = new List<Vector2>();
-                //
-                //for (int j = 0; j < go.transform.GetChild(0).childCount; j++)
-                //{
-                //    SplinePath route = go.transform.GetChild(0).GetChild(j).GetComponent<SplinePath>();
-                //    for (float k = 0; k <= 1; k += 0.05f)
-                //    {
-                //        splinePoints.Add(route.GetSplinePoint(k));
-                //    }
-                //}
-
-
-                //go.transform.GetChild(0).GetChild
-                //Vector3 routePos = go.transform.position -  go.transform.GetChild(0).GetChild(0).position;
-                //DangerSignManager.instance.SpawnDangerSign(new Vector2(enemyPos.x, routePos.y));
-                //DangerSignManager.instance.SpawnDangerSign(enemyPos, splinePoints);
-                DangerSignManager.instance.SpawnDangerSign(enemyPos);
-            }
 
             CreateEnemy(offset[i], go);
         }

@@ -126,8 +126,6 @@ public class LevelManager : MonoBehaviour
 
     void UpdateStarting()
     {
-        debugText.text = "Press screen to start";
-
         if (Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
             state = LevelState.Waves;
@@ -137,7 +135,6 @@ public class LevelManager : MonoBehaviour
     void UpdateWaves()
     {
         levelProgress += Time.deltaTime * GameManager.instance.timeScale;
-        debugText.text = levelProgress.ToString();
 
 
         //if (levelProgress >= 15)

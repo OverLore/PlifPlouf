@@ -427,6 +427,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4458355209672498756, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
   m_PrefabInstance: {fileID: 19355945}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &19355947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8999068255984370529, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
+  m_PrefabInstance: {fileID: 19355945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &40659252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7580008524143050561, guid: fd88a5f9532e1be45a1ae003fb0a3286, type: 3}
@@ -3773,7 +3778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: canvasArray.Array.size
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: canvasArray.Array.data[0]
@@ -3798,11 +3803,19 @@ PrefabInstance:
     - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: canvasArray.Array.data[5]
       value: 
-      objectReference: {fileID: 19355946}
+      objectReference: {fileID: 19355947}
     - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: canvasArray.Array.data[6]
       value: 
       objectReference: {fileID: 2032013726}
+    - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
+      propertyPath: canvasArray.Array.data[7]
+      value: 
+      objectReference: {fileID: 1698222511}
+    - target: {fileID: 4103231276807315117, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
+      propertyPath: canvasArray.Array.data[8]
+      value: 
+      objectReference: {fileID: 1492224312}
     - target: {fileID: 6491683305078797309, guid: b8a5fc8f1f261454198cd06d313cd691, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -9891,6 +9904,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479105832}
   m_CullTransparentMesh: 1
+--- !u!1 &1492224312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1822544832884509237, guid: 2fd841f25d7819e45bda950990479114, type: 3}
+  m_PrefabInstance: {fileID: 1822544834298798954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1526934845
 GameObject:
   m_ObjectHideFlags: 0
@@ -14316,6 +14334,10 @@ PrefabInstance:
     - target: {fileID: 1822544832884509237, guid: 2fd841f25d7819e45bda950990479114, type: 3}
       propertyPath: m_Name
       value: NextLifeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822544832884509237, guid: 2fd841f25d7819e45bda950990479114, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1822544833658090453, guid: 2fd841f25d7819e45bda950990479114, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

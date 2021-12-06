@@ -14,18 +14,20 @@ public class DangerSign : MonoBehaviour
     private void Start()
     {
         psChild = gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
+        //horrible fix for pc version
+        gameObject.transform.localScale = Vector3.one;
     }
 
     //the object will be put in world space coordinates but always according to the pos on the canvas
     //(to keep it on left or right when we move out of the screen)
     private void UpdatePos()
     {
-        if (!isEelDangerSign)
-        {
-            Vector3 tempPos = Camera.main.ScreenToWorldPoint(canvasPos);
-            tempPos.z = 0;
-            rt.position = tempPos;
-        }
+        //if (!isEelDangerSign)
+        //{
+        //    Vector3 tempPos = Camera.main.ScreenToWorldPoint(canvasPos);
+        //    tempPos.z = 0;
+        //    rt.position = tempPos;
+        //}
     }
 
     void UpdateSimSpeed()
