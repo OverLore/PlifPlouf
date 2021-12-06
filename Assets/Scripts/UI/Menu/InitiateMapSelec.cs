@@ -44,7 +44,7 @@ public class InitiateMapSelec : MonoBehaviour
 
     void UpdateTabButtons()
     {
-        for (int x = 0; x <= PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") + 1; x++)
+        for (int x = 0; x <= PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") ; x++)
         {
             
 
@@ -68,12 +68,14 @@ public class InitiateMapSelec : MonoBehaviour
         if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugUnlockNextLevel")
             && SceneManager.GetActiveScene().name == "MainMenu")
         {
-            if (GameManager.instance.maxLevelReached + 1 < 11)
+            //if (GameManager.instance.maxLevelReached  < 11)
+            if (PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") < 9)
             {
                 GameManager.instance.ChangeMaxLevelReached(GameManager.instance.maxLevelReached + 1);
             }
-            UpdateTabButtons();
+           
         }
+        UpdateTabButtons();
     }
 
 }
