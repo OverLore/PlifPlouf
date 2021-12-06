@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI comboText = null;
     Animator comboAnimator;
 
-    public int maxLevelReached = 1;
+    public int maxLevelReached = 0;
 
     [Space(10), Header("Colors")]
     public Color[] colorByLayers;
@@ -302,7 +302,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            instance.maxLevelReached = 1;
+            instance.maxLevelReached = 0;
             PlayerPrefs.SetInt(GameManager.instance.profileName + "maxLevelReached", 0);
         }
 
