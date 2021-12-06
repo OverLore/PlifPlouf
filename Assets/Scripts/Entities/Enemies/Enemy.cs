@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool isShootingEnemy = false;
     [SerializeField] bool isInvincible = false;
     [SerializeField] bool hasLifebar = true;
+    [SerializeField] bool isBoss = false;
     [SerializeField] GameObject lifebarPrefab;
     [SerializeField] Vector2 lifebarOffset;
     GameObject lifebar;
@@ -40,15 +41,17 @@ public class Enemy : MonoBehaviour
 
         AudioManager.Instance.PlaySound("DeathMob");
         GameManager.instance.AddScore((uint)score);
-        LevelManager.instance.SpawnCoinAt(transform.position, score);
         LevelManager.instance.kills++;
         //Achivment stuff:
         PlayerPrefs.SetInt(GameManager.instance.profileName + "KillCount", PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") + 1);
         //
-
-        if (Random.Range(0, 100) < 10)
+        if (isBoss)
         {
-            BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+            LevelManager.instance.SpawnCoinAt(transform.position, score);
+            if (Random.Range(0, 100) < 10)
+            {
+                BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+            }
         }
 
         if(gameObject.GetComponent<SplinePathFollow>() != null)

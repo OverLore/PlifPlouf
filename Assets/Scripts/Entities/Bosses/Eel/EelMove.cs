@@ -197,6 +197,7 @@ public class EelMove : MonoBehaviour
 
     void UpdateSign()
     {
+
         Transform head = boneObject[0].transform;
         warningSign.transform.rotation = head.rotation;
         Vector3 tranformSign = head.position;
@@ -205,12 +206,11 @@ public class EelMove : MonoBehaviour
 
         if (BonneIsOnScreen())
         {
-            //warningSign.GetComponent<SpriteRenderer>().enabled = false;
             if (!isWarningFirstTime)
             {
-                Debug.Log("stop danger sign");
                 warningSign.gameObject.SetActive(false);
                 warningSignParticleSystem.Stop();
+                warningSignParticleSystem.time = 0;
                 isWarningFirstTime = true;
             }
         }
@@ -220,11 +220,12 @@ public class EelMove : MonoBehaviour
 
             if (isWarningFirstTime)
             {
-                Debug.Log("Play danger sign");
+                //Debug.Log("Play danger sign");
                 warningSign.gameObject.SetActive(true);
+                warningSignParticleSystem.time = 0;
+                Debug.Log("isplaying : "+warningSignParticleSystem.isPlaying);
                 warningSignParticleSystem.Play();
                 isWarningFirstTime = false;
-                Debug.Log(warningSignParticleSystem.time);
             }
             //the head is :
             //over right of the screen
@@ -270,7 +271,6 @@ public class EelMove : MonoBehaviour
                 }
             }
             warningSign.transform.position = pos;
-            //warningSign.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
@@ -288,12 +288,15 @@ public class EelMove : MonoBehaviour
         warningSignSize = DangerSignManager.instance.GetEelDangerSignSize(warningSign);
         isWarningFirstTime = true;
         screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
-        Debug.Log(warningSignSize);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (screenSize.x != ScreenSize.GetScreenToWorldWidth/2 || screenSize.y != ScreenSize.GetScreenToWorldHeight / 2)
+        {
+            screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+        }
         if (!IsMoving)
         {
             ChoosePath();
