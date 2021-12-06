@@ -12,7 +12,7 @@ public class EelMove : MonoBehaviour
     [Range(0f, 1f), SerializeField] float delayRandMax;
     [SerializeField] GameObject[] boneObject;
     DangerSign warningSign;
-    bool isWarningFirstTime;
+    bool ;
     Vector2 warningSignSize;
     Vector2 screenSize;
     ParticleSystem warningSignParticleSystem;
@@ -206,26 +206,23 @@ public class EelMove : MonoBehaviour
 
         if (BonneIsOnScreen())
         {
-            if (!isWarningFirstTime)
+            if (warningSignParticleSystem.isPlaying)
             {
                 warningSign.gameObject.SetActive(false);
                 warningSignParticleSystem.Stop();
                 warningSignParticleSystem.time = 0;
-                isWarningFirstTime = true;
             }
         }
         else
         {
             Vector3 pos = Vector3.zero;
 
-            if (isWarningFirstTime)
+            if (warningSignParticleSystem.isStopped)
             {
                 //Debug.Log("Play danger sign");
                 warningSign.gameObject.SetActive(true);
                 warningSignParticleSystem.time = 0;
-                Debug.Log("isplaying : "+warningSignParticleSystem.isPlaying);
                 warningSignParticleSystem.Play();
-                isWarningFirstTime = false;
             }
             //the head is :
             //over right of the screen
@@ -286,7 +283,6 @@ public class EelMove : MonoBehaviour
         warningSign = DangerSignManager.instance.GetEelDangerSign(gameObject.transform.position);
         warningSignParticleSystem = DangerSignManager.instance.GetEelDangerSignParticleSystem(warningSign);
         warningSignSize = DangerSignManager.instance.GetEelDangerSignSize(warningSign);
-        isWarningFirstTime = true;
         screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
     }
 
