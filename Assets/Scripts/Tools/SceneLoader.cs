@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
     {
         AudioManager.Instance.LoadSoundsFromSceneName(sceneString);
         SceneManager.LoadScene(sceneString);
+        GameManager.instance.ResetScore();
     }
 
     public void PlayButtonEffect(string sceneString)
