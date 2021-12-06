@@ -1,18 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] UnityEvent OnNotEnoughtLife;
+
     public void LoadScene(string sceneString)
     {
-        AudioManager.Instance.LoadSoundsFromSceneName(sceneString);
-        SceneManager.LoadScene(sceneString);
-        GameManager.instance.ResetScore();
+        if (GameManager.instance.lives > 0)
+        {
+            AudioManager.Instance.LoadSoundsFromSceneName(sceneString);
+            SceneManager.LoadScene(sceneString);
+            GameManager.instance.ResetScore();
+        }
+        else
+        {
+            OnNotEnoughtLife?.Invoke();
+        }
     }
 
     public void PlayButtonEffect(string sceneString)
     {
-        LoadScene(sceneString);
+        if (GameManager.instance.lives > 0)
+        {
+            LoadScene(sceneString);
+        }
     }
 
     //DEBUG PURPOSE ONLY
