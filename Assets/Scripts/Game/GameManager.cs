@@ -352,6 +352,16 @@ public class GameManager : MonoBehaviour
         //    LoseLife();
         //}
 
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugSkipToEel")
+            && SceneManager.GetActiveScene().name == "TestNiveaux")
+        {
+            if (LevelManager.instance.levelProgress < LevelManager.instance.maxLevelProgress)
+            {
+                LevelManager.instance.levelProgress = LevelManager.instance.maxLevelProgress;
+                Debug.Log("Skip to Eel");
+            }
+        }
+
         if (pauseBack == null)
         {
             pauseBack = GameObject.Find("PauseBack")?.GetComponent<Image>();
