@@ -2,22 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InitiateMapSelec : MonoBehaviour
 {
     [SerializeField]  GameObject[] tabButtons;
     [SerializeField] GameObject statpannel;
 
+    [SerializeField] Sprite LockedSprite;
+    [SerializeField] Sprite UnLockedSprite;
+    [SerializeField] Sprite ThreeStarSprite;
+
+
+    LevelDatasStruct DataLevelTest;
+
+
     // Start is called before the first frame update
     void Start()
     {
-
-        // for (int x = 0; x <= GameManager.instance.maxLevelReached + 1; x++)
-        // {
-        //     tabButtons[x].SetActive(true);
-        // }
-
-        UpdateTabButtons();
+        for (int x = 0; x < tabButtons.Length ; x++)
+        {
+            tabButtons[x].gameObject.GetComponent<Button>().enabled = false;
+        }
+            UpdateTabButtons();
 
     }
 
@@ -39,7 +46,19 @@ public class InitiateMapSelec : MonoBehaviour
     {
         for (int x = 0; x <= PlayerPrefs.GetInt(GameManager.instance.profileName + "maxLevelReached") + 1; x++)
         {
-            tabButtons[x].SetActive(true);
+            
+
+
+            tabButtons[x].gameObject.GetComponent<Button>().enabled = true;
+            tabButtons[x].gameObject.GetComponent<Image>().sprite = UnLockedSprite;
+
+            LevelDatas.LoadLevelDatas(x, out DataLevelTest);
+            if (DataLevelTest.stars == 3)
+            {
+                tabButtons[x].gameObject.GetComponent<Image>().sprite = ThreeStarSprite;
+            }
+
+
         }
     }
 
