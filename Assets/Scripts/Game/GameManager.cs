@@ -319,7 +319,6 @@ public class GameManager : MonoBehaviour
 
         GetTexts();
 
-        LoadStats();
     }
 
     public void LoseLife()

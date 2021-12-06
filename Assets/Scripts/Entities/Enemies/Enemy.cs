@@ -155,10 +155,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log("rotation " + transform.rotation);
         if (PV <= 0 && !isInvincible)
         {
             //LevelManager.instance.score += score;
-
             GameObject go = Instantiate(deathParticles);
             go.transform.position = transform.position;
 

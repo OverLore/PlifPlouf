@@ -69,6 +69,7 @@ public class SplinePathFollow : MonoBehaviour
 
         currentPath++;
 
+
         if (isDestroyedAtEnd)
         {
             if (currentPath > paths.Length - 1)
