@@ -33,7 +33,7 @@ public class XmaxSkinsManager : MonoBehaviour
     {
         ClearDefault();
 
-        if (Database.SeasonSkin.is_activated)
+        if (Database.SeasonSkin != null && Database.SeasonSkin.is_activated)
         {
             for(int i = 0; i < christmas.renderers.Count; i++)
             {
