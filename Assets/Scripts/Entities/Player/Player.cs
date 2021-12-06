@@ -304,15 +304,12 @@ public class Player : MonoBehaviour
         InitShotDamage(go);
         // place projectile
         go.transform.position = shotOrigin.position;
-        // add push with delta position
-        Vector3 posDelta = GetDeltaMovement();
-        posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
         // random angle base on the spread
         float angleSpread = UnityEngine.Random.Range(-shotSpread, shotSpread);
         // calculate velocity with angle
-        float velx = (posDelta.y * shotForce)
+        float velx = (shotForce)
             * Mathf.Cos((90.0f + angleSpread) * Mathf.Deg2Rad);
-        float vely = (posDelta.y * shotForce)
+        float vely = (shotForce)
             * Mathf.Sin((90.0f + angleSpread) * Mathf.Deg2Rad);
         // set velocity
         go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
@@ -327,15 +324,12 @@ public class Player : MonoBehaviour
             InitShotDamage(go);
             // place projectile
             go.transform.position = shotOrigin.position;
-            // add push with delta position
-            Vector3 posDelta = GetDeltaMovement();
-            posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
             // random angle base on the spread
             float angleSpread = i * 35 + UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
-            float velx = (posDelta.y * shotForce)
+            float velx = (shotForce)
                 * Mathf.Cos((90.0f + angleSpread) * Mathf.Deg2Rad);
-            float vely = (posDelta.y * shotForce)
+            float vely = (shotForce)
                 * Mathf.Sin((90.0f + angleSpread) * Mathf.Deg2Rad);
             // set velocity
             go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
@@ -351,9 +345,6 @@ public class Player : MonoBehaviour
             InitShotDamage(go);
             // place projectile
             go.transform.position = shotOrigin.position;
-            // add push with delta position
-            Vector3 posDelta = GetDeltaMovement();
-            posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
             // random angle base on the spread
             //float angleSpread = i * 45 + Random.Range(-shotSpread, shotSpread);
 
@@ -362,9 +353,9 @@ public class Player : MonoBehaviour
             float angle = time + (float)i / 10.0f * 360.0f;
 
             // calculate velocity with angle
-            float velx = (posDelta.y * shotForce)
+            float velx = (shotForce)
                 * Mathf.Cos((90.0f + angle) * Mathf.Deg2Rad);
-            float vely = (posDelta.y * shotForce)
+            float vely = (shotForce)
                 * Mathf.Sin((90.0f + angle) * Mathf.Deg2Rad);
             // set velocity
             go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
@@ -394,16 +385,12 @@ public class Player : MonoBehaviour
                     + new Vector3(halfSpace, 0, 0);
             }
 
-            // add push with delta position
-            Vector3 posDelta = GetDeltaMovement();
-            posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
-
             // random angle base on the spread
             float angleSpread = UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
-            float velx = (posDelta.y * shotForce)
+            float velx = (shotForce)
                 * Mathf.Cos((90.0f + angleSpread) * Mathf.Deg2Rad);
-            float vely = (posDelta.y * shotForce)
+            float vely = (shotForce)
                 * Mathf.Sin((90.0f + angleSpread) * Mathf.Deg2Rad);
 
             // set velocity
@@ -430,16 +417,12 @@ public class Player : MonoBehaviour
                 go.transform.position = shotOrigin.position;
             }
 
-            // add push with delta position
-            Vector3 posDelta = GetDeltaMovement();
-            posDelta.y = posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
-
             // random angle base on the spread
             float angleSpread = UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
-            float velx = (posDelta.y * shotForce)
+            float velx = (shotForce)
                 * Mathf.Cos(((i * 180.0f) + ((1 - i * 2) * (90 - shotSideAngle)) + angleSpread) * Mathf.Deg2Rad);
-            float vely = (posDelta.y * shotForce)
+            float vely = (shotForce)
                 * Mathf.Sin(((i * 180.0f) + ((1 - i * 2) * (90 - shotSideAngle)) + angleSpread) * Mathf.Deg2Rad);
 
             // set velocity
