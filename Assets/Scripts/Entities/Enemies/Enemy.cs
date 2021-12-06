@@ -206,14 +206,11 @@ public class Enemy : MonoBehaviour
             collision.gameObject.GetComponent<Player>().TakeDamage(collisionDamage);
             if(isDestroyedOnCollided)
             {
-                GameObject particle = Instantiate(deathParticles,this.transform);
+                GameObject particle = Instantiate(deathParticles,this.transform.parent);
+                particle.transform.localPosition = this.transform.localPosition;
+                particle.transform.localScale = this.transform.localScale;
                 
-                GetComponent<SpriteRenderer>().enabled = false;
-                GetComponent<CircleCollider2D>().enabled = false;
-
-                float particleTime = particle.GetComponent<ParticleSystem>().main.duration;
-                
-                Destroy(this.gameObject,particleTime*2.0f);
+                Destroy(this.gameObject);
             }
         }
     }
