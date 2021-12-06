@@ -19915,6 +19915,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &1921828016 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 3997229357357635874, guid: a3a9bee21564dc14cb12eef26c096eb0, type: 3}
+  m_PrefabInstance: {fileID: 4579233057240743158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1927611601
 GameObject:
   m_ObjectHideFlags: 0
@@ -20794,6 +20799,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1372629991656790647, guid: 0baf8d40ce65043449b087b4eaac63f2, type: 3}
+      propertyPath: canvasGroup
+      value: 
+      objectReference: {fileID: 4579233057240743161}
+    - target: {fileID: 1372629991656790647, guid: 0baf8d40ce65043449b087b4eaac63f2, type: 3}
       propertyPath: progressMaxRT
       value: 
       objectReference: {fileID: 4579233057240743159}
@@ -20809,6 +20818,10 @@ PrefabInstance:
       propertyPath: progressBarFull
       value: 
       objectReference: {fileID: 2043907626}
+    - target: {fileID: 1372629991656790647, guid: 0baf8d40ce65043449b087b4eaac63f2, type: 3}
+      propertyPath: progressBarCanvas
+      value: 
+      objectReference: {fileID: 1921828016}
     - target: {fileID: 2002840236138515363, guid: 0baf8d40ce65043449b087b4eaac63f2, type: 3}
       propertyPath: m_RootOrder
       value: 42
@@ -21021,6 +21034,11 @@ RectTransform:
 --- !u!224 &4579233057240743160 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5289986125814044467, guid: a3a9bee21564dc14cb12eef26c096eb0, type: 3}
+  m_PrefabInstance: {fileID: 4579233057240743158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &4579233057240743161 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 6688902958972484417, guid: a3a9bee21564dc14cb12eef26c096eb0, type: 3}
   m_PrefabInstance: {fileID: 4579233057240743158}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7518191345925585262

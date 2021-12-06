@@ -359,23 +359,24 @@ public class GameManager : MonoBehaviour
 
         if (pauseBack != null)
         {
+            Color tempColor = Color.clear;
             if (Paused)
             {
                 timeScale = Mathf.Lerp(timeScale, .05f, Time.deltaTime * 5f);
                 pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 185f / 255f), Time.deltaTime * 5f);
                 AudioListener.volume = Mathf.Lerp(startVolume, endVolume, Time.deltaTime * 2.0f);
+                ProgressBarManager.Instance.alphaTimer += Time.deltaTime * 5.0f;
+                //ProgressBarManager.Instance.canvasGroup.alpha = Mathf.Lerp(0.0f, 255.0f, Time.deltaTime * 5f);
             }
             else
             {
                 timeScale = Mathf.Lerp(timeScale, 1f, Time.deltaTime * 5f);
                 pauseBack.color = Color.Lerp(pauseBack.color, new Color(0, 0, 0, 0), Time.deltaTime * 5f);
                 AudioListener.volume = Mathf.Lerp(endVolume, startVolume, Time.deltaTime * 2.0f);
+                ProgressBarManager.Instance.alphaTimer -= Time.deltaTime * 5.0f;
+                //ProgressBarManager.Instance.canvasGroup.alpha = Mathf.Lerp(255.0f, 0.0f, Time.deltaTime * 5f);
             }
-
-            //if (Input.GetKeyDown(KeyCode.P))
-            //{
-            //    Paused = !Paused;
-            //}
+            //Debug.Log(ProgressBarManager.Instance.canvasGroup.alpha);
         }
 
         for (int i = 0; i < colorByLayers.Length; i++)

@@ -47,3 +47,4 @@ MonoBehaviour:
   progressBarFull: {fileID: 0}
   progressMinRT: {fileID: 0}
   progressMaxRT: {fileID: 0}
+  canvasGroup: {fileID: 0}

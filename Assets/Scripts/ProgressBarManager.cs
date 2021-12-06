@@ -11,8 +11,11 @@ public class ProgressBarManager : MonoBehaviour
     [SerializeField] GameObject progressBarFull;
     [SerializeField] RectTransform progressMinRT;
     [SerializeField] RectTransform progressMaxRT;
+    [SerializeField] Canvas progressBarCanvas;
     RectTransform dotRT;
     Image barFullImage;
+    CanvasGroup canvasGroup;
+    [HideInInspector] public float alphaTimer;
 
     void Awake()
     {
@@ -32,6 +35,9 @@ public class ProgressBarManager : MonoBehaviour
     {
         dotRT = progressBarDot.GetComponent<RectTransform>();
         barFullImage = progressBarFull.GetComponent<Image>();
+        canvasGroup = progressBarCanvas.GetComponent<CanvasGroup>();
+
+        alphaTimer = 1.0f;
     }
 
     void Update()
@@ -40,8 +46,12 @@ public class ProgressBarManager : MonoBehaviour
         Vector3 pos = dotRT.position;
         pos.y = Mathf.Lerp(progressMinRT.position.y, progressMaxRT.position.y, fillAmount);
         barFullImage.fillAmount = fillAmount;
-        Debug.Log(fillAmount);
+        //Debug.Log(fillAmount);
 
+        //alphaTimer incremented in GameManager
+        alphaTimer = Mathf.Clamp01(alphaTimer);
+        Debug.Log("alpha Timer : " + alphaTimer);
+        canvasGroup.alpha = Mathf.Lerp(0.0f, 1.0f, alphaTimer);
 
         dotRT.position = pos;
     }

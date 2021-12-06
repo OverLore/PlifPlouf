@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 3997229357357635874}
   - component: {fileID: 6431939728175762712}
   - component: {fileID: 2680374889381416655}
+  - component: {fileID: 6688902958972484417}
   m_Layer: 5
   m_Name: ProgressBarCanvas
   m_TagString: Untagged
@@ -287,7 +288,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!114 &6431939728175762712
 MonoBehaviour:
@@ -329,6 +330,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &6688902958972484417
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2656273862974640377}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &4578625156544730653
 GameObject:
   m_ObjectHideFlags: 0
