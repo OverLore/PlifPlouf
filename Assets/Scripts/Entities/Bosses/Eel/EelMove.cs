@@ -12,7 +12,6 @@ public class EelMove : MonoBehaviour
     [Range(0f, 1f), SerializeField] float delayRandMax;
     [SerializeField] GameObject[] boneObject;
     DangerSign warningSign;
-    bool ;
     Vector2 warningSignSize;
     Vector2 screenSize;
     ParticleSystem warningSignParticleSystem;
