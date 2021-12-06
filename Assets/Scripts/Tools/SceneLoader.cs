@@ -8,6 +8,13 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string sceneString)
     {
+            AudioManager.Instance.LoadSoundsFromSceneName(sceneString);
+            SceneManager.LoadScene(sceneString);
+            GameManager.instance.ResetScore();
+    }
+
+    public void PlayButtonEffect(string sceneString)
+    {
         if (GameManager.instance.lives > 0)
         {
             AudioManager.Instance.LoadSoundsFromSceneName(sceneString);
@@ -17,14 +24,6 @@ public class SceneLoader : MonoBehaviour
         else
         {
             OnNotEnoughtLife?.Invoke();
-        }
-    }
-
-    public void PlayButtonEffect(string sceneString)
-    {
-        if (GameManager.instance.lives > 0)
-        {
-            LoadScene(sceneString);
         }
     }
 
