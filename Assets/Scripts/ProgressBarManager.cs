@@ -15,20 +15,20 @@ public class ProgressBarManager : MonoBehaviour
     RectTransform dotRT;
     Image barFullImage;
     CanvasGroup canvasGroup;
-    [HideInInspector] public float alphaTimer;
+    [HideInInspector] public static float alphaTimer;
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(instance);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
     }
 
     void Start()

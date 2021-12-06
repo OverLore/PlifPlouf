@@ -51,6 +51,11 @@ public class AudioManager : MonoBehaviour
     {
         switch (sceneString)
         {
+            case "Pre-Menu":
+                Debug.Log("Go through Pre menu load sounds");
+                SwitchSoundsToMenu();
+                break;
+
             case "MainMenu":
                 SwitchSoundsToMenu();
                 break;
