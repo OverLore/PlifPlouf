@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotSpeed = 4.0f;
     [SerializeField] bool isShootingEnemy = false;
     [SerializeField] bool isInvincible = false;
+    [SerializeField] bool isDestroyedOnCollided = false;
     [SerializeField] bool hasLifebar = true;
     [SerializeField] bool isBoss = false;
     [SerializeField] GameObject lifebarPrefab;
@@ -203,6 +204,17 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<Player>().TakeDamage(collisionDamage);
+            if(isDestroyedOnCollided)
+            {
+                GameObject particle = Instantiate(deathParticles,this.transform);
+                
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<CircleCollider2D>().enabled = false;
+
+                float particleTime = particle.GetComponent<ParticleSystem>().main.duration;
+                
+                Destroy(this.gameObject,particleTime*2.0f);
+            }
         }
     }
 }
