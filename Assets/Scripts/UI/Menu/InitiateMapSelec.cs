@@ -49,7 +49,7 @@ public class InitiateMapSelec : MonoBehaviour
         if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugUnlockNextLevel")
             && SceneManager.GetActiveScene().name == "MainMenu")
         {
-            if (GameManager.instance.maxLevelReached + 1 < 10)
+            if (GameManager.instance.maxLevelReached + 1 < 11)
             {
                 GameManager.instance.ChangeMaxLevelReached(GameManager.instance.maxLevelReached + 1);
             }
