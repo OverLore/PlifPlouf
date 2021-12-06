@@ -93,7 +93,7 @@ public class EelMove : MonoBehaviour
             }
         }
     }
-    
+
     bool IsPathEnd()
     {
         for (int i = 0; i < boneObject.Length; i++)
@@ -112,13 +112,13 @@ public class EelMove : MonoBehaviour
         }
         return false;
     }
-    
+
     void UpdateBodyPart()
     {
         if (actualBone < boneObject.Length)
         {
             timerSpawn += Time.deltaTime * GameManager.instance.timeScale;
-            if (timerSpawn >= ( timerMax / EelSpeed + timerMax) * timerMax + timerMax)
+            if (timerSpawn >= (timerMax / EelSpeed + timerMax) * timerMax + timerMax)
             {
                 SplinePathFollow pathFollow;
                 if (boneObject[actualBone].GetComponent<SplinePathFollow>() == null)
@@ -126,7 +126,7 @@ public class EelMove : MonoBehaviour
                     boneObject[actualBone].AddComponent<SplinePathFollow>();
                     pathFollow = boneObject[actualBone].GetComponent<SplinePathFollow>();
                     pathFollow.speed = EelSpeed;
-                   
+
                     pathFollow.correction = 90;
                     pathFollow.isDestroyedAtEnd = false;
                 }
@@ -167,7 +167,7 @@ public class EelMove : MonoBehaviour
             IsMoving = true;
         }
     }
-    
+
     void UpdateCollision()
     {
         for (int i = 0; i < boneObject.Length; i++)
@@ -181,7 +181,7 @@ public class EelMove : MonoBehaviour
 
     bool BonneIsOnScreen()
     {
-        for (int i = 0; i < boneObject.Length /2; i++)
+        for (int i = 0; i < boneObject.Length / 2; i++)
         {
             Vector3 bonne = boneObject[i].transform.position;
 
@@ -225,10 +225,9 @@ public class EelMove : MonoBehaviour
             }
             //the head is :
             //over right of the screen
-            if (head.position.x >= -screenSize.x + Camera.main.transform.position.x)
+            if (head.position.x >= -screenSize.x + Camera.main.transform.position.x )
             {
                 pos.x = screenSize.x + Camera.main.transform.position.x - warningSignSize.x / 2;
-
                 //under the screen
                 if (head.position.y <= -screenSize.y + Camera.main.transform.position.y)
                 {
@@ -282,13 +281,13 @@ public class EelMove : MonoBehaviour
         warningSign = DangerSignManager.instance.GetEelDangerSign(gameObject.transform.position);
         warningSignParticleSystem = DangerSignManager.instance.GetEelDangerSignParticleSystem(warningSign);
         warningSignSize = DangerSignManager.instance.GetEelDangerSignSize(warningSign);
-        screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+        screenSize = new Vector2(-1, -1);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (screenSize.x != ScreenSize.GetScreenToWorldWidth/2 || screenSize.y != ScreenSize.GetScreenToWorldHeight / 2)
+        if (screenSize.x == -1)
         {
             screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
         }
@@ -309,9 +308,9 @@ public class EelMove : MonoBehaviour
         }
     }
 
-     private void OnTriggerEnter2D(Collider2D collision)
-     {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
 
-     }
+    }
 
 }
