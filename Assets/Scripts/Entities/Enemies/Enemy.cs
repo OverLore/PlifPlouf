@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         //Achivment stuff:
         PlayerPrefs.SetInt(GameManager.instance.profileName + "KillCount", PlayerPrefs.GetInt(GameManager.instance.profileName + "KillCount") + 1);
         //
-        if (!isBoss)
+        if (isBoss)
         {
             LevelManager.instance.SpawnCoinAt(transform.position, score);
             if (Random.Range(0, 100) < 10)
