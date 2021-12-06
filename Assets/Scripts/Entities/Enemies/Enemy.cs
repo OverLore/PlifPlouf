@@ -188,8 +188,11 @@ public class Enemy : MonoBehaviour
         {
             UpdateLifebar();
         }
-
-        UpdateShot();
+        
+        if (!GameManager.instance.Paused)
+        {
+            UpdateShot();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

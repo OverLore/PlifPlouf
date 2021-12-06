@@ -654,7 +654,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleShot();
+        if (!GameManager.instance.Paused)
+        {
+            HandleShot();
+        }
 
         UpdateAttackDamageBoost();
         UpdateAttackSpeedBoost();
