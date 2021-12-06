@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
         lifebarImgBack = lifebar.GetComponent<Image>();
 
         lifebarImg.color = new Color(lifebarImg.color.r, lifebarImg.color.g, lifebarImg.color.b, lifebarVisibility);
-        lifebarImgBack.color = new Color(lifebarImg.color.r, lifebarImg.color.g, lifebarImg.color.b, lifebarVisibility);
+        lifebarImgBack.color = new Color(lifebarImgBack.color.r, lifebarImgBack.color.g, lifebarImgBack.color.b, lifebarVisibility);
     }
 
     void UpdateLifebar()
