@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 59e97525541fd5a49a07611b79f2d675
+guid: bbc2207173472b147a257f50c1fbb1f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6576950343355249700
-    second: murene_sheet_0
+      213: 4478728924714236990
+    second: animsheet_moray_christmas_0
   - first:
-      213: -8819571967018322796
-    second: murene_sheet_1
+      213: 656151591352458728
+    second: animsheet_moray_christmas_1
   - first:
-      213: -7395204288224325010
-    second: murene_sheet_2
+      213: -7286545566486890670
+    second: animsheet_moray_christmas_2
   - first:
-      213: 1137976889362173269
-    second: murene_sheet_3
+      213: 4824887240779575519
+    second: animsheet_moray_christmas_3
   - first:
-      213: -1609623748695241055
-    second: murene_sheet_4
+      213: 8860524756454469628
+    second: animsheet_moray_christmas_4
   - first:
-      213: -2187013424937169170
-    second: murene_sheet_5
+      213: 8302953788627110502
+    second: animsheet_moray_christmas_5
   - first:
-      213: 2433548827220901053
-    second: murene_sheet_6
+      213: 8476394641729309287
+    second: animsheet_moray_christmas_6
   - first:
-      213: -9171371931525255008
-    second: murene_sheet_7
+      213: 1258876468127766536
+    second: animsheet_moray_christmas_7
   - first:
-      213: -1505300798365952154
-    second: murene_sheet_8
+      213: -1200431587745487966
+    second: animsheet_moray_christmas_8
   - first:
-      213: -5080188478863860141
-    second: murene_sheet_9
+      213: 7414038195077060095
+    second: animsheet_moray_christmas_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -62,7 +62,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -95,10 +95,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -107,10 +107,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,10 +119,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -133,7 +133,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: murene_sheet_0
+      name: animsheet_moray_christmas_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,20 +141,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdb4de6428af9b4a0800000000000000
-      internalID: -6576950343355249700
+      spriteID: e3cfbda4a34a72e30800000000000000
+      internalID: 4478728924714236990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_1
+      name: animsheet_moray_christmas_1
       rect:
         serializedVersion: 2
         x: 1500
@@ -162,20 +162,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49431ea26069a9580800000000000000
-      internalID: -8819571967018322796
+      spriteID: 8edde59556e1b1900800000000000000
+      internalID: 656151591352458728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_2
+      name: animsheet_moray_christmas_2
       rect:
         serializedVersion: 2
         x: 3000
@@ -183,20 +183,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6291fe91e4fe5990800000000000000
-      internalID: -7395204288224325010
+      spriteID: 257f9ddb96df0ea90800000000000000
+      internalID: -7286545566486890670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_3
+      name: animsheet_moray_christmas_3
       rect:
         serializedVersion: 2
         x: 0
@@ -204,20 +204,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55d490d93f7eacf00800000000000000
-      internalID: 1137976889362173269
+      spriteID: fd03bf3d16175f240800000000000000
+      internalID: 4824887240779575519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_4
+      name: animsheet_moray_christmas_4
       rect:
         serializedVersion: 2
         x: 1500
@@ -225,20 +225,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aeccfc8ab779a9e0800000000000000
-      internalID: -1609623748695241055
+      spriteID: cffe5082258e6fa70800000000000000
+      internalID: 8860524756454469628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_5
+      name: animsheet_moray_christmas_5
       rect:
         serializedVersion: 2
         x: 3000
@@ -246,20 +246,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eee0c9790ea26a1e0800000000000000
-      internalID: -2187013424937169170
+      spriteID: 66a4a95da740a3370800000000000000
+      internalID: 8302953788627110502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_6
+      name: animsheet_moray_christmas_6
       rect:
         serializedVersion: 2
         x: 0
@@ -267,20 +267,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbcf11ec3c3b5c120800000000000000
-      internalID: 2433548827220901053
+      spriteID: 76acc4c440432a570800000000000000
+      internalID: 8476394641729309287
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_7
+      name: animsheet_moray_christmas_7
       rect:
         serializedVersion: 2
         x: 1500
@@ -288,20 +288,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a0f27ef1ddb8b080800000000000000
-      internalID: -9171371931525255008
+      spriteID: 8089ada5a7d687110800000000000000
+      internalID: 1258876468127766536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_8
+      name: animsheet_moray_christmas_8
       rect:
         serializedVersion: 2
         x: 3000
@@ -309,20 +309,20 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 667194936e81c1be0800000000000000
-      internalID: -1505300798365952154
+      spriteID: 2a3a543c4d5375fe0800000000000000
+      internalID: -1200431587745487966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: murene_sheet_9
+      name: animsheet_moray_christmas_9
       rect:
         serializedVersion: 2
         x: 0
@@ -330,14 +330,14 @@ TextureImporter:
         width: 1500
         height: 500
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35e99459e7b8f79b0800000000000000
-      internalID: -5080188478863860141
+      spriteID: ff51fb80574f3e660800000000000000
+      internalID: 7414038195077060095
       vertices: []
       indices: 
       edges: []
