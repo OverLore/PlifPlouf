@@ -18326,8 +18326,9 @@ MonoBehaviour:
   starBar: {fileID: 127722121}
   updateStarsBar: 0
   level: 0
-  state: 0
+  state: 6
   levelProgress: 0
+  maxLevelProgress: 60
   maxObtainableScore: 0
   kills: 0
   coins: 0

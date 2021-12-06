@@ -74,6 +74,8 @@ public class LevelManager : MonoBehaviour
     public LevelState state = LevelState.None;
 
     public float levelProgress;
+    [HideInInspector]
+    public float maxLevelProgress = 60;
 
     public int maxObtainableScore = 0;
 
@@ -86,6 +88,8 @@ public class LevelManager : MonoBehaviour
     public AnimatedScore scoreScore;
     public AnimatedScore coinsScore;
     public AnimatedScore gainScore;
+
+   
 
     public void StartLevel(int _level)
     {
@@ -138,7 +142,7 @@ public class LevelManager : MonoBehaviour
 
         //if (levelProgress >= 15)
         //debug test level (level will be max 1 minute (even though we use percentage from 0 to 100))
-        if (levelProgress >= 61)
+        if (levelProgress >= maxLevelProgress)
         {
             state = LevelState.BossStart;
         }

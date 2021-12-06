@@ -33,6 +33,10 @@ public class ProgressBarManager : MonoBehaviour
 
     void Update()
     {
-        
+        Vector3 pos = dotRT.position;
+        pos.y = Mathf.Lerp(progressMinRT.position.y, progressMaxRT.position.y, LevelManager.instance.levelProgress / LevelManager.instance.maxLevelProgress);
+        Debug.Log(LevelManager.instance.levelProgress / LevelManager.instance.maxLevelProgress);
+
+        dotRT.position = pos;
     }
 }
