@@ -307,6 +307,9 @@ public class Player : MonoBehaviour
         InitShotDamage(go);
         // place projectile
         go.transform.position = shotOrigin.position;
+        // add push with delta position
+        Vector3 posDelta = GetDeltaMovement();
+        posDelta.y = 1;// posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
         // random angle base on the spread
         float angleSpread = UnityEngine.Random.Range(-shotSpread, shotSpread);
         // calculate velocity with angle
@@ -327,6 +330,9 @@ public class Player : MonoBehaviour
             InitShotDamage(go);
             // place projectile
             go.transform.position = shotOrigin.position;
+            // add push with delta position
+            Vector3 posDelta = GetDeltaMovement();
+            posDelta.y = 1;//posDelta.y <= 0.0f ? 1.0f : posDelta.y * 4.0f + 1.0f;
             // random angle base on the spread
             float angleSpread = i * 35 + UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
@@ -338,7 +344,6 @@ public class Player : MonoBehaviour
             go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
         }
     }
-
     private void shotAround()
     {
         for (int i = 0; i < 10; i++)
@@ -424,9 +429,9 @@ public class Player : MonoBehaviour
             float angleSpread = UnityEngine.Random.Range(-shotSpread / 2f, shotSpread / 2f);
             // calculate velocity with angle
             float velx = (shotForce)
-                * Mathf.Cos(((i * 180.0f) + ((1 - i * 2) * (90 - shotSideAngle)) + angleSpread) * Mathf.Deg2Rad);
+                * Mathf.Cos((i*180.0f + angleSpread) * Mathf.Deg2Rad);
             float vely = (shotForce)
-                * Mathf.Sin(((i * 180.0f) + ((1 - i * 2) * (90 - shotSideAngle)) + angleSpread) * Mathf.Deg2Rad);
+                * Mathf.Sin((i*180.0f + angleSpread) * Mathf.Deg2Rad);
 
             // set velocity
             go.GetComponent<Rigidbody2D>().velocity = new Vector2(velx, vely);
