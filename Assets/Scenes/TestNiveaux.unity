@@ -6851,9 +6851,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 810176947080012128, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_Name
+      value: DoubleDamageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_text
+      value: DOUBLE DAMAGE
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontSize
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_margin.x
+      value: -354.06433
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_margin.z
+      value: -382.64893
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168218571268074198, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6599793921542499890, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
       propertyPath: m_Name
       value: ComboCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599793921542499890, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6599793921542499902, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
       propertyPath: m_Pivot.x
@@ -6942,6 +6982,22 @@ PrefabInstance:
     - target: {fileID: 6599793921542499903, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599793921616106415, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontSize
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599793921616106415, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711345153808809117, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711345153808809117, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 140
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
@@ -12522,6 +12578,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bc08573ef9eb2943ae575c6c3d82d0a, type: 3}
+--- !u!1 &1157222752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 810176947080012128, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+  m_PrefabInstance: {fileID: 965066161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1174746711 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 812381962571428496, guid: a22af61d13cbb1e48bcf52da4a524520, type: 3}
@@ -20438,6 +20499,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 812381962571428496, guid: a22af61d13cbb1e48bcf52da4a524520, type: 3}
+      propertyPath: m_Text
+      value: New Text
+      objectReference: {fileID: 0}
     - target: {fileID: 812381962639351425, guid: a22af61d13cbb1e48bcf52da4a524520, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -20692,6 +20757,10 @@ PrefabInstance:
       propertyPath: lifeComponents
       value: 
       objectReference: {fileID: 2071202900}
+    - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: doubleDamageText
+      value: 
+      objectReference: {fileID: 1157222752}
     - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: lifeIndicatorTexts.Array.data[0]
       value: 

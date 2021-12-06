@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -90,6 +91,8 @@ public class Player : MonoBehaviour
     bool isInvincibilityOn = false;
     [SerializeField] int invincibilityBlinkNumber = 3;
 
+    [SerializeField] GameObject doubleDamageText;
+    bool isDoubleDamage = false;
 
     #endregion
 
@@ -432,14 +435,23 @@ public class Player : MonoBehaviour
 
     void InitShotDamage(GameObject go)
     {
+        float tempDamage = 0.0f;
         if (HasAttackDamage)
         {
-            go.GetComponent<Bullet>().damage = damage * 1.5f;
+            tempDamage = damage * 1.5f;
         }
         else
         {
-            go.GetComponent<Bullet>().damage = damage;
+            tempDamage = damage;
         }
+
+        if (isDoubleDamage)
+        {
+            tempDamage *= 2.0f;
+        }
+
+        Debug.Log(tempDamage);
+        go.GetComponent<Bullet>().damage = tempDamage;
     }
 
     /// <summary>
@@ -635,6 +647,8 @@ public class Player : MonoBehaviour
         Shield.SetActive(false);
 
         UpdateUpgrades();
+
+        doubleDamageText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -674,8 +688,15 @@ public class Player : MonoBehaviour
             TakeDamage(10);
         }
 
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugDoubleDamage")
+            && SceneManager.GetActiveScene().name == "TestNiveaux")
+        {
+            isDoubleDamage = !isDoubleDamage;
+            doubleDamageText.SetActive(isDoubleDamage);
+        }
 
-            UpdateLifePosition();
+
+        UpdateLifePosition();
         if (LifeIndicatorIsActive || lifeIndicatorTime > 0)
         {
             lifeIndicatorTime -= Time.deltaTime;
