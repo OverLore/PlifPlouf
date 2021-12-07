@@ -102,17 +102,21 @@ public class Player : MonoBehaviour
 
     #region Public
 
-    public static IEnumerator MoveTowardPlayer(Vector3 _startPosition, GameObject _shell, float _time)
+    public static IEnumerator MoveTowardPlayer(Vector3 _startPosition, GameObject _go, float _time)
     {
         Vector3 startingPos = _startPosition;
-        Vector3 finalPos = GameManager.instance.GetPlayer().transform.position;
+        Vector3 finalPos = GameManager.instance.GetPlayer().transform.Find("Muzzle").transform.position;
         float elapsedTime = 0;
         do
         {
-            _shell.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / _time));
+            if (_go == null)
+                yield break;
+            _go.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / _time));
             elapsedTime += Time.deltaTime;
             yield return null;
         } while (elapsedTime < _time);
+        //_go.transform.position = finalPos;
+        //Debug.Log("Picked up !");
     }
 
 

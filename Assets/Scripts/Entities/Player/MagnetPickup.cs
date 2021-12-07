@@ -16,13 +16,13 @@ public class MagnetPickup : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         GameObject go = collision.gameObject;
         if (go.GetComponent<Coin>() != null 
             ||go.GetComponent<BoosterObject>() != null)
         {
-            StartCoroutine(Player.MoveTowardPlayer(go.transform.position, go, 0.25f));
+            StartCoroutine(Player.MoveTowardPlayer(go.transform.position, go, 0.05f));
         }
     }
 }
