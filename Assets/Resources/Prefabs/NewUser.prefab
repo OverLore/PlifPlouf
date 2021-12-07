@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_CharacterValidation: 6
   m_RegexValue: '[a-zA-Z0-9]'
   m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_CharacterLimit: 8
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
