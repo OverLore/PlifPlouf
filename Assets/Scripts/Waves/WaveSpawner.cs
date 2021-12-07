@@ -89,7 +89,14 @@ public class WaveSpawner : MonoBehaviour
 
     IEnumerator SpawnSeq(float delay, List<Vector2> offset, List<string> paths)
     {
-        yield return new WaitForSeconds(delay);
+        float tim = 0;
+
+        while(tim < delay)
+        {
+            tim += Time.deltaTime * GameManager.instance.timeScale;
+
+            yield return null;
+        }
 
         for (int i = 0; i < paths.Count; i++)
         {
