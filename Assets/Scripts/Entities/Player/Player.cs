@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
     Transform shotOrigin;
     public Transform muzzle;
 
+    float endTime;
+
     private float shieldDuration;
     private ShotType upgradeShotType;
     private float shotSideAngle;
@@ -673,6 +675,28 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (LevelManager.instance.isEnded)
+        {
+            if (endTime >= 10f)
+            {
+                return;
+            }
+
+            endTime += Time.deltaTime * 2;
+
+            transform.position += Vector3.up * endTime * Time.deltaTime;
+
+            lifeIndicatorTime = 0;
+
+            UpdateLifeOpacity();
+            UpdateLifeText();
+            UpdateLifeFillImage();
+
+            return;
+        }
+
+        endTime = 0;
+
         if (!GameManager.instance.Paused)
         {
             HandleShot();

@@ -49,6 +49,9 @@ public class LevelManager : MonoBehaviour
 
     bool won;
 
+    public bool canMobSpawn = true;
+    public bool isEnded = false;
+
     public GameObject scoringCanvas;
     public Image scoringCanvasImg;
 
@@ -100,6 +103,8 @@ public class LevelManager : MonoBehaviour
 
         GameManager.instance.LoseLife();
         won = false;
+        canMobSpawn = true;
+        isEnded = false;
     }
 
     public void Init()
@@ -142,6 +147,10 @@ public class LevelManager : MonoBehaviour
         //debug test level (level will be max 1 minute (even though we use percentage from 0 to 100))
         if (levelProgress >= maxLevelProgress)
         {
+            KillAllEnemies();
+
+            canMobSpawn = false;
+
             state = LevelState.BossStart;
         }
     }
@@ -208,6 +217,19 @@ public class LevelManager : MonoBehaviour
         gainScore.updating = true;
     }
 
+    public void KillAllEnemies()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+
+        foreach(Enemy e in enemies)
+        {
+            if (!e.isBoss)
+            {
+                e.ForceKill();
+            }
+        }
+    }
+
     void UpdateScoring()
     {
         killsScore.Update();
@@ -224,6 +246,8 @@ public class LevelManager : MonoBehaviour
         int futureCoin = 0;
         // Attract seashells at the end of the level
         FindObjectsOfType<Coin>().ToList().ConvertAll(x => x.gameObject).ForEach(x => { StartCoroutine(Player.MoveTowardPlayer(x.transform.position, x, 0.5f));futureCoin++; });
+
+        instance.isEnded = true;
 
         state = LevelState.Scoring;
         GameManager.instance.timeScale = 1;

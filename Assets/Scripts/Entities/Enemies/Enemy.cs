@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool isInvincible = false;
     [SerializeField] bool isDestroyedOnCollided = false;
     [SerializeField] bool hasLifebar = true;
-    [SerializeField] bool isBoss = false;
+    public bool isBoss = false;
     [SerializeField] GameObject lifebarPrefab;
     [SerializeField] Vector2 lifebarOffset;
     GameObject lifebar;
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     float shotTimer = 0.0f;
     float maxShotTimer = 2.0f;
 
-    private void Kill()
+    public void Kill()
     {
         if (isInvincible)
         {
@@ -56,6 +56,27 @@ public class Enemy : MonoBehaviour
         }
 
         if(gameObject.GetComponent<SplinePathFollow>() != null)
+        {
+            Destroy(transform.parent.parent.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void ForceKill()
+    {
+        DestroyLifebar();
+
+        AudioManager.Instance.PlaySound("DeathMob");
+
+        GameObject go = Instantiate(deathParticles);
+        go.transform.position = transform.position;
+
+        Destroy(go, 1f);
+
+        if (gameObject.GetComponent<SplinePathFollow>() != null)
         {
             Destroy(transform.parent.parent.gameObject);
         }
@@ -103,6 +124,11 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        if (!LevelManager.instance.canMobSpawn && !isBoss)
+        {
+            Destroy(gameObject);
+        }
+
         LevelManager.instance.maxObtainableScore += score;
         //Debug.Log(gameObject + " " + LevelManager.instance.maxObtainableScore);
         //create an offset on each of them (so that enemies

@@ -50,6 +50,11 @@ public class WaveSpawner : MonoBehaviour
 
     void CreateEnemy(Vector3 offset, GameObject group)
     {
+        if (!LevelManager.instance.canMobSpawn)
+        {
+            return;
+        }
+
         GameObject g = Instantiate(group);
         g.transform.position = transform.position + offset;
 

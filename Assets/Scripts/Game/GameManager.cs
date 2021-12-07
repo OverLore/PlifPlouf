@@ -357,6 +357,8 @@ public class GameManager : MonoBehaviour
         {
             if (LevelManager.instance.levelProgress < LevelManager.instance.maxLevelProgress)
             {
+                LevelManager.instance.KillAllEnemies();
+
                 LevelManager.instance.levelProgress = LevelManager.instance.maxLevelProgress;
                 Debug.Log("Skip to Eel");
             }
