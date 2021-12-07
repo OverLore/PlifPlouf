@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: 1
   score: 0
-  deathParticles: {fileID: 1621420914759602338, guid: 68ad0b562b7f0f04f8c2f76cb0725205, type: 3}
+  deathParticles: {fileID: 7353145219180321650, guid: 56187e3a201d9464f9cbbebd1fc9870e, type: 3}
   shotOrigin: {fileID: 0}
   enemyBulletPrefab: {fileID: 0}
   shotDamage: 10
