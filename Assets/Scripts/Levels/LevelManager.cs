@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public enum LevelState
 {
@@ -216,8 +217,26 @@ public class LevelManager : MonoBehaviour
         UpdateStarsBar();
     }
 
+    private IEnumerator AttractSeashell(Vector3 _startPosition, GameObject _shell, float _time)
+    {
+        Vector3 startingPos = _startPosition;
+        Vector3 finalPos = GameManager.instance.GetPlayer().transform.position;
+        float elapsedTime = 0;
+        do
+        {
+            _shell.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / _time));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        } while (elapsedTime < _time);
+    }
+
     public void StartScoring()
     {
+        // get future coins
+        int futureCoin = 0;
+        // Attract seashells at the end of the level
+        FindObjectsOfType<Coin>().ToList().ConvertAll(x => x.gameObject).ForEach(x => { StartCoroutine(AttractSeashell(x.transform.position, x, 0.5f));futureCoin++; });
+
         state = LevelState.Scoring;
         GameManager.instance.timeScale = 1;
 
@@ -243,7 +262,7 @@ public class LevelManager : MonoBehaviour
 
         killsScore.dest = kills;
         scoreScore.dest = GameManager.instance.Score;
-        coinsScore.dest = coins;
+        coinsScore.dest = coins + futureCoin;
         gainScore.dest = (float)kills + GameManager.instance.Score / 100 + coins;
 
         if (won)
