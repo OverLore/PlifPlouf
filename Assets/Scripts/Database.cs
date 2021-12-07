@@ -20,6 +20,8 @@ public class Database : MonoBehaviour
     bool isChristmas = false;
     public bool IsChristmas { get => isChristmas; }
 
+    public GameObject errorUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,13 +105,15 @@ public class Database : MonoBehaviour
             }
         }
 
+        errorUI.SetActive(true);
+
         // if there is no connection but there is a save
         if (PlayerPrefs.HasKey("SeasonSkin"))
         {
             // get the save
             seasonSkin = JsonUtility.FromJson<SeasonSkinClass>(PlayerPrefs.GetString("SeasonSkin"));
             // if the save is more than a month old, disable the season skin
-            if ( seasonSkin.is_activated && (DateTime.Now.AddDays(31) - DateTime.FromBinary(seasonSkin.time)).TotalDays> 30)
+            if ( seasonSkin.is_activated && (DateTime.Now - DateTime.FromBinary(seasonSkin.time)).TotalDays> 30)
             {
                 seasonSkin.is_activated = false;
             }
@@ -122,6 +126,6 @@ public class Database : MonoBehaviour
             seasonSkin.skin = "";
             seasonSkin.time = DateTime.Now.ToBinary();
         }
-
+        
     }
 }
