@@ -214,6 +214,8 @@ public class GameManager : MonoBehaviour
         }
 
         PlayerPrefs.SetInt(instance.profileName + "Lives", instance.lives);
+
+        PlayerPrefs.Save();
     }
 
 
@@ -295,6 +297,7 @@ public class GameManager : MonoBehaviour
 
         LoadProfiles();
         LoadCurrentUser();
+        LoadStats();
 
         if (PlayerPrefs.HasKey(GameManager.instance.profileName + "maxLevelReached"))
         {
@@ -338,6 +341,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetString(instance.profileName + "nextLifeAt", instance.nextLifeAt.ToBinary().ToString());
 
             SaveStats();
+
+            PlayerPrefs.Save();
         }
     }
 
