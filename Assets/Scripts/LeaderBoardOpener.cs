@@ -25,17 +25,20 @@ public class LeaderBoardOpener : MonoBehaviour
     {
         leaderboard.SetActive(true);
         open = true;
+        AudioManager.Instance.PlaySound("UIButton");
     }
 
     public void Close()
     {
         leaderboard.SetActive(false);
         open = false;
+        //AudioManager.Instance.PlaySound("UIButton");
     }
 
     public void OpenClose()
     {
         leaderboard.SetActive(!open);
         open = !open;
+        AudioManager.Instance.PlaySound("UIButton");
     }
 }

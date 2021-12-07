@@ -198,5 +198,17 @@ MonoBehaviour:
     mixerGroup: 1
     source: {fileID: 0}
     audioMixer: {fileID: 0}
+  - name: UIButtonError
+    clip: {fileID: 8300000, guid: 6f9f9d7e9ca45494ab44437ff6971be0, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    playInScene: 1
+    mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
   canHearMusic: 1
   canHearSound: 1

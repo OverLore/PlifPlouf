@@ -202,5 +202,7 @@ public class Leaderboard : MonoBehaviour
 
                 break;
         }
+
+        AudioManager.Instance.PlaySound("UIButton");
     }
 }

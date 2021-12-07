@@ -43,6 +43,7 @@ public class FirstProfileCreationWindow : MonoBehaviour
         }
 
         GameManager.instance.CreateUser(username);
+        AudioManager.Instance.PlaySound("UIButton");
 
         if (GameManager.instance.IsExistingUser(username))
         {
@@ -63,6 +64,7 @@ public class FirstProfileCreationWindow : MonoBehaviour
 
             return;
         }
+
     }
 
     IEnumerator ShowErrorWindow()
