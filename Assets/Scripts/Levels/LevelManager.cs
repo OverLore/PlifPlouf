@@ -253,9 +253,9 @@ public class LevelManager : MonoBehaviour
             GameManager.instance.lives++;
         }
 
-        if (level > GameManager.instance.maxLevelReached && won)
+        if (level+1 > GameManager.instance.maxLevelReached && won && level + 1 < 10)
         {
-            GameManager.instance.ChangeMaxLevelReached(level);
+            GameManager.instance.ChangeMaxLevelReached(level+1);
         }
     }
 
