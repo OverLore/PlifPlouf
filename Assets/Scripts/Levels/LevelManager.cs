@@ -267,6 +267,8 @@ public class LevelManager : MonoBehaviour
         stars = Mathf.FloorToInt(GameManager.instance.Score / (maxObtainableScore * 1.2f) * 3f);
         stars = Mathf.Clamp(stars, 0, 3);
 
+        GameManager.instance.ChangeMoney(coins + futureCoin);
+
         if (!won)
         {
             stars = 0;
@@ -279,7 +281,7 @@ public class LevelManager : MonoBehaviour
 
         if (won)
         {
-            LevelDatas.SaveLevelDatas(level, stars, (int)GameManager.instance.Score, kills, coins);
+            LevelDatas.SaveLevelDatas(level, stars, (int)GameManager.instance.Score, kills, coins + futureCoin);
 
             GameManager.instance.lives++;
         }
@@ -288,6 +290,8 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.instance.ChangeMaxLevelReached(level+1);
         }
+
+        PlayerPrefs.Save();
     }
 
     void Update()
