@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6957408545601502051}
   m_Layer: 0
   m_Name: Light1
-  m_TagString: Ennemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 1948796748586779200}
   m_Layer: 0
   m_Name: Light2
-  m_TagString: Ennemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 5359317234253565287}
   m_Layer: 0
   m_Name: Line (1)
-  m_TagString: Ennemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 4095109449836922113}
   m_Layer: 0
   m_Name: Light4
-  m_TagString: Ennemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 6255008218221980317}
   m_Layer: 0
   m_Name: Shadow
-  m_TagString: Ennemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -754,7 +754,7 @@ GameObject:
   - component: {fileID: 489834535093140162}
   m_Layer: 0
   m_Name: Light3
-  m_TagString: Ennemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 6777758686414675472}
   m_Layer: 0
   m_Name: Line
-  m_TagString: Ennemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
