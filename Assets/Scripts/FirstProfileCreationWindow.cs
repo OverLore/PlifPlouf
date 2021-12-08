@@ -27,6 +27,7 @@ public class FirstProfileCreationWindow : MonoBehaviour
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username))
         {
+            AudioManager.Instance.PlaySound("UIButtonError");
             return;
         }
 
@@ -37,16 +38,17 @@ public class FirstProfileCreationWindow : MonoBehaviour
                 StopCoroutine(errorWindowShowCoroutine);
             }
 
+            AudioManager.Instance.PlaySound("UIButtonError");
             errorWindowShowCoroutine = StartCoroutine(ShowErrorWindow());
 
             return;
         }
 
         GameManager.instance.CreateUser(username);
-        AudioManager.Instance.PlaySound("UIButton");
 
         if (GameManager.instance.IsExistingUser(username))
         {
+            AudioManager.Instance.PlaySound("UIButton");
             GameManager.instance.ChangeUser(username);
 
             canvas.SetActive(false);
@@ -60,6 +62,7 @@ public class FirstProfileCreationWindow : MonoBehaviour
                 StopCoroutine(creationFailedWindowShowCoroutine);
             }
 
+            AudioManager.Instance.PlaySound("UIButtonError");
             creationFailedWindowShowCoroutine = StartCoroutine(ShowCreationFailedWindow());
 
             return;

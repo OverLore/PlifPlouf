@@ -30,10 +30,10 @@ public class ProfileCreationWindow : MonoBehaviour
     public void CreateUser()
     {
         string username = inputField.text;
-        AudioManager.Instance.PlaySound("UIButton");
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username))
         {
+            AudioManager.Instance.PlaySound("UIButtonError");
             return;
         }
 
@@ -44,6 +44,7 @@ public class ProfileCreationWindow : MonoBehaviour
                 StopCoroutine(errorWindowShowCoroutine);
             }
 
+            AudioManager.Instance.PlaySound("UIButtonError");
             errorWindowShowCoroutine = StartCoroutine(ShowErrorWindow());
 
             return;
@@ -58,6 +59,7 @@ public class ProfileCreationWindow : MonoBehaviour
                 StopCoroutine(creationSuccessWindowShowCoroutine);
             }
 
+            AudioManager.Instance.PlaySound("UIButton");
             creationSuccessWindowShowCoroutine = StartCoroutine(ShowCreationSuccessWindow());
 
             GameManager.instance.ChangeUser(username);
@@ -73,6 +75,8 @@ public class ProfileCreationWindow : MonoBehaviour
                 StopCoroutine(creationFailedWindowShowCoroutine);
             }
 
+
+            AudioManager.Instance.PlaySound("UIButtonError");
             creationFailedWindowShowCoroutine = StartCoroutine(ShowCreationFailedWindow());
 
             return;

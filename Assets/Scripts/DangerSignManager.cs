@@ -9,6 +9,7 @@ public class DangerSignManager : MonoBehaviour
     [SerializeField] float maxTimer;
     public static DangerSignManager instance;
     Vector2 canvasSize;
+    Vector2 screenSize;
 
     private void Awake()
     {
@@ -28,26 +29,16 @@ public class DangerSignManager : MonoBehaviour
     {
         RectTransform canvasRect = dangerSignCanvas.GetComponent<RectTransform>();
         canvasSize = canvasRect.rect.size;
+        screenSize = new Vector2(-1, -1);
     }
 
-    bool CheckIsInScreen(Vector3 _pos)
+    private void Update()
     {
-        Vector3 pos = _pos;
-        Vector3 size = transform.localScale;
-        Vector3 bottomLeftPos = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-        Vector3 topRightPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        if (pos.x + size.x / 2.0f < bottomLeftPos.x || pos.x - size.x / 2.0f > topRightPos.x ||
-           pos.y + size.y / 2.0f < bottomLeftPos.y || pos.y - size.y / 2.0f > topRightPos.y
-           )
+        if (screenSize.x == -1)
         {
-            return false;
-        }
-        else
-        {
-            return true;
+            screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
         }
     }
-
 
     //do not use for eel danger signs
     public void SpawnDangerSign(Transform _enemyTransform)
@@ -58,6 +49,8 @@ public class DangerSignManager : MonoBehaviour
         currentSign.transform.SetParent(dangerSignCanvas.transform);
         Vector2 warningSignSize = GetEelDangerSignSize(currentSign);
 
+        currentSign.SetTarget(_enemyTransform);
+        currentSign.warningSignSize = warningSignSize;
         currentSign.transform.position = GetDangerSignPosByHeadPos(_enemyTransform, warningSignSize);
 
         currentSign.isEelDangerSign = false;
@@ -98,7 +91,8 @@ public class DangerSignManager : MonoBehaviour
     public Vector2 GetDangerSignPosByHeadPos(Transform head, Vector2 warningSignSize)
     {
         Vector3 pos = Vector3.zero;
-        Vector2 screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+
+        //Debug.Log(screenSize);
         //the head is :
         //over right of the screen
         if (head.position.x >= -screenSize.x + Camera.main.transform.position.x)

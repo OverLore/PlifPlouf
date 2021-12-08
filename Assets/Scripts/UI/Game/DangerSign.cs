@@ -9,7 +9,9 @@ public class DangerSign : MonoBehaviour
     [SerializeField] ParticleSystem ps;
     private ParticleSystem psChild;
     public bool isEelDangerSign;
-
+    //the enemy that the danger sign target
+    Transform target = null;
+    public Vector2 warningSignSize = Vector2.zero;
 
     private void Start()
     {
@@ -18,16 +20,23 @@ public class DangerSign : MonoBehaviour
         gameObject.transform.localScale = Vector3.one;
     }
 
+    //do not use for eel danger sign
+    public void SetTarget(Transform _target)
+    {
+        target = _target;
+    }
+
     //the object will be put in world space coordinates but always according to the pos on the canvas
     //(to keep it on left or right when we move out of the screen)
     private void UpdatePos()
     {
-        //if (!isEelDangerSign)
-        //{
-        //    Vector3 tempPos = Camera.main.ScreenToWorldPoint(canvasPos);
-        //    tempPos.z = 0;
-        //    rt.position = tempPos;
-        //}
+        if (!isEelDangerSign)
+        {
+            if (target != null)
+            {
+                gameObject.transform.position = DangerSignManager.instance.GetDangerSignPosByHeadPos(target, warningSignSize);
+            }
+        }
     }
 
     void UpdateSimSpeed()
