@@ -18,20 +18,41 @@ public class ShopScript : MonoBehaviour
 
     public void addLifeOne()
     {
+        if (GameManager.instance.lives >= 5)
+        {
+            AudioManager.Instance.PlaySound("UIButtonError");
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound("UIButton");
+        }
         GameManager.instance.ChangeLives(1);
-        AudioManager.Instance.PlaySound("UIButton");
 
     }
     public void addLifeThree()
     {
+        if (GameManager.instance.lives >= 5)
+        {
+            AudioManager.Instance.PlaySound("UIButtonError");
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound("UIButton");
+        }
         GameManager.instance.ChangeLives(3);
-        AudioManager.Instance.PlaySound("UIButton");
 
     }
     public void addLifeFive()
     {
+        if (GameManager.instance.lives >= 5)
+        {
+            AudioManager.Instance.PlaySound("UIButtonError");
+        }
+        else
+        {
+            AudioManager.Instance.PlaySound("UIButton");
+        }
         GameManager.instance.ChangeLives(5);
-        AudioManager.Instance.PlaySound("UIButton");
 
     }
     public void addMoneyOne00()
