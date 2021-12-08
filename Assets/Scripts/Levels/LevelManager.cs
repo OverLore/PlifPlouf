@@ -290,7 +290,7 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.instance.ChangeMaxLevelReached(level+1);
         }
-
+        PlayerPrefs.SetInt(GameManager.instance.profileName + "Lives", GameManager.instance.lives);
         PlayerPrefs.Save();
     }
 

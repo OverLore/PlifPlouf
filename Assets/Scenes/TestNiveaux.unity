@@ -20631,6 +20631,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2455706430152944713, guid: 9b6aaa7d92670a349830d3bb6b01bac2, type: 3}
+      propertyPath: deadZoneWidth
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455706430152944713, guid: 9b6aaa7d92670a349830d3bb6b01bac2, type: 3}
+      propertyPath: deadZoneHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2455706430152944716, guid: 9b6aaa7d92670a349830d3bb6b01bac2, type: 3}
       propertyPath: m_Follow
       value: 
