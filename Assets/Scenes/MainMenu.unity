@@ -4450,6 +4450,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 372526120}
     m_Modifications:
+    - target: {fileID: 6325820902398734705, guid: 923970f78123df346add984079c4eb65, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 86.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8020789822614328961, guid: 923970f78123df346add984079c4eb65, type: 3}
       propertyPath: m_SizeDelta.y
       value: 1685.6384
@@ -4556,7 +4560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020789824552023959, guid: 923970f78123df346add984079c4eb65, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923970f78123df346add984079c4eb65, type: 3}
