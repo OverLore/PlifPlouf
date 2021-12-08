@@ -153,6 +153,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(username + "CoinPicked", 0);
         PlayerPrefs.SetInt(username + "KillCount", 0);
         PlayerPrefs.SetInt(username + "UpgradeCount", 0);
+
+        PlayerPrefs.Save();
     }
 
     public void ChangeUser(string username)
@@ -164,6 +166,8 @@ public class GameManager : MonoBehaviour
         SaveStats();
 
         UpgradeManager.Instance.LoadUpgrades();
+
+        PlayerPrefs.Save();
     }
 
     void LoadStats()

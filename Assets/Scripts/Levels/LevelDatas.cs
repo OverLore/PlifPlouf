@@ -63,7 +63,7 @@ public class LevelDatas : MonoBehaviour
 
     public static bool LoadLevelDatas(int level, out LevelDatasStruct dats, string playerName)
     {
-        if (PlayerPrefs.HasKey($"{GameManager.instance.profileName}{level}_stars"))
+        if (PlayerPrefs.HasKey($"{playerName}{level}_stars"))
         {
             dats.stars = PlayerPrefs.GetInt($"{playerName}{level}_stars");
             dats.score = PlayerPrefs.GetInt($"{playerName}{level}_score");
