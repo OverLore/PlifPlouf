@@ -7,6 +7,8 @@ public class BackgroundManager : MonoBehaviour
 {
     public static BackgroundManager instance = null;
     [SerializeField] GameObject background;
+    [SerializeField] GameObject backgroundNoel;
+    GameObject Background { get { return xmas ? backgroundNoel : background; } }
     public List<Background> backgroundList = new List<Background>();
     private PolygonCollider2D gameBorders;
     private CameraManager cameraManager;
@@ -16,7 +18,11 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField] float minXOffset;
     [SerializeField] float maxXOffset;
     GameObject[] decors;
+    [SerializeField] GameObject normalStart;
+    [SerializeField] GameObject xmasStart;
     float nextDecorIn = 0f;
+
+    bool xmas;
 
     private void Awake()
     {
@@ -30,7 +36,18 @@ public class BackgroundManager : MonoBehaviour
                 Destroy(gameObject);
         }
 
-        decors = Resources.LoadAll<GameObject>("Prefabs/Decor");
+        xmas = Database.SeasonSkin != null && Database.SeasonSkin.is_activated;
+
+        if (xmas)
+        {
+            Instantiate(xmasStart);
+            decors = Resources.LoadAll<GameObject>("Prefabs/DecorNoel");
+        }
+        else
+        {
+            Instantiate(normalStart);
+            decors = Resources.LoadAll<GameObject>("Prefabs/Decor");
+        }
     }
 
     bool IsLowerThanTop(Background _go)
@@ -51,7 +68,7 @@ public class BackgroundManager : MonoBehaviour
 
     void AddBackgroundInList(int _addedIndex)
     {
-        GameObject go = Instantiate(background);
+        GameObject go = Instantiate(Background);
         float sizeDivide = 3.0f;
 
         //background is 3 times bigger than "ref" resolution (so that every resolution of phone/tablet
