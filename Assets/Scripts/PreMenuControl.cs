@@ -46,7 +46,7 @@ public class PreMenuControl : MonoBehaviour
         {
             title.sprite = noelTitle;
 
-            versionTxt.text = version + " (Cristmas Event)";
+            versionTxt.text = version + " (Christmas event)";
         }
         else
         {
