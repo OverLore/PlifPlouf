@@ -274,15 +274,17 @@ public void UpdateUpgradeTextsAndButton(GameObject _upgradeGO, int _ID)
         if (!BuyUpgrade(_ID))
         {
             NotEnoughtMoneyMessage.GetComponent<Animator>().SetBool("IsShown", true);
+            //audio
+            AudioManager.Instance.PlaySound("UIButtonError");
         }
         else
         {
             GameObject.FindObjectOfType<MenuFooter>().UpdateMoneyUI();
             UpgradeManager.instance.UpdateUpgradeTextsAndButton(_upgradeGO, _ID);
+            //audio
+            AudioManager.Instance.PlaySound("UIButton");
         }
 
-        //audio
-        AudioManager.Instance.PlaySound("UIButton");
 
         string saveJson = JsonHelper.ToJson(UpgradesList.ToArray());
         PlayerPrefs.SetString(GameManager.instance.profileName + "Upgrades", saveJson);

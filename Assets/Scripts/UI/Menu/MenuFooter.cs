@@ -79,6 +79,9 @@ public class MenuFooter : MonoBehaviour
 
     public void OpenTab(MenuTab tab)
     {
+        //audio
+        AudioManager.Instance.PlaySound("UIButton");
+
         if (tab == SelectedTab)
         {
             return;
@@ -89,9 +92,6 @@ public class MenuFooter : MonoBehaviour
         SelectedTab = tab;
 
         Tabs[SelectedTab].SetTargetSize(SelectedSize, SelectColor);
-
-        //audio
-        AudioManager.Instance.PlaySound("UIButton");
     }
 
     public void ForceTab(MenuTab tab)

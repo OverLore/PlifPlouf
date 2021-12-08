@@ -55,6 +55,9 @@ public class AdsManmager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     // Implement a method to execute when the user clicks the button.
     public void ShowAd()
     {
+        //audio
+        AudioManager.Instance.PlaySound("UIButton");
+
         if (Application.platform != RuntimePlatform.Android)
         {
             rewardEvent?.Invoke();
