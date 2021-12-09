@@ -47,7 +47,7 @@ public class XmaxSkinsManager : MonoBehaviour
         {
             for (int i = 0; i < normal.renderers.Count; i++)
             {
-                Debug.Log(i);
+                //Debug.Log(i);
 
                 normal.renderers[i].enabled = true;
 

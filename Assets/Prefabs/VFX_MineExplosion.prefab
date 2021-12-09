@@ -14556,6 +14556,10 @@ PrefabInstance:
       value: 39.7
       objectReference: {fileID: 0}
     - target: {fileID: 8634544786824612325, guid: f08088683013c334f98c2fa726227594, type: 3}
+      propertyPath: SubModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634544786824612325, guid: f08088683013c334f98c2fa726227594, type: 3}
       propertyPath: startDelay.scalar
       value: 0.2
       objectReference: {fileID: 0}
@@ -14696,6 +14700,10 @@ PrefabInstance:
     - target: {fileID: 8634544786824612325, guid: f08088683013c334f98c2fa726227594, type: 3}
       propertyPath: lengthInSec
       value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634544786824612325, guid: f08088683013c334f98c2fa726227594, type: 3}
+      propertyPath: SubModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8634544786824612325, guid: f08088683013c334f98c2fa726227594, type: 3}
       propertyPath: startDelay.scalar

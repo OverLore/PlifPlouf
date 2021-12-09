@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
 
         AudioManager.Instance.PlaySound("DeathMob");
 
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
         GameObject go = Instantiate(deathParticles);
         go.transform.position = transform.position;
 
