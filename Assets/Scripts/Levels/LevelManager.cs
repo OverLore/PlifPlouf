@@ -251,6 +251,7 @@ public class LevelManager : MonoBehaviour
 
         state = LevelState.Scoring;
         GameManager.instance.timeScale = 1;
+        GameManager.instance.player.SetDoubleDamageBool(false);
 
         if (won)
         {
