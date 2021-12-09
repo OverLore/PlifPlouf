@@ -31,6 +31,9 @@ public class Enemy : MonoBehaviour
     float shotTimer = 0.0f;
     float maxShotTimer = 2.0f;
 
+    //DEBUG
+    public bool alwaysbonus;
+
     public void Kill()
     {
         if (isInvincible)
@@ -49,7 +52,14 @@ public class Enemy : MonoBehaviour
         if (!isBoss)
         {
             LevelManager.instance.SpawnCoinAt(transform.position, score);
-            if (Random.Range(0, 100) < 10)
+            if (!alwaysbonus)
+            {
+                if (Random.Range(0, 100) < 10)
+                {
+                    BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
+                }
+            }
+            else
             {
                 BoosterManager.instance.SpawnRandomBoosterObject(transform.position);
             }

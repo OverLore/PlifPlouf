@@ -72,6 +72,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject deathParticles;
 
+    [SerializeField] GameObject shieldParticles;
+    GameObject TestShield;
+
+
+
+
     [SerializeField] Animator[] playerAnimators;
     [SerializeField] SpriteRenderer[] playerSpriteRenders;
 
@@ -133,6 +139,8 @@ public class Player : MonoBehaviour
     public void ActivateShield()
     {
         ShieldLeft = shieldDuration;
+        TestShield = Instantiate(shieldParticles);
+
     }
 
     public void ActivateHorizontalShot()
@@ -169,7 +177,8 @@ public class Player : MonoBehaviour
             {
                 ShieldLeft = 0;
                 //Debug.Log($"Player deflected {_damage} damage");
-
+                TestShield.GetComponent<ParticleSystem>().Stop();
+                TestShield.GetComponent<ParticleSystem>().Clear();
                 Shield.SetActive(false);
                 AudioManager.Instance.PlaySound("MeduseGetHitShield");
                 return;
@@ -277,15 +286,22 @@ public class Player : MonoBehaviour
     {
         if (ShieldLeft <= 0)
         {
+           
             return;
+            
         }
 
         Shield.SetActive(true);
 
         ShieldLeft -= Time.deltaTime * GameManager.instance.timeScale;
 
+        TestShield.transform.position = transform.position;
+
+
         if (ShieldLeft <= 0)
         {
+            TestShield.GetComponent<ParticleSystem>().Stop();
+            
             Shield.SetActive(false);
         }
     }
