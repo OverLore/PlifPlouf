@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
                 //Debug.Log($"Player deflected {_damage} damage");
                 TestShield.GetComponent<ParticleSystem>().Stop();
                 TestShield.GetComponent<ParticleSystem>().Clear();
-                Shield.SetActive(false);
+                //Shield.SetActive(false);
                 AudioManager.Instance.PlaySound("MeduseGetHitShield");
                 return;
             }
@@ -291,7 +291,7 @@ public class Player : MonoBehaviour
             
         }
 
-        Shield.SetActive(true);
+        //Shield.SetActive(true);
 
         ShieldLeft -= Time.deltaTime * GameManager.instance.timeScale;
 
@@ -302,7 +302,7 @@ public class Player : MonoBehaviour
         {
             TestShield.GetComponent<ParticleSystem>().Stop();
             
-            Shield.SetActive(false);
+            //Shield.SetActive(false);
         }
     }
 
