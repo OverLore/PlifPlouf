@@ -692,6 +692,13 @@ public class Player : MonoBehaviour
         doubleDamageText.SetActive(false);
     }
 
+    public void SetDoubleDamageBool(bool _bool)
+    {
+        //Debug.Log("double damage set to : " + _bool);
+        isDoubleDamage = _bool;
+        doubleDamageText.SetActive(isDoubleDamage);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -754,11 +761,11 @@ public class Player : MonoBehaviour
             TakeDamage(10);
         }
 
+
         if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugDoubleDamage")
             && SceneManager.GetActiveScene().name == "TestNiveaux")
         {
-            isDoubleDamage = !isDoubleDamage;
-            doubleDamageText.SetActive(isDoubleDamage);
+            SetDoubleDamageBool(!isDoubleDamage);
         }
 
 
