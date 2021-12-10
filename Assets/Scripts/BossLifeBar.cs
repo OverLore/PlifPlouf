@@ -11,6 +11,7 @@ public class BossLifeBar : MonoBehaviour
     [SerializeField] Color maxColor;
 
     [SerializeField] GameObject mask;
+    [SerializeField] GameObject lateMask;
 
     [SerializeField] SpriteRenderer fill;
 
@@ -36,7 +37,8 @@ public class BossLifeBar : MonoBehaviour
 
         value = 0;
 
-        mask.transform.position = Vector3.Lerp(min.position, max.position, value);
+        mask.transform.position = min.position;
+        lateMask.transform.position = min.position;
         fill.color = Color.Lerp(minColor, maxColor, value);
 
         float t = 0;
@@ -66,7 +68,14 @@ public class BossLifeBar : MonoBehaviour
 
         appeared = true;
 
+        lateMask.transform.position = max.position;
+
         SetValue(1);
+    }
+
+    private void Update()
+    {
+        lateMask.transform.position = Vector3.Lerp(lateMask.transform.position, mask.transform.position, Time.deltaTime * GameManager.instance.timeScale * 5);
     }
 
     public void SetValue(float v)
@@ -79,6 +88,7 @@ public class BossLifeBar : MonoBehaviour
         value = v;
 
         mask.transform.position = Vector3.Lerp(min.position, max.position, value);
+        
         fill.color = Color.Lerp(minColor, maxColor, value);
     }
 }

@@ -66,6 +66,9 @@ public class LevelManager : MonoBehaviour
 
     public GameObject BossEel;
 
+    public GameObject BossIncoming;
+    public Animator BossIncomingAnim;
+
     public ParticleSystem[] starsParticles;
     public Image[] starsSprites;
     public Image starBar;
@@ -73,6 +76,8 @@ public class LevelManager : MonoBehaviour
     float starsBarAnim = 0;
     int lastStarsBarAnim = -1;
     public bool updateStarsBar;
+
+    bool waitForBossPlay = false;
 
     public static LevelManager instance;
     public int level;
@@ -95,8 +100,6 @@ public class LevelManager : MonoBehaviour
     public AnimatedScore coinsScore;
     public AnimatedScore gainScore;
 
-   
-
     public void StartLevel(int _level)
     {
         level = _level;
@@ -107,6 +110,8 @@ public class LevelManager : MonoBehaviour
         won = false;
         canMobSpawn = true;
         isEnded = false;
+
+        BossIncoming.SetActive(false);
     }
 
     public void Init()
@@ -297,6 +302,17 @@ public class LevelManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    IEnumerator WaitForSpawnBoss()
+    {
+        yield return new WaitForSeconds(3);
+
+        state = LevelState.BossPlay;
+
+        BossEel.GetComponent<EelMove>().EelPhase = (level / 2) % 5;
+        BossEel.GetComponent<Enemy>().PV = 100 + level % 5;
+        GameObject go = Instantiate(BossEel);
+    }
+
     void Update()
     {
         switch(state)
@@ -323,25 +339,34 @@ public class LevelManager : MonoBehaviour
 
                 break;
             case LevelState.BossStart:
+                if (waitForBossPlay)
+                {
+                    return;
+                }
+
+                StartCoroutine(WaitForSpawnBoss());
+
+                waitForBossPlay = true;
                 if (GameManager.instance.GetPlayer().pv <= 0)
                 {
                     return;
                 }
+
                 if (level % 2 == 1)
                 {
                     bossLifebar.ShowBar();
                     GameManager.instance.HideComboText();
 
-                    BossEel.GetComponent<EelMove>().EelPhase = (level / 2) % 5;
-                    BossEel.GetComponent<Enemy>().PV = 100 + level % 5;
-                    GameObject go = Instantiate(BossEel);
-
-                    state = LevelState.BossPlay;
+                    BossIncoming.SetActive(true);
+                    BossIncomingAnim.SetTrigger("Show");
                 }
                 else
                 {
                     state = LevelState.BossEnd;
                 }
+
+                break;
+            case LevelState.BossPlay:
 
                 break;
             case LevelState.BossEnd:
