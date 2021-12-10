@@ -311,6 +311,12 @@ public class LevelManager : MonoBehaviour
         BossEel.GetComponent<EelMove>().EelPhase = (level / 2) % 5;
         BossEel.GetComponent<Enemy>().PV = 100 + level % 5;
         GameObject go = Instantiate(BossEel);
+
+        go.transform.position = new Vector3(40, 0, 0);
+
+        yield return new WaitForEndOfFrame();
+
+        go.transform.position = new Vector3(0, 0, 0);
     }
 
     void Update()

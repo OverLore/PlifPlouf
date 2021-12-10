@@ -210,5 +210,17 @@ MonoBehaviour:
     mixerGroup: 0
     source: {fileID: 0}
     audioMixer: {fileID: 0}
+  - name: Alarm
+    clip: {fileID: 8300000, guid: fc3441ea632509f4b8ccb1455e9ea2f8, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 0
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 0
+    playInScene: 1
+    mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
   canHearMusic: 1
   canHearSound: 1

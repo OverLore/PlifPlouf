@@ -33,6 +33,8 @@ public class BossLifeBar : MonoBehaviour
 
     IEnumerator Appear()
     {
+        AudioManager.Instance.PlaySound("Alarm");
+
         appeared = false;
 
         value = 0;
