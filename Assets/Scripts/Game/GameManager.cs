@@ -120,6 +120,11 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("Profiles", str);
     }
 
+    public void HideComboText()
+    {
+        comboText.color = new Color(1, 1, 1, 0);
+    }
+
     public void SaveCurrentUser()
     {
         PlayerPrefs.SetString("CurrentUser", profileName);

@@ -60,6 +60,8 @@ public class LevelManager : MonoBehaviour
 
     public Animator panelAnimator;
 
+    public BossLifeBar bossLifebar;
+
     public GameObject CoinPrefab;
 
     public GameObject BossEel;
@@ -325,9 +327,12 @@ public class LevelManager : MonoBehaviour
                 {
                     return;
                 }
-                if (level%2 == 1)
+                if (level % 2 == 1)
                 {
-                    BossEel.GetComponent<EelMove>().EelPhase = (level/2) % 5;
+                    bossLifebar.ShowBar();
+                    GameManager.instance.HideComboText();
+
+                    BossEel.GetComponent<EelMove>().EelPhase = (level / 2) % 5;
                     BossEel.GetComponent<Enemy>().PV = 100 + level % 5;
                     GameObject go = Instantiate(BossEel);
 

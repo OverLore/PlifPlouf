@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     //different time but at the same frequency
     float shotTimer = 0.0f;
     float maxShotTimer = 2.0f;
+    
 
     //DEBUG
     public bool alwaysbonus;
@@ -167,7 +168,14 @@ public class Enemy : MonoBehaviour
         {
             PV -= dmg;
 
-            lifebarVisibility = 1f;
+            if (!isBoss)
+            {
+                lifebarVisibility = 1f;
+            }
+            else
+            {
+                LevelManager.instance.bossLifebar.SetValue(PV / maxPV);
+            }
         }
     }
 
