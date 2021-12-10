@@ -135,7 +135,7 @@ MonoBehaviour:
     playAtBeginning: 0
     canMultiplePlay: 0
     playInScene: 1
-    mixerGroup: 1
+    mixerGroup: 0
     source: {fileID: 0}
     audioMixer: {fileID: 0}
   - name: PickUpCoin

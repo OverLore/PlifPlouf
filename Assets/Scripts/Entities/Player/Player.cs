@@ -175,12 +175,12 @@ public class Player : MonoBehaviour
         {
             if (HasShield)
             {
+                AudioManager.Instance.PlaySound("MeduseGetHitShield");
                 ShieldLeft = 0;
                 //Debug.Log($"Player deflected {_damage} damage");
                 TestShield.GetComponent<ParticleSystem>().Stop();
                 TestShield.GetComponent<ParticleSystem>().Clear();
                 //Shield.SetActive(false);
-                AudioManager.Instance.PlaySound("MeduseGetHitShield");
                 return;
             }
             else
