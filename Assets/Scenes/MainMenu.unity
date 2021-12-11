@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatPannel
       objectReference: {fileID: 0}
+    - target: {fileID: 4458355209672498756, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7266018962068254898, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -148,55 +152,59 @@ PrefabInstance:
       objectReference: {fileID: 268598965}
     - target: {fileID: 8819733478149353107, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -627.4963
       objectReference: {fileID: 0}
     - target: {fileID: 8819733478934375551, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733478934375551, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733478934375551, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 8819733478934375551, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819733478946042833, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
+      propertyPath: m_Text
+      value: New
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479100508699, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479100508699, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479195446522, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479195446522, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479256990620, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479256990620, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479915777845, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8819733479915777845, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 9001825439670525094, guid: 56bbd41459a6878489aef151f6cf1cd6, type: 3}
       propertyPath: m_RootOrder
@@ -3344,6 +3352,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 372526120}
     m_Modifications:
+    - target: {fileID: 2968685789826860221, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
+      propertyPath: m_text
+      value: "Hi ! Glad to find you ... Uh... hmmm... what is your name again?\r
+        \nWell It does not matter... \n\nWelcome to the world of Kurage, our world
+        is invaded by the forces of evil and only you can deliver us! \nAn eel causes
+        terror to reign in our world. People get kidnapped and we sink into fear...\n\nSo
+        dear ... arh...  it's annoying! \n\nWhat's your name?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968685789826860221, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: bc2b869f93e05b34789d71eae7cc0f5d, type: 2}
+    - target: {fileID: 2968685789826860221, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6222453653151959747, guid: bc2b869f93e05b34789d71eae7cc0f5d, type: 2}
     - target: {fileID: 2968685789990452448, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3434,7 +3458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2968685789990452479, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2968685790233287553, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
