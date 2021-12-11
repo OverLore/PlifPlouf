@@ -22,7 +22,7 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField] GameObject xmasStart;
     float nextDecorIn = 0f;
 
-    int decorLayer = -29;
+    int decorLayer = -5;
 
     bool xmas;
 
@@ -141,11 +141,11 @@ public class BackgroundManager : MonoBehaviour
 
             for (int i = 0; i < nbToSpawn; i++)
             {
-                decorLayer++;
+                decorLayer--;
 
-                if (decorLayer > -5)
+                if (decorLayer < -29)
                 {
-                    decorLayer = -29;
+                    decorLayer = -5;
                 }
 
                 GameObject go = Instantiate(decors[Random.Range(0, decors.Length)]);
