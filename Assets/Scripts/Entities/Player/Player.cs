@@ -140,10 +140,8 @@ public class Player : MonoBehaviour
     public void ActivateShield()
     {
         ShieldLeft = shieldDuration;
-        if (TestShield.GetComponent<ParticleSystem>() == null)
-        {
             TestShield = Instantiate(shieldParticles);
-        }
+        
     }
 
     public void ActivateHorizontalShot()
