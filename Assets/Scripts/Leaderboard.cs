@@ -18,9 +18,44 @@ public class Leaderboard : MonoBehaviour
     [SerializeField] GameObject linePrefab;
     [SerializeField] bool isLocal;
 
+    float selectedHandleId;
+    List<float> handlesTime = new List<float>();
+    List<float> handlesY = new List<float>();
+    [SerializeField] List<RectTransform> handles;
+    [SerializeField] Vector3 handleOffPos;
+    [SerializeField] Vector2 handleOffSize;
+    [SerializeField] Vector3 handleOnPos;
+    [SerializeField] Vector2 handleOnSize;
+
     public int _level = 0;
 
     List<Line> lines = new List<Line>();
+
+    private void Start()
+    {
+        for (int i = 0; i < handles.Count; i++)
+        {
+            handlesTime.Add(0);
+            handlesY.Add(handles[i].localPosition.y);
+        }
+    }
+
+    public void SetSelectedHandle(int id)
+    {
+        selectedHandleId = id;
+    }
+
+    private void Update()
+    {
+        for (int i = 0; i < handles.Count; i++)
+        {
+            handlesTime[i] += ((i == selectedHandleId) ? Time.deltaTime : -Time.deltaTime) * 7.5f;
+            handlesTime[i] = Mathf.Clamp01(handlesTime[i]);
+
+            handles[i].localPosition = Vector3.Lerp(new Vector3(handleOffPos.x, handlesY[i], 0), new Vector3(handleOnPos.x, handlesY[i], 0), handlesTime[i]);
+            handles[i].sizeDelta = new Vector2(Mathf.Lerp(handleOffSize.x, handleOnSize.x, handlesTime[i]), handles[i].sizeDelta.y);
+        }
+    }
 
     public void InitPlayersDatas()
     {
@@ -114,6 +149,7 @@ public class Leaderboard : MonoBehaviour
         InitPlayersDatas();
 
         ShowLines(0);
+        SetSelectedHandle(0);
     }
 
     public void ShowLines(int sortMode)
@@ -203,6 +239,6 @@ public class Leaderboard : MonoBehaviour
                 break;
         }
 
-        AudioManager.Instance.PlaySound("UIButton");
+        AudioManager.Instance?.PlaySound("UIButton");
     }
 }
