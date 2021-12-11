@@ -75,7 +75,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject shieldParticles;
     GameObject TestShield;
 
-
+    [SerializeField] GameObject shieldEnd;
+    GameObject EndShield;
 
 
     [SerializeField] Animator[] playerAnimators;
@@ -140,7 +141,6 @@ public class Player : MonoBehaviour
     {
         ShieldLeft = shieldDuration;
         TestShield = Instantiate(shieldParticles);
-
     }
 
     public void ActivateHorizontalShot()
@@ -180,6 +180,8 @@ public class Player : MonoBehaviour
                 //Debug.Log($"Player deflected {_damage} damage");
                 TestShield.GetComponent<ParticleSystem>().Stop();
                 TestShield.GetComponent<ParticleSystem>().Clear();
+                EndShield.transform.position = gameObject.transform.position;
+                EndShield.GetComponent<ParticleSystem>().Play();
                 //Shield.SetActive(false);
                 return;
             }
@@ -301,7 +303,9 @@ public class Player : MonoBehaviour
         if (ShieldLeft <= 0)
         {
             TestShield.GetComponent<ParticleSystem>().Stop();
-            
+            //EndShield = Instantiate(shieldEnd);
+            EndShield.transform.position = gameObject.transform.position;
+            EndShield.GetComponent<ParticleSystem>().Play();
             //Shield.SetActive(false);
         }
     }
@@ -686,6 +690,8 @@ public class Player : MonoBehaviour
         nextShot = 0;
 
         Shield.SetActive(false);
+        EndShield = Instantiate(shieldEnd);
+
 
         UpdateUpgrades();
 
@@ -728,6 +734,8 @@ public class Player : MonoBehaviour
         {
             HandleShot();
         }
+        
+
 
         UpdateAttackDamageBoost();
         UpdateAttackSpeedBoost();

@@ -21118,6 +21118,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 272650082}
     - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
+      propertyPath: shieldEnd
+      value: 
+      objectReference: {fileID: 7214818462295040831, guid: c807138bf7959e846bb7d25b0f1903b2, type: 3}
+    - target: {fileID: 2851013472188256903, guid: ef5e8f61a4ce01f4eae08774359496fe, type: 3}
       propertyPath: lifeCanvas
       value: 
       objectReference: {fileID: 1072695118}

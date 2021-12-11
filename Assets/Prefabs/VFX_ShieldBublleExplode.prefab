@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7214818462295040831}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 5204539921303280476}
   m_Father: {fileID: 0}
@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4927,6 +4927,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5552784143286184318, guid: 468ba494dff254b4ea8e4f7d525d31b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207988017626690296, guid: 468ba494dff254b4ea8e4f7d525d31b1, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8207988017626690296, guid: 468ba494dff254b4ea8e4f7d525d31b1, type: 3}
