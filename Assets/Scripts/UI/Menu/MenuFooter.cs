@@ -37,8 +37,6 @@ public class MenuFooter : MonoBehaviour
 
     [SerializeField] GameObject MoneyUI;
 
-    [SerializeField] GameObject notEnoughMoneyBox;
-    UpgradeOnClick notEnoughMoneyUOC;
     private void Start()
     {
         Tabs.Add(MenuTab.Shop, ButtonsList[0].GetComponent<FooterButtonSizeController>());
@@ -60,8 +58,6 @@ public class MenuFooter : MonoBehaviour
 
         UpdateMoneyUI();
         UpgradeManager.Instance.GetUI();
-
-        notEnoughMoneyUOC = notEnoughMoneyBox.GetComponent<UpgradeOnClick>();
     }
 
     private void Update()
@@ -90,12 +86,6 @@ public class MenuFooter : MonoBehaviour
         {
             return;
         }
-
-        if (tab == MenuTab.Skins)
-        {
-            notEnoughMoneyUOC.CloseBox();
-        }
-
 
         Tabs[SelectedTab].SetTargetSize(DefaultSize, NormalColor);
 
