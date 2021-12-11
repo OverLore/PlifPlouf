@@ -13,7 +13,6 @@ public class EelMove : MonoBehaviour
     [SerializeField] GameObject[] boneObject;
     DangerSign warningSign;
     Vector2 warningSignSize;
-    Vector2 screenSize;
     ParticleSystem warningSignParticleSystem;
 
     public GameObject pathsObject;
@@ -184,6 +183,7 @@ public class EelMove : MonoBehaviour
         for (int i = 0; i < boneObject.Length / 2; i++)
         {
             Vector3 bonne = boneObject[i].transform.position;
+            Vector2 screenSize = GameManager.instance.screenSize;
 
             if ((bonne.x > -screenSize.x + Camera.main.transform.position.x && bonne.x < screenSize.x + Camera.main.transform.position.x &&
                  bonne.y > -screenSize.y + Camera.main.transform.position.y && bonne.y < screenSize.y + Camera.main.transform.position.y))
@@ -198,6 +198,7 @@ public class EelMove : MonoBehaviour
     {
 
         Transform head = boneObject[0].transform;
+        Vector2 screenSize = GameManager.instance.screenSize;
         warningSign.transform.rotation = head.rotation;
         Vector3 tranformSign = head.position;
         tranformSign -= warningSign.transform.right * 2;
@@ -218,7 +219,6 @@ public class EelMove : MonoBehaviour
 
             if (warningSignParticleSystem.isStopped)
             {
-                //Debug.Log("Play danger sign");
                 warningSign.gameObject.SetActive(true);
                 warningSignParticleSystem.time = 0;
                 warningSignParticleSystem.Play();
@@ -281,16 +281,11 @@ public class EelMove : MonoBehaviour
         warningSign = DangerSignManager.instance.GetEelDangerSign(gameObject.transform.position);
         warningSignParticleSystem = DangerSignManager.instance.GetEelDangerSignParticleSystem(warningSign);
         warningSignSize = DangerSignManager.instance.GetEelDangerSignSize(warningSign);
-        screenSize = new Vector2(-1, -1);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (screenSize.x == -1)
-        {
-            screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
-        }
+    {        
         if (!IsMoving)
         {
             ChoosePath();
