@@ -22,6 +22,8 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField] GameObject xmasStart;
     float nextDecorIn = 0f;
 
+    int decorLayer = -29;
+
     bool xmas;
 
     private void Awake()
@@ -139,8 +141,17 @@ public class BackgroundManager : MonoBehaviour
 
             for (int i = 0; i < nbToSpawn; i++)
             {
+                decorLayer++;
+
+                if (decorLayer > -5)
+                {
+                    decorLayer = -29;
+                }
+
                 GameObject go = Instantiate(decors[Random.Range(0, decors.Length)]);
                 go.transform.position = new Vector3(Random.Range(minXOffset, maxXOffset), 6, 0);
+
+                go.GetComponent<SpriteRenderer>().sortingOrder = decorLayer;
             }
 
             nextDecorIn = Random.Range(.4f, .8f);
