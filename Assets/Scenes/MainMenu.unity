@@ -1780,6 +1780,7 @@ MonoBehaviour:
   OptionCanvas: {fileID: 2033910345}
   statpannel: {fileID: 19355946}
   MoneyUI: {fileID: 1934746964}
+  notEnoughMoneyBox: {fileID: 764540301}
 --- !u!4 &818573966
 Transform:
   m_ObjectHideFlags: 0
