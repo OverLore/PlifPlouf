@@ -69,6 +69,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public bool IsSoundPlaying(string _name)
+    {
+        Sound currentSound = GetSoundByName(_name);
+        if (currentSound == null)
+        {
+            Debug.LogError("sound : " + _name + " couldn't be found");
+            return false;
+        }
+
+        return currentSound.source.isPlaying;
+    }
+
     //play/pause/stop sound at any moment using these methods
     public void PlaySound(string _name)
     {

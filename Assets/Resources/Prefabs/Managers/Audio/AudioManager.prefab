@@ -258,5 +258,17 @@ MonoBehaviour:
     mixerGroup: 0
     source: {fileID: 0}
     audioMixer: {fileID: 0}
+  - name: DeathMobForceKill
+    clip: {fileID: 8300000, guid: b3002d8a523f78247a2e97614062ca9b, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 0
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 0
+    playInScene: 1
+    mixerGroup: 1
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
   canHearMusic: 1
   canHearSound: 1

@@ -80,7 +80,10 @@ public class Enemy : MonoBehaviour
     {
         DestroyLifebar();
 
-        AudioManager.Instance.PlaySound("DeathMob");
+        if (!AudioManager.Instance.IsSoundPlaying("DeathMobForceKill"))
+        {
+            AudioManager.Instance.PlaySound("DeathMobForceKill");
+        }
 
         //Debug.Log(gameObject.name);
         GameObject go = Instantiate(deathParticles);
