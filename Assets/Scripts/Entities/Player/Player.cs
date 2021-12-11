@@ -541,7 +541,8 @@ public class Player : MonoBehaviour
 
     private void UpdateLifeText()
     {
-        lifeText.text = $"{pv}%";
+        //lifeText.text = $"{pv}%";
+        lifeText.text = $"{pv}";
     }
 
     private void UpdateLifeFillImage()
