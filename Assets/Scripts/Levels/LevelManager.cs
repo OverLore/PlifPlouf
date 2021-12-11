@@ -350,9 +350,6 @@ public class LevelManager : MonoBehaviour
                     return;
                 }
 
-                StartCoroutine(WaitForSpawnBoss());
-
-                waitForBossPlay = true;
                 if (GameManager.instance.GetPlayer().pv <= 0)
                 {
                     return;
@@ -360,6 +357,10 @@ public class LevelManager : MonoBehaviour
 
                 if (level % 2 == 1)
                 {
+                    StartCoroutine(WaitForSpawnBoss());
+
+                    waitForBossPlay = true;
+
                     bossLifebar.ShowBar();
                     GameManager.instance.HideComboText();
 

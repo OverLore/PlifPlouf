@@ -39,15 +39,15 @@ public class Player : MonoBehaviour
 
     float endTime;
 
-    private float shieldDuration;
+    public float shieldDuration;
     private ShotType upgradeShotType;
     private float shotSideAngle;
 
-    [SerializeField] float AttackDamageLeft = 0;
-    [SerializeField] float AttackSpeedLeft = 0;
-    [SerializeField] float ShieldLeft = 0;
-    [SerializeField] float HorizontalShotLeft = 0;
-    [SerializeField] float NumberShotLeft = 0;
+    public float AttackDamageLeft = 0;
+    public float AttackSpeedLeft = 0;
+    public float ShieldLeft = 0;
+    public float HorizontalShotLeft = 0;
+    public float NumberShotLeft = 0;
 
     public bool HasAttackDamage { get { return AttackDamageLeft > 0; } }
     public bool HasAttackSpeed { get { return AttackSpeedLeft > 0; } }
