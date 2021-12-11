@@ -112,6 +112,23 @@ public class EelMove : MonoBehaviour
         return false;
     }
 
+    bool HeadEnd()
+    {
+        int cur = 0;
+        int size = 0;
+        if (boneObject[0].GetComponent<SplinePathFollow>() != null)
+        {
+            size = boneObject[0].GetComponent<SplinePathFollow>().paths.Length - 1;
+            cur = boneObject[0].GetComponent<SplinePathFollow>().currentPath;
+            if (cur <= size)
+            {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
     void UpdateBodyPart()
     {
         if (actualBone < boneObject.Length)
@@ -178,19 +195,30 @@ public class EelMove : MonoBehaviour
         }
     }
 
-    bool BonneIsOnScreen()
+    bool HeadIsOnScreen()
     {
-        for (int i = 0; i < boneObject.Length / 2; i++)
-        {
-            Vector3 bonne = boneObject[i].transform.position;
-            Vector2 screenSize = GameManager.instance.screenSize;
+        Vector3 bonne = boneObject[0].transform.position;
+        Vector2 screenSize = GameManager.instance.screenSize;
 
-            if ((bonne.x > -screenSize.x + Camera.main.transform.position.x && bonne.x < screenSize.x + Camera.main.transform.position.x &&
-                 bonne.y > -screenSize.y + Camera.main.transform.position.y && bonne.y < screenSize.y + Camera.main.transform.position.y))
-            {
-                return true;
-            }
+        if ((bonne.x > -screenSize.x + Camera.main.transform.position.x && bonne.x < screenSize.x + Camera.main.transform.position.x &&
+             bonne.y > -screenSize.y + Camera.main.transform.position.y && bonne.y < screenSize.y + Camera.main.transform.position.y))
+        {
+            return true;
         }
+
+        return false;
+    }
+
+    bool EelSeeOnScreen()
+    {
+        Vector3 head = boneObject[0].transform.right.normalized;
+        Vector3 middle = new Vector3(boneObject[0].transform.position.x - Camera.main.transform.position.x, boneObject[0].transform.position.y - Camera.main.transform.position.y).normalized;
+
+        if (Vector3.Dot(head,middle) <= 0)
+        {
+            return true;
+        }
+
         return false;
     }
 
@@ -203,8 +231,7 @@ public class EelMove : MonoBehaviour
         Vector3 tranformSign = head.position;
         tranformSign -= warningSign.transform.right * 2;
         warningSign.transform.position = tranformSign;
-
-        if (BonneIsOnScreen())
+        if (HeadIsOnScreen() || EelSeeOnScreen() || HeadEnd())
         {
             if (warningSignParticleSystem.isPlaying)
             {
@@ -285,7 +312,10 @@ public class EelMove : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+
+
+
         if (!IsMoving)
         {
             ChoosePath();
