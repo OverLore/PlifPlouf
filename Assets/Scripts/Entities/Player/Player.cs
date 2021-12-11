@@ -728,6 +728,11 @@ public class Player : MonoBehaviour
             UpdateLifeText();
             UpdateLifeFillImage();
 
+            //shield fx 
+            TestShield.GetComponent<ParticleSystem>().Stop();
+            TestShield.GetComponent<ParticleSystem>().Clear();
+
+
             return;
         }
 
