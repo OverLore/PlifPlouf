@@ -24,6 +24,7 @@ public class LeaderBoardOpener : MonoBehaviour
     public void Open()
     {
         leaderboard.SetActive(true);
+        leaderboard.GetComponent<Animator>()?.SetTrigger("Show");
         open = true;
         AudioManager.Instance.PlaySound("UIButton");
     }
@@ -39,6 +40,7 @@ public class LeaderBoardOpener : MonoBehaviour
     {
         leaderboard.SetActive(!open);
         open = !open;
+
         AudioManager.Instance.PlaySound("UIButton");
     }
 }

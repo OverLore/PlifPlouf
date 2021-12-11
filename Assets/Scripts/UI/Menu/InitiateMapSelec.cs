@@ -35,7 +35,9 @@ public class InitiateMapSelec : MonoBehaviour
         AudioManager.Instance.PlaySound("UIButton");
 
         GameManager.instance.levelToLoad = targetLevel;
+
         statpannel.gameObject.SetActive(true);
+        statpannel.gameObject.GetComponent<Animator>().SetTrigger("Show");
 
     }
     public void ButtonOffStatEffect()
