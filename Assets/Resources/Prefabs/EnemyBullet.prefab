@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: -0.65, y: -0.55, z: 0}
   parent: {fileID: 8990634599087928527}
+  isYInverted: 1
 --- !u!1 &8990634599087928527
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +113,6 @@ GameObject:
   - component: {fileID: 8500492284919558552}
   - component: {fileID: 6875121977196382800}
   - component: {fileID: -3101801701695321971}
-  - component: {fileID: 4868131687634286623}
   m_Layer: 6
   m_Name: EnemyBullet
   m_TagString: PlayerBullet
@@ -129,7 +129,7 @@ Transform:
   m_GameObject: {fileID: 8990634599087928527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.078, y: 1.07, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children:
   - {fileID: 6039350736082768772}
   m_Father: {fileID: 0}
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ebe034bb6670f29429d5ada69bf95719, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.06844187, a: 1}
+  m_Color: {r: 1, g: 0.74992096, b: 0.6556604, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -296,8 +296,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.75, g: 0.97949004, b: 1, a: 0.58431375}
-      key1: {r: 0.75, g: 0.9975997, b: 1, a: 0}
+      key0: {r: 0.972549, g: 0.57877666, b: 0.40784314, a: 0.58431375}
+      key1: {r: 0.9137255, g: 0.5761931, b: 0.33333334, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -345,17 +345,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
---- !u!114 &4868131687634286623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8990634599087928527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dec75abcc11adb438b7b5e03a72c9ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layer: 2
-  spr: {fileID: 8614787253821703151}
