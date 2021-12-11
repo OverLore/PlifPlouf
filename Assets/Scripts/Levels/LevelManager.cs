@@ -23,7 +23,9 @@ public class LevelManager : MonoBehaviour
         public bool updating;
         public Text text;
         float temp;
+        float tempSound;
         float act;
+        string last;
         public float dest;
 
         public void InitText()
@@ -36,11 +38,23 @@ public class LevelManager : MonoBehaviour
             if (updating)
             {
                 temp += Time.deltaTime;
+                tempSound -= Time.deltaTime;
 
                 temp = Mathf.Clamp01(temp);
 
                 act = Mathf.Lerp(0, dest, temp);
                 text.text = ((int)act).ToString();
+
+                if (last != null && !last.Equals(text.text) && tempSound <= 0 && temp < 1)
+                {
+                    Debug.Log(last + " and " + text.text);
+
+                    AudioManager.Instance.PlaySound("Counting");
+
+                    tempSound = .1f;
+                }
+
+                last = text.text;
             }
         }
     }
@@ -190,6 +204,7 @@ public class LevelManager : MonoBehaviour
             {
                 starsSprites[i - 1].color = new Color(1, 1, 1, 1);
                 starsParticles[i - 1].Play();
+                AudioManager.Instance.PlaySound("Star");
             }
 
             lastStarsBarAnim = i;

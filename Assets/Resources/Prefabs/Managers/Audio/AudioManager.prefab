@@ -222,5 +222,41 @@ MonoBehaviour:
     mixerGroup: 0
     source: {fileID: 0}
     audioMixer: {fileID: 0}
+  - name: Counting
+    clip: {fileID: 8300000, guid: 410ba6f0c8f07f6449553aba71fbd0cb, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    playInScene: 1
+    mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
+  - name: Moulaga
+    clip: {fileID: 8300000, guid: 76c730a84e2267649ba9974be9c7fc4f, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 0
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 0
+    playInScene: 1
+    mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
+  - name: Star
+    clip: {fileID: 8300000, guid: 03e4fa170f69f924b9e5dda9a2bb5e0d, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    playInScene: 1
+    mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
   canHearMusic: 1
   canHearSound: 1
