@@ -139,8 +139,13 @@ public class Player : MonoBehaviour
 
     public void ActivateShield()
     {
+
         ShieldLeft = shieldDuration;
+
+        if (TestShield == null)
+        {
             TestShield = Instantiate(shieldParticles);
+        }
         
     }
 
@@ -729,9 +734,11 @@ public class Player : MonoBehaviour
             UpdateLifeFillImage();
 
             //shield fx 
-            TestShield.GetComponent<ParticleSystem>().Stop();
-            TestShield.GetComponent<ParticleSystem>().Clear();
-
+            if(TestShield!= null)
+            {
+                TestShield.GetComponent<ParticleSystem>().Stop();
+                TestShield.GetComponent<ParticleSystem>().Clear();
+            }
 
             return;
         }
