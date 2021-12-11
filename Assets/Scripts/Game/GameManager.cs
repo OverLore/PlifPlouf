@@ -445,7 +445,7 @@ public class GameManager : MonoBehaviour
 
         waveSpawner = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
 
-        waveSpawner.LoadLevelWaves(levelToLoad.ToString());
+        StartCoroutine(waveSpawner.LoadLevelWaves(levelToLoad.ToString()));
 
     }
 

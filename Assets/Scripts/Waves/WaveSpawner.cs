@@ -19,7 +19,7 @@ public class WaveSpawner : MonoBehaviour
         fishPrefab = Resources.Load<GameObject>("Prefabs/Fish");
     }
 
-    public void LoadLevelWaves(string level)
+    public IEnumerator LoadLevelWaves(string level)
     {
         levelToLoad = level;
 
@@ -28,6 +28,8 @@ public class WaveSpawner : MonoBehaviour
         TextAsset jsonTextFile = Resources.Load<TextAsset>(path);
 
         wave = (Wave)JsonUtility.FromJson(jsonTextFile.text, typeof(Wave));
+
+        yield return null;
     }
 
     private void Update()
@@ -40,7 +42,7 @@ public class WaveSpawner : MonoBehaviour
         if (lastProgress <= wave.percentages[passedWaves] &&
             LevelManager.instance.levelProgress > wave.percentages[passedWaves])
         {
-            SpawnWave();
+            StartCoroutine(SpawnWave());
 
             passedWaves++;
         }
@@ -67,7 +69,7 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    void SpawnWave()
+    IEnumerator SpawnWave()
     {
         List<WaveSequence> sequence = new List<WaveSequence>();
 
@@ -80,6 +82,8 @@ public class WaveSpawner : MonoBehaviour
         foreach (TextAsset txt in jsonTextFile)
         {
             sequence.Add((WaveSequence)JsonUtility.FromJson(txt.text, typeof(WaveSequence)));
+
+            yield return null;
         }
 
         float delay = 0;
@@ -89,7 +93,11 @@ public class WaveSpawner : MonoBehaviour
             delay += sequence[i].time;
 
             StartCoroutine(SpawnSeq(delay, sequence[i].Offset, sequence[i].path));
+
+            yield return null;
         }
+
+        yield return null;
     }
 
     IEnumerator SpawnSeq(float delay, List<Vector2> offset, List<string> paths)
