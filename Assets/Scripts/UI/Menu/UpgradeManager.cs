@@ -149,6 +149,7 @@ public class UpgradeManager : MonoBehaviour
 
         GameObject root = Instantiate(RootPrefab, UpgradesCanvas.transform);
         root.name = "Root";
+        root.transform.SetSiblingIndex(1);
         UpgradeRoot = root.transform.Find("Panel").gameObject;
         var panelRect = UpgradeRoot.GetComponent<RectTransform>();
         panelRect.sizeDelta = new Vector2(panelRect.sizeDelta.x, 460.0f * UpgradesList.Count);
