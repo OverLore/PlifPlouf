@@ -4930,6 +4930,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8207988017626690296, guid: 468ba494dff254b4ea8e4f7d525d31b1, type: 3}
+      propertyPath: stopAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207988017626690296, guid: 468ba494dff254b4ea8e4f7d525d31b1, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}

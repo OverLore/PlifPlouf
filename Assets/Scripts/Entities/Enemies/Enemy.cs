@@ -44,7 +44,9 @@ public class Enemy : MonoBehaviour
 
         DestroyLifebar();
 
+        
         AudioManager.Instance.PlaySound("DeathMob");
+
         GameManager.instance.AddScore((uint)score);
         LevelManager.instance.kills++;
         //Achivment stuff:
@@ -80,9 +82,19 @@ public class Enemy : MonoBehaviour
     {
         DestroyLifebar();
 
-        if (!AudioManager.Instance.IsSoundPlaying("DeathMobForceKill"))
+        if (isDestroyedOnCollided)
         {
-            AudioManager.Instance.PlaySound("DeathMobForceKill");
+            if (!AudioManager.Instance.IsSoundPlaying("MineExplosion"))
+            {
+                AudioManager.Instance.PlaySound("MineExplosion");
+            }
+        }
+        else
+        {
+            if (!AudioManager.Instance.IsSoundPlaying("DeathMobForceKill"))
+            {
+                AudioManager.Instance.PlaySound("DeathMobForceKill");
+            }
         }
 
         //Debug.Log(gameObject.name);
@@ -257,7 +269,9 @@ public class Enemy : MonoBehaviour
                 GameObject particle = Instantiate(deathParticles,this.transform.parent);
                 particle.transform.localPosition = this.transform.localPosition;
                 particle.transform.localScale = this.transform.localScale;
-                
+
+                AudioManager.Instance.PlaySound("MineExplosion");
+
                 Destroy(this.gameObject);
             }
         }

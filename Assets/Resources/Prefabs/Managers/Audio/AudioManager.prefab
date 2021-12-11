@@ -270,5 +270,29 @@ MonoBehaviour:
     mixerGroup: 1
     source: {fileID: 0}
     audioMixer: {fileID: 0}
+  - name: MineExplosion
+    clip: {fileID: 8300000, guid: 13ce29abf999c5f47bfcbfcaaab265a8, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 1
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 1
+    playInScene: 1
+    mixerGroup: 1
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
+  - name: Victory
+    clip: {fileID: 8300000, guid: bf99bcfa918036446b11115ca96584a4, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 0
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 0
+    playInScene: 1
+    mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
   canHearMusic: 1
   canHearSound: 1
