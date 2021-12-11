@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
     public string profileName = "";
     public List<string> profileNames = new List<string>();
 
+    public Vector2 screenSize;
+
     public void LoadProfiles()
     {
         if (PlayerPrefs.HasKey("Profiles"))
@@ -293,6 +295,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        screenSize = new Vector2(-1, -1);
         if (instance == null)
         {
             instance = this;
@@ -357,6 +360,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (screenSize.x == -1)
+        {
+            screenSize = new Vector2(ScreenSize.GetScreenToWorldWidth / 2, ScreenSize.GetScreenToWorldHeight / 2);
+        }
         UpdateCombo();
 
         UpdateLivesUI();
