@@ -3,6 +3,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class SeasonSkinClass
@@ -26,6 +27,17 @@ public class Database : MonoBehaviour
     void Start()
     {
         StartCoroutine(makeRequest());
+    }
+
+    void Update()
+    {
+        if (SystemInfo.deviceType == DeviceType.Desktop && Input.GetButtonDown("DebugSetEventState")
+            && SceneManager.GetActiveScene().name == "Pre-Menu")
+        {
+            Debug.Log("DebugSetEventState");
+            isChristmas = !isChristmas;
+            seasonSkin.is_activated = !seasonSkin.is_activated;
+        }
     }
 
     // return authentication header string
