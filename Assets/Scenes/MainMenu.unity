@@ -1780,7 +1780,6 @@ MonoBehaviour:
   OptionCanvas: {fileID: 2033910345}
   statpannel: {fileID: 19355946}
   MoneyUI: {fileID: 1934746964}
-  notEnoughMoneyBox: {fileID: 764540301}
 --- !u!4 &818573966
 Transform:
   m_ObjectHideFlags: 0
@@ -3556,7 +3555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2968685789990452479, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2968685790233287553, guid: f460a555c3e76ca42bff2a34b7708e9d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

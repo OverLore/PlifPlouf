@@ -160,6 +160,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt(username + "CoinPicked", 0);
         PlayerPrefs.SetInt(username + "KillCount", 0);
         PlayerPrefs.SetInt(username + "UpgradeCount", 0);
+       
 
         PlayerPrefs.Save();
     }
