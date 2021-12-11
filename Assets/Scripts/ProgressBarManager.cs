@@ -12,6 +12,7 @@ public class ProgressBarManager : MonoBehaviour
     [SerializeField] RectTransform progressMinRT;
     [SerializeField] RectTransform progressMaxRT;
     [SerializeField] Canvas progressBarCanvas;
+    [SerializeField] GameObject deathIcon;
     RectTransform dotRT;
     Image barFullImage;
     CanvasGroup canvasGroup;
@@ -36,8 +37,15 @@ public class ProgressBarManager : MonoBehaviour
         dotRT = progressBarDot.GetComponent<RectTransform>();
         barFullImage = progressBarFull.GetComponent<Image>();
         canvasGroup = progressBarCanvas.GetComponent<CanvasGroup>();
+        //activate death icon if it's eel level
+        SetDeathIconActiveState(GameManager.instance.levelToLoad % 2 == 1);
 
         alphaTimer = 1.0f;
+    }
+
+    public void SetDeathIconActiveState(bool _isActive)
+    {
+        deathIcon.SetActive(_isActive);
     }
 
     void Update()
