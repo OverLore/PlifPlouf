@@ -69,7 +69,10 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.instance.Paused = true;
+                    if (GameManager.instance.GetPlayer().pv > 0)
+                    {
+                        GameManager.instance.Paused = true;
+                    }
                 }
             }
             else
@@ -111,7 +114,10 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.instance.Paused = true;
+                    if (GameManager.instance.GetPlayer().pv > 0)
+                    {
+                        GameManager.instance.Paused = true;
+                    }
                 }
 
                 if (Input.GetMouseButtonUp(0))
