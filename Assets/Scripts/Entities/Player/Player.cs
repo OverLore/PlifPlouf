@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
     [SerializeField] Image lifeFillImage;
     [SerializeField] Image[] lifeIndicatorImages;
     [SerializeField] Text[] lifeIndicatorTexts;
-    float lifeIndicatorTime;
+    public float lifeIndicatorTime;
 
     [SerializeField] GameObject deathParticles;
 
@@ -565,7 +565,7 @@ public class Player : MonoBehaviour
 
             if (LifeIndicatorIsActive)
             {
-                img.color = new Color(img.color.r, img.color.g, img.color.b, 1);
+                img.color = new Color(img.color.r, img.color.g, img.color.b, 1 - (GameManager.instance.timeScale * 1.1f - .1f));
             }
             else
             {
@@ -582,7 +582,7 @@ public class Player : MonoBehaviour
 
             if (LifeIndicatorIsActive)
             {
-                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 1);
+                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 1 - (GameManager.instance.timeScale * 1.1f - .1f));
             }
             else
             {

@@ -8,6 +8,7 @@ public class BossLifeBar : MonoBehaviour
     [SerializeField] Transform max;
 
     [SerializeField] Color minColor;
+    [SerializeField] Color midColor;
     [SerializeField] Color maxColor;
 
     [SerializeField] GameObject mask;
@@ -90,7 +91,14 @@ public class BossLifeBar : MonoBehaviour
         value = v;
 
         mask.transform.position = Vector3.Lerp(min.position, max.position, value);
-        
-        fill.color = Color.Lerp(minColor, maxColor, value);
+
+        if (value < .5f)
+        {
+            fill.color = Color.Lerp(minColor, midColor, value * 2f);
+        }
+        else
+        {
+            fill.color = Color.Lerp(midColor, maxColor, (value - .5f) * 2f);
+        }
     }
 }

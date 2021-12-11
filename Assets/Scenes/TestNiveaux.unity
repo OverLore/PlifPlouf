@@ -913,6 +913,7 @@ MonoBehaviour:
   min: {fileID: 225302779}
   max: {fileID: 1685557598}
   minColor: {r: 0.8490566, g: 0.18823424, b: 0.18823424, a: 1}
+  midColor: {r: 1, g: 0.7592709, b: 0, a: 1}
   maxColor: {r: 0.23837602, g: 0.8490566, b: 0.20425417, a: 1}
   mask: {fileID: 144713665}
   lateMask: {fileID: 587832967}
