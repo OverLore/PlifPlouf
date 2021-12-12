@@ -73,7 +73,7 @@ public class Leaderboard : MonoBehaviour
                 Line newLine = new Line();
 
                 LevelDatasStruct dat = new LevelDatasStruct();
-                LevelDatas.LoadLevelDatas(_level, out dat, player);
+                LevelDatas.LoadLevelDatas(GameManager.instance.levelToLoad, out dat, player);
 
                 newLine.playerName = player;
                 newLine.kaki = dat.coins;
