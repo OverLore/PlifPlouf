@@ -876,6 +876,7 @@ GameObject:
   - component: {fileID: 372526121}
   - component: {fileID: 372526122}
   - component: {fileID: 372526123}
+  - component: {fileID: 372526124}
   m_Layer: 0
   m_Name: CanvasZoo
   m_TagString: Untagged
@@ -952,6 +953,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaderboard: {fileID: 2032013726}
+--- !u!114 &372526124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372526119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae46688fd49269944a31c06509b90929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabAchievment:
+  - Collector
+  - Fisherman
+  - Darwinism
+  - Captain Cousteau
 --- !u!1 &385952792
 GameObject:
   m_ObjectHideFlags: 0
