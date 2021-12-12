@@ -278,10 +278,12 @@ public class LevelManager : MonoBehaviour
         if (won)
         {
             scoringCanvasImg.sprite = winSpr;
+            AudioManager.Instance.PlaySound("Victory");
         }
         else
         {
             scoringCanvasImg.sprite = defSpr;
+            //AudioManager.Instance.PlaySound("Defeat");
         }
 
         scoringCanvas.SetActive(true);

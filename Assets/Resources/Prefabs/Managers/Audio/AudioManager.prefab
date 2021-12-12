@@ -284,7 +284,7 @@ MonoBehaviour:
     audioMixer: {fileID: 0}
   - name: Victory
     clip: {fileID: 8300000, guid: bf99bcfa918036446b11115ca96584a4, type: 3}
-    volume: 1
+    volume: 0.8
     pitch: 1
     hasPitchVariance: 0
     loop: 0
