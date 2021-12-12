@@ -286,6 +286,8 @@ public class Enemy : MonoBehaviour
             collision.gameObject.GetComponent<Player>().TakeDamage(collisionDamage);
             if(isDestroyedOnCollided)
             {
+                DestroyLifebar();
+
                 GameObject particle = Instantiate(deathParticles,this.transform.parent);
                 particle.transform.localPosition = this.transform.localPosition;
                 particle.transform.localScale = this.transform.localScale;
