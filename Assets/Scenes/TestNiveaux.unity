@@ -6328,6 +6328,14 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6599793920840789468, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599793920840789468, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3372220415
+      objectReference: {fileID: 0}
     - target: {fileID: 6599793921542499890, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
       propertyPath: m_Name
       value: ComboCanvas
@@ -6427,6 +6435,10 @@ PrefabInstance:
     - target: {fileID: 6599793921616106415, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
       propertyPath: m_fontSize
       value: 53
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599793921616106415, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.78431374
       objectReference: {fileID: 0}
     - target: {fileID: 6599793921616106415, guid: be1e85821bc023d4597465b4dab77cd6, type: 3}
       propertyPath: m_fontSizeBase

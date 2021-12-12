@@ -55,9 +55,19 @@ public class BoosterIndicator : MonoBehaviour
 
         for (int i = 0; i < indicatorImgs.Length; i++)
         {
-            indicatorImgs[i].color =
+            Color tempColor = indicatorImgs[i].color;
+            tempColor =
                 new Color(indicatorImgsColors[i].r, indicatorImgsColors[i].g,
                 indicatorImgsColors[i].b, 1 - (GameManager.instance.timeScale * 1.1f));
+            if (clock.fillAmount <= 0)
+            {
+                tempColor.a = 0;
+            }
+            else
+            {
+                tempColor.a = 1;
+            }    
+            indicatorImgs[i].color = tempColor;
         }
     }
 }
