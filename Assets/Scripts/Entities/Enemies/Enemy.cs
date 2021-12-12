@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float shotSpeed = 4.0f;
     [SerializeField] bool isShootingEnemy = false;
     [SerializeField] bool isInvincible = false;
+    [SerializeField] bool isMine = false;
     [SerializeField] bool isDestroyedOnCollided = false;
     [SerializeField] bool hasLifebar = true;
     public bool isBoss = false;
@@ -44,6 +45,18 @@ public class Enemy : MonoBehaviour
 
         DestroyLifebar();
 
+        if (isMine)
+        {
+            GameObject particle = Instantiate(deathParticles, this.transform.parent);
+            particle.transform.localPosition = this.transform.localPosition;
+            particle.transform.localScale = this.transform.localScale;
+
+            AudioManager.Instance.PlaySound("MineExplosion");
+
+            Destroy(this.gameObject);
+
+            return;
+        }
         
         AudioManager.Instance.PlaySound("DeathMob");
 
@@ -161,6 +174,13 @@ public class Enemy : MonoBehaviour
         //create an offset on each of them (so that enemies
         //won't shoot at the same time)
         shotTimer = Random.Range(0, maxShotTimer / 5.0f);
+
+        PV = PV + (PV * GameManager.instance.levelToLoad / 4f);
+
+        if (PV > 1)
+        {
+            hasLifebar = true;
+        }
 
         maxPV = PV;
 

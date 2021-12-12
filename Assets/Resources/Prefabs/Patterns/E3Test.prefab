@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 636064093410772602}
   - component: {fileID: 6208921219512876679}
   - component: {fileID: 5234598959516330653}
-  - component: {fileID: 6957408545601502051}
   m_Layer: 0
   m_Name: Light1
   m_TagString: Untagged
@@ -99,21 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer: 2
   spr: {fileID: 6208921219512876679}
---- !u!114 &6957408545601502051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942291481457281137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flare: {fileID: 0}
-  backObjs: []
-  backColors: []
 --- !u!1 &3739299841663263515
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +109,6 @@ GameObject:
   - component: {fileID: 3522721749771331548}
   - component: {fileID: 9192000788663317334}
   - component: {fileID: 630472791608938768}
-  - component: {fileID: 1948796748586779200}
   m_Layer: 0
   m_Name: Light2
   m_TagString: Untagged
@@ -213,21 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer: 2
   spr: {fileID: 9192000788663317334}
---- !u!114 &1948796748586779200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3739299841663263515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flare: {fileID: 0}
-  backObjs: []
-  backColors: []
 --- !u!1 &4545209599118497847
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +290,6 @@ GameObject:
   - component: {fileID: 7324589643697734837}
   - component: {fileID: 2676939242899888599}
   - component: {fileID: 6543052828910600516}
-  - component: {fileID: 4095109449836922113}
   m_Layer: 0
   m_Name: Light4
   m_TagString: Untagged
@@ -410,21 +377,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer: 2
   spr: {fileID: 2676939242899888599}
---- !u!114 &4095109449836922113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5906853521154859886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flare: {fileID: 0}
-  backObjs: []
-  backColors: []
 --- !u!1 &6460138656634226393
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +487,6 @@ GameObject:
   - component: {fileID: 8430859576763655208}
   - component: {fileID: 571630136811399422}
   - component: {fileID: 347348045474535153}
-  - component: {fileID: 489834535093140162}
   m_Layer: 0
   m_Name: Light3
   m_TagString: Untagged
@@ -623,21 +574,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer: 2
   spr: {fileID: 571630136811399422}
---- !u!114 &489834535093140162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6832289771920962866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flare: {fileID: 0}
-  backObjs: []
-  backColors: []
 --- !u!1 &8128859322293563925
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9127c470b393e47a5f76239be4478a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: 1
+  PV: 5
   score: 0
   deathParticles: {fileID: 7353145219180321650, guid: 56187e3a201d9464f9cbbebd1fc9870e, type: 3}
   shotOrigin: {fileID: 0}
@@ -754,9 +690,10 @@ MonoBehaviour:
   collisionDamage: 10
   shotSpeed: 10
   isShootingEnemy: 0
-  isInvincible: 1
+  isInvincible: 0
+  isMine: 1
   isDestroyedOnCollided: 1
-  hasLifebar: 0
+  hasLifebar: 1
   isBoss: 0
   lifebarPrefab: {fileID: 0}
   lifebarOffset: {x: 0, y: 0}
