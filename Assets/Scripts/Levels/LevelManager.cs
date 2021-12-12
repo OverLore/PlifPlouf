@@ -283,7 +283,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             scoringCanvasImg.sprite = defSpr;
-            //AudioManager.Instance.PlaySound("Defeat");
+            AudioManager.Instance.PlaySound("Defeat");
         }
 
         scoringCanvas.SetActive(true);

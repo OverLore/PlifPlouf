@@ -294,5 +294,17 @@ MonoBehaviour:
     mixerGroup: 0
     source: {fileID: 0}
     audioMixer: {fileID: 0}
+  - name: Defeat
+    clip: {fileID: 8300000, guid: 373504ab5cc66c641a83d37a58a5cdaa, type: 3}
+    volume: 1
+    pitch: 1
+    hasPitchVariance: 0
+    loop: 0
+    playAtBeginning: 0
+    canMultiplePlay: 0
+    playInScene: 1
+    mixerGroup: 0
+    source: {fileID: 0}
+    audioMixer: {fileID: 0}
   canHearMusic: 1
   canHearSound: 1
