@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class XMasMine : MonoBehaviour
 {
+    [SerializeField] GameObject flare;
     [SerializeField] List<GameObject> backObjs;
     [SerializeField] List<Color> backColors;
 
@@ -15,6 +16,7 @@ public class XMasMine : MonoBehaviour
         if (Database.SeasonSkin == null)
         {
             isActive = false;
+            flare.SetActive(false);
 
             foreach (GameObject go in backObjs)
             {
@@ -33,6 +35,8 @@ public class XMasMine : MonoBehaviour
                 go.GetComponent<SpriteRenderer>().enabled = false;
             }
 
+            flare.SetActive(false);
+
             return;
         }
 
@@ -42,6 +46,8 @@ public class XMasMine : MonoBehaviour
 
             go.GetComponent<SpriteRenderer>().sharedMaterial.SetColor("Backcolor", backColors[Random.Range(0, backColors.Count)]);
         }
+
+        flare.SetActive(true);
     }
 
     private void Update()

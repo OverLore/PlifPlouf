@@ -758,6 +758,7 @@ MonoBehaviour:
   lifebarOffset: {x: 0, y: 0}
   lifebarImgBack: {fileID: 0}
   lifebarImg: {fileID: 0}
+  alwaysbonus: 0
 --- !u!58 &2885476135971640145
 CircleCollider2D:
   m_ObjectHideFlags: 0
