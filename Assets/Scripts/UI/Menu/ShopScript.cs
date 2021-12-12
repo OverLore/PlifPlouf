@@ -57,19 +57,19 @@ public class ShopScript : MonoBehaviour
     }
     public void addMoneyOne00()
     {
-        GameManager.instance.ChangeMoney(100);
+        GameManager.instance.ChangeMoney(500);
         AudioManager.Instance.PlaySound("UIButton");
 
     }
     public void addMoneyTwo00()
     {
-        GameManager.instance.ChangeMoney(200);
+        GameManager.instance.ChangeMoney(1000);
         AudioManager.Instance.PlaySound("UIButton");
 
     }
     public void addMoneyFour00()
     {
-        GameManager.instance.ChangeMoney(400);
+        GameManager.instance.ChangeMoney(2000);
         AudioManager.Instance.PlaySound("UIButton");
 
     }
