@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flare: {fileID: 0}
   backObjs: []
   backColors: []
 --- !u!1 &3739299841663263515
@@ -224,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flare: {fileID: 0}
   backObjs: []
   backColors: []
 --- !u!1 &4545209599118497847
@@ -420,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flare: {fileID: 0}
   backObjs: []
   backColors: []
 --- !u!1 &6460138656634226393
@@ -632,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flare: {fileID: 0}
   backObjs: []
   backColors: []
 --- !u!1 &8128859322293563925
@@ -820,6 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c20ec8ac023dfb4181f7a4a711d67c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flare: {fileID: 4545209599118497847}
   backObjs:
   - {fileID: 942291481457281137}
   - {fileID: 3739299841663263515}
