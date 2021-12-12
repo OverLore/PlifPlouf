@@ -47,7 +47,7 @@ public class LevelManager : MonoBehaviour
 
                 if (last != null && !last.Equals(text.text) && tempSound <= 0 && temp < 1)
                 {
-                    Debug.Log(last + " and " + text.text);
+                    //Debug.Log(last + " and " + text.text);
 
                     AudioManager.Instance.PlaySound("Counting");
 
